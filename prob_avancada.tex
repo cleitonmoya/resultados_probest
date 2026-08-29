@@ -1,0 +1,1489 @@
+\chapter{Probabilidade Avançada}
+
+\section{Teoria de conjuntos}
+
+\begin{definition}[Definições básicas] Para $A$, $B$ e $\{A_i: i \in I\}$ quaisquer:
+	\begin{outline}
+		\1 \( \cp{A} \coloneq \{ \omega\in\Omega : \omega \notin A\} = \Omega-A\)
+		\1 \( A \subset B \iff \omega \in A \implies \omega \in B \)
+		\1 \( A\cup B \coloneq \{ \omega\in\Omega : \omega \in A \text{ ou } \omega \in B\}\)
+		\1 \( \bigcup_{i\in I}A_i \coloneq \{ \omega : \omega \in A_i \text{ para algum } i \in I \}\)
+		\1 \( A\cap B \coloneq \{ \omega\in\Omega : \omega \in A \text{ e } \omega \in B\} = AB\)
+		\1 \( \bigcap_{i\in I}A_i \coloneq \{ \omega : \omega \in A_i \text{ para todo } i \in I \}\)
+		\1 \(B - A \coloneq \{ \omega\in\Omega : \omega \in B \text{ e } \omega \notin A\} = B\cap\cp{A} \)
+		\1 \(A+B \coloneq A\cup B\), para $A$ e $B$ disjuntos
+		\1 Diferença simétrica: \\ \(\begin{aligned}[t]
+				A \triangle B &\coloneq \{ \omega\in\Omega : \omega \in A\cup B \text{ e } \omega 	\notin A\cap B\} \\
+				&= (A\cup B) - (A\cap B) \\
+				&= (A-B) + (B-A) \\
+				&= A\cp{B}+B\cp{A}
+			\end{aligned}\)
+		\1 Produto cartesiano: \( A \times B \coloneq  \{ (a,b): a \in A \text{ e } b \in B\}\)
+		\1 \( \cp{(A \times B)} \coloneq (\Omega_1\times\Omega_2)-(A\times B) = \{ (\omega_1,\omega_2) \in \Omega_1\times\Omega_2: \omega_1 \notin A \text{ ou } \omega_2 \notin B\}\)
+		\1 Conjunto das partes: \( \mathcal{P}(\Omega) \coloneq \{A: A\subset \Omega\} \)
+		\1 Função indicadora: \\
+		\( I_A(\omega) \coloneq \left\{ \begin{array}{lcl} 
+			1 & \text{ se } & \omega \in A \\ 
+			0 & \text{ se } & \omega \notin A 
+		\end{array} \right. \)
+	\end{outline}	
+\end{definition}
+
+\pagebreak
+
+\begin{theorem}[Propriedades básicas] Para $A,B,C$ quaisquer:
+	\begin{outline}[enumerate]
+		\1 \( \emptyset \subset A \)
+		\1 Reflexiva: \(A = A\)
+		\1 Simétrica: \(A = B \implies B = A\)
+		\1 Transitiva: \(A = B \text{ e } B = C \implies A=C \) 
+		\1 Reflexiva: \(A \subset A\)
+		\1 Simétrica: \(A \subset B \text{ e } B \subset A \iff A = B \) 
+		\1 Transitiva: \(A \subset B \text{ e } B \subset C \implies A \subset C \)
+		\1 \(A \subset B \text{ ou } A \subset C \implies A \subset B\cup C \)
+		\1 \(A\cup B \subset C \iff A \subset C \text{ e } B \subset C\)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Operações básicas] Para $A,B$, $\{A_i: i \in I\}$, $(A_n)_{n\geq1}$ e $(B_n)_{n\geq1}$ quaisquer:
+	\begin{outline}[enumerate]
+		\1 Idempotente: \( A\cup A = A \), \( A\cap A = A \)
+		\1 Elemento neutro: \( A \cup \emptyset = A\), \(A\cap\Omega=A\)
+		\1 \( A \cap \emptyset = \emptyset\), \(A\cup\Omega=\Omega\)  
+		\1 Comutativa: \(A\cup B = A\cap B\) e \(A\cup B = A\cap B\)
+		\1 Associativa: 
+			\2 \( A\cup (B\cup C) = (A \cup B)\cup C \)
+			\2 \( \left(\bigcup_{n=1}^\infty A_n\right) \cup  \left(\bigcup_{n=1}^\infty B_n\right) = \bigcup_{n=1}^\infty (A_n\cup B_n) \)
+			\2 \( A\cap (B\cap C) = (A \cap B)\cap C \)
+			\2 \( \left(\bigcap_{n=1}^\infty A_n\right) \cap  \left(\bigcap_{n=1}^\infty B_n\right) = \bigcap_{n=1}^\infty (A_n\cap B_n) \)
+		\1 Distributiva:
+			\2 \(A\cap(B\cup C) = (A\cap B)\cup(A\cap C) \)
+			\2 \(B\cap\left(\bigcup_{i\in I}A_i\right) = \bigcup_{i\in I}(A_i\cap B) \)
+			\2 \(A\cup(B\cap C) = (A\cup B)\cap(A\cup C) \)
+			\2 \(B\cup\left(\bigcap_{i\in I}A_i\right) = \bigcap_{i\in I}(A_i\cup B) \)
+		\1 \(A \subset A\cup B \) e \(B \subset A\cup B \)
+		\1 \(A \cap B \subset A \) e \(A \cap B \subset B\)
+		\1 \(A\cup(A\cap B) = A\) e \(B\cap(A\cup B) = A\)
+		\1 \(A \subset B \iff A\cup B = B \iff A\cap B = A\)
+	\end{outline}
+\end{theorem}
+
+\needspace{3\baselineskip} % Reserva espaço para 3 linhas
+\begin{theorem}[Propriedades do complementar]
+	Para $A$, $B$ e $\{A_i: i \in I\}$ quaisquer:	
+	\begin{outline}[enumerate]
+		\1 \( \cp{(\cp{A})} = A \)
+		\1 \( A\subset B \iff \cp{B} \subset \cp{A} \)
+		\1 Leis de De Morgan:
+			\2 \( (A\cup B) = \cp{(\cp{A}\cap\cp{B})} \) e \( \cp{\left( \bigcup_{i\in I}A_i \right)} = \bigcap_{i\in I}\cp{A_i} \)\\
+			\2 \( (A\cap B) = \cp{(\cp{A}\cup\cp{B})} \) e \( \cp{\left( \bigcap_{i\in I}A_i \right)} = \bigcup_{i\in I}\cp{A_i} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Operações com diferença]
+	Para $A,B,C$, e $\{A_i: i \in I\}$ quaisquer:	
+	\begin{outline}[enumerate]
+		\1 \( (A-B)\cup(A\cap B) = A\)
+		\1 \( (A\cup C) - B = (A-B)\cup(C-B) \)
+		\1 \( (A-B)-C = (A-C)-B \)
+		\1 \((A-B)\cup C = (A\cup B \cup C) - (A\cap B)\)
+		\1 \((A-B)\cap C = (A\cap C) - (B\cap C)\)
+		\1 \(C-(A\cup B) = (C-A)\cap(C-B)\)
+		\1 \(C-(A\cap B) = (C-A)\cup(C-B)\)
+		\1 \(A-B=\emptyset \iff A \subset B\)
+		\1 \( A-(A-B)=B \iff B\subset A\) 
+		\1 Se $A\subset C$ e $B\subset C$, então $A\subset B \iff (C-B)\subset(C-A)$ 
+		\1 \( B - \bigcup_{i\in I}A_i = \bigcap_{i\in I}(B-A_i) \)
+		\1 \( B - \bigcap_{i\in I}A_i = \bigcup_{i\in I}(B-A_i) \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da diferença simétrica]
+	Para $A$, $B$ e $\{A_i: i \in I\}$ quaisquer:	
+	\begin{outline}[enumerate]
+		\1 Comutativa: \( A \triangle B = B\triangle A \)
+		\1 Associativa: \( (A\triangle B)\triangle C = A\triangle(B\triangle C \)
+		\1 Elemento neutro: \(\exists \Phi : \forall A, A\triangle\Phi = A \)
+		\1 Elemento inverso: \(\forall A, \exists B: A\triangle B = \emptyset \)
+		\1 \( (A\triangle B)\cap C = (A\cap C)\triangle(B\cap C) \)
+		\1 \( A\triangle B = A\triangle C \implies B=C\)
+		\1 \( A\triangle B = \emptyset \iff A=B\)
+		\1 \( A\cap B = \emptyset \iff A\triangle B = A\cup B \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades do produto cartesiano]
+	Para $A$, $B$ e $C$ quaisquer:
+	\begin{outline}[enumerate]
+		\1 \( A\times\emptyset = \emptyset \times A = \emptyset \)
+		\1 \( A\times(B\cap C) = (A\times B)\cap(A\times C) \)
+		\1 \( A\times(B\cup C) = (A\times B)\cup(A\times C) \)
+		\1 \( A\times(B-C) = (A\times B)-(A\times C) \)
+		\1 \( \cp{(A\times B)} = (A\times \cp{B})\cup(\cp{A}\times \Omega_2) 
+		=  (\cp{A}\times B)\cup(\Omega_1 \times \cp{B}) \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades de $\mathcal{P}(\cdot)$] Para $A,B$ quaisquer:
+\end{theorem}
+	\begin{outline}[enumerate]
+		\1 \( \mathcal{P}(A\cap B) = \mathcal{P}(A)\cap\mathcal{P}(B)\)
+		\1 \( \mathcal{P}(A\cup B) \supset \mathcal{P}(A)\cup\mathcal{P}(B)\) 
+	\end{outline}
+
+\begin{theorem}[Propriedades da função indicadora] Para $A,B$ quaisquer:
+	\begin{outline}[enumerate]
+		\1 \(I_A \leq I_B \iff A\subset B\)
+		\1 \(I_A = I_B \iff A=B\)
+		\1 \(I_{\cp{A}} = 1 - I_A \)
+		\1 \(I_{A\cup B} = I_A + I_B - I_{A\cup B}\)
+		\1 \(I_{A\triangle B} = |I_A - I_B|\)
+		\1 \(I_{\bigcap_{i=1}^n A_i} = \prod_{i=1}^{n}I_{A_i}\)
+		\1 \(I_{\bigcup_{i=1}^n A_i} = \sum_{i=1}^{n}I_{A_i}\) se $A_i\cap A_j =\emptyset \quad \forall i\neq j$
+	\end{outline}
+\end{theorem}
+
+\section{Funções}
+
+\begin{definition}[Definições básicas de funções] Seja $f\colon\Omega_1 \to \Omega_2$
+	\begin{outline}[]
+		\1 Injetora: \(\omega_1\neq\omega_2 \implies f(\omega_1)\neq f(\omega_2) \)
+		\1 Sobrejetora: \(\forall \omega_2 \in \Omega_2, \ \exists \omega_1 \in \Omega: f(\omega_1)=\omega_2\)
+		\1 Bijetora: $f$ é sobrejetora e injetora
+		\1 Gráfico: \(G(f) \coloneq \{(\omega,f(\omega)): \omega \in \Omega_1\}\)
+		\1 Imagem direta: \(f(A) \coloneq \{\omega_2\in\Omega_2: f(\omega_1)=\omega_2 \text{ para algum } \omega_1 \in A\}\)
+		\1 Imagem inversa: \(\inv{f}(B) \coloneq \{\omega_1\in\Omega_1: f(\omega_1) \in B\}\)
+		\1 Composição: Seja $g: \Omega_2 \to \Omega_3$. \((g\circ f) (\omega_1) \coloneq g(f(\omega_1)), \ \omega_1 \in \Omega_1\)
+		\1 Função inversa: Seja $g: \Omega_2 \to \Omega_1$. $g$ é inversa de $f$ se 
+			\2 \(g(f(\omega_1)) = w_1, \ \forall \omega_1 \in \Omega_1\)
+			\2 \(f(g(\omega_2)) = w_2, \ \forall \omega_2 \in \Omega_2\)
+ 	\end{outline}
+\end{definition}
+
+\begin{theorem}[Propriedades de funções] Seja \(f\colon\Omega_1 \to \Omega_2$, $A, B, (A_n)_{n\geq1} \subset \Omega_1$ e $C,D  \subset \Omega_2 \):
+	\begin{outline}[enumerate]
+		\1 \(f(\emptyset) = \emptyset\)
+		\1 \(A \subset B \implies f(A) \subset f(B)\)
+		\1 \( f(A\cup B) = f(A)\cup f(B) \)
+		\1 \( f(A\cap B) \subset f(A)\cap f(B) \)
+		\1 \( f \text{ é injetora } \implies f(A\cap B) \supset f(A)\cap f(B) \implies  f(A\cap B) = f(A)\cap f(B) \)
+		\1 \(f\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty f(A_n) \)
+		\1 \(f\left( \bigcap_{n=1}^\infty A_n \right) \subset \bigcap_{n=1}^\infty f(A_n) \)
+		\1 \(f(A)-f(B) \subset f(A-B)\)
+		\1 \( f \text{ é injetora } \implies f(\cp{A}) \subset \cp{\left(f(A)\right)} \)
+		\1 \( f \text{ é sobrejetora } \implies f(\cp{A}) \supset \cp{\left(f(A)\right)} \)
+		\1 \( f \text{ é bijetora } \implies f(\cp{A}) = \cp{\left(f(A)\right)} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades de funções e imagens inversas] Seja \( f\colon\Omega_1 \to \Omega_2 \),  \(\mathmbox{A,B,(A_n)_{n\geq1} \subset \Omega_2}\) e \(C \subset \Omega_1\):
+	\begin{outline}[enumerate]
+		\1 $\inv{f}$ é bijetora
+		\1 $\inv{\left(\inv{f}\right)} = f$
+		\1 \(A \subset B \implies \inv{f}(A) \subset \inv{f}(B)\) 
+		\1 \( \inv{f}(A\cup B) = \inv{f}(A)\cup \inv{f}(B) \)
+		\1 \( \inv{f}(A\cap B) = \inv{f}(A)\cap \inv{f}(B) \)
+		\1 \(\inv{f}\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty \inv{f}(A_n) \)
+		\1 \(\inv{f}\left( \bigcap_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty \inv{f}(A_n) \)
+		\1 \(\inv{f}(\cp{A}) = \cp{\left(\inv{f}(A)\right)} \)
+		\1 \( C \subset \inv{f} \left( f(C) \right) \)
+		\1 \(f\left(\inv{f}(A)\right) \subset A \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades de composições de funções] Seja $f\colon\Omega_1 \to \Omega_2$ e $g\colon\Omega_2 \to \Omega_3$:
+	\begin{outline}[enumerate]
+		\1 \( f \text{ e } g \text{ são injetoras } \implies g\circ f \text{ é injetora} \)
+		\1 \( f \text{ e } g \text{ são sobrejetoras } \implies g\circ f \text{ é sobrejetora} \)
+		\1 \( f \text{ e } g \text{ são bijetoras } \implies g\circ f \text{ é bijetora} \) e \( \inv{\left(g \circ f\right)} = \inv{f}\circ\inv{g}\)
+		\1 \( \inv{\left(g \circ f\right)}(U) = \inv{f}(\inv{g}(U))\), para $U\subset \Omega_3$
+	\end{outline}
+\end{theorem}
+
+\section{Noções de cardinalidade}
+
+\section{Valor absoluto}
+
+\begin{theorem}
+	Valem as seguintes propriedades:
+	\begin{outline}[enumerate]
+		\1 \( |a.x| = |a|.|x| \)
+		\1 \( |x+y| \leq |x|+|y| \)
+		\1 \( |x-y| \leq |x|+|y| \)
+		\1 \( |x|-|y| \leq ||x|-|y|| \leq |x-y| \)
+		\1 \( |x-z| \leq |x-y| + |y-z| \)
+		\1 \( x \in (a-\epsilon, a+\epsilon) \iff a-\epsilon < x < a+\epsilon \iff |x-a|<\epsilon \)
+	\end{outline}
+\end{theorem}
+
+\section{Sequências de números reais}
+
+\begin{theorem}
+	Considere $(x_n)_{n\geq1}$ uma sequência de números reais.
+	\begin{outline}[enumerate]
+		\1 Toda sequência limitada é convergente
+		\1 Se existir, o limite de uma sequência é único
+		\1 Se $x_n \to L$, então toda subsequência de $(x_n)_{n\geq1}$ converge para $L$
+		\1 Toda sequência monótona e limitada é convergente
+		\1 Uma sequência monótona que possui uma subsequência convergente é convergente
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Considere $(x_n)_{n\geq1}$ e $(y_n)_{n\geq1}$ sequências de números reais.
+	\begin{outline}[enumerate]
+		\1 Se $x_n \to 0$ e $(y_n)_{n\geq1}$ é limitada, então $x_n y_n \to 0$
+		\1 \( x_n \to x, y_n \to y \implies x_n+y_n \to x+y \)
+		\1 \( x_n \to x, y_n \to y \implies x_n y_n \to xy \)
+		\1 \( x_n \to x, y_n \neq 0 \to y\neq0 \implies x_n/y_n \to x/y \)
+		\1 \(x_n^2 \to 0 \iff x_n \to0\)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Permanência do sinal]
+	Se $x_n\to L > 0$, então existe $n_0\geq1$ tal que $x_n>0$ para todo $n\geq n_0$.
+\end{theorem}
+
+\begin{corollary}
+	Suponha $(x_n)_{n\geq1}$ e $(y_n)_{n\geq1}$ convergentes tais que, para algum $n_0 \geq 1$, $x_n \leq y_n$ para todo $n \geq n_0$. Então $\lim x_n \leq \lim y_n$.
+\end{corollary}
+
+\begin{theorem}[Sanduíche]
+	Se para algum $n_0\geq1$ tivermos que $x_n\leq z_n \leq y_n$ para todo $n\geq n_0$ e $x_n \to L$ e $y_n\to L$, então $z_n \to L$.
+\end{theorem}
+
+
+
+\section{Sequências de conjuntos}
+
+\begin{theorem}
+	Alguns fatos úteis:
+	\begin{outline}[enumerate]
+		\1 \(\bigcap_{n=1}^{\infty}[-\infty,n] = \{-\infty\}\)
+		\1 \(\bigcap_{n=1}^{\infty}(n,\infty] = \{+\infty\} = \Ree - [-\infty, +\infty)\)
+		\1 \([-\infty, +\infty) = \bigcup_{n=1}^{\infty}[-\infty, n]\)
+		\1 \((-\infty,x] = [-\infty,x]-\{-\infty\} \)
+	\end{outline}
+\end{theorem}
+
+\begin{definition}[Limite inferior]
+	Seja $(A_n)_{n\geq 1}$ uma sequência de subconjuntos de $\Omega$. Definimos o limite inferior da sequência $(A_n)_{n\geq 1}$ como
+	\[
+	\liminf A_n = \bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} A_k.
+	\]
+\end{definition}
+
+\begin{definition}[Limite superior]
+	Seja $(A_n)_{n\geq 1}$ uma sequência de subconjuntos de $\Omega$. Definimos o limite superior da sequência $(A_n)_{n\geq 1}$ como
+	\[
+	\limsup A_n = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k.
+	\]
+\end{definition}
+
+\begin{theorem}
+	Considere $(A_n)_{n\geq 1}$ uma sequência de subconjuntos de $\Omega$. Então,
+	\begin{outline}[enumerate]
+		\1 $\liminf A_n \subset \limsup A_n$;
+		\1 $(\liminf A_n)^C = \limsup A_n^C$;
+		\1 $(\limsup A_n)^C = \liminf A_n^C$.
+	\end{outline}
+\end{theorem}
+
+\begin{definition}[Sequência convergente de conjuntos]
+	Uma sequência $(A_n)_{n\geq 1}$ de subconjuntos de $\Omega$ é convergente para $A$ se $\liminf A_n = \limsup A_n = A$. Usaremos a notação $\lim A_n = A$ ou $A_n \to A$ caso a sequência de conjuntos convirja.
+\end{definition}
+
+\begin{definition}[Sequência monótona]
+	Uma sequência $(A_n)_{n\geq 1}$ de subconjuntos de $\Omega$ é dita monótona crescente se $A_n \subset A_{n+1}$ para todo $n \geq 1$ e é dita monótona decrescente se $A_n \supset A_{n+1}$ para todo $n \geq 1$. Dizemos que uma sequência é monótona se ela for monótona crescente ou decrescente.
+\end{definition}
+
+\begin{theorem}
+	Seja $(A_n)_{n\geq 1}$ uma sequência de subconjuntos de $\Omega$. As seguintes afirmações valem:
+	\begin{outline}[enumerate]
+		\1 Se $(A_n)_{n\geq 1}$ for monótona crescente, então $\lim A_n$ existe e é igual a $\bigcup_{n=1}^{\infty} A_n$. Neste caso, denotaremos $A_n \uparrow A$, $A = \bigcup_{n=1}^{\infty} A_n$;
+		\1 Se $(A_n)_{n\geq 1}$ for monótona decrescente, então $\lim A_n$ existe e é igual a $\bigcap_{n=1}^{\infty} A_n$. Neste caso, denotaremos $A_n \downarrow A$, $A = \bigcap_{n=1}^{\infty} A_n$.
+	\end{outline}
+\end{theorem}
+
+\section{Classes de Subconjuntos}
+
+\begin{definition}[Álgebra]
+	Uma classe $\Acal$ de subconjuntos de $\Omega$ é chamada de álgebra de subconjuntos de $\Omega$ se satisfizer as seguintes condições:
+	\begin{outline}[enumerate]
+		\1 $\emptyset \in \Acal$;
+		\1 $A \in \Acal \Rightarrow A^c \in \Acal$;
+		\1 $A, B \in \Acal \Rightarrow A \cup B \in \Acal$.
+	\end{outline}
+\end{definition}
+
+\begin{definition}[$\sigma$-álgebra]
+	Uma classe $\Acal$ de subconjuntos de $\Omega$ é chamada de $\sigma$-álgebra de subconjuntos de $\Omega$ se satisfizer as seguintes condições:
+	\begin{outline}[enumerate]
+		\1 $\emptyset \in \Acal$;
+		\1 Se $A \in \Acal$ então $A^c \in \Acal$;
+		\1 Se $A_1, A_2, \ldots \in \Acal$, então $\bigcup_{n=1}^{\infty} A_n \in \Acal$.
+	\end{outline}
+\end{definition}
+
+\begin{theorem}
+	Considere $\{\Acal_i, i \in I\}$ uma família qualquer de álgebras ($\sigma$-álgebras) de subconjuntos de $\Omega$. Então, $\Acal = \bigcap_{i \in I} \Acal_i$ é uma álgebra ($\sigma$-álgebra) de subconjuntos de $\Omega$.
+\end{theorem}
+
+\begin{definition}[Álgebras e $\sigma$-álgebras geradas]
+	Considere $\Ccal$ uma classe de subconjuntos de $\Omega$. Definimos a álgebra gerada por $\Ccal$, $\Acal(\Ccal)$, como a interseção
+	\[
+	\Acal(\Ccal) = \bigcap_{\Fcal \in \Gcal} \Fcal,
+	\]
+	em que $\Gcal = \{\Fcal : \Ccal \subset \Fcal \text{ e } \Fcal \text{ é uma álgebra de subconjuntos de } \Omega\}$. De forma análoga, definimos a $\sigma$-álgebra gerada por $\Ccal$, $\sigma(\Ccal)$, como a interseção
+	\[
+	\sigma(\Ccal) = \bigcap_{\Fcal \in \Gcal'} \Fcal,
+	\]
+	em que $\Gcal' = \{\Fcal : \Ccal \subset \Fcal \text{ e } \Fcal \text{ é uma } \sigma\text{-álgebra de subconjuntos de } \Omega\}$.
+\end{definition}
+
+\begin{theorem}
+	Dada uma classe $\Ccal$ de subconjuntos de $\Omega$, a álgebra ($\sigma$-álgebra) gerada por $\Ccal$, $\Acal(\Ccal)$ ($\sigma(\Ccal)$), é a única classe de subconjuntos de $\Omega$ que satisfaz:
+	\begin{outline}[enumerate]
+		\1 $\Acal(\Ccal)$ ($\sigma(\Ccal)$) é uma álgebra ($\sigma$-álgebra) que contém $\Ccal$;
+		\1 Se $\Acal'$ for uma álgebra ($\sigma$-álgebra) que contém $\Ccal$, então $\Acal(\Ccal) \subset \Acal'$ ($\sigma(\Ccal) \subset \Acal'$).
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Seja $\Omega$ um conjunto não-vazio e $\Dcal = \{D_1, \ldots, D_n\}$ uma partição finita de $\Omega$ em que $D_i \neq \emptyset$ para todo $i = 1, \ldots, n$. A álgebra gerada por $\Dcal$, $\Acal(\Dcal)$, é idêntica à classe das uniões finitas disjuntas dos elementos de $\Dcal$:
+	\[
+	\Acal = \left\{ \sum_{i \in I} D_i : I \subset \{1, \ldots, n\} \right\},
+	\]
+	em que o símbolo $\sum$ denota uma união disjunta de conjuntos.
+\end{theorem}
+
+\begin{definition}[Semi-álgebra]
+	Para $\Omega \neq \emptyset$, uma classe de subconjuntos $\Scal$ é uma semi-álgebra de subconjuntos de $\Omega$ se satisfizer:
+	\begin{outline}[enumerate]
+		\1 $\emptyset, \Omega \in \Scal$;
+		\1 Se $A, B \in \Scal$, então $A \cap B \in \Scal$;
+		\1 Se $A \in \Scal$, então $A^c = \sum_{i=1}^{n} B_i$, $B_i \in \Scal$, $i = 1, \ldots, n$.
+	\end{outline}
+\end{definition}
+
+\begin{theorem}
+	Seja $\Scal$ uma semi-álgebra de subconjuntos de $\Omega$, $\Omega \neq \emptyset$. A álgebra gerada por $\Scal$, $\Acal(\Scal)$, é idêntica à classe das uniões finitas disjuntas de elementos de $\Scal$:
+	\[
+	\Fcal = \left\{ \sum_{i=1}^{n} S_i, \, S_i \in \Scal, \, i = 1, \ldots, n \right\}.
+	\]
+\end{theorem}
+
+\begin{theorem}
+	Seja $\Ccal$ uma classe arbitrária de subconjuntos de $\Omega$. Defina as seguintes classes de subconjuntos de $\Omega$:
+	\begin{outline}[enumerate]
+		\1 $\Ccal_1$ a classe que contém $\emptyset$, $\Omega$ e todo $A \subset \Omega$ tal que $A \in \Ccal$ ou $A^c \in \Ccal$;
+		\1 $\Ccal_2$ a classe que contém todas as interseções finitas de elementos de $\Ccal_1$;
+		\1 $\Ccal_3$ a classe formada pelas uniões finitas disjuntas de elementos de $\Ccal_2$.
+	\end{outline}
+	A classe $\Ccal_3$ é idêntica à álgebra $\Acal(\Ccal)$ gerada por $\Ccal$.
+\end{theorem}
+
+\begin{definition}[$\sigma$-álgebra de Borel de $\Re$]
+	A $\sigma$-álgebra de Borel de $\Re$, $\Bo$, é definida como a $\sigma$-álgebra gerada pela classe $\{(-\infty, a] : a \in \Re\}$ e seus elementos são chamados de borelianos da reta.
+\end{definition}
+
+\begin{definition}[Classes monótonas]
+	Uma classe $\Mcal$ de subconjuntos de $\Omega$ é chamada de classe monótona se é fechada por limites crescentes e decrescentes de conjuntos, isto é, se $(A_n)_{n\geq 1}$ for uma sequência de conjuntos em $\Mcal$ tais que $A_n \uparrow A$ ou $A_n \downarrow A$, então $A \in \Mcal$.
+\end{definition}
+
+\begin{theorem}
+	Uma álgebra de subconjuntos $\Acal$ é uma $\sigma$-álgebra se, e somente, se for uma classe monótona.
+\end{theorem}
+
+\begin{theorem}
+	Considere $\{\Mcal_i, i \in I\}$ uma família de classes monótonas de subconjuntos de $\Omega$. Então, $\Mcal = \bigcap_{i \in I} \Mcal_i$ é uma classe monótona.
+\end{theorem}
+
+\begin{definition}[Classe monótona gerada]
+	Considere $\Ccal$ uma classe de subconjuntos de $\Omega$. Definimos a classe monótona gerada por $\Ccal$, $\Mcal(\Ccal)$, como a interseção
+	\[
+	\Mcal(\Ccal) = \bigcap_{\Fcal \in \Gcal} \Fcal,
+	\]
+	em que $\Gcal = \{\Fcal : \Ccal \subset \Fcal \text{ e } \Fcal \text{ é uma classe monótona de subconjuntos de } \Omega\}$.
+\end{definition}
+
+\begin{theorem}
+	Dada uma classe $\Ccal$ de subconjuntos de $\Omega$, a classe monótona gerada por $\Ccal$, $\Mcal(\Ccal)$, é a única classe $\Mcal$ de subconjuntos de $\Omega$ que satisfaz:
+	\begin{outline}[enumerate]
+		\1 $\Mcal$ é uma classe monótona que contém $\Ccal$;
+		\1 Se $\Mcal'$ for uma classe monótona que contém $\Ccal$, então $\Mcal \subset \Mcal'$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Teorema das classes monótonas]
+	A $\sigma$-álgebra $\sigma(\Acal)$ gerada por uma álgebra $\Acal$ é idêntica à classe monótona $\Mcal(\Acal)$ gerada por $\Acal$.
+\end{theorem}
+
+\begin{definition}[$\pi$-sistema]
+	Uma classe $\Ical$ de subconjuntos de $\Omega$ é dito $\pi$-sistema se $A \cap B \in \Ical$ para todo $A, B \in \Ical$.
+\end{definition}
+
+\begin{definition}[$d$-sistema]
+	Uma classe $\Dcal$ de subconjuntos de $\Omega$ é dita $d$-sistema se
+	\begin{outline}[enumerate]
+		\1 $\Omega \in \Dcal$;
+		\1 $A, B \in \Dcal$, $A \subset B \Rightarrow B - A \in \Dcal$;
+		\1 $A_n \uparrow A$, $A_n \in \Dcal \Rightarrow A \in \Dcal$.
+	\end{outline}
+\end{definition}
+
+\begin{theorem}
+	Uma classe $\Acal$ de subconjuntos de $\Omega$ é uma $\sigma$-álgebra se, e somente se, for um $d$-sistema e um $\pi$-sistema.
+\end{theorem}
+
+\begin{theorem}
+	Se $\{\Dcal_i : i \in I\}$ é uma família qualquer de $d$-sistemas de $\Omega$, então a interseção $\bigcap_{i \in I} \Dcal_i$ é um $d$-sistema.
+\end{theorem}
+
+\begin{definition}[$d$-sistema gerado]
+	Para uma classe $\Ccal$ de subconjuntos de $\Omega$, definimos o $d$-sistema gerado por $\Ccal$, $\Dcal(\Ccal)$, como a interseção
+	\[
+	\Dcal(\Ccal) = \bigcap_{\Dcal \in \Gcal} \Dcal,
+	\]
+	em que $\Gcal = \{\Dcal : \Ccal \subset \Dcal \text{ e } \Dcal \text{ é um } d\text{-sistema de subconjuntos de } \Omega\}$.
+\end{definition}
+
+\begin{theorem}
+	Dada uma classe $\Ccal$ de subconjuntos de $\Omega$, o $d$-sistema gerado por $\Ccal$, $\Dcal(\Ccal)$, é a única classe $\Dcal$ de subconjuntos de $\Omega$ que satisfaz:
+	\begin{outline}[enumerate]
+		\1 $\Dcal$ é uma $d$-sistema que contém $\Ccal$;
+		\1 Se $\Dcal'$ for um $d$-sistema que contém $\Ccal$, então $\Dcal \subset \Dcal'$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Se $\Ical$ for um $\pi$-sistema, então $\Dcal(\Ical)$ é um $\pi$-sistema.
+\end{theorem}
+
+\begin{theorem}[Lema de Dynkin]
+	Se $\Ical$ for um $\pi$-sistema, então $\Dcal(\Ical) = \sigma(\Ical)$.
+\end{theorem}
+
+\begin{definition}[Função de conjuntos]
+	Para $\Ccal$ uma classe de subconjuntos de $\Omega$, a função $\phi : \Ccal \to [-\infty, +\infty]$ será chamada de função de conjuntos.
+\end{definition}
+
+\begin{definition}[Finitamente aditiva]
+	Uma função de conjuntos $\phi : \Ccal \to [-\infty, +\infty]$ é dita finitamente aditiva se
+	\[
+	\phi(A_1 + \cdots + A_n) = \phi(A_1) + \cdots + \phi(A_n),
+	\]
+	para quaisquer $A_1, \ldots, A_n \in \Ccal$ disjuntos tais que $A_1 + \cdots + A_n \in \Ccal$.
+\end{definition}
+
+\begin{definition}[Monótona]
+	Uma função de conjuntos $\phi : \Ccal \to [-\infty, +\infty]$ será dita monótona se
+	\[
+	\phi(B) \leq \phi(A),
+	\]
+	para quaisquer $A, B \in \Ccal$ tais que $B \subset A$.
+\end{definition}
+
+\begin{definition}[$\sigma$-aditiva]
+	Uma função de conjuntos $\phi : \Ccal \to [-\infty, +\infty]$, é dita $\sigma$-aditiva se
+	\[
+	\phi\left( \sum_{n=1}^{\infty} A_n \right) = \sum_{n=1}^{\infty} \phi(A_n)
+	\]
+	para toda sequência $(A_n)_{n\geq 1}$ de elementos disjuntos de $\Ccal$ tais que $\sum_{n=1}^{\infty} A_n \in \Ccal$.
+\end{definition}
+
+\begin{definition}[Medida]
+	Seja $\Ccal$ uma classe de subconjuntos de $\Omega$ tal que $\emptyset \in \Ccal$. Dizemos que a função de conjuntos $\mu : \Ccal \to [0, +\infty]$ é uma medida sobre $\Ccal$ se valerem
+	\begin{outline}[enumerate]
+		\1 $\mu(\emptyset) = 0$;
+		\1 $\mu$ é $\sigma$-aditiva, i.e., para qualquer sequência $(A_n)_{n\geq 1}$ de elementos disjuntos de $\Ccal$ tal que $\sum_{n=1}^{\infty} A_n \in \Ccal$, temos que
+		\[
+		\mu\left( \sum_{n=1}^{\infty} A_n \right) = \sum_{n=1}^{\infty} \mu(A_n).
+		\]
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Medida finitamente aditiva]
+	Seja $\Ccal$ uma classe de subconjuntos de $\Omega$ tal que $\emptyset \in \Ccal$. Dizemos que a função de conjuntos $\mu : \Ccal \to [0,\infty]$ é uma medida finitamente aditiva sobre $\Ccal$ se valerem
+	\begin{outline}[enumerate]
+		\1 $\mu(\emptyset) = 0$;
+		\1 Se $A_1, \ldots, A_n \in \Ccal$ forem elementos disjuntos tais que $\sum_{i=1}^{n} A_i \in \Ccal$, então
+		\[
+		\mu\left( \sum_{i=1}^{n} A_i \right) = \sum_{i=1}^{n} \mu(A_i).
+		\]
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Probabilidade]
+	Seja $\Omega \neq \emptyset$ e $\Acal$ uma álgebra de subconjuntos de $\Omega$. Dizemos que $\P : \Acal \to [0,1]$ é uma probabilidade sobre a álgebra $\Acal$ se:
+	\begin{outline}[enumerate]
+		\1 $\P(\Omega) = 1$;
+		\1 $\P$ é $\sigma$-aditiva, isto é, se $(A_n)_{n\geq 1}$ for uma sequência de elementos disjuntos de $\Acal$ tal que $\sum_{n=1}^{\infty} A_n \in \Acal$, então
+		\[
+		\P\left( \sum_{n=1}^{\infty} A_n \right) = \sum_{n=1}^{\infty} \P(A_n).
+		\]
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Probabilidade finitamente aditiva]
+	Seja $\Omega \neq \emptyset$ e $\Acal$ uma álgebra de subconjuntos de $\Omega$. Dizemos que $\P : \Acal \to [0,1]$ é uma probabilidade finitamente aditiva sobre a álgebra $\Acal$ se:
+	\begin{outline}[enumerate]
+		\1 $\P(\Omega) = 1$;
+		\1 $\P$ é finitamente aditiva, isto é, se $A_1, A_2, \ldots, A_n \in \Acal$ forem disjuntos, então
+		\[
+		\P\left( \sum_{k=1}^{n} A_k \right) = \sum_{k=1}^{n} \P(A_k).
+		\]
+	\end{outline}
+\end{definition}
+
+\begin{theorem}
+	Seja $\Omega \neq \emptyset$, $\Acal$ uma álgebra de subconjuntos de $\Omega$ e $\P$ uma probabilidade sobre $\Acal$. As seguintes propriedades valem:
+	\begin{outline}[enumerate]
+		\1 $\P(\emptyset) = 0$;
+		\1 $\P$ é finitamente aditiva, i.e., se $A_1, \ldots, A_n \in \Acal$ são elementos disjuntos, então
+		\[
+		\P\left( \sum_{i=1}^{n} A_i \right) = \sum_{i=1}^{n} \P(A_i);
+		\]
+		\1 $\P$ é monótona, i.e., se $A \subset B$, $A, B \in \Acal$, então $\P(A) \leq \P(B)$;
+		\1 $\P(A \cup B) + \P(A \cap B) = \P(A) + \P(B)$ para quaisquer $A, B \in \Acal$. Em particular, $\P(A^c) = 1 - \P(A)$ para todo $A \in \Acal$;
+		\1 $\P$ é sub-$\sigma$-aditiva, isto é, se $(A_n)_{n\geq 1}$ for uma sequência de elementos de $\Acal$ tal que $\bigcup_{n=1}^{\infty} A_n \in \Acal$, então
+		\[
+		\P\left( \bigcup_{n=1}^{\infty} A_n \right) \leq \sum_{n=1}^{\infty} \P(A_n).
+		\]
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Seja $\Omega \neq \emptyset$, $\Acal$ uma álgebra de subconjuntos de $\Omega$ e $(A_n)_{n\geq 1}$ uma sequência de elementos de $\Acal$. As seguintes afirmações valem:
+	\begin{outline}[enumerate]
+		\1 Se $A_n \uparrow A$, $A \in \Acal$, então $\P(A_n) \nearrow \P(A)$;
+		\1 Se $A_n \downarrow A$, $A \in \Acal$, então $\P(A_n) \searrow \P(A)$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Considere $\Omega \neq \emptyset$ e $\Acal$ uma álgebra de subconjuntos de $\Omega$. Uma medida de probabilidade finitamente aditiva $\P$ é $\sigma$-aditiva se, e somente se, $\P$ for contínua por cima no vazio, isto é, se $(A_n)_{n\geq 1}$ for uma sequência de elementos de $\Acal$ tal que $A_n \downarrow \emptyset$, então $\P(A_n) \searrow 0$.
+\end{theorem}
+
+\begin{theorem}
+	Seja $(\Omega, \Acal, \P)$ um espaço de probabilidade e $(A_n)_{n\geq 1}$ uma sequência de elementos de $\Acal$. Então,
+	\[
+	\P(\liminf A_n) \leq \liminf \P(A_n) \leq \limsup \P(A_n) \leq \P(\limsup A_n).
+	\]
+	Em particular, se $\lim A_n = A$, isto é, $\liminf A_n = \limsup A_n = A$, então $\lim \P(A_n) = \P(A)$.
+\end{theorem}
+
+\begin{theorem}
+	Seja $(\Omega, \Acal, \P)$ um espaço de probabilidade e $(A_n)_{n\geq 1}$ uma sequência de elementos de $\Acal$. Se $\sum_{n=1}^{\infty} \P(A_n) < \infty$, então $\P(\limsup A_n) = 0$.
+\end{theorem}
+
+\begin{definition}[Função de distribuição]
+	Uma função $F : \Re \to [0,1]$ é dita função de distribuição se satisfaz:
+	\begin{outline}[enumerate]
+		\1 $F$ é uma função crescente, isto é, se $x_1 < x_2$, então $F(x_1) \leq F(x_2)$;
+		\1 $F$ é contínua à direita, isto é, se $(x_n)_{n\geq 1}$ for uma sequência de números reais tais que $x_n \downarrow x$, $x \in \Re$, então $F(x_n) \searrow F(x)$;
+		\1 Os limites de $F$ em $-\infty$ e $+\infty$ são dados por
+		\[
+		\lim_{x \to -\infty} F(x) = 0, \quad \lim_{x \to +\infty} F(x) = 1.
+		\]
+	\end{outline}
+\end{definition}
+
+\begin{theorem}
+	Seja $\Omega \neq \emptyset$ e $\Scal$ uma semi-álgebra de subconjuntos de $\Omega$.
+	\begin{outline}[enumerate]
+		\1 Se $\P$ for uma probabilidade finitamente aditiva sobre $\Scal$, então existe uma única probabilidade finitamente aditiva $\P'$ que estende $\P$, isto é, $\P'(A) = \P(A)$ para todo $A \in \Scal$;
+		\1 Se $\P$ for uma probabilidade ($\sigma$-aditiva) sobre $\Scal$, então existe uma única probabilidade ($\sigma$-aditiva) $\P'$ que estende $\P$ de $\Scal$ para $\Acal(\Scal)$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Sejam $\Omega \neq \emptyset$ e $\Scal$ uma semi-álgebra de subconjuntos de $\Omega$.
+	\begin{outline}[enumerate]
+		\1 Se $\mu$ for uma medida finitamente aditiva sobre $\Scal$, então existe uma única medida finitamente aditiva $\mu'$ que estende $\mu$ para $\Acal(\Scal)$;
+		\1 Se $\mu$ for uma medida ($\sigma$-aditiva) sobre $\Scal$, então existe uma única medida ($\sigma$-aditiva) $\mu'$ que estende $\mu$ para $\Acal(\Scal)$;
+		\1 Se $\mu$ for uma medida $\sigma$-finita sobre uma semi-álgebra $\Scal$, então a extensão $\mu'$ dada em (a) e (b) é $\sigma$-finita sobre $\Acal(\Scal)$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Se $\{\Dcal_i, i \in I\}$ é uma família qualquer de $d$-sistemas de $\Omega$, então a interseção $\bigcap_{i \in I} \Dcal_i$ é um $d$-sistema.
+\end{theorem}
+
+\begin{theorem}
+	A função de conjuntos $\P' : \Gcal \to [0, +\infty]$ dada em (1.14) está bem definida.
+\end{theorem}
+
+\begin{theorem}
+	A classe de subconjuntos $\Gcal$ definida em (1.13) e a função de conjuntos $\P' : \Gcal \to [0, +\infty]$ definida em (1.14) satisfazem às seguintes propriedades:
+	\begin{outline}[enumerate]
+		\1 $\emptyset, \Omega \in \Gcal$, $\P'(\emptyset) = 0$, $\P'(\Omega) = 1$ e $0 \leq \P'(G) \leq 1$ para todo $G \in \Gcal$;
+		\1 Se $G_1, G_2 \in \Gcal$, então $G_1 \cup G_2, G_1 \cap G_2 \in \Gcal$ e
+		\[
+		\P'(G_1 \cup G_2) + \P'(G_1 \cap G_2) = \P'(G_1) + \P'(G_2).
+		\]
+		Em particular, segue que $\P'$ é finitamente aditiva em $\Gcal$;
+		\1 Se $G_1, G_2 \in \Gcal$ e $G_1 \subset G_2$, então $\P'(G_1) \leq \P'(G_2)$;
+		\1 Se $(G_n)_{n\geq 1} \subset \Gcal$ é tal que $G_n \uparrow G$, então $G \in \Gcal$ e
+		\[
+		\P'(G) = \lim_{n \to \infty} \P'(G_n).
+		\]
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	A função de conjuntos $\P^* : \Pcal(\Omega) \to [0, +\infty]$ definida em (1.16) satisfaz as seguintes propriedades:
+	\begin{outline}[enumerate]
+		\1 Para todo $A \subset \Omega$, $0 \leq \P^*(A) \leq 1$;
+		\1 Para todo $G \in \Gcal$, temos que $\P^*(G) = \P'(G)$;
+		\1 Para quaisquer $A, B \subset \Omega$, temos
+		\[
+		\P^*(A \cup B) + \P^*(A \cap B) \leq \P^*(A) + \P^*(B).
+		\]
+		Em particular, $\P^*(A) + \P^*(A^c) \geq 1$ para todo $A \subset \Omega$;
+		\1 Se $A \subset B$, $A, B \subset \Omega$, então
+		\[
+		\P^*(A) \leq \P^*(B);
+		\]
+		\1 Se $A_n \uparrow A$, $A_n \subset \Omega$ para $n \geq 1$, então
+		\[
+		\P^*(A) = \lim_{n \to \infty} \P^*(A_n).
+		\]
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	A classe $\Dcal$ definida em (1.21) é uma $\sigma$-álgebra de subconjuntos de $\Omega$ que contém $\sigma(\Acal)$ e a restrição de $\P^*$ a $\Dcal$ é uma probabilidade sobre $\Dcal$.
+\end{theorem}
+
+\begin{theorem}[Teorema de extensão de Carathéodory]
+	Se $\P$ for uma probabilidade sobre uma álgebra $\Acal$, então existe uma única extensão $\overline{\P}$ de $\P$ para $\sigma(\Acal)$.
+\end{theorem}
+
+\begin{corollary}
+	Se $\P$ for uma probabilidade sobre uma semi-álgebra $\Scal$ de subconjuntos de $\Omega$, então existe uma única extensão $\overline{\P}$ de $\P$ para $\sigma(\Scal)$.
+\end{corollary}
+
+\begin{theorem}[Teorema de Extensão de Carathéodory]
+	Seja $\Omega \neq \emptyset$ e $\Acal$ uma álgebra de subconjuntos de $\Omega$.
+	\begin{outline}[enumerate]
+		\1 Se $\mu$ for uma medida sobre sobre $\Acal$, então existe uma medida $\overline{\mu}$ que estende $\mu$ de $\Acal$ para $\sigma(\Acal)$;
+		\1 Se $\mu$ for uma medida $\sigma$-finita sobre sobre $\Acal$, então $\overline{\mu}$ dada em (a) é a única medida que estende $\mu$ de $\Acal$ para $\sigma(\Acal)$.
+	\end{outline}
+\end{theorem}
+
+\begin{corollary}
+	Seja $\Omega \neq \emptyset$ e $\Scal$ uma semi-álgebra de subconjuntos de $\Omega$.
+	\begin{outline}[enumerate]
+		\1 Se $\mu$ for uma medida sobre $\Scal$, então existe uma medida $\overline{\mu}$ que estende $\mu$ de $\Scal$ para $\sigma(\Scal)$;
+		\1 Se $\mu$ for uma medida $\sigma$-finita sobre $\Scal$, então $\overline{\mu}$ dada em (a) é a única medida que estende $\mu$ de $\Scal$ para $\sigma(\Scal)$.
+	\end{outline}
+\end{corollary}
+
+
+
+\section{Medida}
+
+\begin{definition}[Medida de Lebesgue]
+	Considere a semi-álgebra
+	\[
+		\Scal = \{\emptyset, \Ree\} \cup \{(-\infty, a] : a \in \Re\}
+		\cup \{(b, \infty) : b \in \Re\}
+		\cup \{(a, b) : a<b, a,b \in \Re\} \}
+	\]
+	%
+	de subconjuntos de $\Re$. Defina $\lambda\colon \Scal \to [0, \infty]$ como
+	\begin{align*}
+		\lambda(\emptyset)   &= 0, \\
+		\lambda((a, b])        &= b-a, \ a<b, \\
+		\lambda((-\infty, a]) &= +\infty, \\
+		\lambda((b, +\infty))  &= +\infty.
+	\end{align*}
+	%
+	Pode-se mostrar que $\lambda$ é \sig-aditiva em $\Scal$ e existe uma única extensão $\widebar{\lambda}$ de $\lambda$ para $\sigma(\Scal) = \Bo$. Esta medida é chamada de \textit{medida de Lebesgue} em $\Re^1$.
+\end{definition}
+
+\begin{definition}[Medida de Lebesgue-Stieltjes]
+	Considere $(\Re, \Bo, \P_F)$ um espaço de probabilidade e seja $F\colon \Re\to [0,1]$ uma função de distribuição associada à medida de probabilidade $\P_F$ definida conforme a \cref{def:distribuicao}.
+	 
+	Agora, considere a semi-álgebra
+	\[
+	\Scal = \{\emptyset, \Ree\} \cup \{(-\infty, a] : a \in \Re\}
+	\cup \{(b, \infty) : b \in \Re\}
+	\cup \{(a, b) : a<b, a,b \in \Re\} \}
+	\]
+	%
+	de subconjuntos de $\Re$ e defina $\P_\Scal\colon \Scal \to [0,1]$ como
+	\begin{align*}
+		\P_\Scal(\emptyset)   &= 0, \\
+		\P_\Scal((a, b])        &= F(b)-F(a), \ a<b, \\
+		\P_\Scal((-\infty, a]) &= F(a), \\
+		\P_\Scal((b, +\infty))  &= 1-F(b).
+	\end{align*}
+	%
+	Note que $\sigma(\Scal) = \Bo$. Pode-se mostrar que $\P_\Scal$ é \sig-aditiva sobre $\Scal$ e existe uma única probabilidade $\P_F$ sobre $\Bo$ que estende $\P_\Scal$. Esta medida de probabilidade $\P_F$ é denominada \textit{medida de Lebesgue-Stieltjes} gerada por $F$.
+\end{definition}
+	
+
+\section{Probabilidade}
+
+\begin{definition}[Função de distribuição associada a uma probabilidade]\label{def:distribuicao}
+	Seja $\Omega=\Re$, $\Acal=\Bo$ e $\P$ uma probabilidade sobre $\Acal$. Podemos definir a função de distribuição $F\colon\Re\to[0,1]$ associada à probabilidade $\P$ como
+	\[
+		F(x) = \P((-\infty,x]), \quad x\in\Re 
+	\]
+
+\end{definition}
+
+\begin{theorem}[Propriedades da função de distribuição] As seguintes propriedades são válidas para $F$:
+	\begin{outline}[enumerate]
+		\1 $F$ é crescente, isto é, \(x_1<x_2 \implies F(x_1)\leq F(x_2)\);
+		\1 $F$ é contínua à direita, isto é se $(x_n)_{n\geq1}$ for uma sequência de números reais tais que \(x_n\downarrow x, x\in \Re\), então \(F(x_n)\searrow F(x)\);
+		\1 Os limites de $F$ em $-\infty$ e $+\infty$ são dados por
+		\[
+			\lim\limits_{x\to-\infty}F(x)=0, \quad \lim\limits_{x\to+\infty}F(x)=1.
+		\]
+	\end{outline}
+\end{theorem}
+
+\subsection{Convergência}
+
+\begin{theorem}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( A_n \uparrow A, A \in \Acal \implies \P(A_n) \nearrow \P(A) \) \\
+		\( A_n \downarrow A, A \in \Acal \implies \P(A_n) \searrow \P(A) \)
+		\1 $\P$ é $\sigma$-aditiva $\iff (A_n\downarrow\emptyset \implies \P(A_n) \searrow \P(A)$ ($\P$ é contínua no vazio))
+		\1 \( \P(\liminf A_n) \leq \liminf\P(A_n) \leq \limsup\P(A_n) \leq \P(\limsup A_n) \)
+		\1 \( A_n \to A \implies \P(A_n)\to P\)
+		\1 \(\sum_{n=1}^{\infty}\P(A_n)<\infty \implies \P(\limsup A_n)=0\)
+	\end{outline}
+\end{theorem}
+
+\section{Transformações mensuráveis}
+
+\begin{theorem}[2.1]
+	Se $\Acal_2$ for uma \sig-álgebra de subconjuntos de $\Omega_2$, então $\inv{X}(\Acal_2)$ é uma \sig-álgebra de subconjuntos de $\Omega_1$.
+\end{theorem}
+
+\begin{definition}[2.1 Transformação mensurável]
+	Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ dois espaços mensuráveis e $X\colon\Omega_1\to\Omega_2$. Dizemos que $X$ é $\Acal_1\backslash\Acal_2$ mensurável se $\inv{X}(\Acal_2) \subset \Acal_1$, isto é,
+	\begin{equation}
+		\begin{aligned}
+			[X\in B] &= \inv{X}(B)\in\Acal_1, \quad \text{para todo } B \in \Acal_2 \\
+		      	     &= \{\omega \in \Omega: X(\omega) \in B \}  \in \Acal_1,  \quad \text{para todo } B \in \Acal_2
+		\end{aligned}
+	\end{equation}
+\end{definition}
+
+% Sigma álgebra GERADA
+\begin{definition}[2.2 \sig-álgebra \underline{gerada} por $X$ em $\Omega_1$]
+	A \sig-álgebra $\inv{X}(\Acal_2)$ é a menor \sig-álgebra $\Acal_1$ de subconjuntos de $\Omega_1$ que torna $X$ uma transformação $\Acal_1\backslash\Acal_2$ mensurável e é denominada \textit{\sig-álgebra gerada} por $X$:
+	\begin{equation}
+		\sigma(X) \coloneq \inv{X}(\Acal_2) = \{\inv{X}(B): B \in \Acal_2\}
+	\end{equation}
+\end{definition}
+
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\sigma(X) \subset \Acal_1$;
+		\1 $\sigma(X)$ é a \underline{menor} \sig-álgebra em $\Omega_1$ que torna $X$ mensurável;
+		\1 Para $X$ ser mensurável, a \sig-álgebra de partida $\Acal_1$ deve ser pelo menos \underline{tão grande} quanto $\sigma(X)$, ou seja $\Acal_1 \supset \sigma(X)$.
+	\end{outline}
+\end{note}
+
+% Sigma álgebra INDUZIDA
+\begin{theorem}[2.4 \sig-álgebra \underline{induzida} por $X$ em $\Omega_2$]
+	Seja $X\colon\Omega_1\to\Omega_2$ e $\Acal_1$ uma \sig-álgebra de subconjuntos de $\Omega_1$. A classe $X_*(\Acal_1) \coloneq \{ B \subset \Omega_2: \inv{X}(B) \in \Acal_1 \}$ é uma \sig-álgebra de subconjuntos de $\Omega_2$ que será denominada \textit{\sig-álgebra induzida} por $X$ à partir de $\Acal_1$.
+\end{theorem}
+
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\Acal_2 \subset X_*(\Acal_1)$;
+		\1 $X_*(\mathcal{A}_1)$ é a \underline{maior} \sig-álgebra em $\Omega_2$ que torna $X$ mensurável;
+		\1 Para $X$ ser mensurável, a \sig-álgebra de chegada $\Acal_2$ deve ser pelo menos \underline{tão pequena} quanto $X_*(\Acal_1)$, ou seja $\Acal_2 \subset X_*(\Acal_1)$.
+	\end{outline}
+\end{note}
+
+\begin{theorem}[2.2] 
+	Para qualquer classe $\Ccal_2$ de subconjuntos de $\Omega_2$, temos que
+	\begin{equation}
+		\inv{X}(\sigma(\Ccal_2)) = \sigma(\inv{X}(\Ccal_2))
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}[Condição suficiente para mensurabilidade]
+	Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ dois espaços mensuráveis e $X\colon \Omega_1\to\Omega_2$. Se $\inv{X}(\Ccal_2) \subset \Acal_1$, onde $\Ccal_2$ é a classe que gera $\Acal_2$, então $X$ é $\Acal_1\backslash\Acal_2$ mensurável.
+\end{theorem}
+
+\begin{theorem}[2.3 Composição de transformações mensuráveis]
+	Sejam $(\Omega_1, \Acal_1)$, $(\Omega_2, \Acal_2)$, $(\Omega_3, \Acal_3)$ espaços mensuráveis, $X\colon\Omega_1\to\Omega_2$ e $Y\colon\Omega_2\to\Omega_3$ transformações $\Acal_1\backslash\Acal_2$ e $\Acal_2\backslash\Acal_3$ mensuráveis, respectivamente. Então, $(Y\circ X)\colon \Omega_1 \to \Omega_3$ é uma transformação $\Acal_1\backslash\Acal_3$ mensurável.
+\end{theorem}
+
+\begin{theorem}[2.5 Probabilidade induzida ou distribuição de X]
+	Considere $(\Omega_1, \Acal_1, \P_1)$ um espaço de probabilidade, $\Omega_2 \neq \emptyset$ e   $\Acal_2 = \{ B \subset \Omega_2: \inv{X}(B) \in \Acal_1 \}$ a \sig-álgebra induzida por $X$. Defina $\P_2\colon\Acal_2 \to [0,1]$ como
+	\begin{equation}
+		\P_2(B) = 	\P_1\left([X \in B]\right), \quad B \in \Acal_2.
+	\end{equation}
+	A função $\P_2$ é uma probabilidade sobre o espaço $(\Omega_2, \Acal_2)$ que é denominada \textit{probabilidade induzida} ou \textit{distribuição} de $X$, sendo o espaço de probabilidade $(\Omega_2, \Acal_2, \P_2)$ obtido chamado de \textit{espaço de probabilidade induzido} por $X$ à partir de $(\Omega_1, \Acal_1, \P_1)$.
+\end{theorem}
+
+\section{Variáveis aleatórias}
+
+\begin{lemma}[\sig-álgebra de Borel estendida]
+	A \sig-álgebra $\Boe$ é gerada pela classe dos intervalos
+	\[
+		\Ical = \{[-\infty,x] : x \in \Re\}
+	\]
+\end{lemma}
+%
+em que \([-\infty,x] = \{y \in \Ree\ : y \leq x\}\) para $x\in\Re$.
+
+
+\begin{definition}[Variável aleatória]
+	Seja $(\Omega, \Acal)$ um espaço mensurável. Uma função $X\colon\Omega \to \Ree$ é chamada de \textit{variável aleatória} se for $\Acal\backslash\Boe$ mensurável, isto é,
+	\begin{equation}
+		\begin{aligned}
+			[X\in B] &= \inv{X}(B) \in \Acal \quad \text{para todo } B \in \Boe \\
+					 &= \{\omega \in \Omega: X(\omega) \in B \}  \in \Acal,  \quad \text{para todo } B \in \Boe
+		\end{aligned}
+	\end{equation}
+\end{definition}
+
+\begin{note}
+	Toda função $X\colon \Omega\to\Re$ que for $\Acal\backslash\Bo$ mensurável também será considerada variável aleatória. Nesta condição, $X$ será dita variável aleatória finita.
+\end{note}
+
+\begin{definition}[Notações em Probabilidade] Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ espaços mensuráveis. As seguintes notações são usuais:
+	\begin{outline}[enumerate]
+		\1 $[X \in B] \coloneq \inv{X}(B)$, para $B \in \Acal_2$
+		\1 $[X = x] \coloneq \inv{X}(\{x\})$, para ${x} \in \Acal_2$
+		\1 $[X \leq x] \coloneq \inv{X}((-\infty, x])$, para $(-\infty, x] \in \Acal_2$
+		\1 \( f\colon \Re\to\Re : [f\leq y] \coloneq \inv{f}((-\infty, y]) = \{x \in\Re:f(x)\leq y \} \)
+		\1 \( [X \leq x, Y \leq y] \coloneq \inv{X}((-\infty, x])\cap\inv{Y}((-\infty, y])\)
+		\1 \([X<Y] = [X-Y<0] \coloneq \inv{Z}((-\infty, 0))\), onde $Z=X-Y$
+		\1 \(F(x) = \P((-\infty, x])\)
+		\1 \(F_X(x) = \P[X\leq x] = \P(\inv{X}(-\infty,x]) = \P_X((-\infty,x]) \equiv \P((-\infty, x]) = F(x)\)
+		\1 \([X = Y \text{ q.c.}] \coloneq \P[X=Y]=1 \equiv \P[X=Y]=0 \)
+	\end{outline}
+\end{definition}
+
+\begin{theorem}[Exemplos de variáveis aleatórias] As seguintes funções são variáveis aleatórias:
+	\begin{outline}[enumerate]
+		\1 Função constante: $X(w)=c$ para todo $\omega\in\Omega$;
+		\1 Função indicadora: $I_A(\omega)$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+		Para $(\Omega, \Acal)$ um espaço mensurável e uma função $X\colon\Omega \to \Ree$, as seguintes afirmações são equivalentes:
+		\begin{outline}[enumerate]
+			\1 $X$ é $\Acal\backslash\Boe$ mensurável;
+			\1 \([X \in B] \in \Acal\) para todo \(B \in \Bo\), \\
+			\([X=+\infty] = \inv{X}(\{+\infty\}) \in \Acal\), \\
+			\([X=-\infty] = \inv{X}(\{-\infty\}) \in \Acal\);
+			\1 \([X \in I] = \inv{X}(I) \in \Acal\) para todo $I \in \Ical$, em que $\sigma(\Ical)=\Boe$.
+		\end{outline}
+\end{theorem}
+
+\begin{lemma}[Mensurabilidade de funções contínuas]
+	Toda função  $f\colon \Re\to \Re$ contínua é $\Bo\backslash\Bo$ mensurável.
+\end{lemma}
+
+\begin{theorem}[Propriedades de variáveis aleatórias]
+	Considere $(\Omega, \Acal)$ um espaço mensurável, $X$ e $Y$ variáveis aleatórias e $(X_n)_{n\geq1}$ uma sequência de variáveis aleatórias. Então,
+	\begin{outline}[enumerate]
+		\1 $aX$ é variável aleatória, $a \in \Re$;
+		\1 $X\pm Y$ é variável aleatória;
+		\1 $X\cdot Y$ é variável aleatória;
+		\1 $\frac{N}{Y}$ é variável aleatória;
+		\1 $[X=Y]$, $[X<Y]$, $[X>Y] \in \Acal$;
+		\1 $\max(X,Y), \min(X,Y)$ são variáveis aleatórias;
+			\2 \(X^+ = \max(X, 0) \) é v.a.
+			\2 \(X^- = \max(-X, 0) = -\min(0,X) \) é v.a.
+			\2 $X = X^+ - X^-$
+			\2 $|X| = X^+ + X^-$ é v.a.
+		\1 $\inf\limits_{n\geq1}(X_n)$, $\sup\limits_{n\geq1}(X_n)$ são variáveis aleatórias;
+		\1 $\liminf(X_n)$, $\limsup(X_n)$ são variáveis aleatórias;
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Exercício 2.7 - V.A. simples]
+	Considere $X$ e $Y$ variáveis aleatórias simples. As funções abaixo são v.a. simples.
+	\begin{outline}[enumerate]
+		\1 $aX\pm bY$, $a,b \in \Re$
+		\1 $X\cdot Y$
+		\1 $\max(X,Y), \min(X,Y)$
+	\end{outline}
+\end{theorem}
+
+\begin{definition}[Variável aleatória simples]
+	Considere $(\Omega, \Acal)$ um espaço mensurável. Uma variável aleatória $X\colon\Omega \to \Ree$ é chamada de \textit{variável aleatória simples} se existirem \(A_1, A_2, \ldots, A_n \in \Acal\) que formam uma partição de $\Omega$, $A_i\neq\emptyset$ para $i=1,\ldots,n$, e números reais \(x_1, x_2, \ldots, x_n\) tais que
+	\begin{equation}\label{eq:canonica}
+		X(\omega) = \sum_{i=1}^{n}x_i I_{A_i}(\omega), \quad \omega \in \Omega
+	\end{equation}
+	Caso todos os valores de $x_1\ldots,x_n$ sejam distintos, dizemos que \ref{eq:canonica} é a \textit{representação canônica} de $X$.
+\end{definition}
+
+\begin{theorem}[2.12 v.a. não negativa como seq. de v.a. simples]
+	Considere $(\Omega, \Acal)$ um espaço mensurável. Se $X$ é uma variável aleatória não negativa, isto é, $X(\omega)\geq0$ para todo $\omega\in\Omega$, então existe uma sequência de variáveis aleatórias simples e não negativas $(X_n)_{n\geq1}$ tais que \(X_n(\omega)\nearrow\ X(\omega)\) para todo $\omega\in\Omega$.
+\end{theorem}
+
+\begin{corollary}[2.1 v.a. como seq. de v.a. simples]
+	Considere $(\Omega, \Acal)$ um espaço mensurável.  Uma função $X\colon\Omega \to \Ree$ é variável aleatória se, e somente se, existe uma sequência de variáveis aleatórias simples $(X_n)_{n\geq1}$ tais que $X(\omega)=\lim\limits_{n\to\infty}X_n(\omega)$ para todo $\omega\in\Omega$.
+\end{corollary}
+
+\begin{theorem}[2.13 v.a. aleatória mensurável como composição de funções]
+	Sejam $(\Omega_1, \Acal_1)$, $(\Omega_2, \Acal_2)$ espaços mensuráveis e $X\colon\Omega_1 \to \Omega_2$ uma função $\Acal_1\backslash \Acal_2$ mensurável. Uma variável aleatória $Y\colon\Omega_1 \to \Ree$ é $\sigma(X)\backslash \Boe$ mensurável se, e somente se, existe $f\colon\Omega_2 \to \Ree$ $\Acal_2\backslash \Boe$ mensurável tal que $Y=f(X)$.
+\end{theorem}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
+
+\begin{theorem}[Exercício 2.5]
+	Toda função monótona $f\colon \Re \to \Re$ é Borel mensurável.
+\end{theorem}
+
+\section{Esperança}
+
+\subsection{Variável aleatória simples}
+
+\begin{definition}[Esperança de v.a. simples]
+	Para uma v.a. simples \(X=\sum_{i=1}^{n}x_i I_{A_i}\), definimos sua esperança (integral) com a respeito a $\P$ como:
+	\begin{equation}
+		\E[X] = \int X d\P = \sum_{i=1}^{n}x_i \P(A_i)
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Esperança de v.a. simples sobre A]
+	Para uma v.a. simples e não negativa $X$, definimos a integral de $X$ sobre $A$ como:
+	\begin{equation}
+		\int_A X d\P = \int X I_{A}d\P = \E[X I_{A}] = \sum_{i=1}^{n}x_i \P(A_i\cap A).
+	\end{equation}
+\begin{note}
+	O professor confirmou que a definição vale também para X<0.
+\end{note}
+\end{definition}
+
+\begin{theorem}[Proposição 3.1 | Corolário 3.1]
+	As seguintes propriedades são válidas para esperança de variáveis aleatórias simples:
+	\begin{outline}[enumerate]
+		\1 \(\E[aX] = a\E[X], \quad a\in \Re\)
+		\1[] \(\int aX d\P = a \int X d\P\)
+		
+		\1 \(\E[X+Y] = \E[X] + \E[Y]\)
+		\1[] \(\int (X+Y) d\P = \int X d\P + \int Y d\P\)
+		
+		\1 \(X\leq Y \implies \E[X]\leq\E[Y]\)
+		\1[] \(\quad\quad\quad\quad\quad \int X d\P \leq \int Y d\P\)
+		
+		\1 \(\E[c_1X_1 + \cdots + c_n X_n] = c_1\E[X_1] + \cdots + c_n\E[X_n]\, \quad c_1,\ldots,c_n\in\Re\).
+	\end{outline}
+\end{theorem}
+
+
+\begin{theorem}
+	Se $X$ for uma v.a. simples e não negativa, então a aplicação \(\mathmbox{\nu\colon \Acal \to [0, \infty]}\) definida como \(\nu(A) = \int_A X d\P\) é uma medida sobre $(\Omega, \Acal)$.
+\end{theorem}
+
+\subsection{Variável aleatória não negativa}
+
+\begin{definition}[Esperança de v.a. não negativa]
+	Para uma v.a. não negativa $X\geq0$, definimos sua esperança (integral) como:
+	\begin{equation}
+		\E[X] = \int X d\P = \lim\limits_{n\to\infty}\E[X_n]
+	\end{equation}
+	%
+	em que $(X_n)_{n\geq1}$ é uma sequência de v.a. simples não negativas tais que \(X_n\nearrow X\). Caso \(\E[X]<\infty\), $X$ é dita \textit{variável aleatória integrável}.
+\end{definition}
+
+\begin{lemma}
+	Considere $Y$ uma variável aleatória simples não negativa e $(X_n)_{n\geq1}$ uma sequência crescente de variáveis aleatórias simples e não negativas tais que $Y\leq \lim\limits_{n\to\infty}X_n$. Então, a sequência $(\E[X_n])_{n\geq1}$ é convergente, e
+	\[
+		\E[Y] \leq \lim\limits_{n\to\infty}\E[X_n].
+	\]
+\end{lemma}
+
+\begin{theorem}
+	As seguintes propriedades são válidas para esperança de variáveis aleatórias não negativas
+	\begin{outline}[enumerate]
+		\1 \(\E[aX] = a\E[X], \quad a\in \Re\)
+		\1 \(\E[X+Y] = \E[X] + \E[Y]\)
+		\1 \(X\leq Y \implies \E[X]\leq\E[Y]\)
+		\1 \(\E[c_1X_1 + \cdots + c_n X_n] = c_1\E[X_1] + \cdots + c_n\E[X_n]\, \quad c_1,\ldots,c_n\in\Re\);
+		\1 \(\E[X] = \sup\{\E[Y]: 0 \leq Y \leq X, \ Y \text{ é uma v.a. simples} \}\)
+		\1 \( \E[X] = 0 \iff X=0 \text{ quase certamente}\).
+	\end{outline}
+\end{theorem}
+
+\begin{lemma}
+	Considere $Y\geq0$ simples e $(X_n)_{n\geq1}$ uma sequência de v.a.n.n. tal que $Y\leq\liminf X_n = \lim\limits_{n\to\infty}\inf\limits_{k\geq n}X_k$. Então,
+	 \[
+	 	\E[Y] \leq \liminf \E[X_n].
+	 \]
+\end{lemma}
+
+\begin{theorem}[Lema de Fatou]
+	Seja $(X_n)_{n\geq1}$ uma sequência de v.a.n.n. Então,
+	\[
+		\E[\liminf X_n] \leq \liminf\E[X_n].
+	\]
+\end{theorem}
+
+\begin{theorem}[3.3 Teorema da Convergência Monótona]
+	Se $X\geq0$ for uma variável aleatória e $(X_n)_{n\geq1}$ uma sequência de v.a.n.n. tal que \(X_n\nearrow X\). Então,
+	\[
+		\E[X] = \lim\limits_{n\to\infty}\E[X_n].
+	\]
+\end{theorem}
+
+\begin{corollary}
+	Se $(X_n)_{n\geq1}$ for uma sequência de v.a.n.n., então
+	\[
+		\E \left[ \sum_{n=1}^{\infty}\E[X_n] \right] = \sum_{n=1}^{\infty}\E[X_n].
+	\]
+\end{corollary}
+
+\begin{definition}[Esperança de v.a.n.n sobre A]
+	Para uma v.a. não negativa $X$, definimos a integral de $X$ sobre $A$ como:
+	\begin{equation}
+		\int_A X d\P = \int X I_{A_i}d\P = \E[X I_{A_i}].
+	\end{equation}
+\end{definition}
+
+\begin{theorem}
+	Se $X$ for uma v.a. não negativa, então a aplicação \(\mathmbox{\nu\colon \Acal \to [0, \infty]}\) definida como \(\nu(A) = \int_A X d\P\) é uma medida sobre $(\Omega, \Acal)$.
+\end{theorem}
+
+\subsection{Variável aleatória integrável}
+
+\begin{definition}[Esperança de v.a. quase-integráveis e integráveis]
+	Uma variável aleatória $X$ tal que $\E[X^+]<\infty$ ou $\E[X^-]<\infty$ e édita \textit{quase integrável} e definimos sua esperança (integral) com a respeito a $\P$ como:
+	\begin{equation}
+		\E[X] = \int X d\P = \int X^+ d\P - \int X^- d\P = \E[X^+]-\E[X^-]
+	\end{equation}
+\end{definition}
+	A variável $X$ é dita \textit{integrável} se $\E[X^+]<\infty$ e $\E[X^-]<\infty$. Neste caso, dizemos que $X\in L_1$, em que $L_1$ é o conjunto das variáveis aleatórias integráveis.
+	
+\begin{note}
+	A variável $X$ é integrável se, e somente se, $\E[|X|]<\infty$.
+\end{note}
+
+\begin{lemma}
+	Se $X_1,X_2\geq0$ são v.a. tais que $X_1$ ou $X_2$ são integráveis ($\E[X_1]<\infty$ ou $\E[X_e]<\infty$ e $[X_1=\infty, X_2=\infty$]=$\emptyset$), então a variável aleatória $X = X_1-X_2$ é quase-integrável, e
+	\[
+	\E[X] = \E[X_1] - \E[X_2].
+	\]
+\end{lemma}
+
+\begin{theorem}
+	As seguintes propriedades são válidas para esperança de variáveis aleatórias quase-integráveis:
+	\begin{outline}[enumerate]
+		\1 \(\E[aX] = a\E[X], \quad a\in \Re\)
+		\1 \(\E[X+Y] = \E[X] + \E[Y]\)
+		\1 \(X\leq Y \implies \E[X]\leq\E[Y]\)
+	\end{outline}
+\end{theorem}
+
+\begin{definition}[Integral de $X$ sobre $A$]
+	Para uma v.a. integrável $X$, definimos a integral de $X$ sobre $A$ como:
+	\begin{equation}
+		\left| \int_A X d\P \right| \leq \int |X| d\P < \infty, \quad \text{para todo } A\in\Acal
+	\end{equation}
+\end{definition}
+
+\begin{theorem}
+	Se $X$ for uma v.a. integrável, então a aplicação \(\mathmbox{\nu\colon \Acal \to \Re}\) definida como \(\nu(A) = \int_A X d\P\) é uma função de conjuntos \sig-aditiva.
+\end{theorem}
+
+\begin{theorem}
+	Considere $X$ e $Y$ variáveis aleatórias integráveis. Então, as afirmações a seguir são equivalentes:
+	\begin{outline}[enumerate]
+		\1 \( \int_A X d\P = \int_A Y d\P\) para todo $A\in\Acal$;
+		\1 \( \int_{\Omega} |X-Y| d\P = 0\);
+		\1 $X=Y$ quase certamente.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[3.6 Teorema da Convergência Dominada]
+	Considere $(X_n)_{n\geq1}$ uma sequência de v.a tais que \(X_n(\omega)\to X(\omega)\) para todo $\omega\in\Omega$. Se existe uma variável aleatória integrável $Y$ tal que $|X_n|\leq Y$ pra todo $n\geq1$, então $X_n$ é integrável para todo $n\geq1$ e
+	\[
+		\E[X] = \lim\limits_{n\to\infty}\E[X_n].
+	\]
+\end{theorem}
+
+\begin{theorem}[Mudança de variável]
+	Considere  $X\colon\Omega \to \Ree$ uma variável aleatória e  $g\colon\Ree \to \Ree$ uma função Borel mensurável. Então, a variável aleatória $g(X)\colon \Omega \to \Ree$ definida como \((g(X))(\omega) = g(X(\omega))\), $\omega\in\Omega$ é tal que
+	\[
+		\int_\Omega g(X(\omega))d\P = \int_{\Ree} g(x)d\P_X(x),
+	\]
+%
+desde que uma das duas integrais esteja definida. A probabilidade $\P_X$ denota a medida de probabilidade induzida por $X$ (distribuição de $X$) definida como $\P_X(B) = \P([X\in B])$, $B\in\Boe$.
+\end{theorem}
+
+\begin{definition}
+	Dizemos que uma variável aleatória $X\colon\Omega \to \Ree$ possui uma densidade com respeito a uma medida $\mu$ definida em $(\Ree, \Boe)$ se existe uma função $f_X\colon\Ree \to [0, \infty]$ (densidade de $X$ com respeito a $\mu$) Borel mensurável tal que 
+	\[
+		\P_X(B) = \int_B f_X d\mu, \quad \text{para todo } B \in \Boe. 
+	\]
+\end{definition}
+
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\renewcommand{\labelenumi}{(\alph{enumi})}
+		\1 Em geral, se $\nu$ e $\mu$ são duas medidas sobre o espaço mensurável $(\Omega_1, \Acal_1)$ e existe uma função $\Acal$ mensurável $f_X\colon\Omega \to [0, \infty]$ que satisfaz
+		\[
+				\nu(A) = \int_A f d\mu, \quad \text{para todo } A \in \Acal,
+		\]
+		%
+		então $f$ é dita \textit{densidade} de $\nu$ com respeito a $\mu$. Note que, se isto valer, então
+		\begin{equation}\label{eq:abscont}
+			\mu(A) = 0, A \in \Acal \implies \nu(A) = 0.
+		\end{equation}
+		\1 Sempre que $\nu$ e $\mu$ satisfazerem \ref{eq:abscont}, dizemos que $\nu$ é \textit{absolutamente contínua} com respeito a $\mu$ e denotamos isto por $\nu \ll \mu$. O célebre teorema e Radon-Nikodym garante a recíproca do resultado apresentado em (a).
+	\end{outline}
+\end{note}
+
+\section{Medida de Probabilidade Produto}
+
+\subsection{Vetores aleatórios}
+
+\begin{definition}[\sig-álgebra produto] 
+	Considere $(\Omega, \mathcal{A}), (\Omega_1, \mathcal{A}_1), \ldots, (\Omega_n, \mathcal{A}_n)$ espaços mensuráveis e seja $X_i: \Omega \rightarrow \Omega_i$, $i = 1, \ldots, n$. Definimos a $\sigma$-álgebra gerada por $X_1, X_2, \ldots, X_n$ como a menor $\sigma$-álgebra $\mathcal{A}$ de subconjuntos de $\Omega$ para a qual $X_i$ é $\mathcal{A}\backslash\mathcal{A}_i$-mensurável para todo $i = 1, \ldots, n$, isto é,
+	\begin{equation}
+		\sigma(X_1, X_2, \ldots, X_n) = \sigma\left(\left\{X_i^{-1}(B_i) : B_i \in \mathcal{A}_i, i = 1, 2, \ldots, n\right\}\right).
+	\end{equation}
+\end{definition}
+
+\begin{theorem}[Condição suficiente para vetor aleatório]
+	$X$ é um vetor aleatório se
+	\begin{equation}
+		\left[X \in [-\infty,x_1]\times\cdots\times[-\infty,x_n]\right] \in \Acal \quad \text{para quaisquer } x_1,\ldots,x_n \in \Re.
+	\end{equation}
+\end{theorem}
+
+\begin{definition}[Vetor aleatório]
+	Seja $(\Omega, \mathcal{A})$ um espaço mensurável. Uma função $X : \Omega \rightarrow \mathbb{R}^n$ é chamada de \textit{vetor aleatório} se for $\mathcal{A}\backslash\mathcal{B}(\mathbb{R}^n)$-mensurável, isto é,
+	\begin{equation}
+		 [X \in B] = X^{-1}(B) \in \mathcal{A} \text{ para todo } B \in 	\mathcal{B}(\mathbb{R}^n).
+	 \end{equation}
+
+	Uma função $X : \Omega \rightarrow \overline{\mathbb{R}}^n$ é $\mathcal{A}\backslash\mathcal{B}(\overline{\mathbb{R}}^n)$-mensurável também é chamada de vetor aleatório.
+\end{definition}
+
+\begin{theorem}
+	Uma função $X = (X_1, \ldots, X_n) : \Omega \rightarrow \mathbb{R}^n$ é um vetor aleatório se, e somente se, $X_1, \ldots, X_n$ são variáveis aleatórias.
+\end{theorem}
+
+\begin{definition}[Distribuição de um vetor aleatório]
+	Dado um espaço de probabilidade $(\Omega, \mathcal{A}, \mathbb{P})$ e $X = (X_1, \ldots, X_n)$ um vetor aleatório, definimos a \textbf{distribuição de} $X$ como a medida de probabilidade $\mathbb{P}_X$ sobre $\left(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n)\right)$ dada por
+	\begin{equation}
+		\mathbb{P}_X(B) = \mathbb{P}\left([X \in B]\right), \quad B \in \mathcal{B}(\mathbb{R}^n).
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \textit{Projeção coordenada}: \(\pi_i(\omega_, \ldots, \omega_n) = \omega_i \)
+		\1 \textit{Cilindro unidimensional de base $A_i$}: \( \inv{\pi_i}(A_i) = \{ \omega\in\Omega : \pi_i(\omega)\in A_i\} \) 
+		\1 \textit{Classe dos cilindros unidimensionais}: \( \Ccal = \{\inv{\pi_i}(A_i) : A_i \in \Acal, i=1,\ldots,n\}\)
+		\1 \textit{Classe dos retângulos mensuráveis}: \( \Rcal = \{A_1\times\cdots\times A_n : A_i \in \Acal, i=1,\ldots,n\}\)
+		\1 \textit{\sig-álgebra produto sobre $\Omega^n$}: 
+		\(\bigotimes_{i=1}^n \mathcal{A}_i = \mathcal{A}_1 \otimes \cdots \otimes \mathcal{A}_n = \sigma(\mathcal{C}) = \sigma(\Rcal) = \sigma(\pi_1, \ldots,\pi_n)\)
+		\1 \( \Born = \bigotimes_{i=1}^n \Bo\)
+	\end{outline}
+\end{definition}
+
+\subsection{Medida produto}
+
+\begin{definition}[Medida de probabilidade produto]
+	Para $(\Omega_1, \mathcal{A}_1, \mathbb{P}_1), \ldots, (\Omega_n, \mathcal{A}_n, \mathbb{P}_n)$ espaços de probabilidade, uma medida de probabilidade $\mathbb{P}$ sobre $(\Omega_1 \times \cdots \times \Omega_n, \mathcal{A}_1 \otimes \cdots \otimes \mathcal{A}_n)$ é dita \textit{medida de probabilidade produto} se satisfizer
+	\begin{equation}
+		\mathbb{P}(A_1 \times \cdots \times A_n) = \mathbb{P}_1(A_1) \times \cdots \times \mathbb{P}_n(A_n)
+	\end{equation}
+	para todo $A_1 \in \mathcal{A}_1, \ldots, A_n \in \mathcal{A}_n$. A medida produto $\mathbb{P}$ será denotada por $\mathbb{P}_1 \times \cdots \times \mathbb{P}_n$.
+\end{definition}
+
+\begin{theorem}
+	Considere $\mathbb{P}_1$ uma probabilidade sobre $(\Omega_1, \mathcal{A}_1)$ e $K : \Omega_1 \times \mathcal{A}_2 \rightarrow [0, 1]$ uma função de transição. Seja $\mathbb{P}$ a probabilidade sobre o espaço produto $(\Omega, \mathcal{A})$ definida como
+	\begin{equation}
+		\mathbb{P}(E) = \int_{\Omega_1} K(x, E_x)\mathbb{P}_1(dx), \quad E \in \mathcal{A}.
+	\end{equation}
+	
+	\begin{outline}
+		\1[(a)] Se $f : \Omega \rightarrow [0, +\infty]$ for uma função $\mathcal{A}$-mensurável, então a função $g : \Omega_1 \rightarrow \mathbb{R}$ definida por
+		\begin{equation}
+			g(x) = \int_{\Omega_2} f(x, y)K(x, dy), \quad x \in \Omega_1,
+		\end{equation}
+		é $\mathcal{A}_1$-mensurável e $g(x) \geq 0$ para todo $x \in \Omega_1$. Além disso,
+		\begin{equation}
+			\int_{\Omega_1 \times \Omega_2} f(x, y) \mathbb{P}(dx, dy) = \int_{\Omega_1} g(x) \mathbb{P}_1(dx) = \int_{\Omega_1} \left[\int_{\Omega_2} f(x, y)K(x, dy)\right] \mathbb{P}_1(dx).
+		\end{equation}
+		
+		\1[(b)] Se $f : \Omega \rightarrow \mathbb{R}$ for uma função $\mathcal{A}$-mensurável e quase-integrável com respeito a $\mathbb{P}$, então a função $g : \Omega_1 \rightarrow \mathbb{R}$ dada pela expressão anterior é definida quase certamente, é $\mathcal{A}_1$-mensurável e quase-integrável com respeito a $\mathbb{P}_1$. Além disso, a identidade continua válida.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Fubini-Tonelli]
+	Considere $(\Omega_1, \mathcal{A}_1, \mathbb{P}_1)$ e $(\Omega_2, \mathcal{A}_2, \mathbb{P}_2)$ dois espaços de probabilidade. Seja $(\Omega, \mathcal{A}, \mathbb{P})$ o espaço de probabilidade produto, sendo $\Omega = \Omega_1 \times \Omega_2$, $\mathcal{A} = \mathcal{A}_1 \otimes \mathcal{A}_2$ e $\mathbb{P} = \mathbb{P}_1 \times \mathbb{P}_2$.
+	
+	\begin{outline}
+		\1[(a)](\textit{Tonelli}) Se $f : \Omega \rightarrow [0, +\infty]$ é uma função $\mathcal{A}$-mensurável, então as funções $g : \Omega_1 \rightarrow \mathbb{R}$ e $h : \Omega_2 \rightarrow \mathbb{R}$ definidas como
+		\begin{equation}\label{eq:g}
+			g(x) = \int_{\Omega_2} f(x, y)\mathbb{P}_2(dy), \quad x \in \Omega_1,
+		\end{equation}
+		\begin{equation}\label{eq:h}
+			h(y) = \int_{\Omega_1} f(x, y)\mathbb{P}_1(dx), \quad y \in \Omega_2,
+		\end{equation}
+		são não negativas e $\mathcal{A}_1$ e $\mathcal{A}_2$-mensuráveis, respectivamente. Além disso,
+		\begin{equation}\label{eq:eq1}
+			\int_{\Omega_1 \times \Omega_2} f(x, y)\mathbb{P}(dx, dy) = \int_{\Omega_1} \left[\int_{\Omega_2} f(x, y) \mathbb{P}_2(dy)\right] \mathbb{P}_1(dx)
+		\end{equation}
+		\begin{equation}\label{eq:eq2}
+			= \int_{\Omega_2} \left[\int_{\Omega_1} f(x, y)\mathbb{P}_1(dx)\right] \mathbb{P}_2(dy).
+		\end{equation}
+		
+		\1[(b)] (\textit{Fubini}) Se $f : \Omega \rightarrow \mathbb{R}$ é uma função $\mathcal{A}$-mensurável e quase-integrável com respeito a $\mathbb{P}$, então $g : \Omega_1 \rightarrow \mathbb{R}$ ($h : \Omega_2 \rightarrow \mathbb{R}$) dada em (\ref{eq:g}) ((\ref{eq:h})) é $\mathcal{A}_1$-mensurável ($\mathcal{A}_2$-mensurável) e quase-integrável com respeito a $\mathbb{P}_1$ ($\mathbb{P}_2$). Além disso, as relações (\ref{eq:eq1}) e (\ref{eq:eq2}) permanecem válidas.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Considere $(X, Y)$ um vetor aleatório que possui densidade $f_{X,Y}(x, y)$ com respeito à medida de Lebesgue no plano.
+	
+	\begin{outline}
+		\1[(a)] $X$ e $Y$ possuem densidade com respeito à medida de Lebesgue na reta dadas, respectivamente, por
+		\begin{equation}
+			f_X(x) = \int_{\mathbb{R}} f_{X,Y}(x, y)d\lambda(y),
+		\end{equation}
+		\begin{equation}
+			f_Y(y) = \int_{\mathbb{R}} f_{X,Y}(x, y)d\lambda(x).
+		\end{equation}
+		
+		\1[(b)] $X$ e $Y$ são variáveis aleatórias independentes se, e somente se, $f_{X,Y}(x, y) = f_X(x)f_Y(y)$ para quase todo $(x, y) \in \mathbb{R}^2$.
+	\end{outline}
+	
+	\textit{Nota:} $\lambda$ designa ao mesmo tempo as medidas de Lebesgue na reta e no plano.
+\end{theorem}
+
+\section{Independência}
+
+\subsection{Eventos}
+
+\begin{definition}[Independência de eventos]
+	Os eventos $A_1, A_2, \ldots, A_n$ são independentes se
+	\begin{equation}
+		\P\left(\bigcap_{i\in I}A_i \right) = \prod_{i\in I} \P (A_i)
+	\end{equation}
+	%
+	para todo $I \subset \{1,\ldots,n\}$. Ou, de forma equivalente,
+	\begin{equation}
+		\P\left(\bigcap_{i=1}^nC_i \right) = \prod_{i=1}^n \P (C_i)
+	\end{equation}
+	%
+	para quaisquer $C_1, \ldots, C_n$ tais que $C_i=A_i$ ou $C_i=\Omega$, $i=1,\ldots, n$.
+\end{definition}
+
+\begin{definition}[Famílias de eventos]
+	Uma família de eventos $\{A_t: t \in T\}$ é independente se toda subcoleção finita $\{A_{t_1}, \ldots, A_{t_n}\}$ for independente para qualquer escolha de $\{t_1, \ldots, t_n\}\subset T$, com $t_i$'s todos distintos.
+\end{definition}
+
+
+\subsection{Classes de eventos}
+
+\begin{definition}[Independência de classe de eventos]
+	As classes de eventos $\Acal_1, \Acal_2, \ldots, \Acal_n$ são independentes se os eventos $A_1, A_2, \ldots, A_n$ são independentes para quaisquer escolhas de $A_1\in\Acal_1, A_2\in\Acal_2, \ldots, A_n\in\Acal_n$.
+\end{definition}
+\begin{note}
+	As $\sigma$-álgebras $\Acal_1, \Acal_2$ são independentes se, e somente se,
+	\begin{equation}
+		\P(A_1\cap A_2) = \P(A_1) \P(A_2),
+	\end{equation}
+	% 
+	para quaisquer $A_1\in\Acal_1$ e $A_2\in\Acal_2$.
+\end{note}
+
+
+\begin{definition}[Famílias de classes de eventos]
+	\leavevmode
+	\begin{outline}
+		\1 Uma família de eventos $\{\Acal_t: t \in T\}$ é independente se toda subcoleção finita $\{\Acal_{t_1}, \ldots, \Acal_{t_n}\}$ for independente para quaisquer escolhas de $\{t_1, \ldots, t_n\}\subset T$, com $t_i$'s todos distintos.
+		\1 De forma alternativa, $\{\Acal_t: t \in T\}$ é independente se, e somente se, toda família de eventos $\{A_t: t \in T\}$ for independente, em que $A_t \in \Acal_t$ para todo $t \in T$.
+	\end{outline}
+
+\end{definition}
+
+\subsection{Variáveis aleatórias}
+
+\begin{definition}[Independência de variáveis aleatórias]
+	\leavevmode
+	\begin{outline}
+		\1 As variáveis aleatórias $X_1, X_2, \ldots, X_n$ são independentes se, e somente se, as sigma-álgebras geradas $\sigma(X_1), \sigma(X_2), \ldots, \sigma(X_n)$ são independentes.
+		\1 De forma alternativa, $X_1, X_2, \ldots, X_n$ são independentes se, e somente se,
+		\begin{equation}
+			\P(X_1\in B_1, \ldots, X_n \in B_n) = \prod_{i=1}^{n}\P(X_i \in B_i)
+		\end{equation}
+		%
+		para quaisquer $B_1, \ldots,B_n \in \Bo$.
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Famílias de variáveis aleatórias]
+	\leavevmode
+	\begin{outline}
+		\1 Uma família de variáveis aleatórias $\{X_t: t \in T\}$ é independente se, e somente se, a família de suas $\sigma$-álgebras gerada $\{\sigma(X_t): t \in T\}$ é independente.
+		\1 De forma alternativa,  $\{X_t: t \in T\}$ é independente se, e somente se, toda subfamília finita $\{X_{t_1}, \ldots, X_{t_n}\}$ for independente para quaisquer escolhas de $\{t_1, \ldots, t_n\}\subset T$, com $t_i$'s todos distintos.
+	\end{outline}
+\end{definition}
+
+\subsection{Teoremas}
+
+\begin{theorem}[Extensão da Independência 1]
+	Considere $\Acal_1 = \sigma(\Ical_1)$ e $\Acal_2 = \sigma(\Ical_2)$, em que $\Ical_1, \Ical_2$ são $\pi$-sistemas. Então, $\Acal_1$ e $\Acal_2$ são independentes se, e somente sem $\Ical_1$ e $\Ical_2$ são independentes, isto é, 
+	\begin{equation}
+		\P(A_1\cap A_2) = \P(A_1) \P(A_2),
+	\end{equation}
+	% 
+	para quaisquer $A_1\in\Ical_1$ e $A_2\in\Ical_2$.
+\end{theorem}
+
+\begin{theorem}[Extensão da Independência 2]
+	Sejam $\Ical_1, \ldots, \Ical_n$ $\pi$-sistemas. $\Ical_1, \ldots, \Ical_n$ são independentes se, e somente se, $\sigma(\Ical_1), \ldots, \sigma(\Ical_n)$ são independentes.
+\end{theorem}
+
+\begin{corollary}
+	As variáveis aleatórias $X_1,\ldots, X_n$ são independentes se, e somente se,
+	\begin{equation}
+		\P(X_1\leq x_1, \ldots, X_n\leq x_n) = \prod_{i=1}^{n}\P(X_i\leq x_i),
+	\end{equation}
+	%
+	para quaisquer $x_i \in \Re, \ i=1,\ldots,n$.
+\end{corollary}
+
+\begin{theorem}[Lema de Borel-Cantelli]
+	Seja $(A_n)_{n\geq1}$ uma sequência de eventos.
+	\begin{outline}[enumerate]
+		\1 Se $\sum_{n=1}^{\infty}\P(A_n) < \infty$, então $\P([A_n \text{ i.v.}])=0$;
+		\1 Se $\sum_{n=1}^{\infty}\P(A_n) = \infty$ e $(A_n)_{n\geq1}$ é independente, então $\P([A_n \text{ i.v.}])=1$.
+	\end{outline}
+\end{theorem}
+
+\section{Convergência}
+
+\subsection{Definições}
+
+\begin{definition}[Quase certa]
+	\leavevmode
+	\begin{outline}
+		\1 $(X_n)_{\geq1}$ converge quase certamente para $X$, isto é, $X_n \xrightarrow{\text{q.c.}} X$ se
+		\begin{equation}
+			\P([X_n\to X])=1,
+		\end{equation}
+		% 
+		em que $[X_n \to X] = \cp{A} = \{\omega \in \Omega: X_n(\omega) \to X(\omega) \}$.
+		\1 Ou seja, $(X_n)_{\geq1}$ converge quase certamente para $X$ se existe $A\in\Acal$ tal que $\P(A)=0$ e $X_n\to X$ em $\cp{A}$, quando $n\to\infty$.
+		\1  Alternativamente, $(X_n)_{\geq1}$ converge quase certamente para $X$ se, e somente se
+		\begin{equation}
+			\P([|X_n-X|\geq \epsilon \text{ i.v.}])= \P(\limsup[|X_n-X|\geq\epsilon])= 0.
+		\end{equation}
+	\end{outline}
+	\begin{note}
+		A convergência quase certa permite que alguns pontos de $\Omega$ escapem do critério de convergência, mas o conjunto destes pontos precisa ser negligenciável em termos probabilísticos, isto é, sua probabilidade dever ser zero.  
+	\end{note}
+	
+\end{definition}
+
+\begin{definition}[Em probabilidade]
+	$(X_n)_{\geq1}$ converge em probabilidade para $X$, isto é, $X_n \xrightarrow{\mathcal{P}} X$ se, para todo $\epsilon>0$,
+	\begin{equation}
+		\lim\limits_{n\to\infty}\P(|X_n-X|\geq\epsilon)=0.
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Em média $p$]
+	Considere $(X_n)_{\geq1} \subset L^p, p\geq1$. $(X_n)_{\geq1}$ converge em média $p$ para $X$, $X_n \xrightarrow{L ^p} X$ se $|| X_n-X ||_p\to 0$ quando $n\to\infty$, ou seja,
+	\begin{equation}
+		\lim\limits_{n\to\infty}\E[|X_n-X|^p]=0.
+	\end{equation}
+\end{definition}
+
+\subsection{Teoremas}
+
+\begin{theorem}
+	Considere $(X_n)_{\geq1}$ e $(Y_n)_{\geq1}$ duas sequências de variáveis aleatórias, $X$ e $Y$ variáveis aleatórias.
+	\begin{outline}[enumerate]
+		\1 $X_n\toP X \implies aX_n \toP aX$ \\
+		   $X_n\toQC X \implies aX_n \toQC aX$  
+		\1 $X_n\toP X, \ \ Y_n\toP Y \implies X_n+Y_n\toP X+Y$ \\
+		   $X_n\toQC X, Y_n\toQC Y \implies X_n+Y_n\toQC X+Y$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Condição necessária e suficiente para convergência q.c.]
+	\begin{equation}
+		X_n\toQC X \iff \P([|X_n-X|\geq\epsilon \text{ i.v}]) = 0, \ \forall \epsilon>0
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}[Condição suficiente para convergência q.c.]
+	\begin{equation}
+		 \sum_{n=1}^{\infty}\P(|X_n-X|\geq\epsilon) < \infty, \ \forall \epsilon>0 \implies X_n\toQC X
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}[Relações entre convergências]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( X_n\toQC X \implies X_n\toP X \)
+		\1 \( X_n \toL X \implies X_n \toP X \) 
+	\end{outline}
+\end{theorem}
+
+
+\begin{theorem}[Fatos úteis]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( [|X_n-Y_n| \geq \epsilon] \subseteq [|X_n-X| \geq \epsilon/2]\cup 
+		  [|Y_n-X| \geq \epsilon/2] \) 
+	\end{outline}
+\end{theorem}
+
+
+\subsection{Desigualdades}
+
+\begin{theorem}[Desigualdades e igualdades importantes]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Hölder: $\E[|XY|]\leq (\E[|X|^p])^\frac{1}{p}\E[|y|^q]^\frac{1}{q}$, para $X\in L^p, Y\in L^q$,  $p,q>0, \frac{1}{p}+\frac{1}{q}=1$
+		\1 Lyapunov: $(\E[|X|^q])^\frac{1}{q} \leq (\E[|X|^p])^\frac{1}{p}$, se $X \in L^p$ e $0<q\leq p$
+		\1 Minkowski: $(\E[|X+Y|^p])^\frac{1}{p} \leq (\E[|X|^p])^\frac{1}{p} + (\E[|Y|^p])^\frac{1}{p}$, para $X,Y \in L^p, p\geq1$
+		\1 Markov: $\P(X\geq a) \leq \frac{\E[X]}{a}$ para $X>0$
+		\1 Tchebychev: $\P(|X-c|\geq\epsilon) \leq \frac{\E[|X-c|^p]}{\epsilon^p}, \forall \epsilon>0$, se $X\in L^p, p>0$
+		\1 Jensen: $\E[g(X)]\geq g(\E[X])$, onde $g: \Re\to\Re$ é Borel mensurável convexa e $X,g(X)\in L^1$
+			\2 \(\E[X^2] \geq (E[X])^2 \)
+		\1 Cauchy-Schwarz: Se $X,Y\in L^2$, então $XY \in L^1$ e $\E[XY] \leq \E[|XY|] \leq \sqrt{\E[X^2]\E[Y^2]}$
+		\1 \(E[X] \leq \E[|X|]\)
+		\1 \(|E[X]|\leq \E[|X|]\)
+		\1 \( E[X]-\mu =\E[X-\mu]\)
+	\end{outline}
+\end{theorem}
+
+\subsection{Covariância e Variância}
+
+\begin{definition}
+	Para $X,Y \in L^2$, definimos a covariância entre $X$ e $Y$ como
+	\begin{align}
+		\cov(X,Y) &= \E[(X-\E[X])(Y-\E[Y])] \\
+		&= \E[XY]-\E[X]\E[Y]
+	\end{align}
+	\begin{note}
+		Se $X,Y\in L^2$ são independentes, então $X$ e $Y$ são não correlacionadas.
+	\end{note}
+\end{definition}
+
+\subsection{Leis dos Grandes Números}
+

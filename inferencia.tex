@@ -1,0 +1,413 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
+\chapter{Inferência}
+
+
+\section{Distribuições amostrais}
+
+\begin{theorem}
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. e seja $g$ uma função real tal que $\E[g(X)]$ e $\Var[g(X)]$ existam. Nesse caso,
+	\[
+	\E\left[\sum_{i=1}^{n} g(X_i)\right] = n\E[g(X)],
+	\]
+	e
+	\[
+	\Var\left[\sum_{i=1}^{n} g(X_i)\right] = n\Var[g(X)].
+	\]
+\end{theorem}
+
+\begin{theorem}
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com média $\mu$ e variância $\sigma^2 < \infty$. Então,
+	\begin{outline}[enumerate]
+		\1 $\E(\bar{X}) = \mu$;
+		
+		\1 $\Var(\bar{X}) = \sigma^2/n$;
+		
+		\1 $\E(S^2) = \sigma^2$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Distribuição amostral da média]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com função geradora de momentos $M_X(t)$. Então, a FGM da média amostral será
+	\[
+	M_{\bar{X}}(t) = [M_X(t/n)]^n.
+	\]
+\end{theorem}
+
+\begin{theorem}[Qui-quadrado]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $Z \sim \normdist{0,1}$, então $Z^2 \sim \chi_1^2$;
+		
+		\1 Se $X_1, X_2, \ldots, X_n$ são v.a.'s independentes tais que $X_i \sim \chi_{r_i}^2$, então $\sum_{i=1}^{n} X_i \sim \chi_r^2$, em que $r = \sum_{i=1}^{n} r_i$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Distribuição normal]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com distribuição $\normdist{\mu, \sigma^2}$. Então,
+	\begin{outline}[enumerate]
+		\1 $\bar{X}$ e $S^2$ são independentes;
+		
+		\1 $\bar{X} \sim \normdist{\mu, \frac{\sigma^2}{n}}$;
+		
+		\1 $\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[t-Student]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. oriunda de uma população $\normdist{\mu, \sigma^2}$. Então
+	\[
+	\frac{\bar{X} - \mu}{S/\sqrt{n}} \sim \tdist{n-1}.
+	\]
+	\begin{note}
+		se $Z \sim \normdist{0,1}$ e $V \sim \chi_k^2$ independentes, então
+		\[
+		\frac{Z}{\sqrt{V/k}} \sim \tdist{k}.
+		\]
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Propriedades da distribuição $F$]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $X \sim F_{p,q}$, então $1/X \sim F_{q,p}$ (a recíproca de uma $F$ também tem distribuição $F$);
+		
+		\1 Se $X \sim \tdist{q}$, então $X^2 \sim F_{1,q}$;
+		
+		\1 Se $X \sim F_{p,q}$, então
+		\[
+		\frac{(p/q)X}{1 + (p/q)X} \sim \betadist{\frac{p}{2}, \frac{q}{2}}.
+		\]
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Sejam $X_1, X_2, \ldots, X_n$ e $Y_1, Y_2, \ldots, Y_m$ duas A.A.'s oriundas de populações $\normdist{\mu_X, \sigma_X^2}$ e $\normdist{\mu_Y, \sigma_Y^2}$, respectivamente. Então
+	\[
+	\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2} \sim F_{n-1, m-1}.
+	\]
+	\begin{note}
+		O resultado acima decorre do fato de que, se $V \sim \chi_r^2$ e $W \sim \chi_s^2$ independentes, então
+		\[
+		\frac{V/r}{W/s} \sim F_{r,s}.
+		\]
+	\end{note}
+\end{theorem}
+
+\subsection{Estatísticas de ordem}
+
+
+\begin{theorem}[Máximo e mínimo]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( F_{X_{(n)}}(x) = \left[ F_X(x) \right]^n \) (contínua e discreta)
+		\1 \( f_{X_{(n)}}(x) = n\left[ F_X(x) \right]^{n-1} f_X(x) \) (contínua)
+		\1 \( F_{X_{(1)}}(x) = 1-\left[1 - F_X(x) \right]^n \) (contínua e discreta)
+		\1 \( f_{X_{(1)}}(x) = n\left[1- F_X(x) \right]^{n-1} f_X(x) \) (contínua)
+	\end{outline}
+	
+\end{theorem}
+
+\begin{theorem}[Contínua e discreta]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com f.d. $F_X$. Nesse caso, a f.d. da j-ésima estatística de ordem, $X_{(j)}$, será
+	\[
+	F_{X_{(j)}}(x) = \sum_{k=j}^{n} \binom{n}{k} [F_X(x)]^k [1 - F_X(x)]^{n-k}.
+	\]
+\end{theorem}
+
+\begin{theorem}[Discreta]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com f.d. $F_X$. Suponha que a população seja discreta com f.p. $f_X$ e suporte $\{x_i \mid x_1 < x_2 < \ldots < x_n\}$. Além disso, denote $P_0 = 0$ e $P_i = F_X(x_i) = f_X(x_1) + f_X(x_2) + \ldots + f_X(x_i)$, $i = 1, 2, \ldots, n$. Nesse caso, a função de probabilidade da j-ésima estatística de ordem será
+	\[
+	f_{X_{(j)}}(x) = \P(X_{(j)} = x_i) = \sum_{k=j}^{n} \binom{n}{k} \left[ P_i^k (1 - P_i^{n-k}) - P_{i-1}^k (1 - P_{i-1}^{n-k}) \right].
+	\]
+\end{theorem}
+
+\begin{theorem}[Contínua]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com f.d. $F_X$. Se a população for contínua com f.d.p. $f_X$, então a f.d.p. da j-ésima estatística de ordem $X_{(j)}$ será
+	\[
+	f_{X_{(j)}}(x) = \frac{n!}{(j-1)!(n-j)!} f_X(x) [F_X(x)]^{j-1} [1 - F_X(x)]^{n-j}.
+	\]
+\end{theorem}
+
+\begin{theorem}[Contínua]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com f.d. $F_X$ e f.d.p. $f_X$. Então a f.d.p. conjunta de $(X_{(i)}, X_{(j)})$, $1 \leq i < j \leq n$, será
+	\begin{align*}
+		f_{X_{(i)}, X_{(j)}}(u, v) &= \frac{n!}{(i-1)!(j-i-1)!(n-j)!} f_X(u) f_X(v) [F_X(u)]^{i-1} \\
+		&\quad \times [F_X(v) - F_X(u)]^{j-i-1} [1 - F_X(v)]^{n-j} \ind(u < v).
+	\end{align*}
+	\begin{note}
+		Argumentos análogos podem ser utilizados para derivar distribuições de v.a.'s com três ou mais estatísticas de ordem. Um dos v.a.'s mais utilizados corresponde a $(X_{(1)}, X_{(2)}, \ldots, X_{(n)})$, cuja f.d.p. corresponde a
+		\[
+		f_{X_{(1)}, \ldots, X_{(n)}}(x_1, \ldots, x_n) = n! f_X(x_1) \cdots f_X(x_n) \ind(-\infty < x_1 < \ldots < x_n < \infty).
+		\]
+	\end{note}
+\end{theorem}
+
+\section{Redução de dados}
+
+\begin{definition}[Princípio da suficiência]
+	Se $T$ for uma estatística suficiente para $\theta$, e se duas amostras observadas, $\vect{x}$ e $\vect{y}$, forem tais que $T(\vect{x}) = T(\vect{y})$, então as inferências a respeito de $\theta$ deverão ser as mesmas, independentemente de se usar $\vect{x}$ ou $\vect{y}$.
+	
+	\begin{note}
+		Como consequência, qualquer inferência sobre $\theta$ deverá depender da amostra $\vect{X}$ apenas através de $T(\vect{X})$.
+	\end{note}
+\end{definition}
+
+\begin{definition}[Estatística suficiente]
+	Uma estatística $T(\vect{X})$ é chamada de estatística suficiente para $\theta$ se a distribuição condicional da amostra $\vect{X}$, dado o valor de $T(\vect{X})$, não depender de $\theta$.
+\end{definition}
+
+\begin{theorem}[Razão para suficiência]
+	Seja $p(\vect{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\vect{X}$, e $q(t | \theta)$ a f.p. (ou f.d.p.) de uma estatística $T(\vect{X})$. Então $T(\vect{X})$ será uma estatística suficiente para $\theta$ se, para todo $\vect{x} \in \mathcal{X}$, a razão
+	\[
+	\frac{p(\vect{x} | \theta)}{q(T(\vect{x}) | \theta)}
+	\]
+	for constante como função de $\theta$.
+\end{theorem}
+
+\begin{theorem}[Critério da fatoração]
+	Seja $f(\vect{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\vect{X}$. Uma estatística $T(\vect{X})$ é uma estatística suficiente para $\theta$ se, e somente se, existirem funções $g(t | \theta)$ e $h(\vect{x})$ de modo que, para todo $\vect{x} \in \mathcal{X}$ e todo $\theta \in \Theta$,
+	\[
+	f(\vect{x} | \theta) = g(T(\vect{x}) | \theta)h(\vect{x}).
+	\]
+\end{theorem}
+
+\begin{theorem}[Suficiência na família exponencial]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. oriunda de uma população cuja f.d.p. (ou f.p.) $f(x | \theta)$ pertence à família exponencial
+	\[
+	f(x | \vect{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\vect{\theta})t_k(x)\right) a(\vect{\theta})h(x),
+	\]
+	em que $\vect{\theta} = (\theta_1, \theta_2, \ldots, \theta_d)$, $d \leq s$. Então,
+	\[
+	T(\vect{X}) = \left(\sum_{i=1}^{n} t_1(X_i), \sum_{i=1}^{n} t_2(X_i), \ldots, \sum_{i=1}^{n} t_s(X_i)\right)
+	\]
+	é uma estatística suficiente para $\vect{\theta}$.
+\end{theorem}
+
+\begin{definition}[Estatística suficiente mínima]
+	Uma estatística $T(\vect{X})$ é chamada estatística suficiente mínima se, para qualquer outra estatística suficiente $T'(\vect{X})$, $T(\vect{X})$ puder ser escrita como função de $T'(\vect{X})$.
+\end{definition}
+
+\begin{theorem}[Critério para suficiência mínima]
+	Seja $f(\vect{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\vect{X}$. Suponhamos que, para quaisquer duas possíveis amostras observadas, $\vect{x}$ e $\vect{y}$, $f(\vect{x} | \theta)/f(\vect{y} | \theta)$ seja constante como função de $\theta$ se, e somente se, $T(\vect{x}) = T(\vect{y})$. Então $T(\vect{X})$ é uma estatística suficiente mínima.
+\end{theorem}
+
+\begin{definition}[Estatística ancilar]
+	Uma estatística $S(\vect{X})$ cuja distribuição não depende de $\theta$ é chamada de estatística ancilar.
+	
+	\begin{note}
+		Uma estatística $S(\vect{X})$ é dita ser ancilar de primeira ordem se $\E_\theta[S(\vect{X})]$ não depende de $\theta$.
+	\end{note}
+\end{definition}
+
+\begin{definition}[Estatística completa]
+	Seja $f(t | \theta)$ uma família de f.d.p.'s (ou f.p.'s) para uma estatística $T(\vect{X})$. A família de distribuições de probabilidade é chamada completa se, para qualquer função $g$,
+	\[
+	\E_\theta[g(T)] = 0 \implies \P_\theta[g(T) = 0] = 1,
+	\]
+	para todo $\theta \in \Theta$. De forma equivalente, $T(\vect{X})$ é chamada de estatística completa.
+\end{definition}
+
+\begin{theorem}[Basu]
+	Se $T(\vect{X})$ for uma estatística suficiente mínima e completa, então $T(\vect{X})$ será independente de toda estatística ancilar.
+\end{theorem}
+
+\begin{theorem}[Estatísticas completas na família exponencial]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. oriunda de uma população com f.d.p. (ou f.p.) pertencente à família exponencial
+	\[
+		f(x | \vect{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\vect{\theta})t_k(x)\right) a(\vect{\theta})h(x),
+	\]
+	em que $\vect{\theta} = (\theta_1, \theta_2, \ldots, \theta_s)$. Então, a estatística
+	\[
+		T(\vect{X}) = \left(\sum_{i=1}^{n} t_1(X_i), \sum_{i=1}^{n} t_2(X_i), \ldots, \sum_{i=1}^{n} t_s(X_i)\right)
+	\]
+	é completa, desde que $\Theta$ contenha um conjunto aberto em $\Re^s$.
+\end{theorem}
+
+\begin{theorem}
+	Se uma estatística suficiente mínima existe, então qualquer estatística completa também será uma estatística suficiente mínima.
+\end{theorem}
+
+\section{Estimação Pontual I}
+
+\begin{definition}[Estimador pontual]
+	Um estimador pontual é qualquer função de uma amostra.
+	
+	\begin{note}
+		Qualquer estatística é um estimador.
+	\end{note}
+\end{definition}
+
+\begin{definition}[Estimativa]
+	Uma estimativa é um valor (valores) observado(s) de um estimador, obtido a partir de uma amostra observada.
+\end{definition}
+
+\begin{definition}[Função de verossimilhança]
+	Sejam $X_1, X_2, \ldots, X_n$ uma amostra oriunda de uma população com f.d.p. (ou f.p.) $f(x | \theta)$. A função de verossimilhança será
+	\[
+	L(\theta | \vect{x}) = f(\vect{x} | \theta).
+	\]
+	Qualquer estimador $\hat{\theta} \equiv \hat{\theta}_n(\vect{X}) \in \Theta$ tal que
+	\[
+	L(\hat{\theta} | \vect{X}) = \sup_{\theta \in \Theta} L(\theta | \vect{X})
+	\]
+	é chamado estimador de máxima verossimilhança (EMV) de $\theta$.
+\end{definition}
+
+\begin{theorem}[Pontos críticos]
+	Seja $g(x)$ uma função contínua e duplamente diferenciável em algum intervalo aberto $I$ que contém $a$. Se $g'(a) = 0$, então $g(x)$ tem um máximo (mínimo) relativo em $x = a$, desde que $g''(a) < 0$ ($g''(a) > 0$). Ademais, o conjunto $\{a \in I \mid g'(a) = 0\}$ é chamado de conjunto dos pontos críticos de $g(x)$. Os únicos máximos (mínimos) possíveis de $g(x)$ para $c \leq x \leq d$ estão nos pontos críticos entre $c$ e $d$, bem como em $c$ e em $d$.
+\end{theorem}
+
+\begin{theorem}[Propriedade da invariância]
+	Seja $\hat{\theta}$ o EMV de $\theta$. Então, para qualquer estimando $\tau(\theta)$, seu EMV será $\tau(\hat{\theta})$.
+\end{theorem}
+
+\begin{theorem}[Relação EMV e Suficiência]
+	Seja $L(\theta | \vect{x})$ a função de verossimilhança da amostra $X_1, X_2, \ldots, X_n$, e seja $T = T(\vect{X})$ uma estatística suficiente para $\theta$. O EMV de $\theta$, se existir, será função de $T$.
+\end{theorem}
+
+\begin{theorem}[EMV na família exponencial]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. pertencente à família exponencial canônica, cuja f.d.p. (ou f.p.) conjunta pode ser escrita como
+	\[
+	f(\vect{x} | \eta) = \exp\left(\eta \sum_{i=1}^{n} T(x_i) - nA(\eta)\right) h^*(\vect{x}).
+	\]
+	Temos que o EMV de $\eta$ será solução da equação
+	\[
+	\frac{1}{n} \sum_{i=1}^{n} T(X_i) = \E[T(X_1)],
+	\]
+	desde que essa solução pertença ao espaço paramétrico de $\eta$.
+	
+	\begin{note}
+		Devido à propriedade da invariância, o resultado permanece válido para o caso geral da família exponencial, em que cada $X_i$ tem f.d.p. (ou f.p.)
+		\[
+		f(x | \theta) = \exp\{\eta(\theta)T(x) - B(\theta)\} h(x).
+		\]
+	\end{note}
+	
+	\begin{note}
+		O Teorema 4 pode ser generalizado para o caso multiparamétrico:
+		\[
+		f(\vect{x} | \vect{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\vect{\theta})T_k(\vect{x}) - B(\vect{\theta})\right) h(\vect{x}).
+		\]
+	\end{note}
+\end{theorem}
+
+\section{Estimação Pontual II}
+
+\begin{definition}[Erro quadrático médio]
+	O erro quadrático médio (EQM) do estimador $W$ de um parâmetro $\theta$ corresponde a
+	\[
+	\E_\theta(W - \theta)^2,
+	\]
+	que é função de $\theta$.
+\end{definition}
+
+\begin{definition}[Viés]
+	O viés ($B$ -- do inglês, bias) do estimador $W$ de um parâmetro $\theta$ corresponde a
+	\[
+	B_\theta(W) = \E_\theta(W) - \theta.
+	\]
+	Quando $B_\theta(W) = 0$, diz-se que o estimador $W$ é não viesado.
+\end{definition}
+
+\begin{definition}[ENVVUM]
+	Um estimador $W^*$ é dito ser o melhor estimador não viesado de $\tau(\theta)$ se $\E_\theta(W^*) = \tau(\theta)$ para todo $\theta \in \Theta$ e, para qualquer outro estimador não viesado $W$ de $\tau(\theta)$, $\Var_\theta(W^*) \leq \Var_\theta(W)$ para todo $\theta \in \Theta$. Nesse caso, $W^*$ é chamado de estimador não viesado de variância uniformemente mínima (ENVVUM) de $\tau(\theta)$.
+\end{definition}
+
+\begin{theorem}[Desigualdade de Cramér-Rao (Teorema 1)]
+	Sejam $X_1, X_2, \ldots, X_n$ uma amostra com f.d.p. conjunta $f(\vect{x} | \theta)$ e $W(\vect{X})$ um estimador que satisfaz
+	\[
+	\frac{d}{d\theta} \E_\theta[W(\vect{X})] = \int_{\mathcal{X}} \frac{\partial}{\partial\theta} [W(\vect{x})f(\vect{x} | \theta)]d\vect{x} \quad \text{e} \quad \Var_\theta[W(\vect{X})] < \infty.
+	\]
+	Então,
+	\[
+	\Var_\theta[W(\vect{X})] \geq \frac{\left(\frac{d}{d\theta} \E_\theta[W(\vect{X})]\right)^2}{\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\vect{X} | \theta)\right)^2\right]}.
+	\]
+	
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 O resultado do Teorema 1, bem como do Corolário 1, permanecerá válido quando as v.a.'s forem discretas. Nesse caso, troca-se a integral pelo somatório na suposição.
+	
+			\1 A quantidade
+			\[
+			\frac{\left(\frac{d}{d\theta} \E_\theta[W(\vect{X})]\right)^2}{\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\vect{X} | \theta)\right)^2\right]},
+			\]
+			exibida no Teorema 1, é conhecida como limite inferior de Cramér-Rao (LICR).
+		
+			\1 A quantidade
+			\[
+			\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\vect{X} | \theta)\right)^2\right]
+			\]
+			é conhecida como informação de Fisher da amostra. Quanto maior a informação de Fisher, mais informação temos sobre $\theta$ e, consequentemente, menor será o limite inferior de Cramér-Rao.
+		\end{outline}
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Desigualdade de Cramér-Rao -- caso i.i.d. (Corolário 1)]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com f.d.p. (ou f.p.) $f(x | \theta)$. Sob as suposições do Teorema 1,
+	\[
+	\Var_\theta[W(\vect{X})] \geq \frac{\left(\frac{d}{d\theta} \E_\theta[W(\vect{X})]\right)^2}{n\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(X | \theta)\right)^2\right]}.
+	\]
+\end{theorem}
+
+\begin{theorem}[Lema 1]
+	Se $f(x | \theta)$ satisfaz
+	\[
+	\frac{d}{d\theta} \E_\theta\left[\frac{\partial}{\partial\theta} \log f(X | \theta)\right] = \int_{\Re} \frac{\partial}{\partial\theta}\left[\frac{\partial}{\partial\theta} \log f(X | \theta)\right] f(x | \theta) dx,
+	\]
+	então,
+	\[
+	\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(X | \theta)\right)^2\right] = -\E_\theta\left[\frac{\partial^2}{\partial\theta^2} \log f(X | \theta)\right].
+	\]
+	
+	\begin{note}
+		\begin{outline}[enumerate]
+			\leavevmode
+			\1 A suposição utilizada no Lema 1 é válida, por exemplo, no caso da família exponencial.
+			
+			\1 Em geral, se o suporte de $X$ depender do parâmetro, a desigualdade de Cramér-Rao não se aplica.
+		\end{outline}
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Corolário 2]
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população $X$ com f.d.p. (ou f.p.) $f(x | \theta)$, em que $f$ satisfaz as condições do Teorema 1. Suponhamos que $L(\theta | \vect{x}) = \prod_{i=1}^{n} f(x_i | \theta)$ denote a função de verossimilhança. Se $W(\vect{X})$ for um estimador para $\tau(\theta)$, então $W(\vect{X})$ atingirá o limite inferior de Cramér-Rao se, e somente se,
+	\[
+	\frac{\partial}{\partial\theta} \log L(\theta | \vect{x}) = a(\theta)[W(\vect{x}) - \tau(\theta)],
+	\]
+	para alguma função $a(\theta)$.
+\end{theorem}
+
+\begin{theorem}[Rao-Blackwell (Teorema 2)]
+	Seja $W$ qualquer estimador não viesado de $\tau(\theta)$, e $T$ uma estatística suficiente para $\theta$. Defina $\phi(T) = \E[W | T]$. Então $\E_\theta[\phi(T)] = \tau(\theta)$ e $\Var_\theta[\phi(T)] \leq \Var_\theta(W)$ para todo $\theta \in \Theta$. Em outras palavras, $\phi(T)$ é um melhor estimador não viesado uniformemente de $\tau(\theta)$.
+	
+	\begin{note}
+		Devemos considerar estimadores que sejam funções de estatísticas suficientes para determinar ENVVUM's.
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Unicidade do melhor ENV (Teorema 3)]
+	Se $W$ for um ENVVUM de $\tau(\theta)$, então $W$ será único.
+\end{theorem}
+
+\begin{definition}[Estimador não viesado de zero]
+	Seja $U$ um estimador tal que $\E_\theta(U) = 0$, para todo $\theta \in \Theta$. Nesse caso, dizemos que $U$ é um estimador não viesado de zero.
+\end{definition}
+
+\begin{theorem}[Teorema 4]
+	Se $\E_\theta(W) = \tau(\theta)$, então $W$ será o melhor estimador não viesado de $\tau(\theta)$ se, e somente se, $W$ for não correlacionado com todos os estimadores não viesados de zero.
+	
+	\begin{note}
+		Um estimador não viesado de zero nada mais é do que uma perturbação aleatória. Se um estimador pudesse ser melhorado ao acrescentarmos uma perturbação a ele, esse estimador certamente seria problemático. Isso pode ser entendido como uma interpretação do Teorema 4. O Teorema 4 pode ser útil para mostrar quando um estimador não é ENVVUM.
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Teorema 5]
+	Seja $T$ uma estatística suficiente e completa para um parâmetro $\theta$, e seja $\phi(T)$ qualquer estimador baseado somente em $T$. Então, $\phi(T)$ é o único melhor estimador não viesado de seu valor esperado.
+	
+	\begin{note}
+		O teorema acima diz que, na presença de estatísticas suficientes e completas, se pudermos determinar qualquer estimador não viesado de $\tau(\theta)$, podemos determinar o melhor ENV. Basicamente, se $T$ for uma estatística suficiente e completa para $\theta$ e $h(\vect{X})$ um ENV de $\tau(\theta)$, então $\phi(T) = \E[h(\vect{X}) | T]$ será o melhor estimador não viesado de $\tau(\theta)$.
+	\end{note}
+\end{theorem}

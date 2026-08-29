@@ -1,0 +1,196 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
+
+% ============================================================
+% pacotes_notacao.tex
+% Pacotes, notação e ambientes consolidados
+% (originalmente espalhados em main.tex, inferencia.tex e prob_avancada.tex)
+% ============================================================
+
+% ---------- Pacotes ----------
+\usepackage[utf8]{inputenc} 			% codificação de entrada
+\usepackage[T1]{fontenc} 				% codificação de saída
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage{mathtools} 				% já carrega amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[brazilian]{cleveref}		% citações inteligentes de fig., eq., etc.
+\usepackage{graphicx}
+\usepackage{cancel} 					% cancelamento de variáveis em fórmulas
+\usepackage{xcolor}					% cores em textos
+\usepackage{outlines}					% itemize melhorado
+\usepackage{etoolbox} 					% ajuste de espaçamento de ambientes
+\usepackage{needspace}
+\usepackage{bbm} 						% \mathbbm{1} (função indicadora)
+\usepackage{bm}							% negrito para vetores/matrizes
+\usepackage{accents}					% \prior, \post
+
+\numberwithin{equation}{section} 		% Equações no formato X.Y
+
+% ---------- Notação de vetores, variáveis aleatórias e matrizes ----------
+\newcommand{\vect}[1]{\bm{#1}}  	    	% Vetor não aleatório
+\newcommand{\matr}[1]{\bm{\mathsf{#1}}} 	% Matriz
+\newcommand{\rv}[1]{#1}             		% Variável aleatória (itálico padrão)
+\newcommand{\rvect}[1]{\boldsymbol{#1}} 	% Vetor aleatório
+\newcommand{\prior}[1]{\accentset{\smile}{#1}} % quantidade a priori
+\newcommand{\post}[1]{\accentset{\frown}{#1}}  % quantidade a posteriori
+
+% ---------- Símbolos e conjuntos ----------
+\newcommand{\cp}[1]{#1^\mathsf{c}}			% complementar de um conjunto (A^\mathsf{c})
+\newcommand{\inv}[1]{#1^{-1}}      		% função ou matriz inversa
+\renewcommand{\Re}{\mathbb{R}}          	% conjunto dos Reais
+\newcommand{\Ree}{\widebar{\mathbb{R}}} 	% conjunto dos Reais Estendidos
+\renewcommand{\P}{\mathbb{P}} 				% medida probabilidade
+\newcommand{\Q}{\mathbb{Q}} 				% conjunto dos Racionais
+\newcommand{\N}{\mathbb{N}}				% conjunto dos Naturais
+\newcommand{\Bo}{\mathcal{B}(\Re)} 				% sigma-álgebra de Borel em \Re
+\newcommand{\Born}{\mathcal{B}(\Re^n)} 			% sigma-álgebra de Borel em \Re^n
+\newcommand{\Boe}{\mathcal{B}(\widebar{\Re})}		% sigma-álgebra de Borel em \Re estendido
+\newcommand{\indep}{\perp\!\!\!\!\perp}			% independência
+
+% atalhos para letras caligráficas
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\sig}{$\sigma$}
+
+% ---------- Distribuições ----------
+\DeclareMathOperator{\bernop}{Bernoulli}
+\newcommand{\berndist}[1]{\bernop(#1)}
+
+\DeclareMathOperator{\betaop}{Beta}
+\newcommand{\betadist}[1]{\betaop(#1)}
+
+\DeclareMathOperator{\binop}{Binomial}
+\newcommand{\bindist}[1]{\binop\left(#1\right)}
+
+\DeclareMathOperator{\negbinop}{Binomial-Negativa}
+\newcommand{\negbindist}[1]{\negbinop(#1)}
+
+\DeclareMathOperator{\dirichletop}{Dirichlet}
+\newcommand{\dirichletdist}[1]{\dirichletop(#1)}
+
+\DeclareMathOperator{\expop}{Exp}
+\newcommand{\expdist}[1]{\expop(#1)}
+
+\DeclareMathOperator{\gammaop}{Gamma}
+\newcommand{\gammadist}[1]{\gammaop(#1)}
+
+\DeclareMathOperator{\invgammaop}{Gamma-Inversa}
+\newcommand{\invgammadist}[1]{\invgammaop(#1)}
+
+\DeclareMathOperator{\normalgammaop}{Normal-Gamma}
+\newcommand{\ngdist}[1]{\normalgammaop(#1)}
+
+\DeclareMathOperator{\normalop}{\mathcal{N}}
+\newcommand{\normdist}[1]{\normalop\left(#1\right)}
+
+\DeclareMathOperator{\multop}{Multinomial}
+\newcommand{\multdist}[1]{\multop\left(#1\right)}
+
+\DeclareMathOperator{\poiop}{Poisson}
+\newcommand{\poidist}[1]{\poiop(#1)}
+
+\DeclareMathOperator{\tsudentop}{t-Student}
+\newcommand{\tdist}[1]{\tsudentop(#1)}
+
+\DeclareMathOperator{\triangop}{Triangular}
+\newcommand{\triangdist}[1]{\triangop(#1)}
+
+\DeclareMathOperator{\unifop}{Uniforme}
+\newcommand{\unifdist}[1]{\unifop(#1)}
+
+% ---------- Convergência ----------
+\newcommand{\toQC}{\xrightarrow{\text{q.c.}}} % quase certamente
+\newcommand{\toP}{\xrightarrow{\mathcal{P}}}  % em probabilidade
+\newcommand{\toL}{\xrightarrow{L^p}}          % em norma L^p
+\newcommand{\toD}{\xrightarrow{\mathcal{D}}}  % em distribuição
+
+% ---------- Variável barrada ----------
+\makeatletter
+\newcommand{\widebar}[1]{\mathop{\overline{#1}}\nolimits\@ifnextchar^{}{\,}}
+\makeatother
+
+% ---------- Operadores ----------
+\DeclareMathOperator{\E}{\mathbb{E}}     	% esperança
+\DeclareMathOperator{\Var}{Var}				% variância
+\DeclareMathOperator{\Cov}{Cov} 		 	% covariância
+\DeclareMathOperator{\cov}{Cov}				% covariância (minúsculo)
+\DeclareMathOperator{\lik}{\mathcal{L}}  	% verossimilhança
+\DeclareMathOperator{\llik}{\ell}        	% log-verossimilhança
+\DeclareMathOperator{\emv}{emv}				% estimador de máxima verossimilhança
+\DeclareMathOperator{\map}{map}				% máximo a posteriori
+\DeclareMathOperator{\kl}{KL}				% divergência Kullback-Leibler
+\DeclareMathOperator{\T}{^\intercal} 		% operador de transposto (para matrizes)
+\DeclareMathOperator{\ind}{\mathbbm{1}}		% função indicadora
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+% ---------- Ambientes de teorema ----------
+
+
+\newtheoremstyle{thm_estilo}% name
+{3pt}       % espaço acima
+{3pt}       % espaço abaixo
+{}          % fonte do corpo
+{}          % identação
+{\bfseries} % fonte do cabeçalho
+{.}         % pontuação após o cabeçalho
+{.5em}      % espaço após o cabeçalho
+{\thmname{#1}\thmnumber{ #2}\thmnote{\ \normalfont(\textit{#3})}}
+
+\newtheoremstyle{thm_note_est}% name
+{3pt}       % espaço acima
+{3pt}       % espaço abaixo
+{}          % fonte do corpo
+{}          % identação
+{\bfseries} % fonte do cabeçalho
+{:}         % pontuação após o cabeçalho
+{.5em}      % espaço após o cabeçalho
+{\thmname{#1}\thmnumber{ #2}\thmnote{\ \normalfont(\textit{#3})}}
+
+\theoremstyle{thm_estilo}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{definition}{Definição}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{corollary}{Corolário}[section]
+
+\theoremstyle{thm_note_est}
+\newtheorem*{note}{Nota}
+
+\BeforeBeginEnvironment{theorem}{\vspace{1em}}     % 1em = espaço ajustável
+\BeforeBeginEnvironment{definition}{\vspace{1em}}
+\BeforeBeginEnvironment{lemma}{\vspace{1em}}
+\BeforeBeginEnvironment{corollary}{\vspace{1em}}
+
+% ---------- Ajustes de listas ----------
+\renewcommand{\labelenumi}{(\theenumi)}
+\renewcommand{\outlineii}{enumerate}

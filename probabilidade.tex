@@ -1,0 +1,372 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
+\chapter{Probabilidade}
+
+\section{Distribuições}
+
+\begin{theorem}[Família exponencial]
+	Pertencem à família exponencial:
+	\begin{outline}
+		\1 \textbf{Discretas}: Bernoulli  ($0<p<1$), Binomial ($n$ fixo, $0<p<1$), Poisson, Binomial Negativa ($0<p<1$), Geométrica;
+		\1 \textbf{Contínuas}: Exponencial, Normal, Gama, Qui-quadrado, Beta, Normal Inversa, Weibull.
+	\end{outline}
+\end{theorem}
+
+\subsection{Distribuições discretas}
+
+\subsubsection{Uniforme discreta(N)}
+\begin{outline}
+	\1 \( f_X(x \mid N) = \frac{1}{N} \ind_{1, \ldots, N}(x), \quad N \in \N \)
+	\1 \( \E[X] = \frac{N+1}{2} \)
+	\1 \( \Var[X] = \frac{(N+1)(N-1)}{12} \)
+	\1 \( M_X(t) = \frac{1}{N} \sum_{i=1}^{N}e^{it} \) 
+\end{outline}
+
+\subsubsection{Bernoulli(p)}
+\begin{outline}
+	\1 \( f_X(x \mid p) =p^x(1-p)^{1-x} \ind_{\{0,1\}}(x), \quad 0 \leq p \leq 1 \)
+	\1 \( \E[X] = p \)
+	\1 \( \Var[X] = p(1-p) \)
+	\1 \( M_X(t) = (1-p) + pe^t \) 
+\end{outline}
+
+\subsubsection{Binomial(n,p)}
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid n,p) =\binom{n}{x} p^x(n-p)^{1-x} \ind_{\{0,1,\ldots,n\}}(x), \quad 0 \leq p \leq 1 \)
+	\1 \( \E[X] = np \)
+	\1 \( \Var[X] = np(1-p) \)
+	\1 \( M_X(t) = \left[(1-p) + pe^t\right]^n \) 
+\end{outline}
+
+\subsubsection{Poisson($\theta$)}
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid \theta) = \frac{\theta^x e^{-\theta}}{x!} \ind_{\{0,1,\ldots\}}(x), \quad \theta \geq 0\)
+	\1 \( \E[X] = \theta \)
+	\1 \( \Var[X] = \theta \)
+	\1 \(\displaystyle M_X(t) = e^{\theta(e^t-1)} \) 
+\end{outline}
+
+\subsection{Distribuições contínuas}
+\subsubsection{Uniforme(a,b)}
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid a,b) = \frac{1}{b-a}\ind_{(a,b)(x)}, \quad a,b \in \Re \)
+	\1 \(\displaystyle F_X(x) = \frac{x-a}{b-a}\ind_{(a,b)(x)} + \ind_{[b, \infty](x)}\)
+	\1 \( \E[X] = \frac{a+b}{2} \)
+	\1 \( \Var[X] = \frac{1}{12}(b-a)^2 \)
+	\1 \( M_X(t) = \left\{ 
+	\begin{array}{lcl}\displaystyle
+		\frac{e^{tb}-e^{ta}}{t(b-a)}, & \text{para} & t\neq0 \\
+		1, & \text{para} & t=0
+	\end{array} \right. \)
+	\1 \(\hat{a}=X_{(1)}, \hat{b}=X_{(n)}\)
+\end{outline}
+
+\subsubsection{Exponencial($\lambda$)}
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid \lambda) = \lambda e^{-\lambda x} \ind_{\Re_+}(x), \quad \lambda>0\)
+	\1 \( F_X(x) = (1-e^{-\lambda x})\ind_{\Re_+}(x) \)
+	\1 \( \E[X] = \frac{1}{\lambda} \)
+	\1 \( \Var[X] = \frac{1}{\lambda^2} \)
+	\1 \(\displaystyle M_X(t) = \frac{\lambda}{\lambda-t}\), para  $t<\lambda$
+	\1 \( \hat{\lambda} = 1/\bar{X} \)
+\end{outline}
+
+\subsubsection{Normal($\mu, \sigma^2$)}
+\begin{outline}
+	\1 \(\displaystyle f_X(x\mid \mu, \sigma^2) = \frac{1}{\sqrt{\mu, \sigma^2}}\exp\left\{{-\frac{1}{2\sigma^2}}(x-\mu)^2\right\} \ind_{\Re}(x), \quad \mu\in\Re, \sigma>0\)
+	\1 \( \E[X] = \mu \)
+	\1 \( \Var[X] = \sigma^2 \)
+	\1 \(\displaystyle M_X(t) = e^{\mu t + \sigma^2 t^2/2} \), para  $t<\lambda$
+	\1 \( \hat{\mu} = \bar{X}, \hat{\sigma^2} = \left(\frac{n+1}{n}\right) S^2 \)
+\end{outline}
+
+\subsubsection{Beta($\alpha, \beta$)}
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-1}(1-x)^{\beta-1}\ind_{\Re_{[0,1]}}(x), \quad \alpha,\beta>0 \)
+	\1 \(\displaystyle \E[X] = \frac{\alpha}{\alpha+\beta} \)
+	\1 \(\displaystyle \Var[X] = \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)} \)
+	\1 \(\displaystyle M_X(t) = 1 + \sum_{k=1}^{\infty} \left( \prod_{r=0}^{k-1} \frac{\alpha+r}{\alpha+\beta+r} \right)\frac{t^k}{k!} \)
+\end{outline}
+
+\subsubsection{Gama($\alpha, \theta$) (\textit{shape}, \textit{scale})}
+Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid \alpha, \beta) = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1}e^{-x/\theta}\ind_{\Re_+}(x), \quad \alpha,\theta>0 \)
+	\1 \(\displaystyle \E[X] = \alpha\theta \)
+	\1 \(\displaystyle \Var[X] = \alpha\theta^2 \)
+	\1 Moda: $(\alpha-1)\theta$, para $\alpha\geq1$; $0$, para $\alpha<1$
+	\1 \(\displaystyle M_X(t) = (1-\theta t)^{-\alpha} \), para  $t<\frac{1}{\theta}$
+\end{outline}
+
+\subsubsection{Gama($\alpha, \beta$) (\textit{shape}, \textit{rate})}
+\begin{outline}
+	\1 \(\displaystyle f_X(x \mid \alpha, \beta) = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1}e^{-\beta x}\ind_{\Re_+}(x), \quad \alpha,\beta>0 \)
+	\1 \(\displaystyle \E[X] = \frac{\alpha}{\beta} \)
+	\1 \(\displaystyle \Var[X] = \frac{\alpha}{\beta^2} \)
+	\1 Moda = $\frac{\alpha-1}{\beta}$, para $\alpha \geq 1$; $0$, para $\alpha<1$
+	\1 \(\displaystyle M_X(t) = \left(1-\frac{t}{\beta}\right)^{-\alpha} \), para  $t<\beta$
+\end{outline}
+
+\begin{theorem}[Propriedades da variância e covariância]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \Var(X) = \E(X^2) - (\E(X))^2 \)
+		\1 \( \Var(X+Y) = \Var(X)+\Var(Y)+ 2\Cov(X,Y) \)
+		\1 \( \Var(aX+b) = a^2\Var(X) \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Utilidade pública]
+	Sejam $x_1, x_2, \ldots, x_n$ números reais quaisquer e $\bar{x}$ seu valor médio. Então,
+	\begin{outline}[enumerate]
+		\1 $\min_a \sum_{i=1}^{n} (x_i - a)^2 = \sum_{i=1}^{n} (x_i - \bar{x})^2$;
+		
+		\1 $\sum_{i=1}^{n} (x_i - \bar{x})^2 = \sum_{i=1}^{n} x_i^2 - n\bar{x}^2$;
+		
+		\1 $\sum_{i=1}^{n} (x_i - \mu)^2 = \sum_{i=1}^{n} (x_i - \bar{x})^2 + n(\bar{x} - \mu)^2$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Utilidade pública 2]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \Gamma(z) =  \int_{0}^{\infty}t^{z-1}e^{-t}dt \)
+		\1 \( \Gamma(n) = (n-1)! \)
+		\1 \( \Gamma(n+1)=n\Gamma(n) \)
+		\1 \( \Gamma(n)=(n-1)\Gamma(n-1)\)
+		\1 \( \Gamma(1/2) = \pi \)
+		\1 \(\displaystyle B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}= \int_{0}^{1}t^{x-1}(1-t)^{y-1}dt \)
+	\end{outline}
+\end{theorem}
+
+
+\begin{theorem}[Transformação univariada contínua]
+	Seja $X$ com f.d.p $f_X(x)$ e $Y=g(X)$, onde $g$ é uma função monótona. Sejam $\Xcal = \{x : f_X(x)>0\}$ e $\Ycal=\{y:y=g(x), x \in \Xcal\}$.
+	Suponha que $f_X(x)$ é contínua em $\Xcal$ e $g^{-1(y)}$ tenha uma derivada continua em $y$. Então, a f.d.p. de $y$ é dada por
+	\[
+	f_Y(y) = f_X(g^{-1}(y))\abs{\frac{d}{dy}g^{-1}(y)}\ind_\Ycal(y).
+	\]
+	\begin{note}
+		Caso $g$ seja monótona por partes ($n$ partes),
+		\[
+		f_Y(y) = \sum_{i=1}^n f_X(g_i^{-1}(y))\abs{\frac{d}{dy}g_i^{-1}(y)}\ind_\Ycal(y).
+		\]
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Transformação bivariada]
+	\[
+	f_{U,V}(u,v) = f_{X,Y}\left( h_1(u,v), h_2(u,v) \right)\abs{J_H(u,v)},
+	\]
+	onde
+	\[
+	J_H(u,v) = 
+	\begin{bmatrix}
+		\frac{\partial h_1}{\partial u} & \frac{\partial h_1}{\partial v} \\[1ex] 
+		\frac{\partial h_2}{\partial u} & \frac{\partial h_2}{\partial v}
+	\end{bmatrix}
+	\]
+	e $h_1(u,v)=g_1^{-1}(u,v)$, $h_2(u,v)=g_2^{-1}(u,v)$.
+\end{theorem}
+
+\begin{theorem}[Transformações usuais]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \(\displaystyle Y = X^2 \implies f_Y(y) = \frac{1}{2\sqrt{y}} \left[ f_X(\sqrt(y)) +f_X(-\sqrt{y}) \right]\)
+		\1 \( Y = \log(X) \implies f_Y(y) = e^yf_X(e^y) \)
+		\1 \(\displaystyle  X_i \sim \normdist{\mu_i, \sigma^2_i } \implies \sum_{i=1}^{n}(a_i X_i +b_i) \sim \normdist{\sum_{i=1}^{n}(a_i\mu_i+b_i), \sum_{i=1}^{n}a_i^2\sigma_i^2 } \)
+		\2 \( X \sim \normdist{\mu,\sigma^2} \implies   Y = aX+b \sim \normdist{a\mu+b, a^2\sigma^2} \)
+		\2 \( X \sim \normdist{0,1} \implies Y = aX+b \sim \normdist{b, a^2} \)
+		\1 \( X_i \sim \expdist{\lambda} \implies  Y = \sum_{i=1}^{n} X_i \sim \gammadist{n, \lambda} \)
+		\1 \( X \sim \expdist{\lambda} \implies Y = cX \sim \expdist{\lambda/c} \)
+		\1 \( Y = \frac{1}{X} \implies f_Y(y) = f_X\left(\frac{1}{y}\right) \frac{1}{y^2}\)
+		\1 \( \begin{aligned}[t]
+			X \sim \betadist{\theta,1} &\implies X^\theta \sim \unifdist{0,1} \\
+			&\implies -\log X \sim \expdist{\theta} \\
+			&\implies -\sum_{i=1}^{n}\log X_i \sim \gammadist{n,\theta} 
+		\end{aligned} \)
+		\1 \( X_1,X_2 \sim \unifdist{0,\theta} \implies Y=X_1+X_2 \sim  \triangdist{0, 2\theta, \theta}\)
+		
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Probabilidades condicionais]
+	\begin{outline}[enumerate]
+		\leavevmode
+		\1 \( \begin{aligned}[t]
+			\P[A,B\mid C]  &= \P[A\mid B,C] \ \P[B\mid C] \\
+			&= \P[B\mid A,C] \ \P[A\mid C]
+		\end{aligned} \)
+		\1 \( \begin{aligned}[t]
+			\P[A\mid B, C]  &= \frac{\P[B\mid A,C] \ \P[A\mid C]}{\P[B\mid C]} \\
+			&= \frac{\P[C\mid A,B] \ \P[A\mid B]}{P[C \mid B]}
+		\end{aligned} \)
+		\1 \( \begin{aligned}[t] 
+			\P[A, B \mid C, D] &= \frac{\P[C | A, B, D] \P[A, B, D]}{\P[C, D]}
+		\end{aligned} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Independência condicional]
+	\begin{outline}[enumerate]
+		\leavevmode
+		\1 \( \begin{aligned}[t] A  \indep B \mid C &\iff \P[A\mid B,C] = \P[A\mid C] \\ &\iff P[A, B \mid C] = \P[A\mid C] \ \P[B\mid C] \\
+			&\iff [A\mid C] \indep [B\mid C]
+		\end{aligned} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da esperança]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \E[X] = \E\left[\E(X \mid Y) \right] \) (\textit{lei da esperança total})
+		\1 \( \E[X \mid Z] = \E \left[ \E(X \mid Y, Z) \mid Z \right] \) (\textit{Terre})
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da variância]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \Var[X] = \E[(X-\mu)^2] = \E[X^2] - \mu^2\)
+		\1 \( \Var[X] = \E(\Var[X|Y]) + \Var(\E[X|Y]) \)
+		\1 \( \Var[X \mid Z] = \E(\Var[X|Y]\mid Z) + \Var(\E[X|Y] \mid Z) \)
+		\1 \(\Var[X+a] = \Var[X]\)
+		\1 \( \Var[aX+bY] = a^2\Var[X] + b^2\Var[y] + 2ab\Cov[X,Y] \)
+		\1 \( \Var[aX-bY] = a^2\Var[X] + b^2\Var[y] - 2ab\Cov[X,Y] \)
+		\1 \( \begin{aligned}[t] \Var\left(\sum_{i=1}^{n} X_i\right) &= \sum_{i=1}^{n} \Var(X_i) + 2\sum_{\substack{i,j=1\\i<j}}^{n} \Cov(X_i, X_j) \\
+			&= \sum_{i=1}^{n} \Var(X_i) + \sum_{\substack{i,j=1\\i\neq j}}^{n} \Cov(X_i, X_j) \\
+			&= \sum_{i,j=1}^{n} \Cov(X_i, X_j)
+		\end{aligned} \)
+		\1 \( X_1 \indep \ldots \indep X_n \implies \Var\left(\sum_{i=1}^{n} X_i\right) = \sum_{i=1}^{n} \Var(X_i) \)
+		\1 \( \Var[\matr{A}X] = \matr{A}\Var[X]\matr{A}' \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da covariância]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \Cov(X,Y) = \E[ \Cov(X,Y \mid Z)] +\Cov( \E[X\mid Z],E[Y\mid Z]) \)
+		\1 \( \Cov(X,Y) = \E[(X-\mu_X)(Y-\mu_Y)] = \E[XY] - \mu_X\mu_Y\)
+		\1 \( \Cov(X, a) = 0 \)
+		\1 \(\Cov(aX, bY) = ab\,\Cov(X, Y)\ \)
+		\1 \( \Cov(aX + bY, cW + dV) = ac\,\Cov(X, W) + ad\,\Cov(X, V) + bc\,\Cov(Y, W) + bd\,\Cov(Y, V) \)
+		\1 \( \Cov(aX + bY, Z) = a\,\Cov(X, Z) + b\,\Cov(Y, Z) \)
+		\1 \(|\Cov(X, Y)| \leq \sqrt{\sigma^2(X)\sigma^2(Y)}\)
+		\1 \(
+		\begin{aligned}[t]
+			\Cov(\bm{X}, \bm{Y}) &= \E\left[(\bm{X} - \E[\bm{X}])(\bm{Y} - \E[\bm{Y}])^{\T}\right]\\
+			&= \E\left[\bm{X}\bm{Y}^{\T}\right] - \E[\bm{X}]\E[\bm{Y}]^{\T}
+		\end{aligned}
+		\)
+		\1 \( \rho_{X,Y} = \frac{\Cov(X, Y)}{\sigma_X \sigma_Y} \)
+		\1 \( \Cov(\matr{A}\vect{U}, \matr{B}\vect{V}) = \matr{A}\Cov(\vect{U}, \vect{V})\matr{B}^{\T} \)
+		\1 \( \begin{aligned}[t] \Cov(\matr{A}\vect{X}+ \matr{B}\vect{Y}, \matr{C}\vect{W} + \matr{D}\vect{V}) &= \matr{A}\Cov(\vect{X}, \vect{W})\matr{C}^{\T} \\&+ \matr{A}\Cov(\vect{X}, \vect{V})\matr{D}^{\T} \\&+ \matr{B}\Cov(\vect{Y}, \vect{W})\matr{C}^{\T} \\&+ \matr{B}\Cov(\vect{Y}, \vect{V})\matr{D}^{\T}
+		\end{aligned}\)
+	\end{outline}
+\end{theorem}
+
+\section{Normal multivariada}
+
+\begin{theorem}
+	Suponha que $\vect{X} \sim \normdist{\vect{m}, \matr{V}}$. Para $\matr{A}$ e $\vect{b}$ de dimensões adequadas, 
+	\begin{outline}[enumerate]
+		\1 \( \vect{Y}=\matr{A}\vect{X}+\vect{b} \implies \vect{Y} \sim \normdist{\matr{A}\vect{m} + \vect{b}, \matr{A}\matr{V}\matr{A}'} \);
+		\1 Se $\matr{A}\matr{V}\matr{A}'$ é diagonal, então os elementos de $Y$ são normais independentes.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Suponha que $\vect{X}_i \sim \normdist{\vect{m}_i, \matr{V}_i}$ independentes, $i=1,\ldots,k$, e considere $\matr{A}_1, \ldots, \matr{A}_k$ e $\vect{b}$ de dimensões adequadas.
+	\begin{outline}[enumerate]
+		\1 \( \vect{Y}=\sum_{i=1}^{k}\matr{A}_i\vect{X}_i+\vect{b} \sim \normdist{\sum_{i=1}^{k}\matr{A}_i\vect{m}_i + \vect{b}, \sum_{i=1}^{k}\matr{A}_i\matr{V}_i\matr{A}'_i} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Suponha que $\vect{X}$ seja particionado como segue:
+	\[
+	\vect{X} = \begin{bmatrix}
+		\vect{X}_1 \\ \vect{X}_2
+	\end{bmatrix}, \quad
+	\vect{m} = \begin{bmatrix}
+		\vect{m}_1 \\ \vect{m}_2
+	\end{bmatrix}, \quad
+	\matr{V} = \begin{bmatrix}
+		\matr{V}_{11} & \matr{V}_{12} \\ \matr{V}_{21} & \matr{V}_{22}
+	\end{bmatrix}.
+	\]
+	
+	\begin{outline}[enumerate]
+		\1 $\vect{X}_i \sim \normdist{\vect{m}_i, \matr{V}_{ii}}$, $i=1,2$. Em particular, se $X_i$ é normal univariado, então $X_i\sim\normdist{m_i, V_{ii}}$, para $i=1\ldots,n$;
+		\1 \( (\vect{X}_1|\vect{X_2}) \sim \normdist{ \vect{\mu}_{12}, \matr{C}_{12}} \) onde
+		\begin{align}
+			\vect{\mu}_{12} &= \vect{m}_1 + \matr{V}_{12}\inv{\matr{V}_{22}}(\matr{X}_2-\vect{m}_2) \\
+			&= \vect{m}_1 + \matr{A}_1(\matr{X}_2-\vect{m}_2)
+		\end{align} e
+		\begin{align}
+			\matr{C}_{12} &= \matr{V}_{11} - \matr{V}_{12}\inv{\matr{V}_{22}}\matr{V}_{21} \\
+			&= \matr{V}_{11} - \matr{A}_1\matr{V}_{22}\matr{A}'_{1}
+		\end{align}
+		A matriz $\matr{A}_1 = \matr{V}_{12}\inv{\matr{V}_{22}}$ é chamada de \textit{matriz de regressão} de $\vect{X}_1$ em $\vect{X}_2$.
+		
+		\1 \( (\vect{X}_2|\vect{X_1}) \sim \normdist{ \vect{\mu}_{21}, \matr{C}_{21}} \) onde
+		\begin{align}
+			\vect{\mu}_{21} &= \vect{m}_2 + \matr{V}_{21}\inv{\matr{V}_{11}}(\matr{X}_1-\vect{m}_1) \\
+			&= \vect{m}_2 + \matr{A}_2(\matr{X}_1-\vect{m}_1)
+		\end{align} e
+		\begin{align}
+			\matr{C}_{21} &= \matr{V}_{22} - \matr{V}_{21}\inv{\matr{V}_{11}}\matr{V}_{12} \\
+			&= \matr{V}_{22} - \matr{A}_2\matr{V}_{11}\matr{A}'_{2}
+		\end{align}
+		
+		\1 No caso especial da normal bivariada em (1) acima, os momentos são todos escalares, e a correlação entre $X_1$ e $X_2$ é $\rho = \rho_{12} = V_{12}/\sqrt{V_{11}V_{22}}$. As regressões são determinadas pelos coeficientes de regressão $A_1$ e $A_2$ dados por
+		\[
+		A_1 = \rho\sqrt{V_{11}/V_{22}} \quad \text{e} \quad A_2 = \rho\sqrt{V_{22}/V_{11}}.
+		\]
+		
+		Além disso,
+		\[
+		\Var[X_1 \mid X_2] = (1-\rho^2)V_{11} \quad \text{e} \quad \Var[X_2 \mid X_1] = (1-\rho^2)V_{22}.
+		\]
+	\end{outline}
+\end{theorem}
+
+\section{Normal multivariada e regressão linear}
+
+\begin{theorem}[Distribuição condicional e regressão linear]
+	Suponha que o vetor-$p$ $\vect{Y}$ e o vetor-$n$ $\vect{\theta}$ estejam relacionados via a distribuição condicional
+	\[
+	(\vect{Y} \mid \vect{\theta}) \sim \normdist{\matr{F}'\vect{\theta}, \matr{V}},
+	\]
+	onde a matriz $(n \times p)$ $\matr{F}$ e a matriz $(p \times p)$ definida positiva simétrica $\matr{V}$ são constantes, e que a distribuição marginal de $\vect{\theta}$ seja dada por
+	\[
+	\vect{\theta} \sim \normdist{\vect{a}, \matr{R}}.
+	\]
+	
+	Segue que
+	\[
+	\begin{bmatrix}
+		\vect{Y} \\ \vect{\theta}
+	\end{bmatrix} \sim \normdist{\begin{bmatrix}
+			\matr{F}'\vect{a} \\ \vect{a}
+		\end{bmatrix}, \begin{bmatrix}
+			\matr{F}'\matr{R}\matr{F} + \matr{V} & \matr{F}'\matr{R} \\
+			\matr{R}\matr{F} & \matr{R}
+	\end{bmatrix}}.
+	\]
+	
+	Então $(\vect{\theta} \mid \vect{Y}) \sim \normdist{\vect{m}, \matr{C}}$, onde
+	\[
+	\vect{m} = \vect{a} + \matr{R}\matr{F}[\matr{F}'\matr{R}\matr{F} + \matr{V}]^{-1}[\vect{Y} - \matr{F}'\vect{a}]
+	\]
+	e
+	\[
+	\matr{C} = \matr{R} - \matr{R}\matr{F}[\matr{F}'\matr{R}\matr{F} + \matr{V}]^{-1}\matr{F}'\matr{R}.
+	\]
+	
+	Definindo $\vect{e} = \vect{Y} - \matr{F}'\vect{a}$, $\matr{Q} = \matr{F}'\matr{R}\matr{F} + \matr{V}$ e $\matr{A} = \matr{R}\matr{F}\inv{\matr{Q}}$, estas equações tornam-se
+	\[
+	\vect{m} = \vect{a} + \matr{A}\vect{e} \quad \text{e} \quad \matr{C} = \matr{R} - \matr{A}\matr{Q}\matr{A}'.
+	\]
+\end{theorem}
