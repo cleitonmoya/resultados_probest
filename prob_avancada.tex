@@ -152,7 +152,7 @@
 		\1 Bijetora: $f$ é sobrejetora e injetora
 		\1 Gráfico: \(G(f) \coloneq \{(\omega,f(\omega)): \omega \in \Omega_1\}\)
 		\1 Imagem direta: \(f(A) \coloneq \{\omega_2\in\Omega_2: f(\omega_1)=\omega_2 \text{ para algum } \omega_1 \in A\}\)
-		\1 Imagem inversa: \(\inv{f}(B) \coloneq \{\omega_1\in\Omega_1: f(\omega_1) \in B\}\)
+		\1 Imagem inversa: \(f\inv(B) \coloneq \{\omega_1\in\Omega_1: f(\omega_1) \in B\}\)
 		\1 Composição: Seja $g: \Omega_2 \to \Omega_3$. \((g\circ f) (\omega_1) \coloneq g(f(\omega_1)), \ \omega_1 \in \Omega_1\)
 		\1 Função inversa: Seja $g: \Omega_2 \to \Omega_1$. $g$ é inversa de $f$ se 
 			\2 \(g(f(\omega_1)) = w_1, \ \forall \omega_1 \in \Omega_1\)
@@ -178,16 +178,16 @@
 
 \begin{theorem}[Propriedades de funções e imagens inversas] Seja \( f\colon\Omega_1 \to \Omega_2 \),  \(\mathmbox{A,B,(A_n)_{n\geq1} \subset \Omega_2}\) e \(C \subset \Omega_1\):
 	\begin{outline}[enumerate]
-		\1 $\inv{f}$ é bijetora
-		\1 $\inv{\left(\inv{f}\right)} = f$
-		\1 \(A \subset B \implies \inv{f}(A) \subset \inv{f}(B)\) 
-		\1 \( \inv{f}(A\cup B) = \inv{f}(A)\cup \inv{f}(B) \)
-		\1 \( \inv{f}(A\cap B) = \inv{f}(A)\cap \inv{f}(B) \)
-		\1 \(\inv{f}\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty \inv{f}(A_n) \)
-		\1 \(\inv{f}\left( \bigcap_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty \inv{f}(A_n) \)
-		\1 \(\inv{f}(\cp{A}) = \cp{\left(\inv{f}(A)\right)} \)
-		\1 \( C \subset \inv{f} \left( f(C) \right) \)
-		\1 \(f\left(\inv{f}(A)\right) \subset A \)
+		\1 $f\inv$ é bijetora
+		\1 $\left(f\inv\right)\inv = f$
+		\1 \(A \subset B \implies f\inv(A) \subset f\inv(B)\) 
+		\1 \( f\inv(A\cup B) = f\inv(A)\cup f\inv(B) \)
+		\1 \( f\inv(A\cap B) = f\inv(A)\cap f\inv(B) \)
+		\1 \(f\inv\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty f\inv(A_n) \)
+		\1 \(f\inv\left( \bigcap_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty f\inv(A_n) \)
+		\1 \(f\inv(\cp{A}) = \cp{\left(f\inv(A)\right)} \)
+		\1 \( C \subset f\inv \left( f(C) \right) \)
+		\1 \(f\left(f\inv(A)\right) \subset A \)
 	\end{outline}
 \end{theorem}
 
@@ -195,8 +195,8 @@
 	\begin{outline}[enumerate]
 		\1 \( f \text{ e } g \text{ são injetoras } \implies g\circ f \text{ é injetora} \)
 		\1 \( f \text{ e } g \text{ são sobrejetoras } \implies g\circ f \text{ é sobrejetora} \)
-		\1 \( f \text{ e } g \text{ são bijetoras } \implies g\circ f \text{ é bijetora} \) e \( \inv{\left(g \circ f\right)} = \inv{f}\circ\inv{g}\)
-		\1 \( \inv{\left(g \circ f\right)}(U) = \inv{f}(\inv{g}(U))\), para $U\subset \Omega_3$
+		\1 \( f \text{ e } g \text{ são bijetoras } \implies g\circ f \text{ é bijetora} \) e \( \left(g \circ f\right)\inv = f\inv\circ g\inv\)
+		\1 \( \left(g \circ f\right)\inv(U) = f\inv(g\inv(U))\), para $U\subset \Omega_3$
 	\end{outline}
 \end{theorem}
 
@@ -763,14 +763,14 @@
 \section{Transformações mensuráveis}
 
 \begin{theorem}[2.1]
-	Se $\Acal_2$ for uma \sig-álgebra de subconjuntos de $\Omega_2$, então $\inv{X}(\Acal_2)$ é uma \sig-álgebra de subconjuntos de $\Omega_1$.
+	Se $\Acal_2$ for uma \sig-álgebra de subconjuntos de $\Omega_2$, então $X\inv(\Acal_2)$ é uma \sig-álgebra de subconjuntos de $\Omega_1$.
 \end{theorem}
 
 \begin{definition}[2.1 Transformação mensurável]
-	Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ dois espaços mensuráveis e $X\colon\Omega_1\to\Omega_2$. Dizemos que $X$ é $\Acal_1\backslash\Acal_2$ mensurável se $\inv{X}(\Acal_2) \subset \Acal_1$, isto é,
+	Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ dois espaços mensuráveis e $X\colon\Omega_1\to\Omega_2$. Dizemos que $X$ é $\Acal_1\backslash\Acal_2$ mensurável se $X\inv(\Acal_2) \subset \Acal_1$, isto é,
 	\begin{equation}
 		\begin{aligned}
-			[X\in B] &= \inv{X}(B)\in\Acal_1, \quad \text{para todo } B \in \Acal_2 \\
+			[X\in B] &= X\inv(B)\in\Acal_1, \quad \text{para todo } B \in \Acal_2 \\
 		      	     &= \{\omega \in \Omega: X(\omega) \in B \}  \in \Acal_1,  \quad \text{para todo } B \in \Acal_2
 		\end{aligned}
 	\end{equation}
@@ -778,9 +778,9 @@
 
 % Sigma álgebra GERADA
 \begin{definition}[2.2 \sig-álgebra \underline{gerada} por $X$ em $\Omega_1$]
-	A \sig-álgebra $\inv{X}(\Acal_2)$ é a menor \sig-álgebra $\Acal_1$ de subconjuntos de $\Omega_1$ que torna $X$ uma transformação $\Acal_1\backslash\Acal_2$ mensurável e é denominada \textit{\sig-álgebra gerada} por $X$:
+	A \sig-álgebra $X\inv(\Acal_2)$ é a menor \sig-álgebra $\Acal_1$ de subconjuntos de $\Omega_1$ que torna $X$ uma transformação $\Acal_1\backslash\Acal_2$ mensurável e é denominada \textit{\sig-álgebra gerada} por $X$:
 	\begin{equation}
-		\sigma(X) \coloneq \inv{X}(\Acal_2) = \{\inv{X}(B): B \in \Acal_2\}
+		\sigma(X) \coloneq X\inv(\Acal_2) = \{X\inv(B): B \in \Acal_2\}
 	\end{equation}
 \end{definition}
 
@@ -795,7 +795,7 @@
 
 % Sigma álgebra INDUZIDA
 \begin{theorem}[2.4 \sig-álgebra \underline{induzida} por $X$ em $\Omega_2$]
-	Seja $X\colon\Omega_1\to\Omega_2$ e $\Acal_1$ uma \sig-álgebra de subconjuntos de $\Omega_1$. A classe $X_*(\Acal_1) \coloneq \{ B \subset \Omega_2: \inv{X}(B) \in \Acal_1 \}$ é uma \sig-álgebra de subconjuntos de $\Omega_2$ que será denominada \textit{\sig-álgebra induzida} por $X$ à partir de $\Acal_1$.
+	Seja $X\colon\Omega_1\to\Omega_2$ e $\Acal_1$ uma \sig-álgebra de subconjuntos de $\Omega_1$. A classe $X_*(\Acal_1) \coloneq \{ B \subset \Omega_2: X\inv(B) \in \Acal_1 \}$ é uma \sig-álgebra de subconjuntos de $\Omega_2$ que será denominada \textit{\sig-álgebra induzida} por $X$ à partir de $\Acal_1$.
 \end{theorem}
 
 \begin{note}
@@ -810,12 +810,12 @@
 \begin{theorem}[2.2] 
 	Para qualquer classe $\Ccal_2$ de subconjuntos de $\Omega_2$, temos que
 	\begin{equation}
-		\inv{X}(\sigma(\Ccal_2)) = \sigma(\inv{X}(\Ccal_2))
+		X\inv(\sigma(\Ccal_2)) = \sigma(X\inv(\Ccal_2))
 	\end{equation}
 \end{theorem}
 
 \begin{theorem}[Condição suficiente para mensurabilidade]
-	Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ dois espaços mensuráveis e $X\colon \Omega_1\to\Omega_2$. Se $\inv{X}(\Ccal_2) \subset \Acal_1$, onde $\Ccal_2$ é a classe que gera $\Acal_2$, então $X$ é $\Acal_1\backslash\Acal_2$ mensurável.
+	Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ dois espaços mensuráveis e $X\colon \Omega_1\to\Omega_2$. Se $X\inv(\Ccal_2) \subset \Acal_1$, onde $\Ccal_2$ é a classe que gera $\Acal_2$, então $X$ é $\Acal_1\backslash\Acal_2$ mensurável.
 \end{theorem}
 
 \begin{theorem}[2.3 Composição de transformações mensuráveis]
@@ -823,7 +823,7 @@
 \end{theorem}
 
 \begin{theorem}[2.5 Probabilidade induzida ou distribuição de X]
-	Considere $(\Omega_1, \Acal_1, \P_1)$ um espaço de probabilidade, $\Omega_2 \neq \emptyset$ e   $\Acal_2 = \{ B \subset \Omega_2: \inv{X}(B) \in \Acal_1 \}$ a \sig-álgebra induzida por $X$. Defina $\P_2\colon\Acal_2 \to [0,1]$ como
+	Considere $(\Omega_1, \Acal_1, \P_1)$ um espaço de probabilidade, $\Omega_2 \neq \emptyset$ e   $\Acal_2 = \{ B \subset \Omega_2: X\inv(B) \in \Acal_1 \}$ a \sig-álgebra induzida por $X$. Defina $\P_2\colon\Acal_2 \to [0,1]$ como
 	\begin{equation}
 		\P_2(B) = 	\P_1\left([X \in B]\right), \quad B \in \Acal_2.
 	\end{equation}
@@ -846,7 +846,7 @@ em que \([-\infty,x] = \{y \in \Ree\ : y \leq x\}\) para $x\in\Re$.
 	Seja $(\Omega, \Acal)$ um espaço mensurável. Uma função $X\colon\Omega \to \Ree$ é chamada de \textit{variável aleatória} se for $\Acal\backslash\Boe$ mensurável, isto é,
 	\begin{equation}
 		\begin{aligned}
-			[X\in B] &= \inv{X}(B) \in \Acal \quad \text{para todo } B \in \Boe \\
+			[X\in B] &= X\inv(B) \in \Acal \quad \text{para todo } B \in \Boe \\
 					 &= \{\omega \in \Omega: X(\omega) \in B \}  \in \Acal,  \quad \text{para todo } B \in \Boe
 		\end{aligned}
 	\end{equation}
@@ -858,14 +858,14 @@ em que \([-\infty,x] = \{y \in \Ree\ : y \leq x\}\) para $x\in\Re$.
 
 \begin{definition}[Notações em Probabilidade] Sejam $(\Omega_1, \Acal_1)$ e $(\Omega_2, \Acal_2)$ espaços mensuráveis. As seguintes notações são usuais:
 	\begin{outline}[enumerate]
-		\1 $[X \in B] \coloneq \inv{X}(B)$, para $B \in \Acal_2$
-		\1 $[X = x] \coloneq \inv{X}(\{x\})$, para ${x} \in \Acal_2$
-		\1 $[X \leq x] \coloneq \inv{X}((-\infty, x])$, para $(-\infty, x] \in \Acal_2$
-		\1 \( f\colon \Re\to\Re : [f\leq y] \coloneq \inv{f}((-\infty, y]) = \{x \in\Re:f(x)\leq y \} \)
-		\1 \( [X \leq x, Y \leq y] \coloneq \inv{X}((-\infty, x])\cap\inv{Y}((-\infty, y])\)
-		\1 \([X<Y] = [X-Y<0] \coloneq \inv{Z}((-\infty, 0))\), onde $Z=X-Y$
+		\1 $[X \in B] \coloneq X\inv(B)$, para $B \in \Acal_2$
+		\1 $[X = x] \coloneq X\inv(\{x\})$, para ${x} \in \Acal_2$
+		\1 $[X \leq x] \coloneq X\inv((-\infty, x])$, para $(-\infty, x] \in \Acal_2$
+		\1 \( f\colon \Re\to\Re : [f\leq y] \coloneq f\inv((-\infty, y]) = \{x \in\Re:f(x)\leq y \} \)
+		\1 \( [X \leq x, Y \leq y] \coloneq X\inv((-\infty, x])\cap Y\inv((-\infty, y])\)
+		\1 \([X<Y] = [X-Y<0] \coloneq Z\inv((-\infty, 0))\), onde $Z=X-Y$
 		\1 \(F(x) = \P((-\infty, x])\)
-		\1 \(F_X(x) = \P[X\leq x] = \P(\inv{X}(-\infty,x]) = \P_X((-\infty,x]) \equiv \P((-\infty, x]) = F(x)\)
+		\1 \(F_X(x) = \P[X\leq x] = \P(X\inv(-\infty,x]) = \P_X((-\infty,x]) \equiv \P((-\infty, x]) = F(x)\)
 		\1 \([X = Y \text{ q.c.}] \coloneq \P[X=Y]=1 \equiv \P[X=Y]=0 \)
 	\end{outline}
 \end{definition}
@@ -882,9 +882,9 @@ em que \([-\infty,x] = \{y \in \Ree\ : y \leq x\}\) para $x\in\Re$.
 		\begin{outline}[enumerate]
 			\1 $X$ é $\Acal\backslash\Boe$ mensurável;
 			\1 \([X \in B] \in \Acal\) para todo \(B \in \Bo\), \\
-			\([X=+\infty] = \inv{X}(\{+\infty\}) \in \Acal\), \\
-			\([X=-\infty] = \inv{X}(\{-\infty\}) \in \Acal\);
-			\1 \([X \in I] = \inv{X}(I) \in \Acal\) para todo $I \in \Ical$, em que $\sigma(\Ical)=\Boe$.
+			\([X=+\infty] = X\inv(\{+\infty\}) \in \Acal\), \\
+			\([X=-\infty] = X\inv(\{-\infty\}) \in \Acal\);
+			\1 \([X \in I] = X\inv(I) \in \Acal\) para todo $I \in \Ical$, em que $\sigma(\Ical)=\Boe$.
 		\end{outline}
 \end{theorem}
 
@@ -1190,8 +1190,8 @@ desde que uma das duas integrais esteja definida. A probabilidade $\P_X$ denota 
 	\leavevmode
 	\begin{outline}[enumerate]
 		\1 \textit{Projeção coordenada}: \(\pi_i(\omega_, \ldots, \omega_n) = \omega_i \)
-		\1 \textit{Cilindro unidimensional de base $A_i$}: \( \inv{\pi_i}(A_i) = \{ \omega\in\Omega : \pi_i(\omega)\in A_i\} \) 
-		\1 \textit{Classe dos cilindros unidimensionais}: \( \Ccal = \{\inv{\pi_i}(A_i) : A_i \in \Acal, i=1,\ldots,n\}\)
+		\1 \textit{Cilindro unidimensional de base $A_i$}: \( \pi_i\inv(A_i) = \{ \omega\in\Omega : \pi_i(\omega)\in A_i\} \) 
+		\1 \textit{Classe dos cilindros unidimensionais}: \( \Ccal = \{\pi_i\inv(A_i) : A_i \in \Acal, i=1,\ldots,n\}\)
 		\1 \textit{Classe dos retângulos mensuráveis}: \( \Rcal = \{A_1\times\cdots\times A_n : A_i \in \Acal, i=1,\ldots,n\}\)
 		\1 \textit{\sig-álgebra produto sobre $\Omega^n$}: 
 		\(\bigotimes_{i=1}^n \mathcal{A}_i = \mathcal{A}_1 \otimes \cdots \otimes \mathcal{A}_n = \sigma(\mathcal{C}) = \sigma(\Rcal) = \sigma(\pi_1, \ldots,\pi_n)\)
@@ -1477,7 +1477,7 @@ desde que uma das duas integrais esteja definida. A probabilidade $\P_X$ denota 
 \begin{definition}
 	Para $X,Y \in L^2$, definimos a covariância entre $X$ e $Y$ como
 	\begin{align}
-		\cov(X,Y) &= \E[(X-\E[X])(Y-\E[Y])] \\
+		\Cov(X,Y) &= \E[(X-\E[X])(Y-\E[Y])] \\
 		&= \E[XY]-\E[X]\E[Y]
 	\end{align}
 	\begin{note}

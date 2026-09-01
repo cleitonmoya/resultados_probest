@@ -81,6 +81,22 @@
 	\1 \( \hat{\mu} = \bar{X}, \hat{\sigma^2} = \left(\frac{n+1}{n}\right) S^2 \)
 \end{outline}
 
+\subsubsection{$\chidist{n}$}
+\begin{outline}
+	\1 \(\displaystyle f_U(u\mid n) = \frac{1}{\Gamma\left(\frac{n}{2}\right)2^{n/2}}u^{(n-2)/2}e^{-u/2}\,\ind_{(0,\infty)}(u), \quad n\geq 1 \text{ inteiro}\)
+	\1 \( \E[U] = n \)
+	\1 \( \Var[U] = 2n \)
+	\1 \(\displaystyle M_U(t) = (1-2t)^{-n/2} \), para $t<\frac{1}{2}$
+\end{outline}
+
+\subsubsection{$\chidist{n,\lambda}$}
+\begin{outline}
+	\1 \(\displaystyle f_U(u\mid n,\lambda) = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\frac{u^{(n+2k-2)/2}e^{-u/2}}{\Gamma\left(\frac{n+2k}{2}\right)2^{(n+2k)/2}}\,\ind_{(0,\infty)}(u), \quad n\geq 1 \text{ inteiro}, \ \lambda\geq 0\)
+	\1 \( \E[U] = n + 2\lambda \)
+	\1 \( \Var[U] = 2(n + 4\lambda) \)
+	\1 \(\displaystyle M_U(t) = (1-2t)^{-n/2}\exp\left\{-\lambda\left[1-(1-2t)^{-1}\right]\right\} \), para $t<\frac{1}{2}$
+\end{outline}
+
 \subsubsection{Beta($\alpha, \beta$)}
 \begin{outline}
 	\1 \(\displaystyle f_X(x \mid \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-1}(1-x)^{\beta-1}\ind_{\Re_{[0,1]}}(x), \quad \alpha,\beta>0 \)
@@ -108,15 +124,6 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 	\1 \(\displaystyle M_X(t) = \left(1-\frac{t}{\beta}\right)^{-\alpha} \), para  $t<\beta$
 \end{outline}
 
-\begin{theorem}[Propriedades da variância e covariância]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 \( \Var(X) = \E(X^2) - (\E(X))^2 \)
-		\1 \( \Var(X+Y) = \Var(X)+\Var(Y)+ 2\Cov(X,Y) \)
-		\1 \( \Var(aX+b) = a^2\Var(X) \)
-	\end{outline}
-\end{theorem}
-
 \begin{theorem}[Utilidade pública]
 	Sejam $x_1, x_2, \ldots, x_n$ números reais quaisquer e $\bar{x}$ seu valor médio. Então,
 	\begin{outline}[enumerate]
@@ -140,6 +147,117 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 	\end{outline}
 \end{theorem}
 
+
+\section{Probabilidade e independência condicional}
+
+\begin{theorem}[Probabilidades condicionais]
+	\begin{outline}[enumerate]
+		\leavevmode
+		\1 \( \begin{aligned}[t]
+			\P[A,B\mid C]  &= \P[A\mid B,C] \ \P[B\mid C] \\
+			&= \P[B\mid A,C] \ \P[A\mid C]
+		\end{aligned} \)
+		\1 \( \begin{aligned}[t]
+			\P[A\mid B, C]  &= \frac{\P[B\mid A,C] \ \P[A\mid C]}{\P[B\mid C]} \\
+			&= \frac{\P[C\mid A,B] \ \P[A\mid B]}{P[C \mid B]}
+		\end{aligned} \)
+		\1 \( \begin{aligned}[t] 
+			\P[A, B \mid C, D] &= \frac{\P[C | A, B, D] \P[A, B, D]}{\P[C, D]}
+		\end{aligned} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Independência condicional]
+	\begin{outline}[enumerate]
+		\leavevmode
+		\1 \( \begin{aligned}[t] A  \indep B \mid C &\iff \P[A\mid B,C] = \P[A\mid C] \\ &\iff P[A, B \mid C] = \P[A\mid C] \ \P[B\mid C] \\
+			&\iff [A\mid C] \indep [B\mid C]
+		\end{aligned} \)
+	\end{outline}
+\end{theorem}
+
+
+\section{Esperança, variância e covariância}
+
+\begin{theorem}[Propriedades da esperança]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \E[X] = \E\left[\E(X \mid Y) \right] \) (\textit{lei da esperança total})
+		\1 \( \E[X \mid Z] = \E \left[ \E(X \mid Y, Z) \mid Z \right] \) (\textit{Terre})
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da variância]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \Var[X] = \E[(X-\mu)^2] = \E[X^2] - \mu^2\)
+		\1 \( \Var[\v{X}] = \E[(\v{X}-\v{\mu}_X)(\v{X}-\v{\mu}_X)\T] = \E[\v{X}\v{X}\T] - \v{\mu}_{X}\v{\mu}_{X}\T \)
+		\1 \( \Var[X] = \E(\Var[X|Y]) + \Var(\E[X|Y]) \)
+		\1 \( \Var[X \mid Z] = \E(\Var[X|Y]\mid Z) + \Var(\E[X|Y] \mid Z) \)
+		\1 \( \Var[X+a] = \Var[X] \)
+		\1 \( \Var[aX+b] = a^2\Var[X] \)
+		\1 \( \Var[\m{A}\v{X} + \v{b}] = \m{A}\Var[\v{X}]\m{A}\T \)
+		\1 \( \Var[X+Y] = \Var[X]+\Var[Y]+ 2\Cov[X,Y] \)
+		\1 \( \Var[\v{X}+\v{Y}] = \Var[\v{X}]+\Var[\v{Y}] + \Cov[\v{X},\v{Y}] +  \Cov[\v{Y},\v{X}] \)
+		\1 \( \Var[aX+bY] = a^2\Var[X] + b^2\Var[y] + 2ab\Cov[X,Y] \)
+		\1 \( \Var[aX-bY] = a^2\Var[X] + b^2\Var[y] - 2ab\Cov[X,Y] \)
+		\1 \( \begin{aligned}[t] \Var\left(\sum_{i=1}^{n} X_i\right) &= \sum_{i=1}^{n} \Var(X_i) + 2\sum_{\substack{i,j=1\\i<j}}^{n} \Cov(X_i, X_j) \\
+			&= \sum_{i=1}^{n} \Var(X_i) + \sum_{\substack{i,j=1\\i\neq j}}^{n} \Cov(X_i, X_j) \\
+			&= \sum_{i,j=1}^{n} \Cov(X_i, X_j)
+		\end{aligned} \)
+		\1 \( X_1 \indep \ldots \indep X_n \implies \Var\left(\sum_{i=1}^{n} X_i\right) = \sum_{i=1}^{n} \Var(X_i) \)
+		
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da covariância]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( 
+		\begin{aligned}[t]
+			\Cov(X,Y) &= \E[(X-\mu_X)(Y-\mu_Y)] \\
+			&= \E[XY] - \mu_X\mu_Y
+		\end{aligned} \)
+		\1 \(
+		\begin{aligned}[t]
+			\Cov(\v{X}, \v{Y}) &= \E[(\v{X} - \v{\mu}_X)(\v{Y} - \v{\mu}_Y)\T ]\\
+			&= \E[\v{X}\v{Y}\T] - \v{\mu}_X\v{\mu}_Y\T
+		\end{aligned} \)
+		\1 \( \Cov[X,X] = \Var[X] \)
+		\1 \( \Cov[\v{X},\v{X}] = \Var[\v{X}] \)
+		\1 \( \Cov[X,Y] = \E[ \Cov(X,Y \mid Z)] +\Cov( \E[X\mid Z],E[Y\mid Z]) \)
+		
+		\1 \( \Cov(X, a) = 0 \)
+		\1 \(\Cov(aX+b, cY+d) = ac\Cov(X, Y)\ \)
+		\1 \(\Cov(\m{A}\v{X}+\v{b}, \m{C}\v{Y}+\v{d}) = \m{A}\Cov(\v{X}, \v{Y})\m{C}\T \)
+		\1 \( \Cov(aX + bY, cW + dV) = ac\,\Cov(X, W) + ad\,\Cov(X, V) + bc\,\Cov(Y, W) + bd\,\Cov(Y, V) \)
+		\1 \( \Cov(aX_1 + bX_2, cY) = ac\,\Cov(X_1, Y) + bc\,\Cov(X_2, Y) \)
+		\1 \( \Cov(\m{A}\v{X}_1 + \m{B}\v{X}_2, \m{C}\v{Y}) = \m{A}\Cov(\v{X}_1, \v{Y})\m{C}\T + \m{B}\Cov(\v{X}_2, \v{Y})\m{C}\T \)
+		\1 \(|\Cov(X, Y)| \leq \sqrt{\sigma^2(X)\sigma^2(Y)}\)
+		
+		\1 \( \rho_{X,Y} = \frac{\Cov(X, Y)}{\sigma_X \sigma_Y} \)
+		\1 \( \Cov(\m{A}\v{U}, \m{B}\v{V}) = \m{A}\Cov(\v{U}, \v{V})\m{B}\T \)
+		\1 \( \begin{aligned}[t] 
+			\Cov(\m{A}\v{X}+ \m{B}\v{Y}, \m{C}\v{W} + \m{D}\v{V}) 
+			&= \m{A}\Cov(\v{X}, \v{W})\m{C}\T \\
+			&+ \m{A}\Cov(\v{X}, \v{V})\m{D}\T \\
+			&+ \m{B}\Cov(\v{Y}, \v{W})\m{C}\T \\
+			&+ \m{B}\Cov(\v{Y}, \v{V})\m{D}\T
+		\end{aligned}\)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Independência e covariância]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\v{X}$ e $\v{Y}$ são independentes $\implies \Cov[\v{X}, \v{Y}]=0$
+		\1 Sejam $\v{X}$ e $\v{Y}$ normais 
+			\2 $\v{X}$ e $\v{Y}$ são independentes $\iff \Cov[\v{X}, \v{Y}]=0$  
+	\end{outline}
+\end{theorem}
+
+
+\section{Transformações}
 
 \begin{theorem}[Transformação univariada contínua]
 	Seja $X$ com f.d.p $f_X(x)$ e $Y=g(X)$, onde $g$ é uma função monótona. Sejam $\Xcal = \{x : f_X(x)>0\}$ e $\Ycal=\{y:y=g(x), x \in \Xcal\}$.
@@ -191,182 +309,176 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 	\end{outline}
 \end{theorem}
 
-\begin{theorem}[Probabilidades condicionais]
-	\begin{outline}[enumerate]
+\section{Vetor aleatório}
+
+\begin{definition}
+	$\v{X}$ é um \textbf{vetor aleatório} de dimensão $p\times 1$
+	\begin{equation}
+		\v{X} =
+		\begin{bmatrix}
+			X_1 \\
+			X_2 \\
+			\vdots \\
+			X_p
+		\end{bmatrix},
+	\end{equation}
+	em que cada $X_i$ é uma variável aleatória com \textbf{média} $\mu_i$ e \textbf{variância} $\sigma_i^2 = \sigma_{ii}$, para $i=1,\ldots,p$, em que
+	\begin{align}
+		\mu_i &= \E[X_i] \quad \text{(média populacional)} \\
+		\sigma_i^2 &= \Var[X_i] = \E[(X_i-\mu_i)^2] \quad \text{(variância populacional)}
+	\end{align}
+\end{definition}
+
+\begin{definition}
+	A \textbf{covariância} e a \textbf{correlação} (populacionais) entre duas variáveis $X_i$ e $X_k$, com $i,k=1,\ldots,p$ e $i\neq k$, são dadas, respectivamente, por
+	\begin{align}
+		\Cov[X_i,X_k] &= \sigma_{ik} = \E[(X_i-\mu_i)(X_k-\mu_k)] \quad \text{e} \\
+		\Cor(X_i,X_k) &= \rho_{ik} = \frac{\sigma_{ik}}{\sqrt{\sigma_i^2}\sqrt{\sigma_k^2}}
+	\end{align}
+\end{definition}
+
+\begin{definition}
+	Se $\v{X}$ é um vetor aleatório de dimensão $p\times 1$ com f.d.p. $f(\v{X})$, o \textbf{valor esperado} de uma função escalar $g(\v{X})$ é definido por
+	\begin{equation}
+		\E[g(\v{X})] = \int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty} g(\v{u})f(\v{u})\,du_1\cdots du_p.
+	\end{equation}
+	Mais geralmente, o valor esperado de uma função vetorial de $\v{X}$, $\v{g}(\v{X})$, é dado por
+	\begin{equation}
+		\E[\v{g}(\v{X})] = (\E[g_i(\v{X})]),
+	\end{equation}
+	ou seja, o valor esperado é calculado elemento a elemento da função vetorial $\v{g}(\v{X})$.
+\end{definition}
+
+\begin{definition}[Vetor de médias e matriz de variância e covariância]
+	Seja $\v{X}$ um vetor aleatório de dimensão $p\times 1$.
+	O vetor de médias (populacionais) de $\v{X}$ é $\v{\mu}_{p\times 1}$ e a matriz de variâncias e covariâncias (populacionais) de $\v{X}$ é $\m{\Sigma}_{p\times p}$, em que
+	\begin{equation}
+		\v{\mu} = \E[\v{X}] =
+		\begin{bmatrix}
+			\mu_1 \\
+			\mu_2 \\
+			\vdots \\
+			\mu_p
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			\E[X_1] \\
+			\E[X_2] \\
+			\vdots \\
+			\E[X_p]
+		\end{bmatrix}
+		\quad \text{e} \quad
+		\m{\Sigma} =
+		\begin{bmatrix}
+			\sigma_1^2 & \sigma_{12} & \ldots & \sigma_{1p} \\
+			& \sigma_2^2 & \ldots & \sigma_{2p} \\
+			& & \ddots & \vdots \\
+			\text{sim.} & & & \sigma_p^2
+		\end{bmatrix}
+	\end{equation}
+	
+	Matricialmente,
+	\begin{equation}
+		\Var[\v{X}] = \m{\Sigma} = \E[(\v{X}-\v{\mu})(\v{X}-\v{\mu})\T]
+	\end{equation}
+	
+	\begin{note}
+		$\m{\Sigma}$ é simétrica pois $\Cov[X_i,X_k] = \Cov[X_k,X_i]$, para $i,j=1,\ldots,p$.
+	\end{note}
+\end{definition}
+
+\begin{definition}[Matriz de correlações]
+	Seja $\v{X}$ um vetor aleatório de dimensão $p\times 1$.
+	A matriz de correlações (populacionais) de $\v{X}$ é $\m{P} = \m{P}_{p\times p}$, em que
+	\begin{equation}
+		\m{P} = \Cor(\v{X}) =
+		\begin{bmatrix}
+			1 & \rho_{12} & \ldots & \rho_{1p} \\
+			& 1 & \ldots & \rho_{2p} \\
+			& & \ddots & \vdots \\
+			\text{sim.} & & & 1
+		\end{bmatrix}
+	\end{equation}
+	Matricialmente,
+	
+	\begin{equation}
+		\Cor(\v{X}) = \m{P} = (\m{V}^{1/2})^{-1}\m{\Sigma}(\m{V}^{1/2})^{-1} 
+		= \m{V}^{-1/2}\m{\Sigma}\m{V}^{-1/2},
+	\end{equation}
+		em que
+	\begin{equation}
+		\m{V}^{1/2} =
+		\begin{bmatrix}
+			\sqrt{\sigma_{11}} & 0 & \ldots & 0 \\
+			0 & \sqrt{\sigma_{22}} & \ddots & 0 \\
+			\vdots & \ddots & \ddots & 0 \\
+			0 & \ldots & 0 & \sqrt{\sigma_{pp}}
+		\end{bmatrix}
+	\end{equation}
+	
+	\begin{note}
 		\leavevmode
-		\1 \( \begin{aligned}[t]
-			\P[A,B\mid C]  &= \P[A\mid B,C] \ \P[B\mid C] \\
-			&= \P[B\mid A,C] \ \P[A\mid C]
-		\end{aligned} \)
-		\1 \( \begin{aligned}[t]
-			\P[A\mid B, C]  &= \frac{\P[B\mid A,C] \ \P[A\mid C]}{\P[B\mid C]} \\
-			&= \frac{\P[C\mid A,B] \ \P[A\mid B]}{P[C \mid B]}
-		\end{aligned} \)
-		\1 \( \begin{aligned}[t] 
-			\P[A, B \mid C, D] &= \frac{\P[C | A, B, D] \P[A, B, D]}{\P[C, D]}
-		\end{aligned} \)
-	\end{outline}
-\end{theorem}
+		\begin{outline}[enumerate]
+			\1 Pelo mesmo motivo que $\m{\Sigma}$ é simétrica, $\m{P}$ também é. 
+			\1 $-1\leq \rho_{ik}\leq 1$ para $i\neq k$ e $i,k=1,\ldots,p$.
+		\end{outline}
+	\end{note}
+\end{definition}
 
-\begin{theorem}[Independência condicional]
+
+\begin{definition}[Variância e covariância em forma matricial]
+	Sejam $\v{X}$ e $\v{Y}$ vetores aleatórios $p$-dimensionais com $\E[\v{X}] = \v{\mu}_X$ e $\E[\v{Y}] = \v{\mu}_Y$. Define-se
 	\begin{outline}[enumerate]
+		\1 \( \Var[\v{X}] = \E[(\v{X}-\v{\mu}_X)(\v{X}-\v{\mu}_X)\T], \)
+		\1 \( \Cov[\v{X},\v{Y}] = \E[(\v{X}-\v{\mu}_X)(\v{Y}-\v{\mu}_Y)\T] \)
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Amostra aleatória]
+	Suponha que $\v{X}$ tem uma distribuição de probabilidade multivariada e que vamos observar uma amostra aleatória dessa distribuição, ou seja, $n$ observações independentes e que vêm todas da mesma distribuição:
+	\begin{equation}
+		\text{amostra aleatória: } \v{X}_1,\ldots,\v{X}_n,
+	\end{equation}
+	em que $\v{X}_i\T = (X_{i1}, X_{i2}, \ldots, X_{ip})$.
+\end{definition}
+
+
+\begin{definition}[Matriz aleatória]
+	Suponha que $\v{X}_1,\ldots,\v{X}_n$ ainda não foram observados, mas podemos organizá-los em uma matriz aleatória
+	\begin{equation}
+		\m{X} =
+		\begin{bmatrix}
+			X_{11} & X_{12} & \ldots & X_{1p} \\
+			X_{21} & X_{22} & \ldots & X_{2p} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			X_{n1} & X_{n2} & \ldots & X_{np}
+		\end{bmatrix}_{n\times p}
+		=
+		\begin{bmatrix}
+			\v{X}_1\T \\
+			\v{X}_2\T \\
+			\vdots \\
+			\v{X}_n\T
+		\end{bmatrix}
+	\end{equation}
+\end{definition}
+
+\begin{theorem}[Estimadores para $\mu$ e $\Sigma$]
+	Seja $\v{X}_1,\ldots,\v{X}_n$ a.a. de uma distribuição com $\E[\v{X}] = \v{\mu}$ e $\Var[\bar{\v{X}}] = \m{\Sigma}$. Então
+	\begin{outline}[enumerate]
+		\1 $\bar{\v{X}}$ é um estimador não-viesado para $\v{\mu}$, com $\Var[\bar{\v{X}}] = \dfrac{\m{\Sigma}}{n}$ e
+		\1 $\dfrac{n}{n-1}\m{S}$ é um estimador não-viesado para $\m{\Sigma}$, ou seja
+		\begin{equation}
+			\E\left[\frac{n}{n-1}\m{S}\right] = \m{\Sigma}.
+		\end{equation}
+	\end{outline}
+	\begin{note}
 		\leavevmode
-		\1 \( \begin{aligned}[t] A  \indep B \mid C &\iff \P[A\mid B,C] = \P[A\mid C] \\ &\iff P[A, B \mid C] = \P[A\mid C] \ \P[B\mid C] \\
-			&\iff [A\mid C] \indep [B\mid C]
-		\end{aligned} \)
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}[Propriedades da esperança]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 \( \E[X] = \E\left[\E(X \mid Y) \right] \) (\textit{lei da esperança total})
-		\1 \( \E[X \mid Z] = \E \left[ \E(X \mid Y, Z) \mid Z \right] \) (\textit{Terre})
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}[Propriedades da variância]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 \( \Var[X] = \E[(X-\mu)^2] = \E[X^2] - \mu^2\)
-		\1 \( \Var[X] = \E(\Var[X|Y]) + \Var(\E[X|Y]) \)
-		\1 \( \Var[X \mid Z] = \E(\Var[X|Y]\mid Z) + \Var(\E[X|Y] \mid Z) \)
-		\1 \(\Var[X+a] = \Var[X]\)
-		\1 \( \Var[aX+bY] = a^2\Var[X] + b^2\Var[y] + 2ab\Cov[X,Y] \)
-		\1 \( \Var[aX-bY] = a^2\Var[X] + b^2\Var[y] - 2ab\Cov[X,Y] \)
-		\1 \( \begin{aligned}[t] \Var\left(\sum_{i=1}^{n} X_i\right) &= \sum_{i=1}^{n} \Var(X_i) + 2\sum_{\substack{i,j=1\\i<j}}^{n} \Cov(X_i, X_j) \\
-			&= \sum_{i=1}^{n} \Var(X_i) + \sum_{\substack{i,j=1\\i\neq j}}^{n} \Cov(X_i, X_j) \\
-			&= \sum_{i,j=1}^{n} \Cov(X_i, X_j)
-		\end{aligned} \)
-		\1 \( X_1 \indep \ldots \indep X_n \implies \Var\left(\sum_{i=1}^{n} X_i\right) = \sum_{i=1}^{n} \Var(X_i) \)
-		\1 \( \Var[\matr{A}X] = \matr{A}\Var[X]\matr{A}' \)
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}[Propriedades da covariância]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 \( \Cov(X,Y) = \E[ \Cov(X,Y \mid Z)] +\Cov( \E[X\mid Z],E[Y\mid Z]) \)
-		\1 \( \Cov(X,Y) = \E[(X-\mu_X)(Y-\mu_Y)] = \E[XY] - \mu_X\mu_Y\)
-		\1 \( \Cov(X, a) = 0 \)
-		\1 \(\Cov(aX, bY) = ab\,\Cov(X, Y)\ \)
-		\1 \( \Cov(aX + bY, cW + dV) = ac\,\Cov(X, W) + ad\,\Cov(X, V) + bc\,\Cov(Y, W) + bd\,\Cov(Y, V) \)
-		\1 \( \Cov(aX + bY, Z) = a\,\Cov(X, Z) + b\,\Cov(Y, Z) \)
-		\1 \(|\Cov(X, Y)| \leq \sqrt{\sigma^2(X)\sigma^2(Y)}\)
-		\1 \(
-		\begin{aligned}[t]
-			\Cov(\bm{X}, \bm{Y}) &= \E\left[(\bm{X} - \E[\bm{X}])(\bm{Y} - \E[\bm{Y}])^{\T}\right]\\
-			&= \E\left[\bm{X}\bm{Y}^{\T}\right] - \E[\bm{X}]\E[\bm{Y}]^{\T}
-		\end{aligned}
-		\)
-		\1 \( \rho_{X,Y} = \frac{\Cov(X, Y)}{\sigma_X \sigma_Y} \)
-		\1 \( \Cov(\matr{A}\vect{U}, \matr{B}\vect{V}) = \matr{A}\Cov(\vect{U}, \vect{V})\matr{B}^{\T} \)
-		\1 \( \begin{aligned}[t] \Cov(\matr{A}\vect{X}+ \matr{B}\vect{Y}, \matr{C}\vect{W} + \matr{D}\vect{V}) &= \matr{A}\Cov(\vect{X}, \vect{W})\matr{C}^{\T} \\&+ \matr{A}\Cov(\vect{X}, \vect{V})\matr{D}^{\T} \\&+ \matr{B}\Cov(\vect{Y}, \vect{W})\matr{C}^{\T} \\&+ \matr{B}\Cov(\vect{Y}, \vect{V})\matr{D}^{\T}
-		\end{aligned}\)
-	\end{outline}
-\end{theorem}
-
-\section{Normal multivariada}
-
-\begin{theorem}
-	Suponha que $\vect{X} \sim \normdist{\vect{m}, \matr{V}}$. Para $\matr{A}$ e $\vect{b}$ de dimensões adequadas, 
-	\begin{outline}[enumerate]
-		\1 \( \vect{Y}=\matr{A}\vect{X}+\vect{b} \implies \vect{Y} \sim \normdist{\matr{A}\vect{m} + \vect{b}, \matr{A}\matr{V}\matr{A}'} \);
-		\1 Se $\matr{A}\matr{V}\matr{A}'$ é diagonal, então os elementos de $Y$ são normais independentes.
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}
-	Suponha que $\vect{X}_i \sim \normdist{\vect{m}_i, \matr{V}_i}$ independentes, $i=1,\ldots,k$, e considere $\matr{A}_1, \ldots, \matr{A}_k$ e $\vect{b}$ de dimensões adequadas.
-	\begin{outline}[enumerate]
-		\1 \( \vect{Y}=\sum_{i=1}^{k}\matr{A}_i\vect{X}_i+\vect{b} \sim \normdist{\sum_{i=1}^{k}\matr{A}_i\vect{m}_i + \vect{b}, \sum_{i=1}^{k}\matr{A}_i\matr{V}_i\matr{A}'_i} \)
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}
-	Suponha que $\vect{X}$ seja particionado como segue:
-	\[
-	\vect{X} = \begin{bmatrix}
-		\vect{X}_1 \\ \vect{X}_2
-	\end{bmatrix}, \quad
-	\vect{m} = \begin{bmatrix}
-		\vect{m}_1 \\ \vect{m}_2
-	\end{bmatrix}, \quad
-	\matr{V} = \begin{bmatrix}
-		\matr{V}_{11} & \matr{V}_{12} \\ \matr{V}_{21} & \matr{V}_{22}
-	\end{bmatrix}.
-	\]
-	
-	\begin{outline}[enumerate]
-		\1 $\vect{X}_i \sim \normdist{\vect{m}_i, \matr{V}_{ii}}$, $i=1,2$. Em particular, se $X_i$ é normal univariado, então $X_i\sim\normdist{m_i, V_{ii}}$, para $i=1\ldots,n$;
-		\1 \( (\vect{X}_1|\vect{X_2}) \sim \normdist{ \vect{\mu}_{12}, \matr{C}_{12}} \) onde
-		\begin{align}
-			\vect{\mu}_{12} &= \vect{m}_1 + \matr{V}_{12}\inv{\matr{V}_{22}}(\matr{X}_2-\vect{m}_2) \\
-			&= \vect{m}_1 + \matr{A}_1(\matr{X}_2-\vect{m}_2)
-		\end{align} e
-		\begin{align}
-			\matr{C}_{12} &= \matr{V}_{11} - \matr{V}_{12}\inv{\matr{V}_{22}}\matr{V}_{21} \\
-			&= \matr{V}_{11} - \matr{A}_1\matr{V}_{22}\matr{A}'_{1}
-		\end{align}
-		A matriz $\matr{A}_1 = \matr{V}_{12}\inv{\matr{V}_{22}}$ é chamada de \textit{matriz de regressão} de $\vect{X}_1$ em $\vect{X}_2$.
-		
-		\1 \( (\vect{X}_2|\vect{X_1}) \sim \normdist{ \vect{\mu}_{21}, \matr{C}_{21}} \) onde
-		\begin{align}
-			\vect{\mu}_{21} &= \vect{m}_2 + \matr{V}_{21}\inv{\matr{V}_{11}}(\matr{X}_1-\vect{m}_1) \\
-			&= \vect{m}_2 + \matr{A}_2(\matr{X}_1-\vect{m}_1)
-		\end{align} e
-		\begin{align}
-			\matr{C}_{21} &= \matr{V}_{22} - \matr{V}_{21}\inv{\matr{V}_{11}}\matr{V}_{12} \\
-			&= \matr{V}_{22} - \matr{A}_2\matr{V}_{11}\matr{A}'_{2}
-		\end{align}
-		
-		\1 No caso especial da normal bivariada em (1) acima, os momentos são todos escalares, e a correlação entre $X_1$ e $X_2$ é $\rho = \rho_{12} = V_{12}/\sqrt{V_{11}V_{22}}$. As regressões são determinadas pelos coeficientes de regressão $A_1$ e $A_2$ dados por
-		\[
-		A_1 = \rho\sqrt{V_{11}/V_{22}} \quad \text{e} \quad A_2 = \rho\sqrt{V_{22}/V_{11}}.
-		\]
-		
-		Além disso,
-		\[
-		\Var[X_1 \mid X_2] = (1-\rho^2)V_{11} \quad \text{e} \quad \Var[X_2 \mid X_1] = (1-\rho^2)V_{22}.
-		\]
-	\end{outline}
-\end{theorem}
-
-\section{Normal multivariada e regressão linear}
-
-\begin{theorem}[Distribuição condicional e regressão linear]
-	Suponha que o vetor-$p$ $\vect{Y}$ e o vetor-$n$ $\vect{\theta}$ estejam relacionados via a distribuição condicional
-	\[
-	(\vect{Y} \mid \vect{\theta}) \sim \normdist{\matr{F}'\vect{\theta}, \matr{V}},
-	\]
-	onde a matriz $(n \times p)$ $\matr{F}$ e a matriz $(p \times p)$ definida positiva simétrica $\matr{V}$ são constantes, e que a distribuição marginal de $\vect{\theta}$ seja dada por
-	\[
-	\vect{\theta} \sim \normdist{\vect{a}, \matr{R}}.
-	\]
-	
-	Segue que
-	\[
-	\begin{bmatrix}
-		\vect{Y} \\ \vect{\theta}
-	\end{bmatrix} \sim \normdist{\begin{bmatrix}
-			\matr{F}'\vect{a} \\ \vect{a}
-		\end{bmatrix}, \begin{bmatrix}
-			\matr{F}'\matr{R}\matr{F} + \matr{V} & \matr{F}'\matr{R} \\
-			\matr{R}\matr{F} & \matr{R}
-	\end{bmatrix}}.
-	\]
-	
-	Então $(\vect{\theta} \mid \vect{Y}) \sim \normdist{\vect{m}, \matr{C}}$, onde
-	\[
-	\vect{m} = \vect{a} + \matr{R}\matr{F}[\matr{F}'\matr{R}\matr{F} + \matr{V}]^{-1}[\vect{Y} - \matr{F}'\vect{a}]
-	\]
-	e
-	\[
-	\matr{C} = \matr{R} - \matr{R}\matr{F}[\matr{F}'\matr{R}\matr{F} + \matr{V}]^{-1}\matr{F}'\matr{R}.
-	\]
-	
-	Definindo $\vect{e} = \vect{Y} - \matr{F}'\vect{a}$, $\matr{Q} = \matr{F}'\matr{R}\matr{F} + \matr{V}$ e $\matr{A} = \matr{R}\matr{F}\inv{\matr{Q}}$, estas equações tornam-se
-	\[
-	\vect{m} = \vect{a} + \matr{A}\vect{e} \quad \text{e} \quad \matr{C} = \matr{R} - \matr{A}\matr{Q}\matr{A}'.
-	\]
+		\begin{outline}[enumerate]
+			\1 Os elementos de $\m{S}$ são dados por
+			\begin{equation}
+				s_{ik} = \frac{1}{n}\sum_{j=1}^n (x_{ji}-\bar{x}_i)(x_{jk}-\bar{x}_k)
+			\end{equation}
+		\end{outline}
+	\end{note}
 \end{theorem}

@@ -1,8 +1,11 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
 \chapter{Inferência Bayesiana}
 
 \begin{theorem}[Normal com $\sigma^2$ conhecido]
 	\leavevmode
-	Seja $\vect{x} = (x_1, \ldots, x_n)$.
+	Seja $\v{x} = (x_1, \ldots, x_n)$.
 	\begin{outline}[enumerate]
 		\1 Verosimilhança: \\
 		\[ (X_i|\mu) \sim \normdist{\mu,\sigma^2} \] 
@@ -12,7 +15,7 @@
 		
 		\1 Posteriori:
 		\[
-		(\mu | \vect{x}) \sim \normdist{\mu_1, \sigma_1^2}
+		(\mu | \v{x}) \sim \normdist{\mu_1, \sigma_1^2}
 		\]
 		\begin{align}
 			\sigma_1^2 &= 	\frac{1}{\frac{n}{\sigma^2}+\frac{1}{\sigma_0^2}}= \frac{\sigma^2\sigma_0^2}{n\sigma_0^2+\sigma^2} \quad \\
@@ -31,48 +34,84 @@
 	\end{outline}
 \end{theorem}
 
-\begin{theorem}[Normal multivariada com $\matr{\Sigma}$ conhecido]
+\begin{theorem}[Normal multivariada com $\m{\Sigma}$ conhecido]
 	\leavevmode
-	Seja $\vect{y} = (y_1, \ldots, y_n)$.
+	Seja $\v{y} = (y_1, \ldots, y_n)$.
 	\begin{outline}[enumerate]
 		\1 Verosimilhança:
-		\[ p(\vect{y}|\vect{\mu}) = \prod_{n=1}^{N} \normdist{y_n \mid \vect{\mu}, \matr{\Sigma}} \sim \normdist{\bar{\vect{y}} \mid \vect{\mu}, \frac{1}{N}\matr{\Sigma}} \] 
+		\[ p(\v{y}|\v{\mu}) = \prod_{n=1}^{N} \normdist{y_n \mid \v{\mu}, \m{\Sigma}} \sim \normdist{\bar{\v{y}} \mid \v{\mu}, \frac{1}{N}\m{\Sigma}} \] 
 		
 		\1 Priori:
-		\[ p(\vect{\mu}) \sim \normdist{\vect{\mu} \mid \prior{\vect{m}}, \prior{\matr{V}}} \]
+		\[ p(\v{\mu}) \sim \normdist{\v{\mu} \mid \prior{\v{m}}, \prior{\m{V}}} \]
 		
 		\1 Posteriori:
 		\[
-		p(\vect{\mu} | \vect{y}) \sim \normdist{\vect{\mu} \mid \post{\vect{m}}, \post{\matr{V}}}
+		p(\v{\mu} | \v{y}) \sim \normdist{\v{\mu} \mid \post{\v{m}}, \post{\m{V}}}
 		\]
 		\begin{align}
-			\post{\matr{V}}^{-1} &= \prior{\matr{V}}^{-1} + N \matr{\Sigma}^{-1} \\
-			\post{\vect{m}} &= \post{\matr{V}} \left[ \matr{\Sigma}^{-1} (N\bar{\vect{y}}) + \prior{\matr{V}}^{-1} \prior{\vect{m}} \right]  
+			\post{\m{V}}^{-1} &= \prior{\m{V}}^{-1} + N \m{\Sigma}^{-1} \\
+			\post{\v{m}} &= \post{\m{V}} \left[ \m{\Sigma}^{-1} (N\bar{\v{y}}) + \prior{\m{V}}^{-1} \prior{\v{m}} \right]  
 		\end{align}
 	\end{outline}
 \end{theorem}
 
-\begin{theorem}[Regressão linear bayesiana com $\matr{\Sigma}$ conhecido]
+\begin{theorem}[Regressão linear bayesiana com $\m{\Sigma}$ conhecido]
 	\leavevmode
-	Seja $\vect{y} = (y_1, \ldots, y_n)$.
+	Seja $\v{y} = (y_1, \ldots, y_n)$.
 	\begin{outline}[enumerate]
 		\1 Verosimilhança:
-		\[ p(\vect{y}|\vect{\mu}) \sim \normdist{\bar{\vect{y}} \mid \matr{\Fcal}\vect{\mu}, \matr{\Sigma}} \] 
+		\[ p(\v{y}|\v{\mu}) \sim \normdist{\bar{\v{y}} \mid \m{\Fcal}\v{\mu}, \m{\Sigma}} \] 
 		
 		\1 Priori:
-		\[ p(\vect{\mu}) \sim \normdist{\vect{\mu} \mid \prior{\vect{m}}, \prior{\matr{V}}} \]
+		\[ p(\v{\mu}) \sim \normdist{\v{\mu} \mid \prior{\v{m}}, \prior{\m{V}}} \]
 		
 		\1 Posteriori:
 		\[
-		p(\vect{\mu} | \vect{y}) \sim \normdist{\vect{\mu} \mid \post{\vect{m}}, \post{\matr{V}}}
+		p(\v{\mu} | \v{y}) \sim \normdist{\v{\mu} \mid \post{\v{m}}, \post{\m{V}}}
 		\]
 		\begin{align}
-			\post{\matr{V}}^{-1} &= \prior{\matr{V}}^{-1} + \matr{\Fcal}\T \matr{\Sigma}^{-1} \matr{\Fcal} \\
-			\post{\vect{m}} &= \post{\matr{V}} \left[ \matr{\Fcal}\T  \matr{\Sigma}^{-1}{\vect{y}} + \prior{\matr{V}}^{-1} \prior{\vect{m}} \right]  
+			\post{\m{V}}^{-1} &= \prior{\m{V}}^{-1} + \m{\Fcal}\T \m{\Sigma}^{-1} \m{\Fcal} \\
+			\post{\v{m}} &= \post{\m{V}} \left[ \m{\Fcal}\T  \m{\Sigma}^{-1}{\v{y}} + \prior{\m{V}}^{-1} \prior{\v{m}} \right]  
 		\end{align}
 	\end{outline}
 \end{theorem}
 
+\begin{theorem}[Distribuição condicional e regressão linear]
+	Suponha que o vetor-$p$ $\v{Y}$ e o vetor-$n$ $\v{\theta}$ estejam relacionados via a distribuição condicional
+	\[
+	(\v{Y} \mid \v{\theta}) \sim \normdist{\m{F}'\v{\theta}, \m{V}},
+	\]
+	onde a matriz $(n \times p)$ $\m{F}$ e a matriz $(p \times p)$ definida positiva simétrica $\m{V}$ são constantes, e que a distribuição marginal de $\v{\theta}$ seja dada por
+	\[
+	\v{\theta} \sim \normdist{\v{a}, \m{R}}.
+	\]
+	
+	Segue que
+	\[
+	\begin{bmatrix}
+		\v{Y} \\ \v{\theta}
+	\end{bmatrix} \sim \normdist{\begin{bmatrix}
+			\m{F}'\v{a} \\ \v{a}
+		\end{bmatrix}, \begin{bmatrix}
+			\m{F}'\m{R}\m{F} + \m{V} & \m{F}'\m{R} \\
+			\m{R}\m{F} & \m{R}
+	\end{bmatrix}}.
+	\]
+	
+	Então $(\v{\theta} \mid \v{Y}) \sim \normdist{\v{m}, \m{C}}$, onde
+	\[
+	\v{m} = \v{a} + \m{R}\m{F}[\m{F}'\m{R}\m{F} + \m{V}]^{-1}[\v{Y} - \m{F}'\v{a}]
+	\]
+	e
+	\[
+	\m{C} = \m{R} - \m{R}\m{F}[\m{F}'\m{R}\m{F} + \m{V}]^{-1}\m{F}'\m{R}.
+	\]
+	
+	Definindo $\v{e} = \v{Y} - \m{F}'\v{a}$, $\m{Q} = \m{F}'\m{R}\m{F} + \m{V}$ e $\m{A} = \m{R}\m{F}\m{Q}\inv$, estas equações tornam-se
+	\[
+	\v{m} = \v{a} + \m{A}\v{e} \quad \text{e} \quad \m{C} = \m{R} - \m{A}\m{Q}\m{A}'.
+	\]
+\end{theorem}
 
 \begin{theorem}[Normal-Gamma]
 	\leavevmode 
@@ -87,7 +126,7 @@
 			\phi &\sim \gammadist{n/2, /2}
 		\end{align}
 		
-		\1 Posteriori: \[ \ (\mu,\phi)|\vect{y} \sim \ngdist{m^*, C^*, n^*, d^*}\]
+		\1 Posteriori: \[ \ (\mu,\phi)|\v{y} \sim \ngdist{m^*, C^*, n^*, d^*}\]
 		\begin{align}
 			n^* &= n+k \\
 			m^* &= \frac{km/C+\sum_{i=1}^{k}y_i}{k+1/C} \\
@@ -98,7 +137,7 @@
 		\1 Marginais:
 		\begin{align}
 			\mu &\sim \tdist{n}(m,R), \quad R=C\frac{d}{n} \\
-			\mu|\vect{y} &\sim \tdist{n}(m^*, R^*), \quad R^*=C^*\frac{d^*}{n^*}
+			\mu|\v{y} &\sim \tdist{n}(m^*, R^*), \quad R^*=C^*\frac{d^*}{n^*}
 		\end{align}
 	\end{outline}
 \end{theorem}
@@ -107,54 +146,54 @@
 	\leavevmode 
 	\begin{outline}
 		\1 Verossimilhança: 
-		\[ \vect{Y}_1, \ldots, \vect{Y}_k \mid \vect{\theta}, \phi \stackrel{iid}{\sim} \normdist{\vect{\theta}, \phi^{-1}\vect{I}_p}\]
+		\[ \v{Y}_1, \ldots, \v{Y}_k \mid \v{\theta}, \phi \stackrel{iid}{\sim} \normdist{\v{\theta}, \phi^{-1}\v{I}_p}\]
 		
 		\1 Priori:
 		\begin{align}
-			(\vect{\theta},\phi) &\sim \ngdist{\vect{m}, \vect{C}, n, d} \\
-			\vect{\theta}|\phi &\sim \normdist{\vect{m}, \vect{C}\phi^{-1}} \\
+			(\v{\theta},\phi) &\sim \ngdist{\v{m}, \v{C}, n, d} \\
+			\v{\theta}|\phi &\sim \normdist{\v{m}, \v{C}\phi^{-1}} \\
 			\phi &\sim \gammadist{n/2, d/2}
 		\end{align}
 		
 		\1 Posteriori: 
-		\[ (\vect{\theta},\phi)|\vect{Y}_1, \ldots, \vect{Y}_k \sim \ngdist{\vect{m}^*, \vect{C}^*, n^*, d^*}\]
+		\[ (\v{\theta},\phi)|\v{Y}_1, \ldots, \v{Y}_k \sim \ngdist{\v{m}^*, \v{C}^*, n^*, d^*}\]
 		\begin{align}
 			n^* &= n+kp \\
-			\vect{m}^* &= (\vect{C}^{-1} + k\vect{I}_p)^{-1}(\vect{C}^{-1}\vect{m} + k\bar{\vect{Y}}) \\
-			\vect{C}^* &= (\vect{C}^{-1} + k\vect{I}_p)^{-1} \\
-			d^* &= d + \sum_{j=1}^k (\vect{Y}_j - \bar{\vect{Y}})'(\vect{Y}_j - \bar{\vect{Y}}) + (\bar{\vect{Y}} - \vect{m})'(\vect{C}^{-1} + k\vect{I}_p)^{-1}(\bar{\vect{Y}} - \vect{m})
+			\v{m}^* &= (\v{C}^{-1} + k\v{I}_p)^{-1}(\v{C}^{-1}\v{m} + k\bar{\v{Y}}) \\
+			\v{C}^* &= (\v{C}^{-1} + k\v{I}_p)^{-1} \\
+			d^* &= d + \sum_{j=1}^k (\v{Y}_j - \bar{\v{Y}})'(\v{Y}_j - \bar{\v{Y}}) + (\bar{\v{Y}} - \v{m})'(\v{C}^{-1} + k\v{I}_p)^{-1}(\bar{\v{Y}} - \v{m})
 		\end{align}	
 		
-		\2 Caso particular $k=1$: Após observar $\vect{Y}_1 = \vect{Y}$,
+		\2 Caso particular $k=1$: Após observar $\v{Y}_1 = \v{Y}$,
 		\begin{align}
 			n^* &= n+p \\
-			\vect{m}^* &= (\vect{C}^{-1} + \vect{I}_p)^{-1}(\vect{C}^{-1}\vect{m} + \vect{Y}) \\
-			\vect{C}^* &= (\vect{C}^{-1} + \vect{I}_p)^{-1} \\
-			d^* &= d + (\vect{Y} - \vect{m})'(\vect{C}^{-1} + \vect{I}_p)^{-1}(\vect{Y} - \vect{m})
+			\v{m}^* &= (\v{C}^{-1} + \v{I}_p)^{-1}(\m{C}^{-1}\v{m} + \v{Y}) \\
+			\m{C}^* &= (\m{C}^{-1} + \v{I}_p)^{-1} \\
+			d^* &= d + (\v{Y} - \v{m})'(\m{C}^{-1} + \v{I}_p)^{-1}(\v{Y} - \v{m})
 		\end{align}
 		
 		\1 Marginais:
 		\begin{align}
-			\vect{\theta} &\sim \text{T}_n[\vect{m}, \vect{R}], \quad \vect{R}=\vect{C}\frac{d}{n} \\
-			\vect{\theta}|\vect{Y}_1, \ldots, \vect{Y}_k &\sim \text{T}_{n^*}[\vect{m}^*, \vect{R}^*], \quad \vect{R}^*=\vect{C}^*\frac{d^*}{n^*}
+			\v{\theta} &\sim \text{T}_n[\v{m}, \v{R}], \quad \v{R}=\m{C}\frac{d}{n} \\
+			\v{\theta}|\v{Y}_1, \ldots, \v{Y}_k &\sim \text{T}_{n^*}[\v{m}^*, \v{R}^*], \quad \v{R}^*=\v{C}^*\frac{d^*}{n^*}
 		\end{align}
 		
-		\1 Marginais univariadas: Se $\theta_i$ é o $i$-ésimo elemento de $\vect{\theta}$, então
+		\1 Marginais univariadas: Se $\theta_i$ é o $i$-ésimo elemento de $\v{\theta}$, então
 		\begin{align}
 			\theta_i &\sim \tdist{n}(m_i, R_{ii}), \quad R_{ii}=C_{ii}\frac{d}{n} \\
-			\theta_i|\vect{Y}_1, \ldots, \vect{Y}_k &\sim \tdist{n^*}(m_i^*, R_{ii}^*), \quad R_{ii}^*=C_{ii}^*\frac{d^*}{n^*}
+			\theta_i|\v{Y}_1, \ldots, \v{Y}_k &\sim \tdist{n^*}(m_i^*, R_{ii}^*), \quad R_{ii}^*=C_{ii}^*\frac{d^*}{n^*}
 		\end{align}
-		onde $\bar{\vect{Y}} = \frac{1}{k}\sum_{j=1}^k \vect{Y}_j$
+		onde $\bar{\v{Y}} = \frac{1}{k}\sum_{j=1}^k \v{Y}_j$
 	\end{outline}
 	
 	\begin{note}
 		\leavevmode
 		\begin{outline}
-			\1 O vetor de parâmetros $\vect{\theta}$ tem dimensão $p \times 1$.
-			\1 Cada observação $\vect{Y}_j$ também tem dimensão $p \times 1$.
-			\1 $\vect{C}$ é uma matriz $p \times p$ simétrica positiva definida.
+			\1 O vetor de parâmetros $\v{\theta}$ tem dimensão $p \times 1$.
+			\1 Cada observação $\v{Y}_j$ também tem dimensão $p \times 1$.
+			\1 $\m{C}$ é uma matriz $p \times p$ simétrica positiva definida.
 			\1 Os graus de liberdade aumentam de $n$ para $n^* = n + kp$ (cada observação vetorial contribui com $p$ graus de liberdade).
-			\1 A notação $\text{T}_n[\vect{m}, \matr{R}]$ denota a distribuição t multivariada com $n$ graus de liberdade, moda $\vect{m}$ e matriz de escala $\matr{R}$.
+			\1 A notação $\text{T}_n[\v{m}, \m{R}]$ denota a distribuição t multivariada com $n$ graus de liberdade, moda $\v{m}$ e matriz de escala $\m{R}$.
 		\end{outline}
 	\end{note}
 \end{theorem}
@@ -163,49 +202,49 @@
 	\leavevmode 
 	\begin{outline}
 		\1 Verossimilhança: 
-		\[ (Y_i \mid \vect{\theta}, \phi) \sim N[\vect{F}_i'\vect{\theta}, k_i\phi^{-1}], \quad i = 1, \ldots, n\]
+		\[ (Y_i \mid \v{\theta}, \phi) \sim N[\v{F}_i'\v{\theta}, k_i\phi^{-1}], \quad i = 1, \ldots, n\]
 		
 		\1 Priori:
 		\begin{align}
-			(\vect{\theta},\phi) &\sim \text{NG}(\vect{a}, \vect{R}, \nu, s) \\
-			\vect{\theta}|\phi &\sim N[\vect{a}, \vect{R}\phi^{-1}] \\
+			(\v{\theta},\phi) &\sim \text{NG}(\v{a}, \v{R}, \nu, s) \\
+			\v{\theta}|\phi &\sim N[\v{a}, \v{R}\phi^{-1}] \\
 			\phi &\sim \text{Gamma}(\nu/2, s/2)
 		\end{align}
 		
 		\1 Posteriori para múltiplas observações: 
-		\[ (\vect{\theta},\phi)|Y_1, \ldots, Y_n \sim \text{NG}(\vect{a}^*, \vect{R}^*, \nu^*, s^*)\]
+		\[ (\v{\theta},\phi)|Y_1, \ldots, Y_n \sim \text{NG}(\v{a}^*, \v{R}^*, \nu^*, s^*)\]
 		\begin{align}
 			\nu^* &= \nu + n \\
-			Q_i &= \vect{F}_i'\vect{R}\vect{F}_i + k_i \quad \text{(variância preditiva)} \\
-			e_i &= Y_i - \vect{F}_i'\vect{a} \quad \text{(erro de predição)} \\
-			\vect{R}^* &= \vect{R} - \sum_{i=1}^n \frac{\vect{R}\vect{F}_i\vect{F}_i'\vect{R}}{Q_i} \\
-			\vect{a}^* &= \vect{a} + \sum_{i=1}^n \frac{\vect{R}\vect{F}_i e_i}{Q_i} \\
+			Q_i &= \v{F}_i'\v{R}\v{F}_i + k_i \quad \text{(variância preditiva)} \\
+			e_i &= Y_i - \v{F}_i'\v{a} \quad \text{(erro de predição)} \\
+			\v{R}^* &= \v{R} - \sum_{i=1}^n \frac{\v{R}\v{F}_i\v{F}_i'\v{R}}{Q_i} \\
+			\v{a}^* &= \v{a} + \sum_{i=1}^n \frac{\v{R}\v{F}_i e_i}{Q_i} \\
 			s^* &= s + \sum_{i=1}^n \frac{e_i^2}{Q_i}
 		\end{align}	
 		
-		\2 Caso particular $n=1$: Após observar $(Y_1, \vect{F}_1)$ com $Y_1 = Y$, $\vect{F}_1 = \vect{F}$, $k_1 = k$,
+		\2 Caso particular $n=1$: Após observar $(Y_1, \v{F}_1)$ com $Y_1 = Y$, $\v{F}_1 = \v{F}$, $k_1 = k$,
 		\begin{align}
 			\nu^* &= \nu + 1 \\
-			f &= \vect{F}'\vect{a} \quad \text{(predição priori)} \\
-			Q &= \vect{F}'\vect{R}\vect{F} + k \quad \text{(variância preditiva priori)} \\
-			\vect{R}^* &= \vect{R} - \frac{\vect{R}\vect{F}\vect{F}'\vect{R}}{Q} \\
-			\vect{a}^* &= \vect{a} + \frac{\vect{R}\vect{F}(Y - f)}{Q} \\
+			f &= \v{F}'\v{a} \quad \text{(predição priori)} \\
+			Q &= \v{F}'\v{R}\v{F} + k \quad \text{(variância preditiva priori)} \\
+			\v{R}^* &= \v{R} - \frac{\v{R}\v{F}\v{F}'\v{R}}{Q} \\
+			\v{a}^* &= \v{a} + \frac{\v{R}\v{F}(Y - f)}{Q} \\
 			s^* &= s + \frac{(Y - f)^2}{Q}
 		\end{align}
 		
 		\3 Distribuições condicionais e marginal posteriori ($n=1$):
 		\begin{align}
-			(\vect{\theta} \mid \phi, Y) &\sim N[\vect{a}^*, \vect{R}^*\phi^{-1}] \\
+			(\v{\theta} \mid \phi, Y) &\sim N[\v{a}^*, \v{R}^*\phi^{-1}] \\
 			(\phi \mid Y) &\sim \text{Gamma}\left(\frac{\nu+1}{2}, \frac{s + (Y-f)^2/Q}{2}\right)
 		\end{align}
 		
 		\1 Marginais:
 		\begin{align}
-			\vect{\theta} &\sim \text{T}_\nu[\vect{a}, \vect{R}S], \quad S = s/\nu \\
-			\vect{\theta}|Y_1, \ldots, Y_n &\sim \text{T}_{\nu^*}[\vect{a}^*, \vect{R}^*S^*], \quad S^* = s^*/\nu^*
+			\v{\theta} &\sim \text{T}_\nu[\v{a}, \v{R}S], \quad S = s/\nu \\
+			\v{\theta}|Y_1, \ldots, Y_n &\sim \text{T}_{\nu^*}[\v{a}^*, \v{R}^*S^*], \quad S^* = s^*/\nu^*
 		\end{align}
 		
-		\1 Marginais univariadas: Se $\theta_j$ é o $j$-ésimo elemento de $\vect{\theta}$, então
+		\1 Marginais univariadas: Se $\theta_j$ é o $j$-ésimo elemento de $\v{\theta}$, então
 		\begin{align}
 			\theta_j &\sim t_\nu\left(a_j, R_{jj}S\right) \\
 			\theta_j|Y_1, \ldots, Y_n &\sim t_{\nu^*}\left(a_j^*, R_{jj}^*S^*\right)
@@ -216,24 +255,24 @@
 			\frac{\theta_j - a_j^*}{\sqrt{R_{jj}^*S^*}} &\sim t_{\nu^*}(0, 1)
 		\end{align}
 		
-		\1 Distribuição preditiva: Para uma nova observação $Y_{n+1}$ com covariáveis $\vect{F}_{n+1}$ e fator $k_{n+1}$,
+		\1 Distribuição preditiva: Para uma nova observação $Y_{n+1}$ com covariáveis $\v{F}_{n+1}$ e fator $k_{n+1}$,
 		\begin{align}
 			Y_{n+1}|Y_1, \ldots, Y_n &\sim t_{\nu^*}\left(f^*, Q^*S^*\right) \\
-			f^* &= \vect{F}_{n+1}'\vect{a}^* \\
-			Q^* &= \vect{F}_{n+1}'\vect{R}^*\vect{F}_{n+1} + k_{n+1}
+			f^* &= \v{F}_{n+1}'\v{a}^* \\
+			Q^* &= \v{F}_{n+1}'\v{R}^*\v{F}_{n+1} + k_{n+1}
 		\end{align}
 	\end{outline}
 	
 	\begin{note}
 		\leavevmode
 		\begin{outline}
-			\1 O vetor de parâmetros $\vect{\theta}$ tem dimensão $p \times 1$.
-			\1 Cada $Y_i$ é uma observação escalar com vetor de covariáveis $\vect{F}_i$ ($p \times 1$).
+			\1 O vetor de parâmetros $\v{\theta}$ tem dimensão $p \times 1$.
+			\1 Cada $Y_i$ é uma observação escalar com vetor de covariáveis $\v{F}_i$ ($p \times 1$).
 			\1 $k_i$ é o fator de escala da variância da $i$-ésima observação.
-			\1 $\vect{R}$ é uma matriz $p \times p$ simétrica positiva definida.
+			\1 $\v{R}$ é uma matriz $p \times p$ simétrica positiva definida.
 			\1 $S = s/\nu = 1/E[\phi]$ é o inverso da precisão esperada.
 			\1 Os graus de liberdade aumentam de $\nu$ para $\nu^* = \nu + n$ (número de observações escalares).
-			\1 A notação $\text{T}_\nu[\vect{a}, \vect{R}S]$ denota a distribuição t multivariada com $\nu$ graus de liberdade, vetor de localização $\vect{a}$ e matriz de escala $\vect{R}S$.
+			\1 A notação $\text{T}_\nu[\v{a}, \v{R}S]$ denota a distribuição t multivariada com $\nu$ graus de liberdade, vetor de localização $\v{a}$ e matriz de escala $\v{R}S$.
 			\1 A atualização sequencial é possível: a posteriori após $i$ observações serve como priori para a $(i+1)$-ésima observação.
 		\end{outline}
 	\end{note}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.5.1)  29 AUG 2026 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.5.1)  31 AUG 2026 21:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -546,35 +546,63 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.46 ...ne {5.14}IndependÃªncia}{54}{section.5.14}
+l.46 ...line {7.4}Valor absoluto}{47}{section.7.4}
                                                   % [1
 
 ])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- (./probabilidade.tex
+ (./notacao.tex
 
-[2]
-Cap\'{\i }tulo 1.
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 20.
-
-(/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
+[2]) (./algebra.tex
 
 [3
 
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Cap\'{\i }tulo 1.
 
-[4]
+
+[4
+
+]
 
 [5]
 
 [6]
 
 [7]
-Overfull \hbox (12.36401pt too wide) in paragraph at lines 253--254
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+
+[12]) (./probabilidade.tex
+
+[13]
+Cap\'{\i }tulo 2.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 20.
+
+(/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+)
+
+[14
+
+]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+Overfull \hbox (12.36401pt too wide) in paragraph at lines 233--234
 []$[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 aX \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 bY
 ; cW \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 dV\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 
 ac  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X; W\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/1
@@ -585,86 +613,98 @@ it/12 bd  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Y; V\OT1/cmr/m/n/12 )$
 
 
 
-[8]
+[19]
 
-[9]) (./inferencia.tex
+[20]
 
-[10]
-Cap\'{\i }tulo 2.
+[21]
+
+[22]) (./inferencia.tex
+
+[23]
+Cap\'{\i }tulo 3.
 
 
-[11
+[24
 
 ]
 
-[12]
+[25]
 
-[13]
+[26]
 
-[14]
+[27]
 
-[15]
+[28]
 
-[16]
+[29]
 Overfull \hbox (36.92885pt too wide) in paragraph at lines 349--350
-[]\T1/cmr/bx/n/12 Teorema 2.4.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 De-si-gual-dade
+[]\T1/cmr/bx/n/12 Teorema 3.4.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 De-si-gual-dade
  de Cra-mér---Rao -- caso i.i.d. (Co-ro-lá-rio 1)\T1/cmr/m/n/12 ). []Se-jam $\O
 ML/cmm/m/it/12 X[]; X[]; [] ; X[]$
  []
 
 
 
-[17]
+[30]
 
-[18]) (./regressao.tex
+[31]) (./normal_multivariada.tex
 
-[19]
-Cap\'{\i }tulo 3.
-) (./inferencia_bayesiana.tex
-
-[20
-
-]
+[32]
 Cap\'{\i }tulo 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+[33
+
+]) (./regressao.tex
+
+[34]
+Cap\'{\i }tulo 5.
+) (./inferencia_bayesiana.tex
+
+[35
+
+]
+Cap\'{\i }tulo 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
  []
 
 
 
-[21
+[36
 
 ]
 
-[22]
+[37]
 
-[23]
+[38]
 
-[24]
+[39]
 
-[25]) (./prob_avancada.tex
+[40]) (./prob_avancada.tex
 
-[26]
-Cap\'{\i }tulo 5.
+[41]
+Cap\'{\i }tulo 7.
 
 
-[27
+[42
 
 ]
 
-[28]
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
 
 
-[29]
+[44]
 
-[30]
+[45]
 Overfull \hbox (55.45848pt too wide) in paragraph at lines 179--181
-[]\T1/cmr/bx/n/12 Teorema 5.2.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 Pro-pri-e-da-de
+[]\T1/cmr/bx/n/12 Teorema 7.2.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 Pro-pri-e-da-de
 s de fun-ções e ima-gens in-ver-sas\T1/cmr/m/n/12 ). []Seja $\OML/cmm/m/it/12 f
  [] [] \OT1/cmr/m/n/12 
 [] \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 
@@ -673,64 +713,9 @@ s de fun-ções e ima-gens in-ver-sas\T1/cmr/m/n/12 ). []Seja $\OML/cmm/m/it/12 f
 
 
 
-[31]
-
-[32]
-
-[33]
-
-[34]
-
-[35]
-
-[36]
-
-[37]
-
-[38]
-
-[39]
-
-[40]
-
-[41]
-
-[42]
-
-[43]
-Overfull \hbox (21.298pt too wide) in paragraph at lines 822--823
-[]\T1/cmr/bx/n/12 Teorema 5.10.5 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 2.3 Com-po-si-
-ção de trans-for-ma-ções men-su-rá-veis\T1/cmr/m/n/12 ). []Se-jam $\OT1/cmr/m/n
-/12 (
-[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 , $\O
-T1/cmr/m/n/12 (
-[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 ,
- []
-
-
-Overfull \hbox (4.8367pt too wide) in paragraph at lines 826--827
-[]\T1/cmr/bx/n/12 Teorema 5.10.6 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 2.5 Pro-ba-bi-
-li-dade in-du-zida ou dis-tri-bu-i-ção de X\T1/cmr/m/n/12 ). []Con-si-dere $\OT
-1/cmr/m/n/12 (
-[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OML/cmm/m/it/12 ; \U/msb/m/n/12 P[]\O
-T1/cmr/m/n/12 )$
- []
-
-
-
-[44]
-
-[45]
-
 [46]
 
 [47]
-Overfull \hbox (14.04724pt too wide) in paragraph at lines 989--990
-[]\T1/cmr/bx/n/12 Teorema 5.12.2. []\T1/cmr/m/n/12 Se $\OML/cmm/m/it/12 X$ \T1/
-cmr/m/n/12 for uma v.a. sim-ples e não ne-ga-tiva, en-tão a apli-ca-ção $[]$
- []
-
-
 
 [48]
 
@@ -743,6 +728,61 @@ cmr/m/n/12 for uma v.a. sim-ples e não ne-ga-tiva, en-tão a apli-ca-ção $[]$
 [52]
 
 [53]
+
+[54]
+
+[55]
+
+[56]
+
+[57]
+
+[58]
+Overfull \hbox (21.298pt too wide) in paragraph at lines 822--823
+[]\T1/cmr/bx/n/12 Teorema 7.10.5 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 2.3 Com-po-si-
+ção de trans-for-ma-ções men-su-rá-veis\T1/cmr/m/n/12 ). []Se-jam $\OT1/cmr/m/n
+/12 (
+[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 , $\O
+T1/cmr/m/n/12 (
+[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (4.8367pt too wide) in paragraph at lines 826--827
+[]\T1/cmr/bx/n/12 Teorema 7.10.6 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 2.5 Pro-ba-bi-
+li-dade in-du-zida ou dis-tri-bu-i-ção de X\T1/cmr/m/n/12 ). []Con-si-dere $\OT
+1/cmr/m/n/12 (
+[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OML/cmm/m/it/12 ; \U/msb/m/n/12 P[]\O
+T1/cmr/m/n/12 )$
+ []
+
+
+
+[59]
+
+[60]
+
+[61]
+
+[62]
+Overfull \hbox (14.04724pt too wide) in paragraph at lines 989--990
+[]\T1/cmr/bx/n/12 Teorema 7.12.2. []\T1/cmr/m/n/12 Se $\OML/cmm/m/it/12 X$ \T1/
+cmr/m/n/12 for uma v.a. sim-ples e não ne-ga-tiva, en-tão a apli-ca-ção $[]$
+ []
+
+
+
+[63]
+
+[64]
+
+[65]
+
+[66]
+
+[67]
+
+[68]
 Overfull \hbox (7.14828pt too wide) in paragraph at lines 1267--1268
 []$\OML/cmm/m/it/12 X$ \T1/cmr/m/n/12 e $\OML/cmm/m/it/12 Y$ \T1/cmr/m/n/12 são
  va-ri-á-veis ale-a-tó-rias in-de-pen-den-tes se, e so-mente se, $\OML/cmm/m/it
@@ -753,7 +793,7 @@ OT1/cmr/m/n/12 (\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )$
 
 
 Overfull \hbox (15.83083pt too wide) in paragraph at lines 1299--1300
-[]\T1/cmr/bx/n/12 Definição 5.14.3 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 In-de-pen-dê
+[]\T1/cmr/bx/n/12 Definição 7.14.3 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 In-de-pen-dê
 n-cia de classe de even-tos\T1/cmr/m/n/12 ). []As clas-ses de even-tos $\OMS/cm
 sy/m/n/12 A[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 A[]\OML/cmm/m/it/12 ; [] ; \OM
 S/cmsy/m/n/12 A[]$
@@ -761,11 +801,11 @@ S/cmsy/m/n/12 A[]$
 
 
 
-[54]
+[69]
 
-[55]
+[70]
 
-[56]
+[71]
 Overfull \hbox (7.10583pt too wide) in paragraph at lines 1468--1469
 []\T1/cmr/m/n/12 Cauchy-Schwarz: Se $\OML/cmm/m/it/12 X; Y \OMS/cmsy/m/n/12 2 \
 OML/cmm/m/it/12 L[]$\T1/cmr/m/n/12 , en-tão $\OML/cmm/m/it/12 XY \OMS/cmsy/m/n/
@@ -777,55 +817,54 @@ $
 
 
 
-[57])
+[72])
 
-[58] (./main.aux)
+[73] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7A2F5414052E598972F4ADD6F9873C63;6966.
+(rerunfilecheck)             Checksum: 11514094121F7E4FA921AA0182642185;9392.
  ) 
 Here is how much of TeX's memory you used:
- 15741 strings out of 475085
- 251947 string characters out of 5764177
- 699039 words of memory out of 5000000
- 37726 multiletter control sequences out of 15000+600000
- 583991 words of font info for 106 fonts, out of 8000000 for 9000
+ 16058 strings out of 475085
+ 255533 string characters out of 5764177
+ 696039 words of memory out of 5000000
+ 37773 multiletter control sequences out of 15000+600000
+ 583109 words of font info for 103 fonts, out of 8000000 for 9000
  61 hyphenation exceptions out of 8191
- 80i,17n,82p,543b,786s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,14n,82p,543b,786s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/cleiton/.texlive2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts
-/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/t
-ype1/public/cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-super
-/sfti1200.pfb>
-Output written on main.pdf (59 pages, 603761 bytes).
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm
+-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fo
+nts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb><
+/usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfti1200.pfb>
+Output written on main.pdf (74 pages, 652254 bytes).
 PDF statistics:
- 1498 PDF objects out of 1728 (max. 8388607)
- 1363 compressed objects within 14 object streams
- 787 named destinations out of 1000 (max. 500000)
- 361 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1916 PDF objects out of 2073 (max. 8388607)
+ 1764 compressed objects within 18 object streams
+ 1049 named destinations out of 1200 (max. 500000)
+ 473 words of extra memory for PDF output out of 10000 (max. 10000000)
 

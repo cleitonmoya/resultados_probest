@@ -38,9 +38,9 @@
 \begin{theorem}[Qui-quadrado]
 	\leavevmode
 	\begin{outline}[enumerate]
-		\1 Se $Z \sim \normdist{0,1}$, então $Z^2 \sim \chi_1^2$;
+		\1 Se $Z \sim \normdist{0,1}$, então $Z^2 \sim \chidist{1}$;
 		
-		\1 Se $X_1, X_2, \ldots, X_n$ são v.a.'s independentes tais que $X_i \sim \chi_{r_i}^2$, então $\sum_{i=1}^{n} X_i \sim \chi_r^2$, em que $r = \sum_{i=1}^{n} r_i$.
+		\1 Se $X_1, X_2, \ldots, X_n$ são v.a.'s independentes tais que $X_i \sim \chidist{r_i}$, então $\sum_{i=1}^{n} X_i \sim \chidist{r}$, em que $r = \sum_{i=1}^{n} r_i$.
 	\end{outline}
 \end{theorem}
 
@@ -147,80 +147,80 @@
 \section{Redução de dados}
 
 \begin{definition}[Princípio da suficiência]
-	Se $T$ for uma estatística suficiente para $\theta$, e se duas amostras observadas, $\vect{x}$ e $\vect{y}$, forem tais que $T(\vect{x}) = T(\vect{y})$, então as inferências a respeito de $\theta$ deverão ser as mesmas, independentemente de se usar $\vect{x}$ ou $\vect{y}$.
+	Se $T$ for uma estatística suficiente para $\theta$, e se duas amostras observadas, $\v{x}$ e $\v{y}$, forem tais que $T(\v{x}) = T(\v{y})$, então as inferências a respeito de $\theta$ deverão ser as mesmas, independentemente de se usar $\v{x}$ ou $\v{y}$.
 	
 	\begin{note}
-		Como consequência, qualquer inferência sobre $\theta$ deverá depender da amostra $\vect{X}$ apenas através de $T(\vect{X})$.
+		Como consequência, qualquer inferência sobre $\theta$ deverá depender da amostra $\v{X}$ apenas através de $T(\v{X})$.
 	\end{note}
 \end{definition}
 
 \begin{definition}[Estatística suficiente]
-	Uma estatística $T(\vect{X})$ é chamada de estatística suficiente para $\theta$ se a distribuição condicional da amostra $\vect{X}$, dado o valor de $T(\vect{X})$, não depender de $\theta$.
+	Uma estatística $T(\v{X})$ é chamada de estatística suficiente para $\theta$ se a distribuição condicional da amostra $\v{X}$, dado o valor de $T(\v{X})$, não depender de $\theta$.
 \end{definition}
 
 \begin{theorem}[Razão para suficiência]
-	Seja $p(\vect{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\vect{X}$, e $q(t | \theta)$ a f.p. (ou f.d.p.) de uma estatística $T(\vect{X})$. Então $T(\vect{X})$ será uma estatística suficiente para $\theta$ se, para todo $\vect{x} \in \mathcal{X}$, a razão
+	Seja $p(\v{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\v{X}$, e $q(t | \theta)$ a f.p. (ou f.d.p.) de uma estatística $T(\v{X})$. Então $T(\v{X})$ será uma estatística suficiente para $\theta$ se, para todo $\v{x} \in \mathcal{X}$, a razão
 	\[
-	\frac{p(\vect{x} | \theta)}{q(T(\vect{x}) | \theta)}
+	\frac{p(\v{x} | \theta)}{q(T(\v{x}) | \theta)}
 	\]
 	for constante como função de $\theta$.
 \end{theorem}
 
 \begin{theorem}[Critério da fatoração]
-	Seja $f(\vect{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\vect{X}$. Uma estatística $T(\vect{X})$ é uma estatística suficiente para $\theta$ se, e somente se, existirem funções $g(t | \theta)$ e $h(\vect{x})$ de modo que, para todo $\vect{x} \in \mathcal{X}$ e todo $\theta \in \Theta$,
+	Seja $f(\v{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\v{X}$. Uma estatística $T(\v{X})$ é uma estatística suficiente para $\theta$ se, e somente se, existirem funções $g(t | \theta)$ e $h(\v{x})$ de modo que, para todo $\v{x} \in \mathcal{X}$ e todo $\theta \in \Theta$,
 	\[
-	f(\vect{x} | \theta) = g(T(\vect{x}) | \theta)h(\vect{x}).
+	f(\v{x} | \theta) = g(T(\v{x}) | \theta)h(\v{x}).
 	\]
 \end{theorem}
 
 \begin{theorem}[Suficiência na família exponencial]
 	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. oriunda de uma população cuja f.d.p. (ou f.p.) $f(x | \theta)$ pertence à família exponencial
 	\[
-	f(x | \vect{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\vect{\theta})t_k(x)\right) a(\vect{\theta})h(x),
+	f(x | \v{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\v{\theta})t_k(x)\right) a(\v{\theta})h(x),
 	\]
-	em que $\vect{\theta} = (\theta_1, \theta_2, \ldots, \theta_d)$, $d \leq s$. Então,
+	em que $\v{\theta} = (\theta_1, \theta_2, \ldots, \theta_d)$, $d \leq s$. Então,
 	\[
-	T(\vect{X}) = \left(\sum_{i=1}^{n} t_1(X_i), \sum_{i=1}^{n} t_2(X_i), \ldots, \sum_{i=1}^{n} t_s(X_i)\right)
+	T(\v{X}) = \left(\sum_{i=1}^{n} t_1(X_i), \sum_{i=1}^{n} t_2(X_i), \ldots, \sum_{i=1}^{n} t_s(X_i)\right)
 	\]
-	é uma estatística suficiente para $\vect{\theta}$.
+	é uma estatística suficiente para $\v{\theta}$.
 \end{theorem}
 
 \begin{definition}[Estatística suficiente mínima]
-	Uma estatística $T(\vect{X})$ é chamada estatística suficiente mínima se, para qualquer outra estatística suficiente $T'(\vect{X})$, $T(\vect{X})$ puder ser escrita como função de $T'(\vect{X})$.
+	Uma estatística $T(\v{X})$ é chamada estatística suficiente mínima se, para qualquer outra estatística suficiente $T'(\v{X})$, $T(\v{X})$ puder ser escrita como função de $T'(\v{X})$.
 \end{definition}
 
 \begin{theorem}[Critério para suficiência mínima]
-	Seja $f(\vect{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\vect{X}$. Suponhamos que, para quaisquer duas possíveis amostras observadas, $\vect{x}$ e $\vect{y}$, $f(\vect{x} | \theta)/f(\vect{y} | \theta)$ seja constante como função de $\theta$ se, e somente se, $T(\vect{x}) = T(\vect{y})$. Então $T(\vect{X})$ é uma estatística suficiente mínima.
+	Seja $f(\v{x} | \theta)$ a f.p. (ou f.d.p.) conjunta de uma amostra $\v{X}$. Suponhamos que, para quaisquer duas possíveis amostras observadas, $\v{x}$ e $\v{y}$, $f(\v{x} | \theta)/f(\v{y} | \theta)$ seja constante como função de $\theta$ se, e somente se, $T(\v{x}) = T(\v{y})$. Então $T(\v{X})$ é uma estatística suficiente mínima.
 \end{theorem}
 
 \begin{definition}[Estatística ancilar]
-	Uma estatística $S(\vect{X})$ cuja distribuição não depende de $\theta$ é chamada de estatística ancilar.
+	Uma estatística $S(\v{X})$ cuja distribuição não depende de $\theta$ é chamada de estatística ancilar.
 	
 	\begin{note}
-		Uma estatística $S(\vect{X})$ é dita ser ancilar de primeira ordem se $\E_\theta[S(\vect{X})]$ não depende de $\theta$.
+		Uma estatística $S(\v{X})$ é dita ser ancilar de primeira ordem se $\E_\theta[S(\v{X})]$ não depende de $\theta$.
 	\end{note}
 \end{definition}
 
 \begin{definition}[Estatística completa]
-	Seja $f(t | \theta)$ uma família de f.d.p.'s (ou f.p.'s) para uma estatística $T(\vect{X})$. A família de distribuições de probabilidade é chamada completa se, para qualquer função $g$,
+	Seja $f(t | \theta)$ uma família de f.d.p.'s (ou f.p.'s) para uma estatística $T(\v{X})$. A família de distribuições de probabilidade é chamada completa se, para qualquer função $g$,
 	\[
 	\E_\theta[g(T)] = 0 \implies \P_\theta[g(T) = 0] = 1,
 	\]
-	para todo $\theta \in \Theta$. De forma equivalente, $T(\vect{X})$ é chamada de estatística completa.
+	para todo $\theta \in \Theta$. De forma equivalente, $T(\v{X})$ é chamada de estatística completa.
 \end{definition}
 
 \begin{theorem}[Basu]
-	Se $T(\vect{X})$ for uma estatística suficiente mínima e completa, então $T(\vect{X})$ será independente de toda estatística ancilar.
+	Se $T(\v{X})$ for uma estatística suficiente mínima e completa, então $T(\v{X})$ será independente de toda estatística ancilar.
 \end{theorem}
 
 \begin{theorem}[Estatísticas completas na família exponencial]
 	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. oriunda de uma população com f.d.p. (ou f.p.) pertencente à família exponencial
 	\[
-		f(x | \vect{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\vect{\theta})t_k(x)\right) a(\vect{\theta})h(x),
+		f(x | \v{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\v{\theta})t_k(x)\right) a(\v{\theta})h(x),
 	\]
-	em que $\vect{\theta} = (\theta_1, \theta_2, \ldots, \theta_s)$. Então, a estatística
+	em que $\v{\theta} = (\theta_1, \theta_2, \ldots, \theta_s)$. Então, a estatística
 	\[
-		T(\vect{X}) = \left(\sum_{i=1}^{n} t_1(X_i), \sum_{i=1}^{n} t_2(X_i), \ldots, \sum_{i=1}^{n} t_s(X_i)\right)
+		T(\v{X}) = \left(\sum_{i=1}^{n} t_1(X_i), \sum_{i=1}^{n} t_2(X_i), \ldots, \sum_{i=1}^{n} t_s(X_i)\right)
 	\]
 	é completa, desde que $\Theta$ contenha um conjunto aberto em $\Re^s$.
 \end{theorem}
@@ -246,11 +246,11 @@
 \begin{definition}[Função de verossimilhança]
 	Sejam $X_1, X_2, \ldots, X_n$ uma amostra oriunda de uma população com f.d.p. (ou f.p.) $f(x | \theta)$. A função de verossimilhança será
 	\[
-	L(\theta | \vect{x}) = f(\vect{x} | \theta).
+	L(\theta | \v{x}) = f(\v{x} | \theta).
 	\]
-	Qualquer estimador $\hat{\theta} \equiv \hat{\theta}_n(\vect{X}) \in \Theta$ tal que
+	Qualquer estimador $\hat{\theta} \equiv \hat{\theta}_n(\v{X}) \in \Theta$ tal que
 	\[
-	L(\hat{\theta} | \vect{X}) = \sup_{\theta \in \Theta} L(\theta | \vect{X})
+	L(\hat{\theta} | \v{X}) = \sup_{\theta \in \Theta} L(\theta | \v{X})
 	\]
 	é chamado estimador de máxima verossimilhança (EMV) de $\theta$.
 \end{definition}
@@ -264,13 +264,13 @@
 \end{theorem}
 
 \begin{theorem}[Relação EMV e Suficiência]
-	Seja $L(\theta | \vect{x})$ a função de verossimilhança da amostra $X_1, X_2, \ldots, X_n$, e seja $T = T(\vect{X})$ uma estatística suficiente para $\theta$. O EMV de $\theta$, se existir, será função de $T$.
+	Seja $L(\theta | \v{x})$ a função de verossimilhança da amostra $X_1, X_2, \ldots, X_n$, e seja $T = T(\v{X})$ uma estatística suficiente para $\theta$. O EMV de $\theta$, se existir, será função de $T$.
 \end{theorem}
 
 \begin{theorem}[EMV na família exponencial]
 	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. pertencente à família exponencial canônica, cuja f.d.p. (ou f.p.) conjunta pode ser escrita como
 	\[
-	f(\vect{x} | \eta) = \exp\left(\eta \sum_{i=1}^{n} T(x_i) - nA(\eta)\right) h^*(\vect{x}).
+	f(\v{x} | \eta) = \exp\left(\eta \sum_{i=1}^{n} T(x_i) - nA(\eta)\right) h^*(\v{x}).
 	\]
 	Temos que o EMV de $\eta$ será solução da equação
 	\[
@@ -288,7 +288,7 @@
 	\begin{note}
 		O Teorema 4 pode ser generalizado para o caso multiparamétrico:
 		\[
-		f(\vect{x} | \vect{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\vect{\theta})T_k(\vect{x}) - B(\vect{\theta})\right) h(\vect{x}).
+		f(\v{x} | \v{\theta}) = \exp\left(\sum_{k=1}^{s} \eta_k(\v{\theta})T_k(\v{x}) - B(\v{\theta})\right) h(\v{x}).
 		\]
 	\end{note}
 \end{theorem}
@@ -316,13 +316,13 @@
 \end{definition}
 
 \begin{theorem}[Desigualdade de Cramér-Rao (Teorema 1)]
-	Sejam $X_1, X_2, \ldots, X_n$ uma amostra com f.d.p. conjunta $f(\vect{x} | \theta)$ e $W(\vect{X})$ um estimador que satisfaz
+	Sejam $X_1, X_2, \ldots, X_n$ uma amostra com f.d.p. conjunta $f(\v{x} | \theta)$ e $W(\v{X})$ um estimador que satisfaz
 	\[
-	\frac{d}{d\theta} \E_\theta[W(\vect{X})] = \int_{\mathcal{X}} \frac{\partial}{\partial\theta} [W(\vect{x})f(\vect{x} | \theta)]d\vect{x} \quad \text{e} \quad \Var_\theta[W(\vect{X})] < \infty.
+	\frac{d}{d\theta} \E_\theta[W(\v{X})] = \int_{\mathcal{X}} \frac{\partial}{\partial\theta} [W(\v{x})f(\v{x} | \theta)]d\v{x} \quad \text{e} \quad \Var_\theta[W(\v{X})] < \infty.
 	\]
 	Então,
 	\[
-	\Var_\theta[W(\vect{X})] \geq \frac{\left(\frac{d}{d\theta} \E_\theta[W(\vect{X})]\right)^2}{\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\vect{X} | \theta)\right)^2\right]}.
+	\Var_\theta[W(\v{X})] \geq \frac{\left(\frac{d}{d\theta} \E_\theta[W(\v{X})]\right)^2}{\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\v{X} | \theta)\right)^2\right]}.
 	\]
 	
 	\begin{note}
@@ -332,13 +332,13 @@
 	
 			\1 A quantidade
 			\[
-			\frac{\left(\frac{d}{d\theta} \E_\theta[W(\vect{X})]\right)^2}{\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\vect{X} | \theta)\right)^2\right]},
+			\frac{\left(\frac{d}{d\theta} \E_\theta[W(\v{X})]\right)^2}{\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\v{X} | \theta)\right)^2\right]},
 			\]
 			exibida no Teorema 1, é conhecida como limite inferior de Cramér-Rao (LICR).
 		
 			\1 A quantidade
 			\[
-			\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\vect{X} | \theta)\right)^2\right]
+			\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(\v{X} | \theta)\right)^2\right]
 			\]
 			é conhecida como informação de Fisher da amostra. Quanto maior a informação de Fisher, mais informação temos sobre $\theta$ e, consequentemente, menor será o limite inferior de Cramér-Rao.
 		\end{outline}
@@ -348,7 +348,7 @@
 \begin{theorem}[Desigualdade de Cramér-Rao -- caso i.i.d. (Corolário 1)]
 	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com f.d.p. (ou f.p.) $f(x | \theta)$. Sob as suposições do Teorema 1,
 	\[
-	\Var_\theta[W(\vect{X})] \geq \frac{\left(\frac{d}{d\theta} \E_\theta[W(\vect{X})]\right)^2}{n\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(X | \theta)\right)^2\right]}.
+	\Var_\theta[W(\v{X})] \geq \frac{\left(\frac{d}{d\theta} \E_\theta[W(\v{X})]\right)^2}{n\E_\theta\left[\left(\frac{\partial}{\partial\theta} \log f(X | \theta)\right)^2\right]}.
 	\]
 \end{theorem}
 
@@ -373,9 +373,9 @@
 \end{theorem}
 
 \begin{theorem}[Corolário 2]
-	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população $X$ com f.d.p. (ou f.p.) $f(x | \theta)$, em que $f$ satisfaz as condições do Teorema 1. Suponhamos que $L(\theta | \vect{x}) = \prod_{i=1}^{n} f(x_i | \theta)$ denote a função de verossimilhança. Se $W(\vect{X})$ for um estimador para $\tau(\theta)$, então $W(\vect{X})$ atingirá o limite inferior de Cramér-Rao se, e somente se,
+	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população $X$ com f.d.p. (ou f.p.) $f(x | \theta)$, em que $f$ satisfaz as condições do Teorema 1. Suponhamos que $L(\theta | \v{x}) = \prod_{i=1}^{n} f(x_i | \theta)$ denote a função de verossimilhança. Se $W(\v{X})$ for um estimador para $\tau(\theta)$, então $W(\v{X})$ atingirá o limite inferior de Cramér-Rao se, e somente se,
 	\[
-	\frac{\partial}{\partial\theta} \log L(\theta | \vect{x}) = a(\theta)[W(\vect{x}) - \tau(\theta)],
+	\frac{\partial}{\partial\theta} \log L(\theta | \v{x}) = a(\theta)[W(\v{x}) - \tau(\theta)],
 	\]
 	para alguma função $a(\theta)$.
 \end{theorem}
@@ -408,6 +408,6 @@
 	Seja $T$ uma estatística suficiente e completa para um parâmetro $\theta$, e seja $\phi(T)$ qualquer estimador baseado somente em $T$. Então, $\phi(T)$ é o único melhor estimador não viesado de seu valor esperado.
 	
 	\begin{note}
-		O teorema acima diz que, na presença de estatísticas suficientes e completas, se pudermos determinar qualquer estimador não viesado de $\tau(\theta)$, podemos determinar o melhor ENV. Basicamente, se $T$ for uma estatística suficiente e completa para $\theta$ e $h(\vect{X})$ um ENV de $\tau(\theta)$, então $\phi(T) = \E[h(\vect{X}) | T]$ será o melhor estimador não viesado de $\tau(\theta)$.
+		O teorema acima diz que, na presença de estatísticas suficientes e completas, se pudermos determinar qualquer estimador não viesado de $\tau(\theta)$, podemos determinar o melhor ENV. Basicamente, se $T$ for uma estatística suficiente e completa para $\theta$ e $h(\v{X})$ um ENV de $\tau(\theta)$, então $\phi(T) = \E[h(\v{X}) | T]$ será o melhor estimador não viesado de $\tau(\theta)$.
 	\end{note}
 \end{theorem}

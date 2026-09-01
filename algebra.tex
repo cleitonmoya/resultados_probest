@@ -1,0 +1,487 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
+\chapter{Álgebra Linear}
+
+\section{Sistemas de equações lineares}
+
+\begin{theorem}[Sistemas de equações lineares]
+	 Todo sistema de equações lineares tem ou nenhuma solução, ou exatamente uma solução ou infinitas soluções.
+	 \begin{note}
+	 	Um sistema que não possui solução é chamado de \underline{inconsistente}; se existir pelo menos uma solução, dizemos que o sistema é \underline{consistente}.
+	 \end{note}
+\end{theorem}
+
+\begin{theorem}[Sistemas homogêneos]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Um sistema homogêneo de equações lineares com mais incógnitas que equações (subdeterminado) tem infinitas soluções.
+		\1 Se o sistema homogêneo tem $n$ incógnitas e a forma escolanada reduzida por linhas (echelon) da matriz aumentada tem $r$ linhas não nulas, então o sistema possui $n-r$ variáveis livres (parâmetros).
+	\end{outline}
+		\begin{note}
+		\leavevmode
+		\begin{enumerate}
+			\item Um sistema não-homogêneo com mais equações que incógnitas (sobredeterminado) não precisa ser consistente.
+			\item Todo sistema homogêneo é consistente, pois admite ao menos a solução trivial.
+		\end{enumerate}
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Solução geral e particular] Seja $\v{x}_0$ qualquer solução de um sistema consistente $\m{A}\v{x}=\v{b}$. Se $S=\{\v{v}_1, \v{v}_2, \ldots, \v{v}_k\}$ é uma base para o espaço-nulo de $\m{A}$, então toda solução de $\m{A}\v{x}=\v{b}$ pode ser expressa como
+	\begin{equation}
+		\v{x} = \v{x}_0 + c_1\v{v}_1 + c_2\v{v}_2 + \cdots + c_k\v{v}_k.
+	\end{equation}
+	De forma contrária, para todas as escolhas de $c_1. c_2, \ldots, c_k$, $\v{x}$ é uma solução de $\m{A}\v{x}=\v{b}$.
+	\begin{note}
+		$\v{x}_0$ é chamado de solução particular de $\m{A}\v{x}=\v{b}$ e a parte restante de solução geral de $\m{A}\v{x}=\v{0}$. Assim, a solução geral de um sistema consistente de equações lineares pode ser expressa como a soma de uma solução particular do sistema e a solução geral do sistema homogêneo correspondente.
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Sistema $m \times n$]. Seja $\m{A}_{m\times n}$ com $\pos(\m{A})=r$.
+	\begin{outline}
+		\1 \textbf{Caso sobredeterminado}: se $m>n$, então $\exists\, \v{b} \in \Re^m$ tal que o sistema $\m{A}\v{x}=\v{b}$ é inconsistente (sempre, pois $r \leq n < m \implies \Col(\m{A}) \subsetneq \Re^m$).
+		\2 Para os $\v{b} \in \Col(\m{A})$ (onde o sistema \emph{é} consistente):
+		\3 Se $r=n$ (posto-coluna completo): solução única ($n-r=0$ parâmetros);
+		\3 Se $r<n$: solução geral com $n-r>0$ parâmetros (infinitas soluções).
+		\1 \textbf{Caso subdeterminado}: se $m<n$, então $\forall\, \v{b} \in \Re^m$, o sistema $\m{A}\v{x}=\v{b}$ é inconsistente ou possui infinitas soluções (nunca única, pois $r \leq m < n$).
+		\2 Se $r=m$ (posto-linha completo): $\Col(\m{A})=\Re^m$, logo o sistema é \emph{sempre} consistente, com $n-r>0$ parâmetros;
+		\2 Se $r<m$: o sistema é consistente sse $\v{b} \in \Col(\m{A})$; se consistente, possui $n-r$ parâmetros.
+	\end{outline}
+\end{theorem}
+
+\section{Definições e propriedades de matrizes}
+
+\begin{definition} Definições de matrizes
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Matriz singular: Se $\m{A}$ não admite inversa, $\m{A}$ é dita singular.
+		\1 Matriz simétrica: $\m{A} = \m{A}\T$
+		\1 Matriz ortogonal: \( \m{A}\inv = \m{A}\T \)
+		\1 Matriz triangular superior (inferior): elementos abaixo (acima) da diagonal principal são nulos.
+		\1 Matriz quadrada idempotente: $\m{A}$ é idempotente se $A=AA$
+		\1 Traço: $\tr{\m{A}} = a_{11} + a_{22} + \cdots + a_{nn}$
+		\1 \( \m{A}^0 = \m{I} \)
+		\1 \( \m{A}^n = \underbrace{\m{A}\m{A}\cdots\m{A}}_{\text{n fatores}} \)
+		\1 \( \m{A}^{-n} = (\m{A}\inv)^n \) e
+		\1 Polinômio matricial: Seja $\m{A}$ uma matriz quadrada e $p(x) = a_0 + a_1 x + \cdots + a_n x^n$. Definimos $p(\m{A}) = a_0\m{I} + a_1\m{A} + \cdots + a_n\m{A}^n$.
+		\1 $\v{u}$ e $\v{v}$ são ortogonais se $\v{u}\cdot\v{v} = \v{u}\T\v{v} = 0$
+	\end{outline}
+\end{definition}
+
+\begin{theorem}[Lei dos expoentes]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \m{A}^r\m{A}^s = \m{A}^{r+s} \)
+		\1 \( (\m{A}^r)^s = A^{rs} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da transposta]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( (\m{A}\T)\T = \m{A} \)
+		\1 \( (\m{A}+\m{B})\T = \m{A}\T + \m{B}\T \) 
+		\1 \( (\m{A}-\m{B})\T = \m{A}\T - \m{B}\T \)
+		\1 \( (k\m{A})\T = k\m{A}\T \)
+		\1 \( (\m{A}\m{B})\T = \m{B}\T \m{A}\T \) 
+	\end{outline}
+\end{theorem}
+
+
+\begin{theorem}[Propriedades de matrizes inversas]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $\m{A}$ admite inversa, então a inversa é única
+		\1 \( (\m{A}\inv)\inv = \m{A} \)
+		\1 \( \m{A} \text{ é invertível} \implies \m{A}^n \text{ é invertível e } (\m{A}^n)\inv = (\m{A}\inv)^n \)
+		\1 \( \m{A} \text{ é invertível} \iff \m{A}\T\m{A} \text{ e } \m{A}\m{A}\T \text{ são invertíveis} \)
+		\1 \( (\m{A}\m{B})\inv = \m{B}\inv\m{A}\inv \)
+		\1 \( (k\m{A})\inv = \frac{1}{k}\m{A}\inv \)
+		\1 \( (\m{A}\T)\inv = (\m{A}\inv)\T \)
+		\1 Sejam $\m{A}$ e $\m{B}$ são matrizes quadradas de mesma dimensão. \\
+		$\m{A}\m{B}$ é invertível $\iff$ $\m{A}$ e $\m{B}$ também são.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Inversa de matriz $2 \times 2$]
+	Seja $\m{A}_{2\times 2}$ definida por
+	\begin{equation}
+		\m{A} = \begin{bmatrix*}[r]
+			a & b \\
+			c & d
+		\end{bmatrix*}
+	\end{equation}
+	Se $ad-bc \neq 0$, a inversa de $\m{A}$ é dada por
+	\begin{equation}
+		\m{A}\inv = \frac{1}{ad-bc} 
+		\begin{bmatrix*}[r]
+			d & -b \\
+			-c & a
+		\end{bmatrix*}
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}[Propriedades de matrizes triangulares]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 A transposta de uma matriz triangular inferior (superior) é triangular inferior (superior).
+		\1 O produto de matrizes triangulares inferiores (superiores) é triangular inferior (superior).
+		\1 Uma matriz triangular é invertível se, e somente se, as entradas na diagonal principal são todas não nulas.
+		\1 A inversa de uma matriz triangular inferior (superior) é triangular inferior (superior).
+		\1 $\m{A}$ é triangular $\implies$ $\det(\m{A})=a_{11} a_{22} \cdots a_{nn}$
+		\1 $\m{A}$ é triangular $\implies$ os autovalores de $\m{A}$ são as entradas da diagonal principal
+		
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades de matrizes simétricas]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}\T \m{A}$ e $\m{A} \m{A}\T$ são simétricas
+		\1 \( \m{A}, \m{B} \text{ são simétricas } \implies \m{A}+\m{B} \text{ e } \m{A}-\m{B}
+		 \text{ são simétricas} \)
+		 \1 \( \m{A} \text{ é simétrica} \implies \m{A}\inv \text{ é simétrica } \)
+		 \1 \( \m{A} \text{ é invertível} \implies \m{A}\m{A}\T \text{ e }  \m{A}\T\m{A} \text{ são invertíveis.}  \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades de matrizes idempotentes]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é idempotente $\implies$ $\pos(\m{A}) = \tr(\m{A})$
+		\1 $\m{A}-\m{B}$ é idempotente $\implies$ $\pos(\m{A}-\m{B}) = \pos(\m{A}) - \pos(\m{B})$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades da matriz Design e Matriz $\hat{H}$]
+	Sejam:
+	\begin{itemize}
+		\item $\m{X}_{n \times (p+1)}$ com $n > p+1$ e posto $p+1$ (posto-coluna) completo;
+		\item $\hat{\m{H}}_{n \times n} = \m{X}(\m{X}\T\m{X})\inv\m{X}\T$.
+	\end{itemize} Então:
+	\begin{outline}[enumerate]
+		\1 $\m{H}$ é idempotente.
+		\1 $\m{I}-\m{H}$ é idempotente.
+		\1 $\m{H}$ e $\m{I}-\m{H}$ são ortogonais, isto é, $(\m{I}-\m{H})\m{H} = \m{0}$.
+		\1 \( \pos(\m{H}) = \pos(\m{X}) = p+1\)
+		\1 \(\pos(\m{I}-\m{H}) =n-(p+1) \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades do traço]
+		\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\tr(\m{A}\m{B}) = \tr(\m{B}\m{A})$
+		\1 \( \tr(\m{A} + \m{B}) = \tr(\m{A}) + \tr(\m{B}) \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades do determinante]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \det(\m{A}) = \det(\m{A}\T) \)
+		\1 \( \det{(\m{A}\m{B})} = \det{\m{A}}\det{\m{B}} \)
+		\1 \( \det(k\m{A}) = k^n \det(\m{A})\)
+		\1 \( \m{A} \text{ é invertível} \iff  \det{\m{A}} \neq 0 \)
+		\1 \( \m{A} \text{ é invertível} \implies  \det(\m{A}\inv) = \frac{1}{\det\m{A}}\)
+		\1 Se $\m{A}$ tem uma linha (coluna) de zeros, então $\det(\m{A})=0$
+		\1 Se $\m{A}$ tem duas linhas (colunas) proporcionais, então $\det(\m{A})=0$
+		\1 $\m{A}$ é triangular $\implies$ $\det(\m{A})=a_{11} a_{22} \cdots a_{nn}$
+		\1 $\m{A}$ é ortogonal $\implies$ $\det(\m{A}) = \pm1$
+		\1 Seja $\m{B}$ resultante de uma das seguintes operações em linhas (colunas) de $\m{A}$.
+			\2 Multiplicar linha (coluna) por $k$: $\det(\m{B}) = k\det(\m{A})$
+			\2 Permutar linha (coluna): $\det(\m{B}) = -\det(\m{A})$
+			\2 Múltiplo de uma linha (coluna) é somado a uma outra linha (coluna): $\det(\m{B}) = \det(\m{A})$
+	\end{outline}
+\end{theorem}
+
+\section{Posto e nulidade}
+
+\begin{definition}[Posto e nulidade] Seja $\m{A}$ qualquer;
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Posto de $\m{A}$ ($\pos(\m{A})$): dimensão comum do espaço-linha e do espaço-coluna de $\m{A}$;
+		\1 Nulidade de $\m{A}$ ($\nul(\m{A})$): dimensão do espaço-nulo de $\m{A}$.
+	\end{outline}
+\end{definition}
+
+
+\begin{theorem}[Propriedades do posto e nulidade] Seja $\m{A}_{m\times n}$
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \pos(\m{A}) = \pos(\m{A}\T) \)
+		\1 \( \pos(\m{A}) = \pos(\m{A}\T\m{A}) =  \pos(\m{A}\m{A}\T)\)
+		\1 \( \pos(\m{A}) + \nul(\m{A}) = n \)
+		\1 $\pos(\m{A})$: núm. de variáveis líderes na solução geral de $\m{A}\v{x}=\v{b}$
+		\1 $\nul(\m{A})$: núm. de parâmetros na solução geral de $\m{A}\v{x}=\v{b}$
+		\1 Se $\pos(\m{A}) = p$, então $n-p$ raízes do polinômio característico são nulos 
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Teorema da Consistência] Sja $\m{A}\v{x}=\v{b}$ é um sistema linear de $m$ equações por $n$ incógnitas \underline{com $\v{b}$ fixado.} As seguintes afirmações são equivalentes:
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}\v{x}=\v{b}$ é consistente.
+		\1 $\v{b}$ está no espaço-coluna de $\m{A}$.
+		\1 $\m{A}$ e $[\m{A} \mid \v{b}]$ tem o mesmo posto. 
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}Seja $\m{A}\v{x}=\v{b}$ um sistema linear de $m$ equações por $n$ incógnitas. As seguintes afirmações são equivalentes:
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}\v{x}=\v{b}$ é consistente para todo $\v{b}$.
+		\1 Os vetores-coluna $\m{A}$ geram o $\Re^m$.
+		\1 $\pos(\m{A})=m$. 
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}Seja $\m{A}\v{x}=\v{b}$ um sistema linear \underline{consistente} de $m$ equações por $n$ incógnitas. Se $\pos(\m{A})=r$, então a solução geral do sistema contém $n-r$ parâmeros.
+\end{theorem}
+
+\begin{theorem}[Sistemas $m \times n$] Seja $\m{A}_{m\times n}$. As seguintes afirmações são equivalentes:
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}\v{x}=\v{0}$ possui somente a solução trivial.
+		\1 Os vetores-coluna de $\m{A}$ são LI.
+		\1 $\m{A}\v{x}=\v{b}$ tem no máximo uma (uma ou nenhuma)solução para cada $\v{b}$.
+	\end{outline}
+\end{theorem}
+
+
+
+
+
+\section{Autovalores e autovetores}
+
+\begin{definition} Definições sobre autovalores e autovetores.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Seja $\m{A}_{n\times n}$. Um vetor não nulo $\v{x}\in \Re^n$ é chamado de     \textbf{autovetor} de $\m{A}$ se 
+			\begin{equation}
+				\m{A} \v{x} = \lambda \v{x}
+			\end{equation}
+		% 
+		para algum escalar $\lambda$, o qual é chamado de \textbf{autovalor} de $\m{A}$.
+		\1 Equação característico: $\det(\lambda \m{I} - \m{A})=0$
+		\1 Quando a equação característica é expandida, ela toma a forma
+			\begin{equation}
+				p(\lambda) = \lambda^n + c_1\lambda^{n-1} + \cdots + c_n
+			\end{equation}
+		%
+		e $p(\lambda)$ é denominado polinômio característico.
+		\1 Espaço-solução do sistema $(\lambda \m{I} - \m{A})\v{x}=0$: \textbf{auto-espaço} de $\m{A}$ associado a $\lambda$.
+		\1 Multiplicidade algébrica de $\lambda_0$: número de vezes que $(\lambda - \lambda_0)$ aparece como um fator do polinômio característico.
+		\1 Multiplicidade geométrica de $\lambda_0$: dimensão do auto-espaço associado a $\lambda-\lambda_0$
+	\end{outline}
+\end{definition}
+
+\begin{theorem}[Propriedades de autovalores e autovetores] Seja $\m{A}_{n\times n}$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é triangular $\implies$ os autovalores de $\m{A}$ são as entradas da diagonal principal
+		\1 \( \m{A}^k \v{x}= \lambda^k\v{x} \)
+		\1 $\m{A}$ é invertível $\iff$ $\lambda=0$ não é um autovalor de $\m{A}$
+	\end{outline}
+\end{theorem}
+
+
+\begin{theorem}[Propriedades das raízes característica] Seja $\m{A}_{n\times n}$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 A soma das raízes carecterísticas de $\m{A}$ é $\tr(\m{A})$
+		\1 O produto das raízes carecterísticas de $\m{A}$ é $\det(\m{A})$
+		\1 Se $\pos(\m{A}) = p$, então $n-p$ raízes do polinômio característico são nulos 
+	\end{outline}
+\end{theorem}
+
+
+\section{Diagonalização}
+
+\begin{theorem}[Diagonalização] Seja $\m{A}_{n\times n}$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é diagonalizável $\iff$ $\m{A}$ tem $n$ autovetores LI.
+		\1 $\m{A}$ é diagonalizável $\iff$ Para cada autovalor, a multiplicidade geométrica é igual à multiplicidade algébrica.
+		\1 $\m{A}$ tem $n$ autovalores distintos $\implies$ $\m{A}$ é diagonalizável.
+	\end{outline} 
+\end{theorem}
+
+
+\section{Matrizes em blocos}
+
+\begin{theorem}
+	Seja $\m{B}$ uma matriz particionada em blocos,
+	\begin{equation}
+		\m{B} =
+		\begin{bmatrix}
+			\m{B}_{11} & \m{B}_{12} \\
+			\m{B}_{21} & \m{B}_{22}
+		\end{bmatrix},
+	\end{equation}
+	em que $\m{B}_{11}$ e $\m{B}_{22}$ são matrizes quadradas \underline{não-singulares}. Então
+	\begin{align}
+		\m{B}\inv &=
+		\begin{bmatrix}
+			(\m{B}_{11} - \m{B}_{12}\m{B}_{22}\inv \m{B}_{21})\inv & -\m{B}_{11}\inv \m{B}_{12}(\m{B}_{22} - \m{B}_{21}\m{B}_{11}\inv \m{B}_{12})\inv \\[2ex]
+			-\m{B}_{22}\inv \m{B}_{21}(\m{B}_{11} - \m{B}_{12}\m{B}_{22}\inv \m{B}_{21})\inv & (\m{B}_{22} - \m{B}_{21}\m{B}_{11}\inv \m{B}_{12})\inv
+		\end{bmatrix}
+	\end{align}
+	e
+	\begin{equation}
+		\deter{\m{B}} = \deter{\m{B}_{22}}\deter{\m{B}_{11} - \m{B}_{12}\m{B}_{22}\inv \m{B}_{21}} = \deter{\m{B}_{11}}\deter{\m{B}_{22} - \m{B}_{21}\m{B}_{11}\inv \m{B}_{12}}.
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}
+	Seja $\m{B}$ uma matriz bloco diagonal,
+	\begin{equation}
+		\m{B} =
+		\begin{bmatrix}
+			\m{B}_{11} & \m{0} & \m{0} \\
+			\m{0} & \m{B}_{22} & \m{0} \\
+			\m{0} & \m{0} & \m{B}_{33}
+		\end{bmatrix},
+	\end{equation}
+	em que $\m{B}_{11}$, $\m{B}_{22}$ e $\m{B}_{33}$ são matrizes quadradas \underline{não-singulares}. Então
+	\begin{equation}
+		\m{B}\inv =
+		\begin{bmatrix}
+			\m{B}_{11}\inv & \m{0} & \m{0} \\
+			\m{0} & \m{B}_{22}\inv & \m{0} \\
+			\m{0} & \m{0} & \m{B}_{33}\inv
+		\end{bmatrix}
+	\end{equation}
+	e
+	\begin{equation}
+		\deter{\m{B}} = \deter{\m{B}_{11}}\deter{\m{B}_{22}}\deter{\m{B}_{33}}.
+	\end{equation}
+	O resultado vale para matrizes bloco diagonal de maior dimensão.
+\end{theorem}
+
+\section{Formas lineares e quadráticas}
+
+
+\begin{definition}[Formas lineares e quadráticas]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Forma linear: $b_1 x_1 + b_2 x_2 + \cdots + b_nx_n$
+			\2 $f(\v{x}) = \v{b}\T\v{x} = \v{x}\T\v{b}$
+		\1 Forma afim: $f(\v{x}) = a + \v{b}\T\v{x}$
+		\1 Forma quadrática: $a_1 x_1^2 + a_2 x_2^2 + \cdots + a_nx_n^2$ (mais todos possíveis termos $a_kx_ix_j$, com $i\neq j$)
+			\2 Se $\m{A}_{n\times n}$ é simétrica e $\v{x}$ é vetor-coluna $n\times 1$, a forma quadrática associada a $\m{A}$ é $Q_\m{A} = \v{x}\T\m{A}\v{x}$
+	\end{outline}
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Se $\m{A}$ é a diagonal, a forma quadrática não possui termos cruzados.
+		\end{outline}
+		conteúdo...
+	\end{note}
+\end{definition}
+
+
+\begin{definition}[Classificação de formas quadráticas e matrizes] Uma forma quadrática $\v{x}\T\m{A}\v{x}$ e a respectiva matriz $\m{A}$ simétrica é dita:
+	\begin{outline}[enumerate]
+		\1 Positiva definida: se $\v{x}\T\m{A}\v{x} > 0$ para todo $\v{x} \neq 0$ 
+		\1 Positiva semidefinida: se $\v{x}\T\m{A}\v{x} \geq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
+		\1 Negativa definida: se $\v{x}\T\m{A}\v{x} < 0$ para todo $\v{x} \neq 0$ 
+		\1 Negativa semidefinida: se $\v{x}\T\m{A}\v{x} \leq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
+		\1 Indefinida: $\v{x}\T\m{A}\v{x}$ assume valores positivos e negativos.
+	\end{outline}
+\end{definition}
+
+\begin{theorem} 
+	Seja $\m{A}_{n\times n}$ simétrica.
+	\begin{outline}[enumerate]
+		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é positiva definida $\iff$ todos os autovalores de $\m{A}$ são positivos.
+		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é negativa definida $\iff$ todos os autovalores de $\m{A}$ são negativos.
+		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é indefinido $\iff$ $\m{A}$ tem pelo menos um autovalor positivo e pelo menos um autovalor negativo.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} 
+	Seja $\m{A}_{n\times n}$ simétrica. ($\m{A}$) As seguintes afirmações são equivalentes.
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é positiva definida 
+		\1 Todos os autovalores de $\m{A}$ são positivos.
+		\1 Os determinantes de cada submatriz da diagonal principal são positivos (critério de Sylvester).
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva definida, então:
+	\begin{outline}[enumerate]
+		\1 $\pos(\m{A})=n$
+		\1 $a_{ii}>0$ para todo $i=1,\ldots,n$
+		\1 $\m{P}\T\m{A}\m{P}$ é positiva definida para toda matriz $\m{P}_{n \times p}$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva semidefinida, então:
+	\begin{outline}[enumerate]
+		\1 $\pos(\m{A})<n$
+		\1 $a_{ii}\geq0$ para todo $i=1,\ldots,n$
+		\1 $\m{P}\T\m{A}\m{P}$ é positiva semidefinida para toda matriz $\m{P}_{n \times p}$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} 
+	Seja $\m{A}_{m \times n}$. Então, 
+	\begin{outline}[enumerate]
+		\1 $\m{A}\T\m{A}$ é positiva semidefinida. 
+		\1 $\m{A}\T\m{A}$ é positiva se tem posto-coluna completo, ou seja, $\pos(\m{A})$. 
+	\end{outline}
+\end{theorem}
+
+\section{Derivadas}
+
+\begin{definition}[Derivada de função escalar]
+	Considere uma função escalar $f : \Re^n \longrightarrow \Re$, em que $\v{b}\in\Re^n$. Adotaremos como convenção a derivada da função $f$ em relação ao vetor $\v{b}$ como o gradiente
+	\begin{equation}
+		\frac{\partial f}{\partial \v{b}} = \nabla_{\v{b}} f =
+		\begin{pmatrix}
+			\dfrac{\partial f}{\partial b_1} \\[1.5ex]
+			\dfrac{\partial f}{\partial b_2} \\[0.5ex]
+			\vdots \\[0.5ex]
+			\dfrac{\partial f}{\partial b_n}
+		\end{pmatrix}.
+	\end{equation}
+	Assim, $\dfrac{\partial f}{\partial \v{b}}$ é um vetor de dimensão $n\times 1$.
+\end{definition}
+
+\begin{theorem}
+	Considere a forma linear $f(\v{x}) = \v{b}\T\v{x} = \v{x}\T\v{b}$, em que $\v{b}\in\Re^n$ é um vetor constante. Como $f(\v{x}) = b_1x_1 + b_2x_2 + \cdots + b_nx_n$, temos
+	\begin{equation}
+		\frac{\partial f}{\partial x_i} = b_i, \quad i=1,\ldots,n.
+	\end{equation}
+	Portanto,
+	\begin{equation}
+		\boxed{\dfrac{\partial}{\partial \v{x}}\left(\v{b}\T\v{x}\right) = \dfrac{\partial}{\partial \v{x}}\left(\v{x}\T\v{b}\right) = \v{b}}.
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}
+	Considere $f(\v{x}) = \v{x}\T\m{A}\v{x}$. A derivada em relação a $x_k$ é
+	\begin{equation}
+		\frac{\partial f}{\partial x_k} = \underbrace{\sum_{j=1}^n a_{kj}x_j}_{\text{linha } k \text{ de } \m{A}} + \underbrace{\sum_{i=1}^n a_{ik}x_i}_{\text{coluna } k \text{ de } \m{A}}.
+	\end{equation}
+	A derivada em $\v{x}$ nesse caso é dada por
+	\begin{equation}
+		\boxed{\frac{\partial}{\partial \v{x}}\left(\v{x}\T\m{A}\v{x}\right) = (\m{A}+\m{A}\T)\v{x}.}
+	\end{equation}
+	Em particular, se $\m{A}$ é simétrica (forma quadrática), então $\m{A}\T=\m{A}$, logo $(\m{A}+\m{A}\T)\v{x} = 2\m{A}\v{x}$ e, portanto,
+	\begin{equation}
+		\boxed{\frac{\partial}{\partial \v{x}}\left(\v{x}\T\m{A}\v{x}\right) = 2\m{A}\v{x}.}
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}
+	Considere $f(\v{x}) = \v{x}\T\m{A}\v{x} + \v{b}\T\v{x}$. Então
+	\begin{equation}
+		\frac{\partial f}{\partial \v{x}} = (\m{A}+\m{A}\T)\v{x} + \v{b}.
+	\end{equation}
+	Se $\m{A}$ é simétrica,
+	\begin{equation}
+		\boxed{\frac{\partial f}{\partial \v{x}} = 2\m{A}\v{x} + \v{b}.}
+	\end{equation}
+\end{theorem}

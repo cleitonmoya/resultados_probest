@@ -1,7 +1,6 @@
 % !TeX root = main.tex
 % !TeX spellcheck = pt_BR
 
-
 % ============================================================
 % pacotes_notacao.tex
 % Pacotes, notação e ambientes consolidados
@@ -30,24 +29,57 @@
 \numberwithin{equation}{section} 		% Equações no formato X.Y
 
 % ---------- Notação de vetores, variáveis aleatórias e matrizes ----------
-\newcommand{\vect}[1]{\bm{#1}}  	    	% Vetor não aleatório
-\newcommand{\matr}[1]{\bm{\mathsf{#1}}} 	% Matriz
-\newcommand{\rv}[1]{#1}             		% Variável aleatória (itálico padrão)
-\newcommand{\rvect}[1]{\boldsymbol{#1}} 	% Vetor aleatório
-\newcommand{\prior}[1]{\accentset{\smile}{#1}} % quantidade a priori
-\newcommand{\post}[1]{\accentset{\frown}{#1}}  % quantidade a posteriori
+\renewcommand{\v}[1]{\bm{#1}}  	    			% vetor (fixo ou aleatório) - negrito, itálico
+\newcommand{\m}[1]{\mathbf{#1}}					% matriz - negrito, fonte não itálica
+\newcommand{\rv}[1]{#1}             			% variável aleatória (não usada no momento)
+\newcommand{\prior}[1]{\accentset{\smile}{#1}} 	% quantidade a priori
+\newcommand{\post}[1]{\accentset{\frown}{#1}}  	% quantidade a posteriori
+
+% ---------- Operadores ----------
+
+% Matrizes
+\newcommand{\T}{^{\raisebox{0.3ex}{$\scriptstyle\intercal$}}}
+\newcommand{\inv}{^{-1}}      					% função ou matriz inversa
+
+
+\DeclareMathOperator{\E}{\mathbb{E}}     	% esperança
+\DeclareMathOperator{\Var}{Var}				% variância
+\DeclareMathOperator{\Cov}{Cov} 		 	% covariância
+\DeclareMathOperator{\Cor}{Corr}		    % correlação
+\DeclareMathOperator{\lik}{\mathcal{L}}  	% verossimilhança
+\DeclareMathOperator{\llik}{\ell}        	% log-verossimilhança
+\DeclareMathOperator{\emv}{emv}				% estimador de máxima verossimilhança
+\DeclareMathOperator{\map}{map}				% máximo a posteriori
+\DeclareMathOperator{\kl}{KL}				% divergência Kullback-Leibler
+\DeclareMathOperator{\tr}{tr}				% traço de uma matriz
+\DeclareMathOperator{\pos}{pos}				% posto (rank) de uma matriz
+\DeclareMathOperator{\nul}{nul}				% nulidade (null) de uma matriz
+\DeclareMathOperator{\Col}{Col}            % espaço-coluna
+
+% ---------- Determinante (notação de barras, como nos slides) ----------
+\DeclarePairedDelimiter\deter{\lvert}{\rvert}   % determinante em notação de barras
+
+\makeatletter
+\let\olddeter\deter
+\def\deter{\@ifstar{\olddeter}{\olddeter*}}
+\makeatother
+  
+\DeclareMathOperator{\ind}{\mathbbm{1}}		% função indicadora
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 % ---------- Símbolos e conjuntos ----------
-\newcommand{\cp}[1]{#1^\mathsf{c}}			% complementar de um conjunto (A^\mathsf{c})
-\newcommand{\inv}[1]{#1^{-1}}      		% função ou matriz inversa
-\renewcommand{\Re}{\mathbb{R}}          	% conjunto dos Reais
-\newcommand{\Ree}{\widebar{\mathbb{R}}} 	% conjunto dos Reais Estendidos
-\renewcommand{\P}{\mathbb{P}} 				% medida probabilidade
-\newcommand{\Q}{\mathbb{Q}} 				% conjunto dos Racionais
-\newcommand{\N}{\mathbb{N}}				% conjunto dos Naturais
+\newcommand{\cp}[1]{#1^\mathsf{c}}				% complementar de um conjunto (A^\mathsf{c})
+\renewcommand{\Re}{\mathbb{R}}          		% conjunto dos Reais
+\newcommand{\Ree}{\widebar{\mathbb{R}}} 		% conjunto dos Reais Estendidos
+\renewcommand{\P}{\mathbb{P}} 					% medida probabilidade
+\newcommand{\Q}{\mathbb{Q}} 					% conjunto dos Racionais
+\newcommand{\N}{\mathbb{N}}						% conjunto dos Naturais
 \newcommand{\Bo}{\mathcal{B}(\Re)} 				% sigma-álgebra de Borel em \Re
 \newcommand{\Born}{\mathcal{B}(\Re^n)} 			% sigma-álgebra de Borel em \Re^n
-\newcommand{\Boe}{\mathcal{B}(\widebar{\Re})}		% sigma-álgebra de Borel em \Re estendido
+\newcommand{\Boe}{\mathcal{B}(\widebar{\Re})}	% sigma-álgebra de Borel em \Re estendido
 \newcommand{\indep}{\perp\!\!\!\!\perp}			% independência
 
 % atalhos para letras caligráficas
@@ -98,8 +130,14 @@
 \newcommand{\ngdist}[1]{\normalgammaop(#1)}
 
 \DeclareMathOperator{\normalop}{\mathcal{N}}
-\newcommand{\normdist}[1]{\normalop\left(#1\right)}
-
+\newcommand{\normdist}[2][]{%
+	\ifblank{#1}
+	{\normalop\left(#2\right)}
+	{\ifstrequal{#1}{1}
+		{\normalop\left(#2\right)}
+		{\normalop_{#1}\left(#2\right)}
+	}
+}
 \DeclareMathOperator{\multop}{Multinomial}
 \newcommand{\multdist}[1]{\multop\left(#1\right)}
 
@@ -115,33 +153,22 @@
 \DeclareMathOperator{\unifop}{Uniforme}
 \newcommand{\unifdist}[1]{\unifop(#1)}
 
+\newcommand{\chiop}{\chi^2}
+\newcommand{\chidist}[1]{\chiop_{#1}}
+
 % ---------- Convergência ----------
 \newcommand{\toQC}{\xrightarrow{\text{q.c.}}} % quase certamente
 \newcommand{\toP}{\xrightarrow{\mathcal{P}}}  % em probabilidade
 \newcommand{\toL}{\xrightarrow{L^p}}          % em norma L^p
 \newcommand{\toD}{\xrightarrow{\mathcal{D}}}  % em distribuição
 
-% ---------- Variável barrada ----------
+% ---------- Variáveis barradas ----------
+\let\oldbar\bar
+\renewcommand{\bar}[1]{\,\overline{\!{#1}}}
 \makeatletter
 \newcommand{\widebar}[1]{\mathop{\overline{#1}}\nolimits\@ifnextchar^{}{\,}}
 \makeatother
 
-% ---------- Operadores ----------
-\DeclareMathOperator{\E}{\mathbb{E}}     	% esperança
-\DeclareMathOperator{\Var}{Var}				% variância
-\DeclareMathOperator{\Cov}{Cov} 		 	% covariância
-\DeclareMathOperator{\cov}{Cov}				% covariância (minúsculo)
-\DeclareMathOperator{\lik}{\mathcal{L}}  	% verossimilhança
-\DeclareMathOperator{\llik}{\ell}        	% log-verossimilhança
-\DeclareMathOperator{\emv}{emv}				% estimador de máxima verossimilhança
-\DeclareMathOperator{\map}{map}				% máximo a posteriori
-\DeclareMathOperator{\kl}{KL}				% divergência Kullback-Leibler
-\DeclareMathOperator{\T}{^\intercal} 		% operador de transposto (para matrizes)
-\DeclareMathOperator{\ind}{\mathbbm{1}}		% função indicadora
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}
-\DeclareMathOperator*{\argmin}{arg\,min}
-\DeclareMathOperator*{\argmax}{arg\,max}
 
 % Swap the definition of \abs* and \norm*, so that \abs
 % and \norm resizes the size of the brackets, and the

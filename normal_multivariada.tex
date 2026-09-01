@@ -1,0 +1,94 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
+\chapter{Normal multivariada}
+
+
+
+\section{Distribuições de formas quadráticas}
+
+
+\begin{theorem} 
+	Seja $\v{X}_{p\times 1} \sim \normdist[p]{\v{\mu}_{p\times 1}, \m{\Sigma}_{p\times p}}$. Então:
+	\begin{outline}[enumerate]
+		\1 \( \v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1} \sim \chidist{\pos(\m{A}), \frac{1}{2}\v{\mu}\T_{1\times p}\m{A}_{p\times p}\v{\mu}_{p\times 1}}
+		\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p} \) é idempotente.
+		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\m{B}_{q\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{B}_{q\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{q\times p}\)
+		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\v{X}\T_{1\times p}\m{B}_{p\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p}\m{B}_{p\times p} = \m{0}_{p\times p}\) ou \(\m{B}_{p\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{p\times p} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Seja $\v{X}$ um vetor aleatório $p$-dimensional com $\Var[\v{X}] = \m{\Sigma}$, $\m{\Sigma}$ de dimensão $p\times p$, e seja $\m{A}$ uma matriz $p\times p$. Então:
+	\begin{outline}[enumerate]
+		\1 \( \E[\v{X}\T\m{A}\v{X}] = \tr(\m{A}\m{\Sigma}) + \v{\mu}\T\m{A}\v{\mu}. \)
+		\1 \( \Cov[\v{X}, \v{X}\T\m{A}\v{X}] = 2\m{\Sigma}\m{A}\v{\mu}. \)
+	\end{outline}
+\end{theorem}
+
+
+\section{Normal multivariada}
+
+\begin{theorem}
+	Suponha que $\v{X} \sim \normdist{\v{m}, \m{V}}$. Para $\m{A}$ e $\v{b}$ de dimensões adequadas, 
+	\begin{outline}[enumerate]
+		\1 \( \v{Y}=\m{A}\v{X}+\v{b} \implies \v{Y} \sim \normdist{\m{A}\v{m} + \v{b}, \m{A}\m{V}\m{A}'} \);
+		\1 Se $\m{A}\m{V}\m{A}'$ é diagonal, então os elementos de $Y$ são normais independentes.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Suponha que $\v{X}_i \sim \normdist{\v{m}_i, \m{V}_i}$ independentes, $i=1,\ldots,k$, e considere $\m{A}_1, \ldots, \m{A}_k$ e $\v{b}$ de dimensões adequadas.
+	\begin{outline}[enumerate]
+		\1 \( \v{Y}=\sum_{i=1}^{k}\m{A}_i\v{X}_i+\v{b} \sim \normdist{\sum_{i=1}^{k}\m{A}_i\v{m}_i + \v{b}, \sum_{i=1}^{k}\m{A}_i\m{V}_i\m{A}'_i} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Suponha que $\v{X}$ seja particionado como segue:
+	\[
+	\v{X} = \begin{bmatrix}
+		\v{X}_1 \\ \v{X}_2
+	\end{bmatrix}, \quad
+	\v{m} = \begin{bmatrix}
+		\v{m}_1 \\ \v{m}_2
+	\end{bmatrix}, \quad
+	\m{V} = \begin{bmatrix}
+		\m{V}_{11} & \m{V}_{12} \\ \m{V}_{21} & \m{V}_{22}
+	\end{bmatrix}.
+	\]
+	
+	\begin{outline}[enumerate]
+		\1 $\v{X}_i \sim \normdist{\v{m}_i, \m{V}_{ii}}$, $i=1,2$. Em particular, se $X_i$ é normal univariado, então $X_i\sim\normdist{m_i, V_{ii}}$, para $i=1\ldots,n$;
+		\1 \( (\v{X}_1|\v{X_2}) \sim \normdist{ \v{\mu}_{12}, \m{C}_{12}} \) onde
+		\begin{align}
+			\v{\mu}_{12} &= \v{m}_1 + \m{V}_{12}\m{V}_{22}\inv(\m{X}_2-\v{m}_2) \\
+			&= \v{m}_1 + \m{A}_1(\m{X}_2-\v{m}_2)
+		\end{align} e
+		\begin{align}
+			\m{C}_{12} &= \m{V}_{11} - \m{V}_{12}\m{V}_{22}\inv\m{V}_{21} \\
+			&= \m{V}_{11} - \m{A}_1\m{V}_{22}\m{A}'_{1}
+		\end{align}
+		A matriz $\m{A}_1 = \m{V}_{12}\m{V}_{22}\inv$ é chamada de \textit{matriz de regressão} de $\v{X}_1$ em $\v{X}_2$.
+		
+		\1 \( (\v{X}_2|\v{X_1}) \sim \normdist{ \v{\mu}_{21}, \m{C}_{21}} \) onde
+		\begin{align}
+			\v{\mu}_{21} &= \v{m}_2 + \m{V}_{21}\m{V}_{11}\inv(\m{X}_1-\v{m}_1) \\
+			&= \v{m}_2 + \m{A}_2(\m{X}_1-\v{m}_1)
+		\end{align} e
+		\begin{align}
+			\m{C}_{21} &= \m{V}_{22} - \m{V}_{21}\m{V}_{11}\inv\m{V}_{12} \\
+			&= \m{V}_{22} - \m{A}_2\m{V}_{11}\m{A}'_{2}
+		\end{align}
+		
+		\1 No caso especial da normal bivariada em (1) acima, os momentos são todos escalares, e a correlação entre $X_1$ e $X_2$ é $\rho = \rho_{12} = V_{12}/\sqrt{V_{11}V_{22}}$. As regressões são determinadas pelos coeficientes de regressão $A_1$ e $A_2$ dados por
+		\[
+		A_1 = \rho\sqrt{V_{11}/V_{22}} \quad \text{e} \quad A_2 = \rho\sqrt{V_{22}/V_{11}}.
+		\]
+		
+		Além disso,
+		\[
+		\Var[X_1 \mid X_2] = (1-\rho^2)V_{11} \quad \text{e} \quad \Var[X_2 \mid X_1] = (1-\rho^2)V_{22}.
+		\]
+	\end{outline}
+\end{theorem}
