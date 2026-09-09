@@ -1,0 +1,408 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+% ===========================================================
+% Testes de Hipóteses I: conceitos iniciais
+% Fonte: 9 - Testes de Hipóteses 1.pdf
+% ===========================================================
+
+% ---------- Definição 1 (Hipótese estatística) ----------
+\begin{definition}
+Uma \uline{hipótese estatística} é uma afirmação ou conjectura a respeito da distribuição de uma ou mais variáveis. Se uma hipótese estatística especifica completamente a distribuição dos dados, então ela é chamada de \uline{hipótese simples}; caso contrário, ela é chamada de \uline{hipótese composta}.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 4/45
+
+% ---------- Exemplo 1 (População normal – variância conhecida) ----------
+\begin{example}[População normal – variância conhecida]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\theta,25}$. A hipótese estatística de que a média dessa população normal é menor do que ou igual a 17 é denotada por
+\begin{equation}
+\mathcal{H}:\theta\leq17.
+\end{equation}
+Essa hipótese é composta, porque não especifica completamente a distribuição dos dados. Por outro lado, a hipótese
+\begin{equation}
+\mathcal{H}:\theta=17
+\end{equation}
+é simples, já que especifica completamente a distribuição populacional.
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 5/45
+
+% ---------- Definição 2 (Teste) ----------
+\begin{definition}
+Um \uline{teste} $\Upsilon$ de uma hipótese estatística $\mathcal{H}$ é uma regra, ou procedimento, para decidir se $\mathcal{H}$ deve ser rejeitada.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 6/45
+
+% ---------- Exemplo 2 (Cont. Ex. 1 – dois possíveis testes) ----------
+\begin{example}[Cont. Exemplo 1]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\theta,25}$. Consideremos $\mathcal{H}:\theta\leq17$.
+
+Um possível teste, $\Upsilon$, seria \uline{rejeitar $\mathcal{H}$ se, e somente se,} $\bar{x}>17+5/\sqrt{n}$.
+
+Outro possível teste, $\Upsilon'$, seria \uline{lançar uma moeda e rejeitar $\mathcal{H}$ se, e somente se, o resultado for cara}.
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 7/45
+
+% ---------- Observação 1 (Espaço amostral) ----------
+\begin{note}
+Lembrete: utilizamos $\mathcal{X}$ para denotar o \uline{espaço amostral} dos dados, ou seja,
+\begin{equation}
+\mathcal{X}=\{(x_1,x_2,\ldots,x_n)\in\mathbb{R}^n\mid f(x_1,x_2,\ldots,x_n\mid\theta)>0\}=\{\v{x}\in\mathbb{R}^n\mid f(\v{x}\mid\theta)>0\}.
+\end{equation}
+\end{note}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 8/45
+
+% ---------- Definição 3 (Teste não aleatorizado) ----------
+\begin{definition}
+Seja $\Upsilon$ o teste de uma hipótese $\mathcal{H}$ definido como \uline{rejeitar $\mathcal{H}$ se, e somente se,} $(x_1,x_2,\ldots,x_n)\in\mathcal{C}_\Upsilon$, em que $\mathcal{C}_\Upsilon$ corresponde a um subconjunto de $\mathcal{X}$. Então, $\Upsilon$ é chamado de \uline{teste não aleatorizado} e $\mathcal{C}_\Upsilon$ é denominada \uline{região crítica} do teste $\Upsilon$.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 9/45
+
+% ---------- Exemplo 3 (Continuação – população normal) ----------
+\begin{example}[Continuação – população normal]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\theta,25}$. Nesse caso, $\mathcal{X}=\mathbb{R}^n$.
+
+Consideremos $\mathcal{H}:\theta\leq17$ e o teste $\Upsilon$: \uline{rejeitar $\mathcal{H}$ se, e somente se,}
+\begin{equation}
+\bar{x}>17+5/\sqrt{n}.
+\end{equation}
+Nesse caso, $\Upsilon$ é não aleatorizado, e
+\begin{equation}
+\mathcal{C}_\Upsilon=\{\v{x}\in\mathcal{X}\mid\bar{x}>17+5/\sqrt{n}\}.
+\end{equation}
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 10/45
+
+% ---------- Observação 2 (Decomposição do espaço amostral) ----------
+\begin{note}
+Um teste não aleatorizado $\Upsilon$ de $\mathcal{H}$ consiste em uma decomposição
+\begin{equation}
+\mathcal{X}=\mathcal{C}_\Upsilon\cup\bar{\mathcal{C}}_\Upsilon,
+\end{equation}
+com $\mathcal{C}_\Upsilon\cap\bar{\mathcal{C}}_\Upsilon=\emptyset$, de modo que, se uma amostra observada $\v{x}\in\mathcal{C}_\Upsilon$, então rejeita-se $\mathcal{H}$. Assim, um teste não aleatorizado é completamente especificado por sua região crítica correspondente.
+\end{note}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 11/45
+
+% ---------- Definição 4 (Teste aleatorizado) ----------
+\begin{definition}
+Um teste $\Upsilon$ de uma hipótese $\mathcal{H}$ é chamado de \uline{teste aleatorizado} se $\Upsilon$ for definido pela função
+\begin{equation}
+\Psi_\Upsilon(\v{x})=\P(\mathcal{H}\text{ ser rejeitada}\mid\v{x}\text{ é observada}).
+\end{equation}
+A função $\Psi_\Upsilon$ é chamada de \uline{função crítica} do teste $\Upsilon$.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 12/45
+
+% ---------- Exemplo 4 (População Bernoulli) ----------
+\begin{example}[População Bernoulli]
+Sejam $X_1,X_2,\ldots,X_{10}$ uma A.A. de uma população $X\sim\berndist{\theta}$. Suponha que estejamos interessados em testar a hipótese $\mathcal{H}:\theta<1/2$.
+
+Um possível teste $\Upsilon$ seria:
+\begin{outline}
+\1 aceitar $\mathcal{H}$ se $\sum_{i=1}^{10}x_i<5$;
+\1 rejeitar $\mathcal{H}$ se $\sum_{i=1}^{10}x_i>5$;
+\1 decidir entre rejeitar e aceitar $\mathcal{H}$ com o lançamento de uma moeda, se $\sum_{i=1}^{10}x_i=5$.
+\end{outline}
+O lançamento da moeda é o ensaio auxiliar de Bernoulli.
+
+Esse teste $\Upsilon$ particiona $\mathcal{X}$ em três regiões:
+\begin{align}
+A &= \left\{(x_1,x_2,\ldots,x_{10})\in\mathcal{X}\,\middle|\,\sum_{i=1}^{10}x_i<5\right\},\\
+B &= \left\{(x_1,x_2,\ldots,x_{10})\in\mathcal{X}\,\middle|\,\sum_{i=1}^{10}x_i=5\right\},\\
+C &= \left\{(x_1,x_2,\ldots,x_{10})\in\mathcal{X}\,\middle|\,\sum_{i=1}^{10}x_i>5\right\}.
+\end{align}
+
+A função crítica do teste $\Upsilon$ é dada por
+\begin{equation}
+\Psi_\Upsilon(x_1,x_2,\ldots,x_{10})=
+\begin{cases}
+1, & \text{se }(x_1,x_2,\ldots,x_{10})\in C;\\
+1/2, & \text{se }(x_1,x_2,\ldots,x_{10})\in B;\\
+0, & \text{se }(x_1,x_2,\ldots,x_{10})\in A.
+\end{cases}
+\end{equation}
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 15/45
+
+% ---------- Definição 5 (Erros do tipo I e II) ----------
+\begin{definition}
+A rejeição de $\mathcal{H}_0$ quando ela é verdadeira é chamada de \uline{erro do tipo I}, e a aceitação de $\mathcal{H}_0$ quando ela é falsa é chamada de \uline{erro do tipo II}. O \uline{tamanho de um erro do tipo I} é definido como a probabilidade de se cometer um erro do tipo I. Similarmente, o \uline{tamanho de um erro do tipo II} é a probabilidade de se cometer um erro do tipo II.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 19/45
+
+% ---------- Definição 6 (Função poder) ----------
+\begin{definition}
+Seja $\Upsilon$ um teste com hipótese nula $\mathcal{H}_0$. A \uline{função poder} do teste $\Upsilon$, denotada por $\pi_\Upsilon(\theta)$, é definida como sendo a probabilidade de que $\mathcal{H}_0$ seja rejeitada quando a distribuição da qual a amostra foi selecionada tem parâmetro $\theta$.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 20/45
+
+% ---------- Exemplo 5 (Continuação – população normal, função poder) ----------
+\begin{example}[Continuação – população normal]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\theta,25}$.
+
+Consideremos $\mathcal{H}_0:\theta\leq17$ e o teste $\Upsilon$: rejeitar $\mathcal{H}_0$ se, e somente se, $\bar{x}>17+5/\sqrt{n}$.
+
+Nesse caso,
+\begin{equation}
+\pi_\Upsilon(\theta)=\P_\theta\left(\bar{X}>17+5/\sqrt{n}\right)=1-\Phi\left(\frac{17+5/\sqrt{n}-\theta}{5/\sqrt{n}}\right).
+\end{equation}
+% Figura: gráfico da função poder $\pi_\Upsilon(\theta)$ para $n=25$ (crescente em $\theta$, de $0$ a $1$, com $\pi_\Upsilon(17)\approx0{,}16$ e $\pi_\Upsilon(20)\approx1$).
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 23/45
+
+% ---------- Observação 3 (Função poder para diferentes testes) ----------
+\begin{note}
+Pode-se escrever
+\begin{equation}
+\pi_\Upsilon(\theta)=\P_\theta(\text{rejeitar }\mathcal{H}_0),
+\end{equation}
+em que $\theta$ é o verdadeiro parâmetro.
+
+Se $\Upsilon$ for um teste não aleatorizado, então
+\begin{equation}
+\pi_\Upsilon(\theta)=\P_\theta(\v{X}\in\mathcal{C}_\Upsilon),
+\end{equation}
+em que $\mathcal{C}_\Upsilon$ corresponde à região crítica associada ao teste $\Upsilon$.
+
+Caso $\Upsilon$ seja um teste aleatorizado com função crítica $\Psi_\Upsilon$, então
+\begin{align}
+\pi_\Upsilon(\theta) &= \P_\theta(\text{rejeitar }\mathcal{H}_0)\notag\\
+&= \int_{\mathcal{X}} \P_\theta(\text{rejeitar }\mathcal{H}_0\mid\v{x})f_{\v{X}}(\v{x}\mid\theta)\,d\v{x}\notag\\
+&= \int_{\mathcal{X}} \Psi_\Upsilon(\v{x})f_{\v{X}}(\v{x}\mid\theta)\,d\v{x}\notag\\
+&= \E_\theta\left[\Psi_\Upsilon(\v{X})\right].
+\end{align}
+\end{note}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 22/45
+
+% ---------- Definição 7 (Tamanho do teste / nível de significância) ----------
+\begin{definition}
+Seja $\Upsilon$ um teste da hipótese $\mathcal{H}_0:\theta\in\Theta_0$, em que $\Theta_0\subset\Theta$. O \uline{tamanho do teste} $\Upsilon$ de $\mathcal{H}_0$ é definido como
+\begin{equation}
+\alpha=\sup_{\theta\in\Theta_0}\pi_\Upsilon(\theta).
+\end{equation}
+O tamanho do teste no caso não aleatorizado também é conhecido como \uline{tamanho da região crítica} e, comumente, como \uline{nível de significância}.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 24/45
+
+% ---------- Exemplo 6 (Continuação – população normal, tamanho do teste) ----------
+\begin{example}[Continuação – população normal]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\theta,25}$.
+
+Consideremos $\mathcal{H}_0:\theta\leq17$ e o teste $\Upsilon$: rejeitar $\mathcal{H}_0$ se, e somente se, $\bar{x}>17+5/\sqrt{n}$.
+
+Nesse caso, $\Theta_0=\{\theta\in\Theta\mid\theta\leq17\}$ e o tamanho do teste $\Upsilon$ será
+\begin{equation}
+\sup_{\theta\in\Theta_0}\pi_\Upsilon(\theta)=\sup_{\theta\leq17}\left[1-\Phi\left(\frac{17+5/\sqrt{n}-\theta}{5/\sqrt{n}}\right)\right]=1-\Phi(1)\approx0{,}159.
+\end{equation}
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 25/45
+
+% ---------- Teorema 1 (Suficiência) ----------
+\begin{theorem}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população com f.d.p. $f(x\mid\theta)$, $\theta\in\Theta$, e $(T_1,T_2,\ldots,T_s)=(T_1(\v{X}),T_2(\v{X}),\ldots,T_s(\v{X}))$ uma estatística suficiente para $\theta$. Então, para qualquer teste $\Upsilon$ com função crítica $\Psi_\Upsilon$, existe um teste, digamos $\Upsilon'$, e uma função crítica correspondente, digamos $\Psi_{\Upsilon'}$, dependendo somente do conjunto de estatísticas suficientes, que satisfazem $\pi_\Upsilon(\theta)=\pi_{\Upsilon'}(\theta)$ para todo $\theta\in\Theta$.
+\end{theorem}
+\begin{proof}
+Definamos
+\begin{equation}
+\Psi_{\Upsilon'}(t_1,t_2,\ldots,t_s)=\E\left[\Psi_\Upsilon(X_1,X_2,\ldots,X_n)\mid T_1=t_1,T_2=t_2,\ldots,T_s=t_s\right].
+\end{equation}
+Portanto, $\Psi_{\Upsilon'}$ é uma função crítica. Além disso,
+\begin{align}
+\pi_{\Upsilon'}(\theta) &= \E_\theta\left[\Psi_{\Upsilon'}(T_1,T_2,\ldots,T_s)\right]\notag\\
+&= \E_\theta\left\{\E\left[\Psi_\Upsilon(X_1,X_2,\ldots,X_n)\mid T_1,T_2,\ldots,T_s\right]\right\}\notag\\
+&= \pi_\Upsilon(\theta).
+\end{align}
+\end{proof}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 26-27/45
+
+% ---------- Definição 8 (Teste da razão de verossimilhanças simples) ----------
+\begin{definition}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população com f.d.p. $f_0$ ou $f_1$. Um teste $\Upsilon$ de $\mathcal{H}_0:X_i\sim f_0$ \emph{versus} $\mathcal{H}_1:X_i\sim f_1$ é chamado de \uline{teste da razão de verossimilhanças simples} se $\Upsilon$ for caracterizado como
+\begin{outline}
+\1 rejeitar $\mathcal{H}_0$, se $\lambda(\v{x})<k$;
+\1 aceitar $\mathcal{H}_0$, se $\lambda(\v{x})>k$;
+\1 aceitar ou rejeitar $\mathcal{H}_0$, ou aleatorizar, se $\lambda(\v{x})=k$,
+\end{outline}
+em que $k$ é uma constante positiva e
+\begin{equation}
+\lambda(\v{x})=\lambda(x_1,x_2,\ldots,x_n)=\frac{L(\theta_0\mid\v{x})}{L(\theta_1\mid\v{x})}\equiv\frac{L_0}{L_1}.
+\end{equation}
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 32/45
+
+% ---------- Definição 9 (Teste mais poderoso) ----------
+\begin{definition}
+Um teste $\Upsilon^*$ de $\mathcal{H}_0:\theta=\theta_0$ \emph{versus} $\mathcal{H}_1:\theta=\theta_1$ é definido ser um \uline{teste mais poderoso} (TMP) de tamanho $\alpha$ ($0<\alpha<1$) se, e somente se,
+\begin{outline}
+\1 (i) $\pi_{\Upsilon^*}(\theta_0)=\alpha$;
+\1 (ii) $\pi_{\Upsilon^*}(\theta_1)\geq\pi_\Upsilon(\theta_1)$ para qualquer outro teste $\Upsilon$ tal que $\pi_\Upsilon(\theta_0)\leq\alpha$.
+\end{outline}
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 37/45
+
+% ---------- Observação 4 (Interpretação de TMP) ----------
+\begin{note}
+Um teste $\Upsilon^*$ é mais poderoso de tamanho $\alpha$ se o tamanho do seu erro do tipo I for $\alpha$ e o tamanho do seu erro do tipo II for o menor, dentre todos os testes de tamanho $\alpha$ ou menos.
+\end{note}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 37/45
+
+% ---------- Teorema 2 (Lema de Neyman-Pearson) ----------
+\begin{theorem}[Lema de Neyman-Pearson]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população com f.d.p. $f(x\mid\theta)$, $\theta\in\{\theta_0,\theta_1\}$, e seja $0<\alpha<1$ fixado. Denotemos por $k^*$ uma constante positiva e $\mathcal{C}^*$ um subconjunto de $\mathcal{X}$ satisfazendo:
+\begin{outline}
+\1 (i) $\P_{\theta_0}(\v{X}\in\mathcal{C}^*)=\alpha$;
+\1 (ii) $\lambda(\v{x})=\dfrac{L(\theta_0\mid\v{x})}{L(\theta_1\mid\v{x})}=\dfrac{L_0}{L_1}\leq k^*$, se $\v{x}\in\mathcal{C}^*$, e $\lambda(\v{x})\geq k^*$, se $\v{x}\in\bar{\mathcal{C}}^*$, em que $\bar{\mathcal{C}}^*=\mathcal{X}-\mathcal{C}^*$.
+\end{outline}
+Então, o teste $\Upsilon^*$ com região crítica $\mathcal{C}^*$ é um teste mais poderoso de tamanho $\alpha$ para testar $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta=\theta_1$.
+\end{theorem}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 38/45
+
+% ---------- Observação 5 (Existência de k* e C*) ----------
+\begin{note}
+$k^*$ e $\mathcal{C}^*$ satisfazendo (i) e (ii) no Teorema 2 nem sempre existem e, consequentemente, o teorema pode não fornecer um TMP de tamanho $\alpha$, pelo menos da forma como foi estabelecido.
+
+Quando a A.A. for composta por v.a.'s contínuas, $k^*$ e $\mathcal{C}^*$ existirão. O problema é quando forem v.a.'s discretas.
+
+Embora o Lema de Neyman-Pearson tenha sido definido apenas para testes não aleatorizados, ele pode ser generalizado, de forma a contemplar também testes aleatorizados.
+\end{note}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 39/45
+
+% ---------- Exemplo 7 (Teste mais poderoso – exponencial) ----------
+\begin{example}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população $X\sim\text{exp}(\theta)$, em que $\theta\in\{\theta_0,\theta_1\}$, com $\theta_0$ e $\theta_1$ números fixados.
+
+Suponhamos aqui que queremos testar $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta=\theta_1$, e que $\theta_0<\theta_1$.
+
+Observe que
+\begin{equation}
+L_k=L(\theta_k\mid\v{x})=\theta_k^n e^{-\theta_k\sum_{i=1}^n x_i}, \quad k=0,1.
+\end{equation}
+Nesse problema, portanto,
+\begin{align}
+\lambda(\v{x}) &= \frac{L_0}{L_1}=\frac{\theta_0^n e^{-\theta_0\sum_{i=1}^n x_i}}{\theta_1^n e^{-\theta_1\sum_{i=1}^n x_i}}\notag\\
+&= \left(\frac{\theta_0}{\theta_1}\right)^n\exp\left[(\theta_1-\theta_0)\sum_{i=1}^n x_i\right].
+\end{align}
+Pelo Lema de Neyman-Pearson, o teste mais poderoso rejeita $\mathcal{H}_0$ se, e somente se, $\lambda(\v{x})\leq k^*$.
+
+Assim,
+\begin{align}
+\left(\frac{\theta_0}{\theta_1}\right)^n\exp\left[(\theta_1-\theta_0)\sum_{i=1}^n x_i\right]\leq k^* &\iff\notag\\
+\log\left(\frac{\theta_0}{\theta_1}\right)^n+(\theta_1-\theta_0)\sum_{i=1}^n x_i\leq\log k^* &\iff\notag\\
+\sum_{i=1}^n x_i\leq\frac{1}{\theta_1-\theta_0}\log\left[\left(\frac{\theta_1}{\theta_0}\right)^n k^*\right]\equiv k'. & \quad\text{(constante)}
+\end{align}
+A desigualdade $\lambda(\v{x})\leq k^*$ foi simplificada e expressa como a desigualdade equivalente $\sum_{i=1}^n x_i\leq k'$.
+
+A condição (i) do Lema de Neyman-Pearson requer
+\begin{equation}
+\alpha=\P_{\theta_0}\left(\sum_{i=1}^n X_i\leq k'\right).
+\end{equation}
+Observe que
+\begin{equation}
+\sum_{i=1}^n X_i\sim\text{gama}(n,\theta).
+\end{equation}
+Portanto, o teste mais poderoso de tamanho $\alpha$ de $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta=\theta_1$ será aquele que rejeita $\mathcal{H}_0$ se $\sum_{i=1}^n x_i\leq k'$.
+
+$k'$ corresponde ao $\alpha$-ésimo quantil de uma distribuição gama com parâmetros $n$ e $\theta_0$.
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 40/45
+
+% ---------- Exemplo 8 (Teste mais poderoso – Bernoulli) ----------
+\begin{example}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população $X\sim\berndist{\theta}$, em que $\theta\in\{\theta_0,\theta_1\}$, com $\theta_0$ e $\theta_1$ números fixados.
+
+Suponhamos aqui que queremos testar $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta=\theta_1$, e que $\theta_0<\theta_1$.
+
+Observe que
+\begin{equation}
+L_k=L(\theta_k\mid\v{x})=\theta_k^{\sum_{i=1}^n x_i}(1-\theta_k)^{n-\sum_{i=1}^n x_i}, \quad k=0,1.
+\end{equation}
+Assim,
+\begin{align}
+\lambda(\v{x}) &= \frac{L_0}{L_1}=\frac{\theta_0^{\sum_{i=1}^n x_i}(1-\theta_0)^{n-\sum_{i=1}^n x_i}}{\theta_1^{\sum_{i=1}^n x_i}(1-\theta_1)^{n-\sum_{i=1}^n x_i}}\notag\\
+&= \left[\frac{\theta_0(1-\theta_1)}{(1-\theta_0)\theta_1}\right]^{\sum_{i=1}^n x_i}\left(\frac{1-\theta_0}{1-\theta_1}\right)^n.
+\end{align}
+Pelo Lema de Neyman-Pearson, o teste mais poderoso rejeita $\mathcal{H}_0$ se, e somente se, $\lambda(\v{x})\leq k^*$.
+
+Portanto,
+\begin{align}
+\left[\frac{\theta_0(1-\theta_1)}{(1-\theta_0)\theta_1}\right]^{\sum_{i=1}^n x_i}\left(\frac{1-\theta_0}{1-\theta_1}\right)^n\leq k^* &\iff\notag\\
+\sum_{i=1}^n x_i\log\left[\frac{\theta_0(1-\theta_1)}{(1-\theta_0)\theta_1}\right]+n\log\left(\frac{1-\theta_0}{1-\theta_1}\right)\leq\log k^* &\iff\notag\\
+\sum_{i=1}^n x_i\geq\frac{\log\left[k^*\left(\dfrac{1-\theta_1}{1-\theta_0}\right)^n\right]}{\log\left[\dfrac{\theta_0(1-\theta_1)}{(1-\theta_0)\theta_1}\right]}\equiv k'. & \quad\text{(constante)}
+\end{align}
+Portanto, um teste mais poderoso é aquele que rejeita $\mathcal{H}_0$ se $\sum_{i=1}^n x_i$ for grande.
+
+Para fins de ilustração, suponhamos que $\theta_0=1/4$, $\theta_1=3/4$ e $n=10$.
+
+Devemos determinar $k'$ tal que
+\begin{equation}
+\alpha=\P_{\theta_0=1/4}(\text{rejeitar }\mathcal{H}_0)=\P_{\theta_0=1/4}\left(\sum_{i=1}^{10}X_i\geq k'\right)=\sum_{i=k'}^{10}\binom{10}{i}(1/4)^i(3/4)^{10-i}.
+\end{equation}
+Se $\alpha=0{,}0197$, então $k'=6$; se $\alpha=0{,}0781$, então $k'=5$.
+
+Para $\alpha=0{,}05$, não há região crítica $\mathcal{C}^*$ e constante $k^*$ da forma como apresentado no Lema de Neyman-Pearson.
+
+Para v.a.'s discretas, não é possível determinar $k^*$ e $\mathcal{C}^*$ que satisfaçam as condições (i) e (ii) para todo $0<\alpha<1$.
+
+Na prática, é comum simplesmente mudar o tamanho do teste para algum $\alpha$ que possa garantir o referido lema. Contudo, é importante destacar que existe um teste (aleatorizado) mais poderoso.
+
+Para o exemplo em questão, se $\alpha=0{,}05$, podemos considerar uma função crítica da forma
+\begin{equation}
+\Psi(\v{x})=
+\begin{cases}
+1, & \text{se }\sum_{i=1}^{10}x_i\geq6;\\
+\gamma, & \text{se }\sum_{i=1}^{10}x_i=5;\\
+0, & \text{se }\sum_{i=1}^{10}x_i\leq4.
+\end{cases}
+\end{equation}
+Nesse caso,
+\begin{equation}
+\alpha=\E_{\theta_0=1/4}\left[\Psi(\v{X})\right]=1\cdot\P_{\theta_0=1/4}\left(\sum_{i=1}^n X_i\geq6\right)+\gamma\cdot\P_{\theta_0=1/4}\left(\sum_{i=1}^n X_i=5\right).
+\end{equation}
+Então,
+\begin{equation}
+0{,}05=0{,}0197+\gamma\cdot0{,}0584,
+\end{equation}
+o que implica que $\gamma=\dfrac{0{,}05-0{,}0197}{0{,}0584}=0{,}0303/0{,}0584$.
+
+Logo,
+\begin{equation}
+\Psi(\v{x})=
+\begin{cases}
+1, & \text{se }\sum_{i=1}^{10}x_i\geq6,\\
+0{,}0303/0{,}0584, & \text{se }\sum_{i=1}^{10}x_i=5\\
+0, & \text{se }\sum_{i=1}^{10}x_i\leq4,
+\end{cases}
+\end{equation}
+é o teste mais poderoso de tamanho $\alpha=0{,}05$.
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 41/45
+
+% ---------- Definição 10 (Nível descritivo / valor-p) ----------
+\begin{definition}
+Seja $\hat{p}$ o menor nível de significância para o qual a hipótese nula $\mathcal{H}_0$ é rejeitada, com base em uma determinada amostra observada. Essa quantidade é chamada de \uline{nível descritivo} (ou valor-$p$). Formalmente,
+\begin{equation}
+\hat{p}=\inf\{\alpha\in(0,1)\mid\v{x}\in\mathcal{C}_\alpha\},
+\end{equation}
+em que $\mathcal{C}_\alpha$ é uma região crítica construída com base em um teste de tamanho $\alpha$, e $\v{x}$ representa o vetor da amostra observada.
+\end{definition}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 44/45
+
+% ---------- Observação 6 (Interpretação do nível descritivo) ----------
+\begin{note}
+Quanto menor $\hat{p}$, mais evidência temos contra $\mathcal{H}_0$.
+\end{note}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 44/45
+
+% ---------- Exemplo 9 (Cont. – Ex. 7, nível descritivo) ----------
+\begin{example}[Cont. – Exemplo 7]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população $X\sim\text{exp}(\theta)$, em que $\theta\in\{\theta_0,\theta_1\}$, com $\theta_0<\theta_1$ números fixados.
+
+Estamos interessados em testar $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta=\theta_1$.
+
+Suponha que $n=20$, $\theta_0=1$ e $\theta_1=2$. Da amostra observada, foi verificado que $\sum_{i=1}^{20}x_i=6{,}18$.
+
+Nesse caso, como o teste rejeita $\mathcal{H}_0$ para $\sum_{i=1}^{20}x_i\leq k'$, e $\sum_{i=1}^{20}X_i\sim\text{gama}(20,\theta)$, o nível descritivo será
+\begin{equation}
+\hat{p}=\P_{\theta=1}\left(\sum_{i=1}^{20}X_i\leq6{,}18\right)\approx0{,}0277.
+\end{equation}
+Portanto, ao nível de significância de 5\%, rejeitamos a hipótese nula de que $\theta=1$.
+\end{example}
+% Correspondência: 9 - Testes de Hipóteses 1.pdf, p. 45/45

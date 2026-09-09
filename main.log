@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.5.1)  31 AUG 2026 21:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.5.1)  4 SEP 2026 09:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -372,6 +372,18 @@ File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 (/usr/share/texlive/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
+(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box55
+\UL@hyphenbox=\box56
+\UL@skip=\skip62
+\UL@hook=\toks32
+\UL@height=\dimen176
+\UL@pe=\count304
+\UL@pixel=\dimen177
+\ULC@box=\box57
+Package: ulem 2019/11/18
+\ULdepth=\dimen178
+)
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
@@ -419,21 +431,22 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/accents/accents.sty
 Package: accents 2006/05/12 v1.4 Math Accent Tools
-\cc@skew=\dimen176
-\cc@wd=\dimen177
-\cc@code=\count304
-\cc@group=\count305
-\cc@skewchar=\count306
+\cc@skew=\dimen179
+\cc@wd=\dimen180
+\cc@code=\count305
+\cc@group=\count306
+\cc@skewchar=\count307
 )
-\c@theorem=\count307
-\c@definition=\count308
-\c@lemma=\count309
-\c@corollary=\count310
+\c@theorem=\count308
+\c@definition=\count309
+\c@lemma=\count310
+\c@corollary=\count311
+\c@example=\count312
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count311
-\l__pdf_internal_box=\box55
+\l__color_backend_stack_int=\count313
+\l__pdf_internal_box=\box58
 )
 
 LaTeX Warning: Unused global option(s):
@@ -503,17 +516,17 @@ Package hyperref Info: Link coloring OFF on input line 9.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count312
-\scratchdimen=\dimen178
-\scratchbox=\box56
-\nofMPsegments=\count313
-\nofMParguments=\count314
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count315
-\MPscratchDim=\dimen179
-\MPnumerator=\count316
-\makeMPintoPDFobject=\count317
-\everyMPtoPDFconversion=\toks33
+\scratchcounter=\count314
+\scratchdimen=\dimen181
+\scratchbox=\box59
+\nofMPsegments=\count315
+\nofMParguments=\count316
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count317
+\MPscratchDim=\dimen182
+\MPnumerator=\count318
+\makeMPintoPDFobject=\count319
+\everyMPtoPDFconversion=\toks34
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -546,7 +559,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.46 ...line {7.4}Valor absoluto}{47}{section.7.4}
+l.52 ...{\numberline {5}RegressÃ£o}{67}{chapter.5}
                                                   % [1
 
 ])
@@ -581,19 +594,11 @@ Cap\'{\i }tulo 1.
 
 [11]
 
-[12]) (./probabilidade.tex
+[12]
 
 [13]
-Cap\'{\i }tulo 2.
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 20.
 
-(/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-
-[14
-
-]
+[14]
 
 [15]
 
@@ -602,32 +607,26 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 [17]
 
 [18]
-Overfull \hbox (12.36401pt too wide) in paragraph at lines 233--234
-[]$[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 aX \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 bY
-; cW \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 dV\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 
-ac  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X; W\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/1
-2 ad  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X; V\OT1/cmr/m/n/12 ) + \OML/cmm/m/it
-/12 bc  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Y; W\OT1/cmr/m/n/12 ) + \OML/cmm/m/
-it/12 bd  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Y; V\OT1/cmr/m/n/12 )$ 
- []
-
-
 
 [19]
 
-[20]
+[20]) (./probabilidade.tex
 
 [21]
+Cap\'{\i }tulo 2.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 20.
 
-[22]) (./inferencia.tex
+(/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+)
 
-[23]
-Cap\'{\i }tulo 3.
-
-
-[24
+[22
 
 ]
+
+[23]
+
+[24]
 
 [25]
 
@@ -638,44 +637,34 @@ Cap\'{\i }tulo 3.
 [28]
 
 [29]
-Overfull \hbox (36.92885pt too wide) in paragraph at lines 349--350
-[]\T1/cmr/bx/n/12 Teorema 3.4.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 De-si-gual-dade
- de Cra-mér---Rao -- caso i.i.d. (Co-ro-lá-rio 1)\T1/cmr/m/n/12 ). []Se-jam $\O
-ML/cmm/m/it/12 X[]; X[]; [] ; X[]$
+Overfull \hbox (12.36401pt too wide) in paragraph at lines 322--323
+[]$[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 aX \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 bY
+; cW \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 dV\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 
+ac  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X; W\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/1
+2 ad  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X; V\OT1/cmr/m/n/12 ) + \OML/cmm/m/it
+/12 bc  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Y; W\OT1/cmr/m/n/12 ) + \OML/cmm/m/
+it/12 bd  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Y; V\OT1/cmr/m/n/12 )$ 
  []
 
 
 
 [30]
 
-[31]) (./normal_multivariada.tex
+[31]
 
 [32]
-Cap\'{\i }tulo 4.
 
-
-[33
-
-]) (./regressao.tex
+[33]) (./inferencia.tex
 
 [34]
-Cap\'{\i }tulo 5.
-) (./inferencia_bayesiana.tex
+Cap\'{\i }tulo 3.
+
 
 [35
 
 ]
-Cap\'{\i }tulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
- []
-
-
-
-[36
-
-]
+[36]
 
 [37]
 
@@ -683,35 +672,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
 [39]
 
-[40]) (./prob_avancada.tex
+[40]
+Overfull \hbox (36.92885pt too wide) in paragraph at lines 326--327
+[]\T1/cmr/bx/n/12 Teorema 3.4.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 De-si-gual-dade
+ de Cra-mér---Rao -- caso i.i.d. (Co-ro-lá-rio 1)\T1/cmr/m/n/12 ). []Se-jam $\O
+ML/cmm/m/it/12 X[]; X[]; [] ; X[]$
+ []
 
-[41]
-Cap\'{\i }tulo 7.
 
 
-[42
+[41] (./inferencia_estimacao_intervalar.tex
+Overfull \hbox (17.22673pt too wide) in paragraph at lines 11--12
+\T1/cmr/m/n/12 mada de $[]$, e $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 e $\OML/cm
+m/m/it/12 T[]$ \T1/cmr/m/n/12 são cha-ma-das de $[]$,
+ []
 
-]
+
+
+[42]
 
 [43]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
-
+Overfull \hbox (2.7463pt too wide) in paragraph at lines 131--132
+\OML/cmm/m/it/12 X[]; X[]; [] ; X[]$ \T1/cmr/m/n/12 uma A.A. de uma po-pu-la-çã
+o $\OML/cmm/m/it/12 X[] \OMS/cmsy/m/n/12 ^^X [] []$ \T1/cmr/m/n/12 e se-jam $\O
+ML/cmm/m/it/12 X[]; X[]; [] ; X[]$
  []
 
 
 
 [44]
 
-[45]
-Overfull \hbox (55.45848pt too wide) in paragraph at lines 179--181
-[]\T1/cmr/bx/n/12 Teorema 7.2.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 Pro-pri-e-da-de
-s de fun-ções e ima-gens in-ver-sas\T1/cmr/m/n/12 ). []Seja $\OML/cmm/m/it/12 f
- [] [] \OT1/cmr/m/n/12 
-[] \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 
-[]$\T1/cmr/m/n/12 , $[]$
- []
-
-
+[45]) (./inferencia_testes_hipotese_I.tex
 
 [46]
 
@@ -722,10 +713,17 @@ s de fun-ções e ima-gens in-ver-sas\T1/cmr/m/n/12 ). []Seja $\OML/cmm/m/it/12 f
 [49]
 
 [50]
+Overfull \hbox (29.42009pt too wide) in paragraph at lines 309--310
+[]\T1/cmr/bx/n/12 Exemplo 3.6.8. []\T1/cmr/m/n/12 Se-jam $\OML/cmm/m/it/12 X[];
+ X[]; [] ; X[]$ \T1/cmr/m/n/12 uma A.A. ori-unda de uma po-pu-la-ção $\OML/cmm/
+m/it/12 X \OMS/cmsy/m/n/12 ^^X [] []$\T1/cmr/m/n/12 ,
+ []
+
+
 
 [51]
 
-[52]
+[52]) (./inferencia_testes_hipotese_II.tex
 
 [53]
 
@@ -738,6 +736,105 @@ s de fun-ções e ima-gens in-ver-sas\T1/cmr/m/n/12 ). []Seja $\OML/cmm/m/it/12 f
 [57]
 
 [58]
+
+[59]
+
+[60]
+
+[61])) (./normal_multivariada.tex
+
+[62]
+Cap\'{\i }tulo 4.
+
+
+[63
+
+]
+
+[64]
+
+[65]) (./regressao.tex
+
+[66]
+Cap\'{\i }tulo 5.
+) (./inferencia_bayesiana.tex
+
+[67
+
+]
+Cap\'{\i }tulo 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+
+[68
+
+]
+
+[69]
+
+[70]
+
+[71]
+
+[72]) (./prob_avancada.tex
+
+[73]
+Cap\'{\i }tulo 7.
+
+
+[74
+
+]
+
+[75]
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+
+
+[76]
+
+[77]
+Overfull \hbox (55.45848pt too wide) in paragraph at lines 179--181
+[]\T1/cmr/bx/n/12 Teorema 7.2.2 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 Pro-pri-e-da-de
+s de fun-ções e ima-gens in-ver-sas\T1/cmr/m/n/12 ). []Seja $\OML/cmm/m/it/12 f
+ [] [] \OT1/cmr/m/n/12 
+[] \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 
+[]$\T1/cmr/m/n/12 , $[]$
+ []
+
+
+
+[78]
+
+[79]
+
+[80]
+
+[81]
+
+[82]
+
+[83]
+
+[84]
+
+[85]
+
+[86]
+
+[87]
+
+[88]
+
+[89]
+
+[90]
 Overfull \hbox (21.298pt too wide) in paragraph at lines 822--823
 []\T1/cmr/bx/n/12 Teorema 7.10.5 \T1/cmr/m/n/12 (\T1/cmr/m/it/12 2.3 Com-po-si-
 ção de trans-for-ma-ções men-su-rá-veis\T1/cmr/m/n/12 ). []Se-jam $\OT1/cmr/m/n
@@ -758,13 +855,13 @@ T1/cmr/m/n/12 )$
 
 
 
-[59]
+[91]
 
-[60]
+[92]
 
-[61]
+[93]
 
-[62]
+[94]
 Overfull \hbox (14.04724pt too wide) in paragraph at lines 989--990
 []\T1/cmr/bx/n/12 Teorema 7.12.2. []\T1/cmr/m/n/12 Se $\OML/cmm/m/it/12 X$ \T1/
 cmr/m/n/12 for uma v.a. sim-ples e não ne-ga-tiva, en-tão a apli-ca-ção $[]$
@@ -772,17 +869,17 @@ cmr/m/n/12 for uma v.a. sim-ples e não ne-ga-tiva, en-tão a apli-ca-ção $[]$
 
 
 
-[63]
+[95]
 
-[64]
+[96]
 
-[65]
+[97]
 
-[66]
+[98]
 
-[67]
+[99]
 
-[68]
+[100]
 Overfull \hbox (7.14828pt too wide) in paragraph at lines 1267--1268
 []$\OML/cmm/m/it/12 X$ \T1/cmr/m/n/12 e $\OML/cmm/m/it/12 Y$ \T1/cmr/m/n/12 são
  va-ri-á-veis ale-a-tó-rias in-de-pen-den-tes se, e so-mente se, $\OML/cmm/m/it
@@ -801,11 +898,11 @@ S/cmsy/m/n/12 A[]$
 
 
 
-[69]
+[101]
 
-[70]
+[102]
 
-[71]
+[103]
 Overfull \hbox (7.10583pt too wide) in paragraph at lines 1468--1469
 []\T1/cmr/m/n/12 Cauchy-Schwarz: Se $\OML/cmm/m/it/12 X; Y \OMS/cmsy/m/n/12 2 \
 OML/cmm/m/it/12 L[]$\T1/cmr/m/n/12 , en-tão $\OML/cmm/m/it/12 XY \OMS/cmsy/m/n/
@@ -817,24 +914,24 @@ $
 
 
 
-[72])
+[104])
 
-[73] (./main.aux)
+[105] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 11514094121F7E4FA921AA0182642185;9392.
+(rerunfilecheck)             Checksum: B0A039412391DB1142C8DF78B7DBC6EE;10805.
  ) 
 Here is how much of TeX's memory you used:
- 16058 strings out of 475085
- 255533 string characters out of 5764177
- 696039 words of memory out of 5000000
- 37773 multiletter control sequences out of 15000+600000
- 583109 words of font info for 103 fonts, out of 8000000 for 9000
+ 16571 strings out of 475085
+ 262526 string characters out of 5764177
+ 699039 words of memory out of 5000000
+ 37911 multiletter control sequences out of 15000+600000
+ 583215 words of font info for 104 fonts, out of 8000000 for 9000
  61 hyphenation exceptions out of 8191
- 80i,14n,82p,543b,786s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,18n,82p,721b,816s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/cleiton/.texlive2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/
@@ -861,10 +958,10 @@ super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb><
 /usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fon
 ts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-s
 uper/sfti1200.pfb>
-Output written on main.pdf (74 pages, 652254 bytes).
+Output written on main.pdf (106 pages, 781141 bytes).
 PDF statistics:
- 1916 PDF objects out of 2073 (max. 8388607)
- 1764 compressed objects within 18 object streams
- 1049 named destinations out of 1200 (max. 500000)
- 473 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2486 PDF objects out of 2487 (max. 8388607)
+ 2297 compressed objects within 23 object streams
+ 1410 named destinations out of 1440 (max. 500000)
+ 529 words of extra memory for PDF output out of 10000 (max. 10000000)
 

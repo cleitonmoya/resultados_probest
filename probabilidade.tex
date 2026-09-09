@@ -81,15 +81,48 @@
 	\1 \( \hat{\mu} = \bar{X}, \hat{\sigma^2} = \left(\frac{n+1}{n}\right) S^2 \)
 \end{outline}
 
-\subsubsection{$\chidist{n}$}
+\subsubsection{Distribuição t $\tdist{n}$}
+\begin{outline}
+	\1 Se $Z\sim\normdist{0,1}$ e $U\sim\chidist{n}$ são variáveis aleatórias independentes, então
+	\begin{equation}
+		T = \frac{Z}{\sqrt{\dfrac{U}{n}}}
+	\end{equation}
+	tem distribuição t-Student com $n$ graus de liberdade.
+	\1 \(\displaystyle f_T(t) = \frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)\sqrt{n\pi}}\left(1+\frac{t^2}{n}\right)^{-\left(\frac{n+1}{2}\right)}, \quad -\infty<t<\infty\)
+	\1 Não existe função geradora de momentos.
+	\1 $\E[T] = 0$, para $n>1$
+	\1 $\Var[T] = \dfrac{n}{n-2}$, para $n>2$
+\end{outline}
+
+\subsubsection{Distribuição t não central $\tdist{n,\mu}$}
+\begin{outline}
+	\1 Se $X\sim\normdist{\mu,1}$ e $U\sim\chidist{n}$ são variáveis aleatórias independentes, então
+	\begin{equation}
+		T^* = \frac{X}{\sqrt{\dfrac{U}{n}}}
+	\end{equation}
+	tem distribuição t de Student não central, com $n$ graus de liberdade e parâmetro de não centralidade $\mu$.
+	\1 \(\displaystyle f_{T^*}(t) = \frac{n^{n/2}e^{-\mu^2/2}}{\Gamma\left(\frac{n}{2}\right)(n+t^2)^{(n+1)/2}}\sum_{k=0}^{\infty}\frac{\Gamma\left(\frac{n+k+1}{2}\right)\mu^k 2^{k/2}t^k}{k!(n+t^2)^{k/2}}\)
+\end{outline}
+
+\subsubsection{Qui-quadrado $\chidist{n}$}
 \begin{outline}
 	\1 \(\displaystyle f_U(u\mid n) = \frac{1}{\Gamma\left(\frac{n}{2}\right)2^{n/2}}u^{(n-2)/2}e^{-u/2}\,\ind_{(0,\infty)}(u), \quad n\geq 1 \text{ inteiro}\)
 	\1 \( \E[U] = n \)
+	\1 \( \E[U^2] = n(n+2) \)
 	\1 \( \Var[U] = 2n \)
 	\1 \(\displaystyle M_U(t) = (1-2t)^{-n/2} \), para $t<\frac{1}{2}$
 \end{outline}
 
-\subsubsection{$\chidist{n,\lambda}$}
+\begin{theorem}[Qui-quadrado]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $Z \sim \normdist{0,1}$, então $Z^2 \sim \chidist{1}$;
+		
+		\1 Se $X_1, X_2, \ldots, X_n$ são v.a.'s independentes tais que $X_i \sim \chidist{r_i}$, então $\sum_{i=1}^{n} X_i \sim \chidist{r}$, em que $r = \sum_{i=1}^{n} r_i$.
+	\end{outline}
+\end{theorem}
+
+\subsubsection{Qui-quadrado não central $\chidist{n,\lambda}$}
 \begin{outline}
 	\1 \(\displaystyle f_U(u\mid n,\lambda) = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\frac{u^{(n+2k-2)/2}e^{-u/2}}{\Gamma\left(\frac{n+2k}{2}\right)2^{(n+2k)/2}}\,\ind_{(0,\infty)}(u), \quad n\geq 1 \text{ inteiro}, \ \lambda\geq 0\)
 	\1 \( \E[U] = n + 2\lambda \)
@@ -122,6 +155,62 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 	\1 \(\displaystyle \Var[X] = \frac{\alpha}{\beta^2} \)
 	\1 Moda = $\frac{\alpha-1}{\beta}$, para $\alpha \geq 1$; $0$, para $\alpha<1$
 	\1 \(\displaystyle M_X(t) = \left(1-\frac{t}{\beta}\right)^{-\alpha} \), para  $t<\beta$
+\end{outline}
+
+\subsubsection{F de Fisher-Snedecor $\fdist{n_1,n_2}$}
+
+\begin{outline}
+	\1 Sejam $U_1$ e $U_2$ variáveis aleatórias independentes tais que $U_1\sim\chidist{n_1}$ e $U_2\sim\chidist{n_2}$. Então
+	\begin{equation}
+		W = \frac{\dfrac{U_1}{n_1}}{\dfrac{U_2}{n_2}}
+	\end{equation}
+	tem distribuição F de Snedecor, com $n_1$ graus de liberdade no numerador e $n_2$ graus de liberdade no denominador.
+	\1 \(\displaystyle f_W(w) = \frac{\Gamma\left(\frac{n_1+n_2}{2}\right)}{\Gamma\left(\frac{n_1}{2}\right)\Gamma\left(\frac{n_2}{2}\right)}\frac{n_1^{n_1/2}n_2^{n_2/2}w^{(n_1-2)/2}}{(n_2+wn_1)^{(n_1+n_2)/2}}, \quad w>0\)
+	\1 Não existe função geradora de momentos.
+	\1 $\E[W] = \dfrac{n_2}{n_2-2}$, para $n_2>2$
+	\1 $\Var[W] = \dfrac{2n_2^2(n_1+n_2-2)}{n_1(n_2-2)^2(n_2-4)}$, para $n_2>4$
+	\1 $\E[W^2] = \dfrac{n_2^2(n_1+2)}{n_1(n_2-2)(n_2-4)}$, para $n_2>4$
+\end{outline}
+
+\begin{theorem}[Propriedades da distribuição $F$]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $X \sim F_{p,q}$, então $1/X \sim F_{q,p}$ (a recíproca de uma $F$ também tem distribuição $F$);
+		
+		\1 Se $X \sim \tdist{q}$, então $X^2 \sim F_{1,q}$;
+		
+		\1 Se $X \sim F_{p,q}$, então
+		\[
+		\frac{(p/q)X}{1 + (p/q)X} \sim \betadist{\frac{p}{2}, \frac{q}{2}}.
+		\]
+		
+		\1 Se $V \sim \chi_r^2$ e $W \sim \chi_s^2$ independentes, então
+		\[
+		\frac{V/r}{W/s} \sim F_{r,s}.
+		\]
+	\end{outline}
+\end{theorem}
+
+
+\subsubsection{F de Fisher-Snedecor não central $\fdist{n_1,n_2,\lambda}$}
+\begin{outline}
+	\1 Sejam $U_1$ e $U_2$ variáveis aleatórias independentes tais que $U_1\sim\chidist{n_1,\lambda}$ e $U_2\sim\chidist{n_2}$. Então
+	\begin{equation}
+		W = \frac{\dfrac{U_1}{n_1}}{\dfrac{U_2}{n_2}}
+	\end{equation}
+	tem distribuição F não central, com $n_1$ graus de liberdade no numerador, $n_2$ graus de liberdade no denominador e parâmetro de não centralidade $\lambda$.
+	\1 \(\displaystyle f_W(w) = \sum_{k=0}^{\infty}\frac{e^{-\lambda}\lambda^k}{k!}\frac{\Gamma\left(\frac{n_1+n_2+2k}{2}\right)}{\Gamma\left(\frac{n_1+2k}{2}\right)\Gamma\left(\frac{n_2}{2}\right)}\frac{n_1^{(n_1+2k)/2}n_2^{n_2/2}w^{(n_1+2k-2)/2}}{(n_2+wn_1)^{(n_1+n_2+2k)/2}}, \quad w>0\)
+	\1 $\E[W] = \dfrac{n_2}{n_2-2}\left(1+\dfrac{2\lambda}{n_1}\right)$, para $n_2>2$
+	\1 $\Var[W] = \dfrac{2n_2^2}{n_1^2(n_2-2)}\left[\dfrac{(n_1+2\lambda)^2}{(n_2-2)(n_2-4)}+\dfrac{(n_1+4\lambda)}{(n_2-4)}\right]$, para $n_2>4$
+\end{outline}
+
+\subsubsection{F não central dupla $\fdist{n_1,n_2,\lambda_1,\lambda_2}$}
+\begin{outline}
+	\1 Sejam $U_1$ e $U_2$ variáveis aleatórias independentes tais que $U_1\sim\chidist{n_1,\lambda_1}$ e $U_2\sim\chidist{n_2,\lambda_2}$. Então
+	\begin{equation}
+		W = \frac{\dfrac{U_1}{n_1}}{\dfrac{U_2}{n_2}}
+	\end{equation}
+	tem distribuição F não central dupla, com $n_1$ graus de liberdade no numerador, $n_2$ graus de liberdade no denominador e parâmetros de não centralidade $\lambda_1$ e $\lambda_2$.
 \end{outline}
 
 \begin{theorem}[Utilidade pública]

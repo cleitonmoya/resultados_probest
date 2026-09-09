@@ -1,0 +1,476 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+% ===========================================================
+% Testes de Hipóteses II: RVG e testes UMP
+% Fonte: 10 - Testes de Hipóteses 2.pdf
+% ===========================================================
+
+% ---------- Introdução ----------
+Até o momento, estudamos testes envolvendo hipóteses simples, o que não é usual em situações reais. Agora vamos dar ênfase a testes que envolvem hipóteses compostas.
+
+Vamos trabalhar sob a suposição de que temos uma amostra aleatória oriunda de uma população com f.d.p. (ou f.p., embora bem menos)
+\begin{equation}
+f(\v{x}\mid\theta), \quad \theta\in\Theta.
+\end{equation}
+Nosso interesse será testar hipóteses $\mathcal{H}_0:\theta\in\Theta_0$ \emph{vs.} $\mathcal{H}_1:\theta\in\Theta_1$, em que $\Theta_0\subset\Theta$, $\Theta_1\subset\Theta$, $\Theta_0\cup\Theta_1=\Theta$ e $\Theta_0\cap\Theta_1=\emptyset$.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 3/95
+
+% ---------- Definição 1 (RVG) ----------
+\begin{definition}[Razão de verossimilhanças generalizada -- RVG]
+Seja $L(\theta\mid\v{x})$ a função de verossimilhança para uma amostra $X_1,X_2,\ldots,X_n$, que tem f.d.p. (ou f.p.) conjunta $f(\v{x}\mid\theta)$, $\theta\in\Theta$. Chamamos de \uline{razão de verossimilhanças generalizada} a razão
+\begin{equation}
+\lambda=\lambda(\v{x})=\frac{\sup_{\theta\in\Theta_0}L(\theta\mid\v{x})}{\sup_{\theta\in\Theta}L(\theta\mid\v{x})}.
+\end{equation}
+\end{definition}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 5/95
+
+% ---------- Texto: algumas ponderações sobre a RVG ----------
+Observe que $\lambda$ é uma função da amostra observada $\v{x}$. Quando a RVG envolver as v.a.'s $\v{X}$, então a denotaremos por $\Lambda=\lambda(\v{X})$. Por vezes, podemos denotar $\Lambda_n$ ou $\lambda_n$, quando quisermos enfatizar o tamanho amostral.
+
+Note também que $\Lambda$ é uma estatística, por ser uma função de $\v{X}$ que não depende de quantidades desconhecidas.
+
+A partir da Definição 1, temos que $0\leq\lambda\leq1$. Uma vez que numerador e denominador não podem ser negativos, $\lambda\geq0$. Por outro lado, como $\Theta_0\subset\Theta$, então $\sup_{\theta\in\Theta_0}L(\theta\mid\v{x})\leq\sup_{\theta\in\Theta}L(\theta\mid\v{x})$, que implica $\lambda\leq1$.
+
+Valores pequenos de $\lambda$ indicam evidências contra $\mathcal{H}_0$.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 6/95
+
+Uma generalização natural do teste da razão de verossimilhanças, visto para testar hipóteses simples, seria
+\begin{equation}
+\lambda^*(\v{x})=\frac{\sup_{\theta\in\Theta_0}L(\theta\mid\v{x})}{\sup_{\theta\in\Theta_1}L(\theta\mid\v{x})}.
+\end{equation}
+Por ser mais simples de se calcular, o teste da razão de verossimilhanças generalizada é adotado na forma de $\lambda(\v{x})$, exibida na Definição 1.
+
+Vale destacar que os testes $\lambda(\v{x})$ e $\lambda^*(\v{x})$ estão relacionados da forma
+\begin{equation}
+\lambda(\v{x})=\min\{1,\lambda^*(\v{x})\}.
+\end{equation}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 7/95
+
+% ---------- Observação 1 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 O parâmetro $\theta$ pode ser um escalar ou um vetor. Além disso, numerador e denominador de $\lambda(\v{x})$ correspondem aos EMV's de $\theta$ em $\Theta_0$ e $\Theta$, respectivamente, aplicados à função de verossimilhança.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 8/95
+
+% ---------- Texto: princípio do TRVG e pontos negativos ----------
+Valores $\lambda$ da estatística $\Lambda$ são usados para a tomada de decisão em um teste do tipo $\mathcal{H}_0:\theta\in\Theta_0$ \emph{vs.} $\mathcal{H}_1:\theta\in\Theta_1$. Para isso, utilizamos o princípio do teste da razão de verossimilhanças generalizada: rejeitar $\mathcal{H}_0$ se, e somente se, $\lambda\leq\lambda_0$, em que $\lambda_0$ é uma constante tal que $0<\lambda_0<1$. Essa constante é, geralmente, especificada fixando o tamanho do teste.
+
+Alguns pontos negativos do TRVG:
+\begin{outline}
+\1 Às vezes é difícil determinar $\sup L(\theta\mid\v{x})$;
+\1 Às vezes é difícil determinar a distribuição de $\Lambda$, fundamental para calcular o poder do teste.
+\end{outline}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 9/95
+
+% ---------- Observação 2 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 O desenvolvimento de testes da RVG geralmente começa de uma forma um tanto complicada, até chegar em resultados mais simples.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 11/95
+
+% ---------- Observação 3 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Por construção, testes da RVG dependem da amostra apenas através de estatísticas suficientes (mínimas).
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 11/95
+
+% ---------- Definição 2 (TUMP) ----------
+\begin{definition}[Testes uniformemente mais poderosos -- TUMP]
+Um teste $\Upsilon^*$ de $\mathcal{H}_0:\theta\in\Theta_0$ \emph{vs.} $\mathcal{H}_1:\theta\in\Theta_1$ é chamado de \uline{teste uniformemente mais poderoso} de tamanho $\alpha$ se, e somente se,
+\begin{outline}
+\1 (i) $\sup_{\theta\in\Theta_0}\pi_{\Upsilon^*}(\theta)=\alpha$;
+\1 (ii) $\pi_{\Upsilon^*}(\theta)\geq\pi_\Upsilon(\theta)$, para todo $\theta\in\Theta_1$ e para qualquer teste $\Upsilon$ com tamanho menor do que ou igual a $\alpha$.
+\end{outline}
+\end{definition}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 13/95
+
+% ---------- Observação 4 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 O advérbio \emph{uniformemente} está associado aos parâmetros $\theta\in\Theta_1$.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 13/95
+
+% ---------- Texto de transição ----------
+O Lema de Neyman-Pearson é fundamental para mostrarmos que um teste é UMP em casos como esse.
+
+Há formas de estender o resultado apresentado para casos mais gerais. Os Teoremas 1 e 2 apresentados a seguir são fundamentais para isso.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 15/95
+
+% ---------- Teorema 1 ----------
+\begin{theorem}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população com f.d.p. $f(x\mid\theta)$, $\theta\in\Theta$, em que $\Theta$ é algum intervalo. Suponha que $f(x\mid\theta)$ pertence à família exponencial, ou seja,
+\begin{equation}
+f(x\mid\theta)=\exp\{\eta(\theta)T(x)-B(\theta)\}h(x).
+\end{equation}
+Seja $T^*(\v{x})\equiv\sum_{i=1}^n T(x_i)$.
+\begin{outline}
+\1 (i) Se $\eta(\theta)$ for uma função monótona crescente de $\theta$, e se existir uma constante $k^*$ tal que $\P_{\theta_0}(T^*(\v{X})>k^*)=\alpha$, então o teste $\Upsilon^*$ com região crítica $\mathcal{C}^*=\{\v{x}\in\mathbb{R}^n\mid T^*(\v{x})>k^*\}$ será um teste UMP de tamanho $\alpha$ para $\mathcal{H}_0:\theta\leq\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$ ou $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$;
+\1 (ii) Se $\eta(\theta)$ for uma função monótona decrescente de $\theta$, e se existir uma constante $k^*$ tal que $\P_{\theta_0}(T^*(\v{X})<k^*)=\alpha$, então o teste $\Upsilon^*$ com região crítica $\mathcal{C}^*=\{\v{x}\in\mathbb{R}^n\mid T^*(\v{x})<k^*\}$ será um teste UMP de tamanho $\alpha$ para $\mathcal{H}_0:\theta\leq\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$ ou $\mathcal{H}_0:\theta=\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$.
+\end{outline}
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 16/95
+
+% ---------- Definição 3 (Razão de verossimilhanças monótona) ----------
+\begin{definition}[Razão de verossimilhanças monótona]
+Uma família de f.d.p.'s $\{f(x\mid\theta)\mid\theta\in\Theta,\ \Theta\text{ intervalo}\}$ é dita ter \uline{razão de verossimilhanças monótona} se, de uma amostra $X_1,X_2,\ldots,X_n$, houver uma estatística $T\equiv T(\v{X})$ tal que $\dfrac{L(\theta'\mid\v{x})}{L(\theta''\mid\v{x})}$ seja uma função não crescente de $T(\v{x})$, para todo $\theta'<\theta''$, ou uma função não decrescente de $T(\v{x})$, para todo $\theta'<\theta''$.
+\end{definition}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 18/95
+
+% ---------- Observação 5 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 A razão de verossimilhanças monótona é apenas uma razão de duas funções de verossimilhança, e não uma razão de verossimilhanças generalizada.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 18/95
+
+% ---------- Teorema 2 ----------
+\begin{theorem}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população com f.d.p. $f(x\mid\theta)$, em que $\Theta$ é um intervalo. Suponha que a família de f.d.p.'s $\{f(x\mid\theta)\mid\theta\in\Theta\}$ tenha razão de verossimilhanças monótona na estatística $T(\v{X})$. Nesse caso:
+\begin{outline}
+\1 (i) Se a razão de verossimilhanças monótona for não decrescente em $T(\v{X})$, e se $k^*$ for tal que $\P_{\theta_0}(T(\v{X})<k^*)=\alpha$, então o teste correspondendo à região crítica $\mathcal{C}^*=\{\v{x}\in\mathbb{R}^n\mid T(\v{x})<k^*\}$ será UMP de tamanho $\alpha$ para $\mathcal{H}_0:\theta\leq\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$;
+\1 (ii) Se a razão de verossimilhanças monótona for não crescente em $T(\v{x})$, e se $k^*$ for tal que $\P_{\theta_0}(T(\v{X})>k^*)=\alpha$, então o teste correspondendo à região crítica $\mathcal{C}^*=\{\v{x}\in\mathbb{R}^n\mid T(\v{x})>k^*\}$ será UMP de tamanho $\alpha$ para $\mathcal{H}_0:\theta\leq\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$.
+\end{outline}
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 21/95
+
+% ---------- Observação 6 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 As hipóteses utilizadas nos Teoremas 1 e 2 são do tipo $\mathcal{H}_0:\theta\leq\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta>\theta_0$. Contudo, esses mesmos teoremas podem ser reformulados para hipóteses na forma $\mathcal{H}_0:\theta\geq\theta_0$ \emph{vs.} $\mathcal{H}_1:\theta<\theta_0$, desde que os sinais de desigualdade das regiões críticas sejam invertidos.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 23/95
+
+% ---------- Observação 7 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Os referidos teoremas consideram apenas hipóteses unilaterais.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 23/95
+
+% ---------- Texto: resumo da ópera ----------
+Vimos que testes UMP existem para hipóteses unilaterais, quando a razão de verossimilhanças é monótona em alguma estatística.
+
+Há vários problemas de testes de hipóteses em que não há um teste UMP.
+
+Podemos pensar, portanto, em restringir a classe de testes, com o intuito de determinar um teste ótimo. Nesse caso, uma alternativa interessante corresponde aos testes não viesados.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 23/95
+
+% ---------- Definição 4 (Teste não viesado) ----------
+\begin{definition}
+Um teste $\Upsilon$ da hipótese nula $\mathcal{H}_0:\theta\in\Theta_0$ \emph{vs.} a hipótese alternativa $\mathcal{H}_1:\theta\in\Theta_1$ é chamado de \uline{teste não viesado} se, e somente se,
+\begin{equation}
+\sup_{\theta\in\Theta_0}\pi_\Upsilon(\theta)\leq\inf_{\theta\in\Theta_1}\pi_\Upsilon(\theta).
+\end{equation}
+\end{definition}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 26/95
+
+% ---------- Texto: testes não viesados ----------
+Para testes não viesados, a probabilidade de rejeitar $\mathcal{H}_0$, quando essa hipótese for verdadeira, nunca será superior à probabilidade de rejeitá-la quando ela for falsa.
+
+Se um teste não viesado for UMP, então ele será chamado de teste não viesado uniformemente mais poderoso.
+
+Não entraremos em detalhe sobre essa classe de testes.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 26/95
+
+% ---------- Contextualização: amostragem de uma população normal ----------
+Suponhamos que a amostra aleatória $X_1,X_2,\ldots,X_n$ seja oriunda de uma população $X\sim\normdist{\mu,\sigma^2}$.
+
+Vamos analisar testes de hipóteses para a média $\mu$ e para a variância $\sigma^2$.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 28/95
+
+% ---------- Testes para a média: introdução ----------
+O mais comum é estarmos interessados em testes unilaterais ou bilaterais.
+
+No caso dos testes unilaterais, vamos abordar $\mathcal{H}_0:\mu\leq\mu_0$ \emph{vs.} $\mathcal{H}_1:\mu>\mu_0$.
+
+Há dois casos a serem considerados:
+\begin{outline}
+\1 $\sigma^2$ conhecido;
+\1 $\sigma^2$ desconhecido.
+\end{outline}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 29/95
+
+% ---------- Teorema/desenvolvimento: H0: mu <= mu0 vs H1: mu > mu0, sigma^2 conhecido ----------
+\begin{theorem}[$\mathcal{H}_0:\mu\leq\mu_0$ \emph{vs.} $\mathcal{H}_1:\mu>\mu_0$ -- $\sigma^2$ conhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\sigma^2$ conhecido. Nesse caso, o espaço paramétrico corresponderá ao conjunto dos reais. Além disso,
+\begin{align}
+f(x\mid\mu) &= \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x-\mu)^2\right\}\notag\\
+&= \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}x^2+\frac{\mu}{\sigma^2}x-\frac{\mu^2}{2\sigma^2}\right\}\notag\\
+&= \exp\left\{\frac{\mu}{\sigma^2}x-\frac{\mu^2}{2\sigma^2}\right\}\frac{\exp\left\{-\dfrac{x^2}{2\sigma^2}\right\}}{\sqrt{2\pi\sigma^2}}\notag\\
+&= \exp\{\eta(\mu)T(x)-B(\mu)\}h(x).
+\end{align}
+Como $\eta(\mu)=\mu/\sigma^2$ é uma função crescente de $\mu$, então, pelo Teorema 1, o teste UMP é aquele que rejeita $\mathcal{H}_0$ se, e somente se, $\sum_{i=1}^n x_i>k^*$, em que a constante $k^*$ é dada pela solução de
+\begin{equation}
+\alpha=\P_{\mu_0}\left(\sum_{i=1}^n X_i>k^*\right)=1-\Phi\left(\frac{k^*-n\mu_0}{\sqrt{n}\sigma}\right).
+\end{equation}
+Portanto, $\dfrac{k^*-n\mu_0}{\sqrt{n}\sigma}=z_{1-\alpha}$, em que $z_{1-\alpha}$ corresponde ao $(1-\alpha)$-ésimo quantil da distribuição normal padrão.
+
+Desse modo, o teste UMP rejeita $\mathcal{H}_0$ se $\sum_{i=1}^n x_i>n\mu_0+\sqrt{n}\sigma z_{1-\alpha}$ ou, de forma equivalente, rejeita $\mathcal{H}_0$ se $\bar{x}>\mu_0+\dfrac{\sigma}{\sqrt{n}}z_{1-\alpha}$.
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 31-32/95
+
+% ---------- Teorema/desenvolvimento: H0: mu <= mu0 vs H1: mu > mu0, sigma^2 desconhecido ----------
+\begin{theorem}[$\mathcal{H}_0:\mu\leq\mu_0$ \emph{vs.} $\mathcal{H}_1:\mu>\mu_0$ -- $\sigma^2$ desconhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\sigma^2$ desconhecido. Nesse caso, $\Theta=\{(\mu,\sigma^2)\in\mathbb{R}^2\mid-\infty<\mu<\infty;\sigma^2>0\}$ e $\Theta_0=\{(\mu,\sigma^2)\in\mathbb{R}^2\mid\mu\leq\mu_0;\sigma^2>0\}$.
+
+No caso em que $(\mu,\sigma^2)\in\Theta$, temos que os EMV's de $\mu$ e $\sigma^2$ correspondem a $\hat{\mu}=\bar{X}$ e $\hat{\sigma}^2=\sum_{i=1}^n(X_i-\bar{X})^2/n$, respectivamente. Assim,
+\begin{align}
+\sup_{(\mu,\sigma^2)\in\Theta}L(\mu,\sigma^2\mid\v{x}) &= L(\hat{\mu},\hat{\sigma}^2\mid\v{x}) = \frac{1}{(2\pi\hat{\sigma}^2)^{n/2}}\exp\left[-\frac{1}{2\hat{\sigma}^2}\sum_{i=1}^n(x_i-\hat{\mu})^2\right]\notag\\
+&= \left[\frac{n}{2\pi\sum_{i=1}^n(x_i-\bar{x})^2}\right]^{n/2}\exp\left(-\frac{n}{2}\right).
+\end{align}
+Quando $(\mu,\sigma^2)\in\Theta_0$, pode-se mostrar (mostre!) que os EMV's dos parâmetros serão
+\begin{equation}
+\tilde{\mu} = \begin{cases}
+\bar{X}, & \text{se } \bar{X}\leq\mu_0;\\
+\mu_0, & \text{se } \bar{X}>\mu_0
+\end{cases}
+\quad \text{e} \quad
+\tilde{\sigma}^2 = \begin{cases}
+\dfrac{1}{n}\sum_{i=1}^n\left(X_i-\bar{X}\right)^2, & \text{se } \bar{X}\leq\mu_0;\\
+\dfrac{1}{n}\sum_{i=1}^n(X_i-\mu_0)^2, & \text{se } \bar{X}>\mu_0.
+\end{cases}
+\end{equation}
+Desse modo,
+\begin{align}
+\sup_{(\mu,\sigma^2)\in\Theta_0}L(\mu,\sigma^2\mid\v{x}) &= L(\tilde{\mu},\tilde{\sigma}^2\mid\v{x}) = \frac{1}{(2\pi\tilde{\sigma}^2)^{n/2}}\exp\left[-\frac{1}{2\tilde{\sigma}^2}\sum_{i=1}^n(x_i-\tilde{\mu})^2\right]\notag\\
+&= \begin{cases}
+\left[\dfrac{n}{2\pi\sum_{i=1}^n(x_i-\bar{x})^2}\right]^{n/2}\exp\left(-\dfrac{n}{2}\right), & \text{se } \bar{x}\leq\mu_0;\\[2ex]
+\left[\dfrac{n}{2\pi\sum_{i=1}^n(x_i-\mu_0)^2}\right]^{n/2}\exp\left(-\dfrac{n}{2}\right), & \text{se } \bar{x}>\mu_0.
+\end{cases}
+\end{align}
+A razão de verossimilhanças será
+\begin{align}
+\lambda(\v{x}) &= \frac{\sup_{(\mu,\sigma^2)\in\Theta_0}L(\mu,\sigma^2\mid\v{x})}{\sup_{(\mu,\sigma^2)\in\Theta}L(\mu,\sigma^2\mid\v{x})}\notag\\
+&= \begin{cases}
+1, & \text{se } \bar{x}\leq\mu_0;\\[1ex]
+\left[\dfrac{\sum_{i=1}^n(x_i-\bar{x})^2}{\sum_{i=1}^n(x_i-\mu_0)^2}\right]^{n/2}, & \text{se } \bar{x}>\mu_0.
+\end{cases}
+\end{align}
+Antes de continuarmos, observe que
+\begin{align}
+\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{\sum_{i=1}^n(x_i-\mu_0)^2} &= \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{\sum_{i=1}^n(x_i-\bar{x}+\bar{x}-\mu_0)^2} = \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{\sum_{i=1}^n(x_i-\bar{x})^2+n(\bar{x}-\mu_0)^2}\notag\\
+&= \frac{1}{1+n\dfrac{(\bar{x}-\mu_0)^2}{\sum_{i=1}^n(x_i-\bar{x})^2}} = \frac{1}{1+n\dfrac{(\bar{x}-\mu_0)^2}{(n-1)s^2}} = \frac{1}{1+\dfrac{1}{n-1}\dfrac{(\bar{x}-\mu_0)^2}{s^2/n}}\notag\\
+&= \left[1+\frac{1}{n-1}\frac{(\bar{x}-\mu_0)^2}{s^2/n}\right]^{-1} = \left(1+\frac{t^2}{n-1}\right)^{-1},
+\end{align}
+em que $t=\dfrac{\bar{x}-\mu_0}{s/\sqrt{n}}$. Logo,
+\begin{equation}
+\lambda(\v{x}) = \begin{cases}
+1, & \text{se } \bar{x}\leq\mu_0;\\[1ex]
+\left(1+\dfrac{t^2}{n-1}\right)^{-n/2}, & \text{se } \bar{x}>\mu_0.
+\end{cases}
+\end{equation}
+Desse modo, para $0<\lambda_0<1$, rejeitamos $\mathcal{H}_0$ se, e somente se,
+\begin{equation}
+\lambda(\v{x})\leq\lambda_0 \iff t\geq k.
+\end{equation}
+Denotemos $T=\dfrac{\bar{X}-\mu_0}{S/\sqrt{n}}$. Sabemos que, se $\mu=\mu_0$, então $T\sim\tdist{n-1}$. Portanto, o valor de $k$ é tal que
+\begin{equation}
+\alpha=\P_{\mu_0}(T\geq k)=\P_{\mu_0}\left(T\geq t_{n-1,1-\alpha}\right),
+\end{equation}
+em que $t_{n-1,1-\alpha}$ corresponde ao $(1-\alpha)$-ésimo quantil de uma $\tdist{n-1}$.
+
+O teste rejeita $\mathcal{H}_0$ se, e somente se,
+\begin{equation}
+\frac{\bar{x}-\mu_0}{s/\sqrt{n}}\geq t_{n-1,1-\alpha},
+\end{equation}
+ou, de forma equivalente,
+\begin{equation}
+\bar{x}\geq\mu_0+\frac{s}{\sqrt{n}}t_{n-1,1-\alpha}.
+\end{equation}
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 33-39/95
+
+% ---------- Teorema/desenvolvimento: H0: mu = mu0 vs H1: mu != mu0, sigma^2 desconhecido ----------
+\begin{theorem}[$\mathcal{H}_0:\mu=\mu_0$ \emph{vs.} $\mathcal{H}_1:\mu\neq\mu_0$ -- $\sigma^2$ desconhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\sigma^2$ desconhecido. No caso em que $\sigma^2$ for desconhecido, o espaço paramétrico irrestrito e o espaço paramétrico sob $\mathcal{H}_0$ serão $\Theta=\{(\mu,\sigma^2)\in\mathbb{R}^2\mid-\infty<\mu<\infty;\sigma^2>0\}$ e $\Theta_0=\{(\mu,\sigma^2)\in\mathbb{R}^2\mid\mu=\mu_0;\sigma^2>0\}$.
+
+Já vimos que
+\begin{equation}
+\sup_{(\mu,\sigma^2)\in\Theta}L(\mu,\sigma^2\mid\v{x}) = \left[\frac{n}{2\pi\sum_{i=1}^n(x_i-\bar{x})^2}\right]^{n/2}\exp\left(-\frac{n}{2}\right).
+\end{equation}
+Quando $(\mu,\sigma^2)\in\Theta_0$, não é difícil verificar (verifique!) que os EMV's dos parâmetros são, respectivamente,
+\begin{equation}
+\tilde{\mu}=\mu_0 \quad \text{e} \quad \tilde{\sigma}^2=\frac{1}{n}\sum_{i=1}^n(X_i-\mu_0)^2.
+\end{equation}
+Logo,
+\begin{align}
+\sup_{(\mu,\sigma^2)\in\Theta_0}L(\mu,\sigma^2\mid\v{x}) &= L(\tilde{\mu},\tilde{\sigma}^2\mid\v{x}) = \frac{1}{(2\pi\tilde{\sigma}^2)^{n/2}}\exp\left[-\frac{1}{2\tilde{\sigma}^2}\sum_{i=1}^n(x_i-\tilde{\mu})^2\right]\notag\\
+&= \left[\frac{n}{2\pi\sum_{i=1}^n(x_i-\mu_0)^2}\right]^{n/2}\exp\left(-\frac{n}{2}\right).
+\end{align}
+De forma análoga ao que vimos anteriormente,
+\begin{align}
+\lambda(\v{x}) &= \frac{\sup_{(\mu,\sigma^2)\in\Theta_0}L(\mu,\sigma^2\mid\v{x})}{\sup_{(\mu,\sigma^2)\in\Theta}L(\mu,\sigma^2\mid\v{x})} = \left[\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{\sum_{i=1}^n(x_i-\mu_0)^2}\right]^{n/2}\notag\\
+&= \left(1+\frac{t^2}{n-1}\right)^{-n/2},
+\end{align}
+em que $t=\dfrac{\bar{x}-\mu_0}{s/\sqrt{n}}$.
+
+Assim, para $0<\lambda_0<1$,
+\begin{align}
+\left(1+\frac{t^2}{n-1}\right)^{-n/2}\leq\lambda_0 &\iff\notag\\
+|t|\geq\sqrt{(n-1)\left(\lambda_0^{-2/n}-1\right)}\equiv k &\iff\notag\\
+t\leq-k \quad \text{ou} \quad t\geq k.
+\end{align}
+Denotemos $T=\dfrac{\bar{X}-\mu_0}{S/\sqrt{n}}$. Sabemos que, sob $\mathcal{H}_0$, $T\sim\tdist{n-1}$.
+
+O valor de $k$ será solução de
+\begin{align}
+\alpha &= \P_{\mu_0}\left([T\leq-k]\text{ ou }[T\geq k]\right) = \P_{\mu_0}(T\leq-k)+\P_{\mu_0}(T\geq k)\notag\\
+&= 2\P_{\mu_0}(T\geq k).
+\end{align}
+Portanto, $k=t_{n-1,1-\alpha/2}$.
+
+Desse modo, o teste da RVG rejeita $\mathcal{H}_0$ se, e somente se,
+\begin{equation}
+t\leq-t_{n-1,1-\alpha/2} \quad \text{ou} \quad t\geq t_{n-1,1-\alpha/2},
+\end{equation}
+ou seja,
+\begin{equation}
+\bar{x}\leq\mu_0-t_{n-1,1-\alpha/2}\frac{s}{\sqrt{n}} \quad \text{ou} \quad \bar{x}\geq\mu_0+t_{n-1,1-\alpha/2}\frac{s}{\sqrt{n}}.
+\end{equation}
+Vale destacar que esse teste não é UMP. Por outro lado, pode-se mostrar que é um teste não viesado uniformemente mais poderoso.
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 41-47/95
+
+% ---------- Testes para a variância: introdução ----------
+Assim como feito para testes para a média, vamos abordar testes unilaterais do tipo $\mathcal{H}_0:\sigma^2\leq\sigma_0^2$ \emph{vs.} $\mathcal{H}_1:\sigma^2>\sigma_0^2$, bem como testes bilaterais.
+
+Há dois casos a serem considerados:
+\begin{outline}
+\1 $\mu$ conhecido;
+\1 $\mu$ desconhecido.
+\end{outline}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 48/95
+
+% ---------- Teorema/desenvolvimento: H0: sigma^2 <= sigma0^2 vs H1: sigma^2 > sigma0^2, mu conhecido ----------
+\begin{theorem}[$\mathcal{H}_0:\sigma^2\leq\sigma_0^2$ \emph{vs.} $\mathcal{H}_1:\sigma^2>\sigma_0^2$ -- $\mu$ conhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\mu$ conhecido. Nesse caso, o espaço paramétrico será um intervalo (conjunto dos reais positivos). Além disso,
+\begin{align}
+f(x\mid\mu) &= \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x-\mu)^2\right\}\notag\\
+&= \exp\left\{-\frac{1}{2\sigma^2}(x-\mu)^2-\frac{1}{2}\log\sigma^2\right\}\frac{1}{\sqrt{2\pi}}\notag\\
+&= \exp\{\eta(\sigma^2)T(x)-B(\sigma^2)\}h(x).
+\end{align}
+Seja $R=\sum_{i=1}^n\left(\dfrac{X_i-\mu}{\sigma_0}\right)^2$. Já sabemos que, se a verdadeira variância for $\sigma_0^2$, então $R\sim\chidist{n}$.
+
+Observe que $\eta(\sigma^2)=-1/(2\sigma^2)$ é uma função crescente de $\sigma^2$. Pelo Teorema 1, o teste UMP rejeita $\mathcal{H}_0$ se, e somente se, $\sum_{i=1}^n(x_i-\mu)^2>k^*$, em que $k^*$ é solução de
+\begin{align}
+\alpha=\P_{\sigma_0^2}\left(\sum_{i=1}^n(X_i-\mu)^2>k^*\right) &= \P_{\sigma_0^2}\left(R>k^*/\sigma_0^2\right) = \P_{\sigma_0^2}\left(R>\chi^2_{n,1-\alpha}\right).
+\end{align}
+Portanto, $\dfrac{k^*}{\sigma_0^2}=\chi^2_{n,1-\alpha}$.
+
+Assim, o teste UMP rejeita $\mathcal{H}_0$ se, e somente se, $\sum_{i=1}^n(x_i-\mu)^2>\sigma_0^2\chi^2_{n,1-\alpha}$.
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 49-50/95
+
+% ---------- Teorema/desenvolvimento: H0: sigma^2 = sigma0^2 vs H1: sigma^2 != sigma0^2, mu desconhecido ----------
+\begin{theorem}[$\mathcal{H}_0:\sigma^2=\sigma_0^2$ \emph{vs.} $\mathcal{H}_1:\sigma^2\neq\sigma_0^2$ -- $\mu$ desconhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\mu$ desconhecido. Nesse caso, $\Theta=\{(\mu,\sigma^2)\in\mathbb{R}^2\mid-\infty<\mu<\infty;\sigma^2>0\}$ e $\Theta_0=\{(\mu,\sigma^2)\in\mathbb{R}^2\mid-\infty<\mu<\infty;\sigma^2=\sigma_0^2\}$.
+
+Já vimos que
+\begin{equation}
+\sup_{(\mu,\sigma^2)\in\Theta}L(\mu,\sigma^2\mid\v{x}) = \left(\frac{1}{2\pi\hat{\sigma}^2}\right)^{n/2}\exp\left(-\frac{n}{2}\right).
+\end{equation}
+Quando $(\mu,\sigma^2)\in\Theta_0$, não é difícil verificar (verifique!) que os EMV's dos parâmetros são, respectivamente,
+\begin{equation}
+\tilde{\mu}=\bar{X} \quad \text{e} \quad \tilde{\sigma}^2=\sigma_0^2.
+\end{equation}
+Logo,
+\begin{align}
+\sup_{(\mu,\sigma^2)\in\Theta_0}L(\mu,\sigma^2\mid\v{x}) &= L(\tilde{\mu},\tilde{\sigma}^2\mid\v{x}) = \frac{1}{(2\pi\tilde{\sigma}^2)^{n/2}}\exp\left[-\frac{1}{2\tilde{\sigma}^2}\sum_{i=1}^n(x_i-\tilde{\mu})^2\right]\notag\\
+&= \frac{1}{(2\pi\sigma_0^2)^{n/2}}\exp\left[-\frac{1}{2\sigma_0^2}\sum_{i=1}^n(x_i-\bar{x})^2\right] = \frac{1}{(2\pi\sigma_0^2)^{n/2}}\exp\left(-\frac{n\hat{\sigma}^2}{2\sigma_0^2}\right).
+\end{align}
+Assim,
+\begin{align}
+\lambda(\v{x}) &= \frac{\sup_{(\mu,\sigma^2)\in\Theta_0}L(\mu,\sigma^2\mid\v{x})}{\sup_{(\mu,\sigma^2)\in\Theta}L(\mu,\sigma^2\mid\v{x})} = \left(\frac{\hat{\sigma}^2}{\sigma_0^2}\right)^{n/2}\exp\left(-\frac{n}{2}\frac{\hat{\sigma}^2}{\sigma_0^2}+\frac{n}{2}\right)\notag\\
+&\equiv y^{n/2}\exp\left[-\frac{n}{2}(y-1)\right],
+\end{align}
+em que $y=\dfrac{\hat{\sigma}^2}{\sigma_0^2}$.
+
+Assim, para $0<\lambda_0<1$,
+\begin{align}
+y^{n/2}\exp\left[-\frac{n}{2}(y-1)\right]\leq\lambda_0 &\iff\notag\\
+y\leq k_1 \quad \text{ou} \quad y\geq k_2, & 
+\end{align}
+em que $y=\dfrac{\hat{\sigma}^2}{\sigma_0^2}$.
+
+Seja $V=\dfrac{\sum_{i=1}^n\left(X_i-\bar{X}\right)^2}{\sigma_0^2}$. Nesse caso, sob $\mathcal{H}_0$, $V\sim\chidist{n-1}$. Além disso, note que $\dfrac{\hat{\sigma}^2}{\sigma_0^2}=\dfrac{V}{n}$.
+
+Assim, os valores de $k_1$ e $k_2$ são soluções de
+\begin{align}
+\alpha &= \P_{\sigma_0^2}\left(\left[\frac{\hat{\sigma}^2}{\sigma_0^2}\leq k_1\right]\text{ ou }\left[\frac{\hat{\sigma}^2}{\sigma_0^2}\geq k_2\right]\right) = \P_{\sigma_0^2}\left(\left[\frac{V}{n}\leq k_1\right]\text{ ou }\left[\frac{V}{n}\geq k_2\right]\right)\notag\\
+&= \P_{\sigma_0^2}(V\leq nk_1)+\P_{\mu_0}(V\geq nk_2)\notag\\
+&= \P_{\sigma_0^2}\left(V\leq\chi^2_{n-1,\alpha/2}\right)+\P_{\mu_0}\left(V\geq\chi^2_{n-1,1-\alpha/2}\right) \quad \text{(uma possibilidade).}
+\end{align}
+Nesse caso mais simples (que não é o melhor!), temos
+\begin{equation}
+k_1=\frac{\chi^2_{n-1,\alpha/2}}{n} \quad \text{e} \quad k_2=\frac{\chi^2_{n-1,1-\alpha/2}}{n}.
+\end{equation}
+Desse modo, o teste rejeita $\mathcal{H}_0$ se, e somente se,
+\begin{equation}
+\frac{\hat{\sigma}^2}{\sigma_0^2}\leq\frac{\chi^2_{n-1,\alpha/2}}{n} \quad \text{ou} \quad \frac{\hat{\sigma}^2}{\sigma_0^2}\geq\frac{\chi^2_{n-1,1-\alpha/2}}{n},
+\end{equation}
+em que $\chi^2_{r,\beta}$ corresponde ao $\beta$-ésimo quantil de uma distribuição $\chidist{r}$.
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 53-59/95
+
+% ---------- Texto: distribuição assintótica do TRVG ----------
+À medida que o número de parâmetros do modelo aumenta, torna-se mais complicada a tarefa de estabelecer testes da RVG.
+
+Por vezes, essa tarefa não é tão simples nem mesmo em situações uniparamétricas.
+
+Uma forma de contornar esse problema é através de aproximação.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 61/95
+
+% ---------- Teorema 3 ----------
+\begin{theorem}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população com f.d.p. (ou f.p.) $f(x\mid\theta)$, em que $\theta$ pode ser escalar ou vetor. Sob certas condições de regularidade, se $\theta\in\Theta_0$, então
+\begin{equation}
+-2\log\Lambda_n \toD \chidist{r},
+\end{equation}
+quando $n\to\infty$. O número de graus de liberdade $r$ corresponde ao número de restrições em $\Theta_0$.
+\end{theorem}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 62/95
+
+% ---------- Observação 8 ----------
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 O número de graus de liberdade $r$ também pode ser interpretado como a dimensão de $\Theta$ menos a dimensão de $\Theta_0$.
+	\end{outline}
+\end{note}
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 62/95
+
+% ---------- Texto: princípio da RVG no caso assintótico ----------
+Lembrando que $\Lambda_n$ é uma v.a. que assume valores do tipo
+\begin{equation}
+\lambda_n=\frac{\sup_{\theta\in\Theta_0}L(\theta\mid\v{x})}{\sup_{\theta\in\Theta}L(\theta\mid\v{x})},
+\end{equation}
+que corresponde à RVG para uma amostra observada $\v{x}=(x_1,x_2,\ldots,x_n)$.
+
+O princípio da RVG sugere que rejeitemos $\mathcal{H}_0$ para valores pequenos de $\lambda_n$. Portanto, no caso assintótico, o teste deve rejeitar a hipótese nula para valores grandes de $-2\log\lambda_n$.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 63/95
+
+Levando em consideração a distribuição assintótica quando $\mathcal{H}_0$ for verdadeira, um teste com tamanho aproximadamente $\alpha$ rejeita $\mathcal{H}_0$ se, e somente se,
+\begin{equation}
+-2\log\lambda_n\geq\chi^2_{r,1-\alpha},
+\end{equation}
+em que $\chi^2_{r,1-\alpha}$ corresponde ao $(1-\alpha)$-ésimo quantil de uma distribuição $\chidist{r}$.
+% Correspondência: 10 - Testes de Hipóteses 2.pdf, p. 64/95
+

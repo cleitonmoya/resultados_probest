@@ -3,45 +3,94 @@
 
 \chapter{Normal multivariada}
 
+\section{Distribuição normal multivariada}
+
+\begin{definition}[Distribuição normal]
+	O vetor $\v{X}_{p\times 1} = (X_1,\ldots,X_p)\T$ tem distribuição normal multivariada ($p$-variada) se sua fdp é dada por
+	\begin{equation}
+		f(\v{x}) = \frac{1}{(2\pi)^{p/2}\deter{\m{\Sigma}}^{1/2}}\exp\left\{-\frac{1}{2}(\v{x}-\v{\mu})\T\m{\Sigma}^{-1}(\v{x}-\v{\mu})\right\},
+	\end{equation}
+	com $-\infty<x_i<\infty$, $i=1,2,\ldots,p$ e $\m{\Sigma}$ uma matriz positiva definida.
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Notação: $\v{X}_p \sim \normdist[p]{\v{\mu},\m{\Sigma}}$.
+		\end{outline}
+	\end{note}
+\end{definition}
+
+\begin{definition}[Definição alternativa]
+	$\v{X}$ tem distribuição normal $p$-variada se e somente se $\v{a}\T\v{X}$ tem distribuição normal univariada, para qualquer vetor fixo $\v{a}_{p\times 1}$.
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Se $\v{X}$ é considerado um ponto aleatório no espaço $p$-dimensional, então $\v{a}\T\v{X}$ pode ser considerado uma projeção de $\v{X}$ em um subespaço unidimensional.
+		\end{outline}
+	\end{note}
+\end{definition}
 
 
-\section{Distribuições de formas quadráticas}
-
-
-\begin{theorem} 
-	Seja $\v{X}_{p\times 1} \sim \normdist[p]{\v{\mu}_{p\times 1}, \m{\Sigma}_{p\times p}}$. Então:
+\begin{theorem}[Propriedades da Normal Multivariada] Seja $\v{X} \sim \normdist[p]{\v{\mu}, \m{\Sigma}}$.
 	\begin{outline}[enumerate]
-		\1 \( \v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1} \sim \chidist{\pos(\m{A}), \frac{1}{2}\v{\mu}\T_{1\times p}\m{A}_{p\times p}\v{\mu}_{p\times 1}}
-		\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p} \) é idempotente.
-		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\m{B}_{q\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{B}_{q\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{q\times p}\)
-		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\v{X}\T_{1\times p}\m{B}_{p\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p}\m{B}_{p\times p} = \m{0}_{p\times p}\) ou \(\m{B}_{p\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{p\times p} \)
+		\1 Função característica: $\displaystyle \varphi_x(\v{t}) = \exp\left\{ i\v{t}\T\v{\mu} - \frac{1}{2}\v{t}\T\m{\Sigma}\v{t} \right\}$, $\m{\Sigma} > 0$
+		\1 Elementos e subconjuntos: Cada $X_i$ e qualquer subconjunto de elementos tem distribuição normal univariada ($\m{\Sigma}$ é suposta de posto completo).
 	\end{outline}
 \end{theorem}
 
-\begin{theorem}
-	Seja $\v{X}$ um vetor aleatório $p$-dimensional com $\Var[\v{X}] = \m{\Sigma}$, $\m{\Sigma}$ de dimensão $p\times p$, e seja $\m{A}$ uma matriz $p\times p$. Então:
+\begin{theorem}[Independência]
+	Sejam $\v{X}_{p\times 1}$ e $\v{Y}_{q\times 1}$ vetores aleatórios com distribuição normal multivariada.
 	\begin{outline}[enumerate]
-		\1 \( \E[\v{X}\T\m{A}\v{X}] = \tr(\m{A}\m{\Sigma}) + \v{\mu}\T\m{A}\v{\mu}. \)
-		\1 \( \Cov[\v{X}, \v{X}\T\m{A}\v{X}] = 2\m{\Sigma}\m{A}\v{\mu}. \)
+		\1 $\v{X}$ e $\v{Y}$ são independentes $\iff \Cov[\v{X},\v{Y}] = \m{0}$.
+		\1 Se $\v{X}$ e $\v{Y}$ são conjuntamente normais, a independência de todos os pares $(X_i,Y_j)$, $i=1,\ldots,p$, $j=1,\ldots,q$, implica na independência de $\v{X}$ e $\v{Y}$.
+		\1 Se $\v{X}\sim\normdist{\v{\mu},\m{\Sigma}}$ e $\m{A}$ e $\m{B}$ são duas matrizes fixas, então $\m{A}\v{X}$ e $\m{B}\v{X}$ são independentes se e somente se $\m{A}\m{\Sigma}\m{B}\T = \m{0}$.
+		\1 Considere $\v{X}\sim\normdist{\v{\mu},\m{\Sigma}}$ e a partição
+		\begin{equation}
+			\v{X} =
+			\begin{bmatrix}
+				\v{X}_{1(q\times 1)} \\
+				\v{X}_{2((p-q)\times 1)}
+			\end{bmatrix}
+			\sim \normdist[p]{
+				\begin{bmatrix}
+					\v{\mu}_{1(q\times 1)} \\
+					\v{\mu}_{2((p-q)\times 1)}
+				\end{bmatrix},
+				\begin{bmatrix}
+					\m{\Sigma}_{11} & \m{\Sigma}_{12} \\
+					\m{\Sigma}_{21} & \m{\Sigma}_{22}
+				\end{bmatrix}
+			}.
+		\end{equation}
+		Então $\v{X}_1$ e $\v{X}_2$ são independentes se e somente se $\m{\Sigma}_{12} = \m{0}$.
 	\end{outline}
 \end{theorem}
 
-
-\section{Normal multivariada}
-
-\begin{theorem}
-	Suponha que $\v{X} \sim \normdist{\v{m}, \m{V}}$. Para $\m{A}$ e $\v{b}$ de dimensões adequadas, 
+\begin{theorem}[Transformações]
+	Seja $\v{X} \sim \normdist[p]{\v{\mu}, \m{\Sigma}}$ com $\Sigma > 0$.
 	\begin{outline}[enumerate]
-		\1 \( \v{Y}=\m{A}\v{X}+\v{b} \implies \v{Y} \sim \normdist{\m{A}\v{m} + \v{b}, \m{A}\m{V}\m{A}'} \);
-		\1 Se $\m{A}\m{V}\m{A}'$ é diagonal, então os elementos de $Y$ são normais independentes.
+		\1 \( \v{Y}_{q \times 1} = \m{A}_{q \times p}\v{X}+\v{b}_{q \times 1} \sim \normdist[q]{\m{A}\v{\mu}+\v{b}, \m{A}\m{\Sigma}\m{A}\T}\)
+			\2 Se $\m{A}\m{\Sigma}\m{A}\T$ é diagonal, então os elementos de $Y$ são normais independentes.
+		\1 \( Y = \v{a}_{1 \times p}\T\v{X} \sim \normdist{\v{a}\T\v{\mu}, \v{a}\T\m{\Sigma}\v{a}} \)
+		\1 \( \v{Z} = \m{\Sigma}\inv(\v{X}-\v{\mu}) \implies 
+		\begin{aligned}[t]
+			&\v{Z} \sim \normdist[p]{\v{0}, \m{I}} \\
+			&(\v{X}-\v{\mu})\T\m{\Sigma}\inv(\v{X}-\v{\mu}) = \sum_{i=1}^p Z_i^2 \sim \chidist{p} \\
+			&\P\left[(\v{X}-\v{\mu})\T\m{\Sigma}\inv(\v{X}-\v{\mu}) \leq \chidist{p,\alpha}\right] = 1-\alpha
+		\end{aligned} \)
+			\2 A quantidade $(\v{X}-\v{\mu})\T\m{\Sigma}\inv(\v{X}-\v{\mu})$ é chamada de Distância de Mahalanobis entre $\v{X}$ e $\v{\mu}$.
+		\1 Suponha que $\v{X}_i \sim \normdist{\v{m}_i, \m{V}_i}$ independentes, $i=1,\ldots,k$, e considere $\m{A}_1, \ldots, \m{A}_k$ e $\v{b}$ de dimensões adequadas.
+			\begin{equation}
+				\v{Y}=\sum_{i=1}^{k}\m{A}_i\v{X}_i+\v{b} \sim \normdist{\sum_{i=1}^{k}\m{A}_i\v{m}_i + \v{b}, \sum_{i=1}^{k}\m{A}_i\m{V}_i\m{A}_i\T}
+		\end{equation}
 	\end{outline}
 \end{theorem}
 
-\begin{theorem}
-	Suponha que $\v{X}_i \sim \normdist{\v{m}_i, \m{V}_i}$ independentes, $i=1,\ldots,k$, e considere $\m{A}_1, \ldots, \m{A}_k$ e $\v{b}$ de dimensões adequadas.
-	\begin{outline}[enumerate]
-		\1 \( \v{Y}=\sum_{i=1}^{k}\m{A}_i\v{X}_i+\v{b} \sim \normdist{\sum_{i=1}^{k}\m{A}_i\v{m}_i + \v{b}, \sum_{i=1}^{k}\m{A}_i\m{V}_i\m{A}'_i} \)
-	\end{outline}
+\begin{theorem}[Propriedade]
+	Os \textbf{contornos de densidade constante} no caso normal multivariado são elipsoides definidos por $\v{x}$ tais que
+	\begin{equation}
+		(\v{x}-\v{\mu})\T\m{\Sigma}^{-1}(\v{x}-\v{\mu}) = c^2.
+	\end{equation}
+	Esses elipsoides têm centro em $\v{\mu}$ e eixos em $\pm c\sqrt{\lambda_i}\v{e}_i$ em que $(\lambda_i,\v{e}_i)$ é um par de autovalor-autovetor de $\m{\Sigma}$.
 \end{theorem}
 
 \begin{theorem}
@@ -67,7 +116,7 @@
 		\end{align} e
 		\begin{align}
 			\m{C}_{12} &= \m{V}_{11} - \m{V}_{12}\m{V}_{22}\inv\m{V}_{21} \\
-			&= \m{V}_{11} - \m{A}_1\m{V}_{22}\m{A}'_{1}
+			&= \m{V}_{11} - \m{A}_1\m{V}_{22}\m{A}_1\T
 		\end{align}
 		A matriz $\m{A}_1 = \m{V}_{12}\m{V}_{22}\inv$ é chamada de \textit{matriz de regressão} de $\v{X}_1$ em $\v{X}_2$.
 		
@@ -78,17 +127,73 @@
 		\end{align} e
 		\begin{align}
 			\m{C}_{21} &= \m{V}_{22} - \m{V}_{21}\m{V}_{11}\inv\m{V}_{12} \\
-			&= \m{V}_{22} - \m{A}_2\m{V}_{11}\m{A}'_{2}
+			&= \m{V}_{22} - \m{A}_2\m{V}_{11}\m{A}_2\T
 		\end{align}
 		
 		\1 No caso especial da normal bivariada em (1) acima, os momentos são todos escalares, e a correlação entre $X_1$ e $X_2$ é $\rho = \rho_{12} = V_{12}/\sqrt{V_{11}V_{22}}$. As regressões são determinadas pelos coeficientes de regressão $A_1$ e $A_2$ dados por
 		\[
-		A_1 = \rho\sqrt{V_{11}/V_{22}} \quad \text{e} \quad A_2 = \rho\sqrt{V_{22}/V_{11}}.
+			A_1 = \rho\sqrt{V_{11}/V_{22}} \quad \text{e} \quad A_2 = \rho\sqrt{V_{22}/V_{11}}.
 		\]
 		
 		Além disso,
 		\[
-		\Var[X_1 \mid X_2] = (1-\rho^2)V_{11} \quad \text{e} \quad \Var[X_2 \mid X_1] = (1-\rho^2)V_{22}.
+			\Var[X_1 \mid X_2] = (1-\rho^2)V_{11} \quad \text{e} \quad \Var[X_2 \mid X_1] = (1-\rho^2)V_{22}.
 		\]
 	\end{outline}
 \end{theorem}
+
+\section{Distribuições de formas quadráticas}
+
+
+\begin{theorem} 
+	Seja $\v{X}_{p\times 1} \sim \normdist[p]{\v{\mu}_{p\times 1}, \m{\Sigma}_{p\times p}}$. Então:
+	\begin{outline}[enumerate]
+		\1 \( \v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1} \sim \chidist{\pos(\m{A}), \frac{1}{2}\v{\mu}\T_{1\times p}\m{A}_{p\times p}\v{\mu}_{p\times 1}}
+		\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p} \) é idempotente.
+		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\m{B}_{q\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{B}_{q\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{q\times p}\)
+		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\v{X}\T_{1\times p}\m{B}_{p\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p}\m{B}_{p\times p} = \m{0}_{p\times p}\) ou \(\m{B}_{p\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{p\times p} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Seja $\v{X}$ um vetor aleatório $p$-dimensional com $\Var[\v{X}] = \m{\Sigma}$, $\m{\Sigma}$ de dimensão $p\times p$, e seja $\m{A}$ uma matriz $p\times p$. Então:
+	\begin{outline}[enumerate]
+		\1 \( \E[\v{X}\T\m{A}\v{X}] = \tr(\m{A}\m{\Sigma}) + \v{\mu}\T\m{A}\v{\mu}. \)
+		\1 \( \Cov[\v{X}, \v{X}\T\m{A}\v{X}] = 2\m{\Sigma}\m{A}\v{\mu}. \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}
+	Supondo válidas as condições
+	\begin{outline}[enumerate]
+		\1 $\v{X}\sim\normdist[p]{\v{\mu},\m{\Sigma}}$,
+		\1 $\m{A}_i$ matriz $(p\times p)$ simétrica com $\pos(\m{A}_i) = n_i$, $i=1,\ldots,k$,
+		\1 $\m{A} = \displaystyle\sum_{i=1}^k \m{A}_i$ com $\pos(\m{A}) = n$ de modo que
+		\begin{equation}
+			\v{X}\T\m{A}\v{X} = \v{X}\T\m{A}_1\v{X} + \v{X}\T\m{A}_2\v{X} + \ldots + \v{X}\T\m{A}_k\v{X},
+		\end{equation}
+	\end{outline}
+	Então:
+	\begin{outline}[enumerate]
+		\1 \( \v{X}\T\m{A}\v{X} \sim \chidist{n,\lambda} \text{ com } \lambda = \frac{1}{2}\v{\mu}\T\m{A}\v{\mu} \)
+		\1 \( \v{X}\T\m{A}_i\v{X} \sim \chidist{n_i,\lambda_i} \text{ com } \lambda_i = \frac{1}{2}\v{\mu}\T\m{A}_i\v{\mu} \)
+		\1 $\v{X}\T\m{A}_i\v{X}$ é independente de $\v{X}\T\m{A}_j\v{X}$ $\iff$ $\m{A}\m{\Sigma}$ é idempotente e $n = \sum_{i=1}^k n_i$
+	\end{outline}
+\end{theorem}
+
+\begin{corollary}[Teorema de Cochran e Fisher]
+	Supondo válidas as condições
+	\begin{enumerate}
+		\item $\v{X}\sim\normdist[p]{\v{\mu},\m{I}_p}$,
+		\item $\m{A}_i$ matriz $(p\times p)$ com $\pos(\m{A}_i) = n_i$, $i=1,\ldots,k$,
+		\item $\m{I}_p = \displaystyle\sum_{i=1}^k \m{A}_i$ de modo que
+		\begin{equation}
+			\v{X}\T\v{X} = \v{X}\T\m{A}_1\v{X} + \v{X}\T\m{A}_2\v{X} + \ldots + \v{X}\T\m{A}_k\v{X},
+		\end{equation}
+	\end{enumerate}
+	Então:
+	\begin{outline}[enumerate]
+		\1 \( \v{X}\T\m{A}_i\v{X} \sim \chidist{n_i,\lambda_i} \text{ com } \lambda_i = \frac{1}{2}\v{\mu}\T\m{A}_i\v{\mu}, \quad i=1,\ldots,k \)
+		\1 as formas quadráticas $\v{X}\T\m{A}_i\v{X}$ são independentes $\iff$ $p = \displaystyle\sum_{i=1}^k n_i$
+	\end{outline}
+\end{corollary}

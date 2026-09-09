@@ -18,6 +18,7 @@
 \usepackage[brazilian]{cleveref}		% citações inteligentes de fig., eq., etc.
 \usepackage{graphicx}
 \usepackage{cancel} 					% cancelamento de variáveis em fórmulas
+\usepackage[normalem]{ulem}			% \uline{} - sublinhado com quebra de linha (normalem preserva \emph em itálico)
 \usepackage{xcolor}					% cores em textos
 \usepackage{outlines}					% itemize melhorado
 \usepackage{etoolbox} 					% ajuste de espaçamento de ambientes
@@ -29,9 +30,10 @@
 \numberwithin{equation}{section} 		% Equações no formato X.Y
 
 % ---------- Notação de vetores, variáveis aleatórias e matrizes ----------
-\renewcommand{\v}[1]{\bm{#1}}  	    			% vetor (fixo ou aleatório) - negrito, itálico
-\newcommand{\m}[1]{\mathbf{#1}}					% matriz - negrito, fonte não itálica
-\newcommand{\rv}[1]{#1}             			% variável aleatória (não usada no momento)
+\renewcommand{\v}[1]{\bm{#1}}  	    			% vetor não aleatório
+\newcommand{\m}[1]{\mathbf{#1}}					% matriz
+\newcommand{\rv}[1]{#1}             			% variável aleatória (itálico padrão)
+\newcommand{\rvect}[1]{\boldsymbol{#1}} 		% vetor aleatório
 \newcommand{\prior}[1]{\accentset{\smile}{#1}} 	% quantidade a priori
 \newcommand{\post}[1]{\accentset{\frown}{#1}}  	% quantidade a posteriori
 
@@ -45,7 +47,7 @@
 \DeclareMathOperator{\E}{\mathbb{E}}     	% esperança
 \DeclareMathOperator{\Var}{Var}				% variância
 \DeclareMathOperator{\Cov}{Cov} 		 	% covariância
-\DeclareMathOperator{\Cor}{Corr}		    % correlação
+\DeclareMathOperator{\Cor}{Corr}			% correlação
 \DeclareMathOperator{\lik}{\mathcal{L}}  	% verossimilhança
 \DeclareMathOperator{\llik}{\ell}        	% log-verossimilhança
 \DeclareMathOperator{\emv}{emv}				% estimador de máxima verossimilhança
@@ -54,21 +56,15 @@
 \DeclareMathOperator{\tr}{tr}				% traço de uma matriz
 \DeclareMathOperator{\pos}{pos}				% posto (rank) de uma matriz
 \DeclareMathOperator{\nul}{nul}				% nulidade (null) de uma matriz
-\DeclareMathOperator{\Col}{Col}            % espaço-coluna
-
-% ---------- Determinante (notação de barras, como nos slides) ----------
-\DeclarePairedDelimiter\deter{\lvert}{\rvert}   % determinante em notação de barras
-
-\makeatletter
-\let\olddeter\deter
-\def\deter{\@ifstar{\olddeter}{\olddeter*}}
-\makeatother
-  
+\DeclareMathOperator{\Col}{Col}             % espaço-coluna
+\DeclareMathOperator{\proj}{proj}           % projeção (vetores)
+\DeclareMathOperator{\ger}{ger}           % operação que resulta em espaço gerado
 \DeclareMathOperator{\ind}{\mathbbm{1}}		% função indicadora
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
+
 
 % ---------- Símbolos e conjuntos ----------
 \newcommand{\cp}[1]{#1^\mathsf{c}}				% complementar de um conjunto (A^\mathsf{c})
@@ -103,58 +99,62 @@
 
 % ---------- Distribuições ----------
 \DeclareMathOperator{\bernop}{Bernoulli}
-\newcommand{\berndist}[1]{\bernop(#1)}
+\newcommand{\berndist}[1]{\bernop\left(#1\right)}
 
 \DeclareMathOperator{\betaop}{Beta}
-\newcommand{\betadist}[1]{\betaop(#1)}
+\newcommand{\betadist}[1]{\betaop\left(#1\right)}
+
+\newcommand{\chiop}{\chi^2}
+\newcommand{\chidist}[1]{\chiop_{#1}}
 
 \DeclareMathOperator{\binop}{Binomial}
 \newcommand{\bindist}[1]{\binop\left(#1\right)}
 
 \DeclareMathOperator{\negbinop}{Binomial-Negativa}
-\newcommand{\negbindist}[1]{\negbinop(#1)}
+\newcommand{\negbindist}[1]{\negbinop\left(#1\right)}
 
 \DeclareMathOperator{\dirichletop}{Dirichlet}
-\newcommand{\dirichletdist}[1]{\dirichletop(#1)}
+\newcommand{\dirichletdist}[1]{\dirichletop\left(#1\right)}
 
 \DeclareMathOperator{\expop}{Exp}
-\newcommand{\expdist}[1]{\expop(#1)}
+\newcommand{\expdist}[1]{\expop\left(#1\right)}
 
 \DeclareMathOperator{\gammaop}{Gamma}
-\newcommand{\gammadist}[1]{\gammaop(#1)}
+\newcommand{\gammadist}[1]{\gammaop\left(#1\right)}
 
 \DeclareMathOperator{\invgammaop}{Gamma-Inversa}
-\newcommand{\invgammadist}[1]{\invgammaop(#1)}
+\newcommand{\invgammadist}[1]{\invgammaop\left(#1\right)}
 
 \DeclareMathOperator{\normalgammaop}{Normal-Gamma}
-\newcommand{\ngdist}[1]{\normalgammaop(#1)}
+\newcommand{\ngdist}[1]{\normalgammaop\left(#1\right)}
 
 \DeclareMathOperator{\normalop}{\mathcal{N}}
 \newcommand{\normdist}[2][]{%
 	\ifblank{#1}
-	{\normalop\left(#2\right)}
-	{\ifstrequal{#1}{1}
 		{\normalop\left(#2\right)}
-		{\normalop_{#1}\left(#2\right)}
-	}
+		{\ifstrequal{#1}{1}
+			{\normalop\left(#2\right)}
+			{\normalop_{#1}\left(#2\right)}
+		}
 }
+
 \DeclareMathOperator{\multop}{Multinomial}
 \newcommand{\multdist}[1]{\multop\left(#1\right)}
 
 \DeclareMathOperator{\poiop}{Poisson}
-\newcommand{\poidist}[1]{\poiop(#1)}
+\newcommand{\poidist}[1]{\poiop\left(#1\right)}
 
-\DeclareMathOperator{\tsudentop}{t-Student}
-\newcommand{\tdist}[1]{\tsudentop(#1)}
+\newcommand{\studentop}{t}
+\newcommand{\tdist}[1]{\studentop_{#1}}
+
+\newcommand{\fisherop}{F}
+\newcommand{\fdist}[1]{\fisherop_{#1}}
 
 \DeclareMathOperator{\triangop}{Triangular}
-\newcommand{\triangdist}[1]{\triangop(#1)}
+\newcommand{\triangdist}[1]{\triangop\left(#1\right)}
 
 \DeclareMathOperator{\unifop}{Uniforme}
-\newcommand{\unifdist}[1]{\unifop(#1)}
-
-\newcommand{\chiop}{\chi^2}
-\newcommand{\chidist}[1]{\chiop_{#1}}
+\newcommand{\unifdist}[1]{\unifop\left(#1\right)}
 
 % ---------- Convergência ----------
 \newcommand{\toQC}{\xrightarrow{\text{q.c.}}} % quase certamente
@@ -162,13 +162,13 @@
 \newcommand{\toL}{\xrightarrow{L^p}}          % em norma L^p
 \newcommand{\toD}{\xrightarrow{\mathcal{D}}}  % em distribuição
 
-% ---------- Variáveis barradas ----------
-\let\oldbar\bar
-\renewcommand{\bar}[1]{\,\overline{\!{#1}}}
+% ---------- Variável barrada ----------
 \makeatletter
 \newcommand{\widebar}[1]{\mathop{\overline{#1}}\nolimits\@ifnextchar^{}{\,}}
 \makeatother
 
+\let\oldbar\bar
+\renewcommand{\bar}[1]{\,\overline{\!{#1}}}		% barra ajustada para melhor alinhamento em itálico/negrito (ex. \bar{\v{X}})
 
 % Swap the definition of \abs* and \norm*, so that \abs
 % and \norm resizes the size of the brackets, and the
@@ -179,6 +179,16 @@
 %
 \let\oldnorm\norm
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\newcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}		% produto interno (ex. \ip{\v{u}}{\v{v}} = <u,v>)
+
+% ---------- Determinante ----------
+\DeclarePairedDelimiter\deter{\lvert}{\rvert}		% determinante (notação de barras, como nos slides)
+
+\makeatletter
+\let\olddeter\deter
+\def\deter{\@ifstar{\olddeter}{\olddeter*}}
 \makeatother
 
 % ---------- Ambientes de teorema ----------
@@ -209,6 +219,7 @@
 \newtheorem{definition}{Definição}[section]
 \newtheorem{lemma}{Lema}[section]
 \newtheorem{corollary}{Corolário}[section]
+\newtheorem{example}{Exemplo}[section]
 
 \theoremstyle{thm_note_est}
 \newtheorem*{note}{Nota}
@@ -217,6 +228,7 @@
 \BeforeBeginEnvironment{definition}{\vspace{1em}}
 \BeforeBeginEnvironment{lemma}{\vspace{1em}}
 \BeforeBeginEnvironment{corollary}{\vspace{1em}}
+\BeforeBeginEnvironment{example}{\vspace{1em}}
 
 % ---------- Ajustes de listas ----------
 \renewcommand{\labelenumi}{(\theenumi)}

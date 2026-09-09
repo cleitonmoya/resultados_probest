@@ -195,6 +195,260 @@
 	\end{outline}
 \end{theorem}
 
+\section{Espaço vetorial Euclidiano}
+
+\begin{definition} Seja $\v{v} \in \Re^n$.
+	\begin{outline}[enumerate]
+		\1 Norma: \( \norm{\v{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} \)
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Produto escalar em $\Re^2$ e $\Re^3$] Sejam $\v{u}, \v{v} \in \Re^2 \text{ ou } \Re^3$ e $\theta$ o ângulo entre $\v{u}$ e $\v{v}$. O produto escalar entre $\v{u}$ e $\v{v}$ é definido como
+	\begin{equation}
+		\v{u} \cdot \v{v} = \norm{\v{u}} \norm{\v{v}} \cos{\theta}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Produto escalar em $\Re^n$] Sejam $\v{u}, \v{v} \in \Re^n$. O produto escalar entre $\v{u}$ e $\v{v}$ (produto interno euclidiano) é definido como
+	\begin{equation}
+		\v{u} \cdot \v{v} = u_1 v_1 + u_2 v_2 + \dots + u_n v_n
+	\end{equation}
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Em notação matricial: $\v{u} \cdot \v{v} = \v{u}\T \v{v} = \v{v}\T \v{u}$
+			\1 No caso especial em que $\v{u} = \v{v}$, segue que 
+			\begin{equation}
+				\norm{\v{v}} = \sqrt{\v{u} \cdot \v{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} 
+			\end{equation}
+		\end{outline}
+	\end{note}
+\end{definition}
+
+\begin{definition} A distância entre $\v{u} \in \Re^n$ e $\v{v} \in \Re^n$ é definida por
+	\begin{equation}
+		d(\v{u}, \v{v}) = \norm{\v{u}-\v{v}} = \sqrt{(u_1-v_1)^2 + \cdots + (u_n-v_n)^2}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Ortogonalidade de vetores] Sejam $\v{u}, \v{v} \in \Re^n$. $\v{u}, \v{v}$ são ortogonais se $\v{u} \cdot \v{v} = 0$.
+\end{definition}
+
+\begin{theorem}[Proriedades da norma e produto interno]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \norm{\v{v}} \geq 0 \)
+		\1 \( \norm{\v{v}} = 0 \iff \v{v} = \v{0} \)
+		\1 \( \norm{k\v{v}} =\abs{k}\norm{\v{v}} \)
+		\1 \( \abs{ \v{u} \cdot \v{v}} \leq \norm{\v{u}}\norm{\v{v}} \) (Desigualdade de Cauchy-Schwarz)
+		\1 \( \norm{ \v{u} + \v{v}} \leq \norm{\v{u}} + \norm{\v{v}} \) (Desigualdade triangular)
+		\1 \( \norm{ \v{u} + \v{v}}^2 = \norm{\v{u}}^2 + \norm{\v{v}}^2 \) (Teorema de Pitágoras em $\Re^n$)
+		\1 \( d(\v{u}, \v{v}) \leq d(\v{u}, \v{2}) + d(\v{w}, \v{v})  \) (Desigualdade triangular para distâncias)
+		\1 \( \norm{ \v{u} + \v{v}}^2 + \norm{ \v{u} - \v{v}}^2 = 2(\norm{\v{u}}^2 + \norm{\v{v}}^2) \) (Equações do paralelogramo para vetores)
+		\1 \( \v{u} \cdot \v{v} = \frac{1}{4}\norm{ \v{u} + \v{v}}^2 + \frac{1}{4}\norm{ \v{u} - \v{v}}^2 \)
+		\1 \(\m{A} \v{u} \cdot \v{v} = \v{u} \cdot \m{A}\T \v{v} \)
+		\1 \(\v{u} \cdot \m{A} \v{v} = \m{A}\T  \v{u} \cdot \v{v} \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Teorema da projeção]
+	Se $\v a$ e $\v u$ são vetores em $\Re^n$, e se $\v a \neq \v 0$, então $\v u$ pode ser expresso exatamente em uma única forma $\v u = \v w_1 + \v w_2$, onde $\v w_1$ é um múltiplo escalar de $\v a$ e $\v w_2$ é ortogonal a $\v a$. Além disso,
+	\begin{equation}
+		\v w_1 = \frac{\v u \cdot \v a}{\norm a^2}\v a \quad\quad \v w_2 = \v u - \v w_1
+	\end{equation}
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 $\v w_1$ é chamado de projeção ortogonal de $\v u$ em $\v a$ e denotado por $\proj_{\v a}{\v u}$;
+			\1 $\v w_2$ é chamado de componente de $\v u$ ortogonal a $\v a$.
+		\end{outline}
+	\end{note}
+\end{theorem}
+
+\begin{theorem}
+	\begin{equation}
+		\norm{\proj_{\v a}{\v u}} = \norm{ \v u}  \abs {\cos(\theta)}
+	\end{equation}
+	%
+	onde $\theta$ é o ângulo entre $\v u$ e $\v a$.
+\end{theorem}
+
+\section{Espaço vetorial Geral}
+
+\begin{definition}[Combinação linear]
+	Seja $\v w$ um vetor no espaço vetorial $V$. Dizemos que $\v w$ é uma combinação linear de vetores $\v v_1, \v v_2, \ldots, \v v_r$ em $V$ se $\v w$ pode ser escrito na forma
+	\begin{equation}
+		\v w = k_1 \v v_1 + k_2 \v v_2 + \ldots + k_r \v v_r
+	\end{equation}
+	%
+	onde $k_1, k_2, \ldots, k_r$ são escalares chamados coeficientes da combinação linear.
+\end{definition}
+
+\begin{theorem} Seja $S = \{ \v w_1, \ldots, \v w_k \}$ um conjunto não vazio de vetores em $V$. Então:
+	\begin{outline}[enumerate]
+		\1 O conjunto $W$ de todas as possíveis combinações lineares de vetores em $S$ é um subespaço de $V$.
+		\1 O cojunto $W$ (do item acima) é o menor subespaço de $V$ que contém todos os vetores de $S$, ou seja, qualquer outro subespaço contém todos os vetores de $W$.
+	\end{outline}
+\end{theorem}
+
+\begin{definition}[Subespaço gerado]
+	Seja $S = \{ \v w_1, \ldots, \v w_k \}$ um conjunto não vazio de vetores em $V$ e $W$ o subespaço de todas as possíveis combinações lineares dos vetores em $S$. Este subespaço é chamado de \textit{subespaço de $V$  gerado por $S$}, e dizemos que $\v w_1, \ldots, \v w_k$ geram $W$. Denotamos este subespaço por
+	\begin{equation}
+		W = \ger \{ \v w_1, \ldots, \v w_k \} \quad \text{ou} \quad  W = \ger(V)
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Conjunto LI]
+	Seja $S = \{ \v v_1, \ldots, \v v_r \}$ um conjunto de dois ou mais vetores de um espaço vetorial $V$. Dizemos que $S$ é um conjunto linearmente independente (LI) se nenhum vetor em $S$ pode ser expresso como combinação linear de outros.
+\end{definition}
+
+\begin{theorem}
+	Seja $S = \{ \v w_1, \ldots, \v w_k \} \subset V$ um conjunto não vazio. $V$ é LI se e somente se os coeficientes que satisfazem a equação 
+	\begin{equation}
+		k_1 \v r_1 + \cdots + k_r \v v_r = 0
+	\end{equation}
+	% 
+	são $k_1=k_2=\cdots=k_r = 0$.
+\end{theorem}
+
+\begin{theorem}[4.3.2, Anton]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Um conjunto finito que contém $\v{0}$ é linearmente dependente.
+		\1 Um conjunto com exatamente um vetor é linearmente independente se e somente se esse vetor não é $\v{0}$.
+		\1 Um conjunto com exatamente dois vetores é linearmente independente se e somente se nenhum dos dois vetores é múltiplo escalar do outro.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[4.3.3, Anton]
+	Seja $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_r\}$ um conjunto de vetores em $\Re^n$. Se $r>n$, então $\v{S}$ é linearmente dependente.
+\end{theorem}
+
+\begin{definition}[Base de espaço vetorial]
+	Se $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é um conjunto de vetores em um espaço vetorial $V$ de dimensão finita, então $\v{S}$ é chamado uma \textbf{base} para $V$ se:
+	\begin{outline}[enumerate]
+		\1 $S$ gera $V$.
+		\1 $S$ é linearmente independente.
+	\end{outline}
+\end{definition}
+
+\begin{theorem}[Unicidade da representação em base]
+	Se $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é uma base para um espaço vetorial $V$, então todo vetor $\v{v}$ em $V$ pode ser expresso na forma $\v{v} = c_1\v{v}_1 + c_2\v{v}_2 + \cdots + c_n\v{v}_n$ de exatamente uma forma.
+\end{theorem}
+
+\begin{theorem}[Teorema do Mais/Menos]
+	Seja $S$ um conjunto não vazio de vetores em um espaço vetorial $V$.
+	\begin{outline}[enumerate]
+		\1 Se $S$ é um conjunto linearmente independente, e se $\v{v}$ é um vetor em $V$ que está fora de $\ger(S)$, então o conjunto $S\cup\{\v{v}\}$ que resulta ao inserir $\v{v}$ em $S$ ainda é linearmente independente.
+		\1 Se $\v{v}$ é um vetor em $S$ que é expressável como uma combinação linear dos demais vetores em $S$, e se $S-\{\v{v}\}$ denota o conjunto obtido ao remover $\v{v}$ de $S$, então $S$ e $S-\{\v{v}\}$ geram o mesmo espaço; ou seja,
+		\begin{equation}
+			\ger(S) = \ger(S-\{\v{v}\})
+		\end{equation}
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Dimensão de subespaço]
+	Se $W$ é um subespaço de um espaço vetorial $V$ de dimensão finita, então:
+	\begin{outline}[enumerate]
+		\1 $W$ é de dimensão finita.
+		\1 $\dim(W) \leq \dim(V)$.
+		\1 $W = V$ se e somente se $\dim(W) = \dim(V)$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Base a partir de $n$ vetores]
+	Seja $V$ um espaço vetorial $n$-dimensional, e seja $S$ um conjunto em $V$ com exatamente $n$ vetores. Então $S$ é uma base para $V$ se e somente se $S$ gera $V$ ou $S$ é linearmente independente.
+\end{theorem}
+
+\begin{theorem}[Matriz de transição para a base canônica]
+	Seja $B' = \{\v{u}_1,\v{u}_2,\ldots,\v{u}_n\}$ uma base qualquer para o espaço vetorial $\Re^n$ e seja $S = \{\v{e}_1,\v{e}_2,\ldots,\v{e}_n\}$ a base canônica para $\Re^n$. Se os vetores dessas bases são escritos na forma de coluna, então
+	\begin{equation}
+		\m{P}_{B'\to S} = \left[\begin{array}{c|c|c|c}
+			\v{u}_1 & \v{u}_2 & \cdots & \v{u}_n
+		\end{array}\right]
+	\end{equation}
+\end{theorem}
+
+
+\section{Espaços com produto interno}
+
+\begin{definition}[Conjunto ortogonal e ortonormal]
+	Um conjunto de dois ou mais vetores em um espaço com produto interno real é dito \textbf{ortogonal} se todos os pares de vetores distintos no conjunto são ortogonais. Um conjunto ortogonal no qual cada vetor tem norma 1 é dito \textbf{ortonormal}.
+\end{definition}
+
+\begin{theorem}[Independência linear de conjuntos ortogonais]
+	Se $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é um conjunto ortogonal de vetores não nulos em um espaço com produto interno, então $S$ é linearmente independente.
+\end{theorem}
+
+
+\begin{theorem}[Teorema da Projeção]
+	Se $W$ é um subespaço de dimensão finita de um espaço com produto interno $V$, então todo vetor $\v{u}$ em $V$ pode ser expresso de exatamente uma forma como
+	\begin{equation}
+		\v{u} = \v{w}_1 + \v{w}_2
+	\end{equation}
+	em que $\v{w}_1$ está em $W$ e $\v{w}_2$ está em $W^{\perp}$.
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Os vetores $\v{w}_1$ e $\v{w}_2$ na equação acima são comumente denotados por
+			\begin{equation}
+				\v{w}_1 = \proj_W \v{u} \quad \text{e} \quad \v{w}_2 = \proj_{W^{\perp}} \v{u}
+			\end{equation}
+			Estes são chamados de \textit{projeção ortogonal de $\v{u}$ em $W$} e \textit{projeção ortogonal de $\v{u}$ em $W^{\perp}$}, respectivamente. O vetor $\v{w}_2$ também é chamado de \textit{componente de $\v{u}$ ortogonal a $W$}. Usando essa notação, a decomposição pode ser expressa como
+			\begin{equation}
+				\v{u} = \proj_W \v{u} + \proj_{W^{\perp}} \v{u}
+			\end{equation}
+		\end{outline}
+	\end{note}
+\end{theorem}
+
+\begin{theorem}[Representação em base ortogonal/ortonormal e projeção sobre subespaço]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é uma base ortogonal para um espaço com produto interno $V$, e se $\v{u}$ é um vetor qualquer em $V$, então
+		\begin{equation}
+			\v{u} = \frac{\ip{\v{u}}{\v{v}_1}}{\norm{\v{v}_1}^2}\v{v}_1 + \frac{\ip{\v{u}}{\v{v}_2}}{\norm{\v{v}_2}^2}\v{v}_2 + \cdots + \frac{\ip{\v{u}}{\v{v}_n}}{\norm{\v{v}_n}^2}\v{v}_n
+		\end{equation}
+		\1 Se $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é uma base ortonormal para um espaço com produto interno $V$, e se $\v{u}$ é um vetor qualquer em $V$, então
+		\begin{equation}
+			\v{u} = \ip{\v{u}}{\v{v}_1}\v{v}_1 + \ip{\v{u}}{\v{v}_2}\v{v}_2 + \cdots + \ip{\v{u}}{\v{v}_n}\v{v}_n
+		\end{equation}
+		\1 Seja $W$ um subespaço de dimensão finita de um espaço com produto interno $V$. Se $\{\v{v}_1,\v{v}_2,\ldots,\v{v}_r\}$ é uma base ortogonal para $W$, e $\v{u}$ é um vetor qualquer em $V$, então
+		\begin{equation}
+			\proj_W \v{u} = \frac{\ip{\v{u}}{\v{v}_1}}{\norm{\v{v}_1}^2}\v{v}_1 + \frac{\ip{\v{u}}{\v{v}_2}}{\norm{\v{v}_2}^2}\v{v}_2 + \cdots + \frac{\ip{\v{u}}{\v{v}_r}}{\norm{\v{v}_r}^2}\v{v}_r
+		\end{equation}
+		\1 Se $\{\v{v}_1,\v{v}_2,\ldots,\v{v}_r\}$ é uma base ortonormal para $W$, e $\v{u}$ é um vetor qualquer em $V$, então
+		\begin{equation}
+			\proj_W \v{u} = \ip{\v{u}}{\v{v}_1}\v{v}_1 + \ip{\v{u}}{\v{v}_2}\v{v}_2 + \cdots + \ip{\v{u}}{\v{v}_r}\v{v}_r
+		\end{equation}
+	\end{outline}
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Usando a terminologia e notação da Definição 2 da Seção 4.4, segue dos itens 1 e 2 que o vetor de coordenadas de um vetor $\v{u}$ em $V$ em relação a uma base ortogonal $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é
+			\begin{equation}
+				(\v{u})_S = \left(\frac{\ip{\v{u}}{\v{v}_1}}{\norm{\v{v}_1}^2}, \frac{\ip{\v{u}}{\v{v}_2}}{\norm{\v{v}_2}^2}, \ldots, \frac{\ip{\v{u}}{\v{v}_n}}{\norm{\v{v}_n}^2}\right)
+			\end{equation}
+			\1 e em relação a uma base ortonormal $S = \{\v{v}_1,\v{v}_2,\ldots,\v{v}_n\}$ é
+			\begin{equation}
+				(\v{u})_S = \left(\ip{\v{u}}{\v{v}_1}, \ip{\v{u}}{\v{v}_2}, \ldots, \ip{\v{u}}{\v{v}_n}\right)
+			\end{equation}
+		\end{outline}
+	\end{note}
+\end{theorem}
+
+
+\begin{theorem}[Decomposição espectral]
+	Se $\m{A}$ é uma matriz simétrica diagonalizada ortogonalmente por
+	\begin{equation}
+		\m{P} = \left[\v{u}_1 \ \ \v{u}_2 \ \ \cdots \ \ \v{u}_n\right],
+	\end{equation}
+	e se $\lambda_1,\lambda_2,\ldots,\lambda_n$ são os autovalores de $\m{A}$ correspondentes aos autovetores unitários $\v{u}_1,\v{u}_2,\ldots,\v{u}_n$, então $\m{A}$ pode ser expressa como
+	\begin{equation}
+		\m{A} = \sum_{i=1}^n \lambda_i \v{u}_i\v{u}_i\T.
+	\end{equation}
+\end{theorem}
+
 \section{Posto e nulidade}
 
 \begin{definition}[Posto e nulidade] Seja $\m{A}$ qualquer;
@@ -205,6 +459,17 @@
 	\end{outline}
 \end{definition}
 
+\begin{theorem}[Espaços nulo, linha e coluna]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Operações elementares em linhas não alteram o espaço-nulo da matriz;
+		\1 Operações elementares em linhas não alteram o espaço-linha da matriz. \uline{Porém, podem alterar o espaço-coluna};
+		\1 Se $\m{A}$ está na forma escalonada por linhas (\textit{row echelon form}), então os vetores linha com líderes $1$ formam uma base para o espaço-linha de $\m{A}$, e os vetores coluna com os líderes $1$ formam uma base para o espaço-coluna de $\m{A}$; 
+		\1 Sejam $\m{A}$ e $\m{B}$ matrizes equivalentes por linhas. Então:
+			\2 Um dado conjunto de vetores colunas de $\m{A}$ é LI $\iff$ os vetores colunas correspondentes em $\m{B}$ são LI.
+			\2 Um dado conjunto de vetores colunas de $\m{A}$ forma uma base para oe espaço-coluna de $\m{A}$ $\iff$ os vetores colunas correspondentes em $\m{B}$ formam uma base para o espaço-coluna de $\m{B}$.
+	\end{outline}
+\end{theorem}
 
 \begin{theorem}[Propriedades do posto e nulidade] Seja $\m{A}_{m\times n}$
 	\leavevmode
@@ -296,15 +561,180 @@
 \end{theorem}
 
 
-\section{Diagonalização}
+\section{Semelhança e Diagonalização}
+
+\begin{definition}[Matrizes semelhantes]
+	Sejam $\m{A}$ e $\m{B}$ quadradas. $\m{B}$ é semelhante a $\m{A}$ se existe uma matriz $\m{P}$ tal que $\m{B} = \m{P}\inv \m{A}\m{P}$.
+	\begin{note}
+		\begin{outline}[enumerate]
+			Se $\m{B}$ é similar a $\m{A}$, então $\m{A}$ é similar $\m{B}$.
+		\end{outline}
+	\end{note}
+\end{definition}
+
+\begin{theorem}[Propriedades de matrizes semelhantes]
+	Sejam $\m{A}$ e $\m{B}=\m{P}\inv\m{A} P$ semelhantes. As seguintes propriedades de $\m{A}$ são preservadas em $\m{B}$:
+	\begin{outline}[enumerate]
+		\1 Determinante
+		\1 Invertibilidade
+		\1 Posto
+		\1 Nulidade
+		\1 Traço
+		\1 Polinômio característico
+		\1 Autovalores
+		\1 Dimensões dos autoespaços.
+	\end{outline}
+\end{theorem}
+
+\begin{definition}
+	$\m{A}$ quadrada é dita diagonalizável se é semelhante a alguma matriz diagonal, isto é, se existe uma matriz invertível $\m{P}$ tal que $\m{P}\inv A \m{P}$ é diagonal. Neste caso, dizemos que a matriz $\m{P}$ diagonaliza $\m{A}$.
+\end{definition}
 
 \begin{theorem}[Diagonalização] Seja $\m{A}_{n\times n}$.
 	\leavevmode
 	\begin{outline}[enumerate]
 		\1 $\m{A}$ é diagonalizável $\iff$ $\m{A}$ tem $n$ autovetores LI.
 		\1 $\m{A}$ é diagonalizável $\iff$ Para cada autovalor, a multiplicidade geométrica é igual à multiplicidade algébrica.
+		\1 Se $\lambda_1, \ldots, \lambda_k$ são autovalores distintos de $\m{A}$ e $\v{v}_1, \ldots, \v{v}_k$ são os autovetores correspondentes, então $\{\v{v}_1, \ldots, \v{v}_k\}$ é um conjunto LI.
 		\1 $\m{A}$ tem $n$ autovalores distintos $\implies$ $\m{A}$ é diagonalizável.
+		\1 $\m{A}$ é diagonalizável $\implies \m{A}^k = \m{P}\m{D}^k\m{P}\inv$.
 	\end{outline} 
+\end{theorem}
+
+
+
+
+\section{Diagonalização ortogonal}
+
+\begin{theorem}[Matrizes ortogonais e bases ortonormais] Seja $\m{A}_{n \times n}$. As seguintes afirmações são equivalentes.
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é ortogonal.
+		\1 os vetores linha de $\m{A}$ formam uma base ortonormal em $\Re^n$ com produto interno euclidiano.
+		\1 os vetores coluna de $\m{A}$ formam uma base ortonormal em $\Re^n$ com produto interno euclidiano.
+		\1 \( \norm{\m{A}\v{x}} = \norm{\v{x}} \quad \forall \v{x}\in \Re^n \)
+		\1 \( \m{A}\v{x}\cdot\m{A}\v{y} = \v{x}\cdot\v{y} \quad \forall \v{x},\v{y} \in \Re^n \)
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Propriedades de matrizes ortogonais] Seja $\m{A}_{n \times n}$.
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é ortogonal $\implies \m{A}\T$ é ortogonal.
+		\1 $\m{A}$ é ortogonal $\implies \m{A}\inv$ é ortogonal.
+		\1 $\m{A}, \m{B}$ são ortogonais $\implies \m{A}\m{B}$ é ortogonal.
+		\1 $\m{A}$ é ortogonal $\implies \det(\m{A})=\pm 1$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Mudança de bases ortonormais] Seja $V$ um espaço finito-dimensional com produto interno. Se $\m{P}$ é a matriz de transição de uma base ortonormal de $V$ para uma outra base ortonormal para $V$, então $\m{P}$ é ortogonal.
+\end{theorem}
+
+\begin{definition}[Semelhança e diagonalização ortogonal]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Se $\m{A}, \m{B}$ são matrizes quadradas, dizemos que $\m{B}$ é \uline{ortogonalmente semelhante} a $\m{A}$ se existe uma matriz ortogonal $\m{P}$ tal que $\m{B}=\m{P}\T\m{A}\m{P}$.
+		\1 Se $\m{B}$ é ortogonalmente semelhante a alguma matriz diagonal $\m{D}$, ou seja,
+		\begin{equation}
+			\m{P}\T\m{A}\m{P} = \m{D},
+		\end{equation}
+		% 
+		dizemos que $\m{A}$ é ortogonalmente diagonalizável e que $\m{P}$ diagnoliza (ortogonalmente) $\m{A}$. 
+	\end{outline}
+	\begin{note}
+		\begin{outline}[enumerate]
+			\1 Se $\m{B}$ é ortogonalmente semelhante a $\m{A}$, então $\m{A}$ é ortogonalmente semelhante a $\m{B}$.
+		\end{outline}
+	\end{note}
+\end{definition}
+
+\begin{theorem}[Diagonalização ortogonal] As seguintes afirmações são equivalentes.
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é ortogonalmente diagonalizável.
+		\1 $\m{A}$ tem um conjunto ortonormal de $n$ autovetores.
+		\1 $\m{A}$ é simétrica.
+	\end{outline}
+\end{theorem}
+
+
+\begin{theorem}[Matrizes simétricas] Seja $\m{A}_{n\times n}$ simétrica com entradas reais. Então:
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Os autovalores de $\m{A}$ são todos reais.
+		\1 Autovetores de autoespaços diferentes são ortogonais.
+	\end{outline} 
+\end{theorem}
+
+\section{Formas lineares e quadráticas}
+
+
+\begin{definition}[Formas lineares e quadráticas]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Forma linear: $b_1 x_1 + b_2 x_2 + \cdots + b_nx_n$
+			\2 $f(\v{x}) = \v{b}\T\v{x} = \v{x}\T\v{b}$
+		\1 Forma afim: $f(\v{x}) = a + \v{b}\T\v{x}$
+		\1 Forma quadrática: $a_1 x_1^2 + a_2 x_2^2 + \cdots + a_nx_n^2$ (mais todos possíveis termos $a_kx_ix_j$, com $i\neq j$)
+			\2 Se $\m{A}_{n\times n}$ é simétrica e $\v{x}$ é vetor-coluna $n\times 1$, a forma quadrática associada a $\m{A}$ é $Q_\m{A} = \v{x}\T\m{A}\v{x}$
+	\end{outline}
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 Se $\m{A}$ é a diagonal, a forma quadrática não possui termos cruzados.
+		\end{outline}
+		conteúdo...
+	\end{note}
+\end{definition}
+
+
+\begin{definition}[Classificação de formas quadráticas e matrizes] Uma forma quadrática $\v{x}\T\m{A}\v{x}$ e a respectiva matriz $\m{A}$ simétrica é dita:
+	\begin{outline}[enumerate]
+		\1 Positiva definida: se $\v{x}\T\m{A}\v{x} > 0$ para todo $\v{x} \neq 0$ 
+		\1 Positiva semidefinida: se $\v{x}\T\m{A}\v{x} \geq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
+		\1 Negativa definida: se $\v{x}\T\m{A}\v{x} < 0$ para todo $\v{x} \neq 0$ 
+		\1 Negativa semidefinida: se $\v{x}\T\m{A}\v{x} \leq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
+		\1 Indefinida: $\v{x}\T\m{A}\v{x}$ assume valores positivos e negativos.
+	\end{outline}
+\end{definition}
+
+\begin{theorem} 
+	Seja $\m{A}_{n\times n}$ simétrica.
+	\begin{outline}[enumerate]
+		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é positiva definida $\iff$ todos os autovalores de $\m{A}$ são positivos.
+		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é negativa definida $\iff$ todos os autovalores de $\m{A}$ são negativos.
+		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é indefinido $\iff$ $\m{A}$ tem pelo menos um autovalor positivo e pelo menos um autovalor negativo.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} 
+	Seja $\m{A}_{n\times n}$ simétrica. As seguintes afirmações são equivalentes.
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é positiva definida 
+		\1 Todos os autovalores de $\m{A}$ são positivos.
+		\1 Os determinantes de cada submatriz da diagonal principal são positivos (critério de Sylvester).
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva definida, então:
+	\begin{outline}[enumerate]
+		\1 $\pos(\m{A})=n$
+		\1 $a_{ii}>0$ para todo $i=1,\ldots,n$
+		\1 $\m{P}\T\m{A}\m{P}$ é positiva definida para toda matriz $\m{P}_{n \times p}$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva semidefinida, então:
+	\begin{outline}[enumerate]
+		\1 $\pos(\m{A})<n$
+		\1 $a_{ii}\geq0$ para todo $i=1,\ldots,n$
+		\1 $\m{P}\T\m{A}\m{P}$ é positiva semidefinida para toda matriz $\m{P}_{n \times p}$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} 
+	Seja $\m{A}_{m \times n}$. Então, 
+	\begin{outline}[enumerate]
+		\1 $\m{A}\T\m{A}$ é positiva semidefinida. 
+		\1 $\m{A}\T\m{A}$ é positiva se tem posto-coluna completo, ou seja, $\pos(\m{A})$. 
+	\end{outline}
 \end{theorem}
 
 
@@ -357,80 +787,6 @@
 		\deter{\m{B}} = \deter{\m{B}_{11}}\deter{\m{B}_{22}}\deter{\m{B}_{33}}.
 	\end{equation}
 	O resultado vale para matrizes bloco diagonal de maior dimensão.
-\end{theorem}
-
-\section{Formas lineares e quadráticas}
-
-
-\begin{definition}[Formas lineares e quadráticas]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 Forma linear: $b_1 x_1 + b_2 x_2 + \cdots + b_nx_n$
-			\2 $f(\v{x}) = \v{b}\T\v{x} = \v{x}\T\v{b}$
-		\1 Forma afim: $f(\v{x}) = a + \v{b}\T\v{x}$
-		\1 Forma quadrática: $a_1 x_1^2 + a_2 x_2^2 + \cdots + a_nx_n^2$ (mais todos possíveis termos $a_kx_ix_j$, com $i\neq j$)
-			\2 Se $\m{A}_{n\times n}$ é simétrica e $\v{x}$ é vetor-coluna $n\times 1$, a forma quadrática associada a $\m{A}$ é $Q_\m{A} = \v{x}\T\m{A}\v{x}$
-	\end{outline}
-	\begin{note}
-		\leavevmode
-		\begin{outline}[enumerate]
-			\1 Se $\m{A}$ é a diagonal, a forma quadrática não possui termos cruzados.
-		\end{outline}
-		conteúdo...
-	\end{note}
-\end{definition}
-
-
-\begin{definition}[Classificação de formas quadráticas e matrizes] Uma forma quadrática $\v{x}\T\m{A}\v{x}$ e a respectiva matriz $\m{A}$ simétrica é dita:
-	\begin{outline}[enumerate]
-		\1 Positiva definida: se $\v{x}\T\m{A}\v{x} > 0$ para todo $\v{x} \neq 0$ 
-		\1 Positiva semidefinida: se $\v{x}\T\m{A}\v{x} \geq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
-		\1 Negativa definida: se $\v{x}\T\m{A}\v{x} < 0$ para todo $\v{x} \neq 0$ 
-		\1 Negativa semidefinida: se $\v{x}\T\m{A}\v{x} \leq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
-		\1 Indefinida: $\v{x}\T\m{A}\v{x}$ assume valores positivos e negativos.
-	\end{outline}
-\end{definition}
-
-\begin{theorem} 
-	Seja $\m{A}_{n\times n}$ simétrica.
-	\begin{outline}[enumerate]
-		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é positiva definida $\iff$ todos os autovalores de $\m{A}$ são positivos.
-		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é negativa definida $\iff$ todos os autovalores de $\m{A}$ são negativos.
-		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é indefinido $\iff$ $\m{A}$ tem pelo menos um autovalor positivo e pelo menos um autovalor negativo.
-	\end{outline}
-\end{theorem}
-
-\begin{theorem} 
-	Seja $\m{A}_{n\times n}$ simétrica. ($\m{A}$) As seguintes afirmações são equivalentes.
-	\begin{outline}[enumerate]
-		\1 $\m{A}$ é positiva definida 
-		\1 Todos os autovalores de $\m{A}$ são positivos.
-		\1 Os determinantes de cada submatriz da diagonal principal são positivos (critério de Sylvester).
-	\end{outline}
-\end{theorem}
-
-\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva definida, então:
-	\begin{outline}[enumerate]
-		\1 $\pos(\m{A})=n$
-		\1 $a_{ii}>0$ para todo $i=1,\ldots,n$
-		\1 $\m{P}\T\m{A}\m{P}$ é positiva definida para toda matriz $\m{P}_{n \times p}$
-	\end{outline}
-\end{theorem}
-
-\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva semidefinida, então:
-	\begin{outline}[enumerate]
-		\1 $\pos(\m{A})<n$
-		\1 $a_{ii}\geq0$ para todo $i=1,\ldots,n$
-		\1 $\m{P}\T\m{A}\m{P}$ é positiva semidefinida para toda matriz $\m{P}_{n \times p}$
-	\end{outline}
-\end{theorem}
-
-\begin{theorem} 
-	Seja $\m{A}_{m \times n}$. Então, 
-	\begin{outline}[enumerate]
-		\1 $\m{A}\T\m{A}$ é positiva semidefinida. 
-		\1 $\m{A}\T\m{A}$ é positiva se tem posto-coluna completo, ou seja, $\pos(\m{A})$. 
-	\end{outline}
 \end{theorem}
 
 \section{Derivadas}

@@ -1,0 +1,217 @@
+% !TeX root = main.tex
+% !TeX spellcheck = pt_BR
+
+% ===========================================================
+% Estimação Intervalar
+% Fonte: 8 - Estimação Intervalar.pdf
+% ===========================================================
+
+% ---------- Definição 1 (Intervalo de confiança) ----------
+\begin{definition}
+Sejam $X_1,X_2,\ldots,X_n$ uma amostra aleatória de uma população com f.d.p. $f(x\mid\theta)$. Sejam $T_1\equiv T_1(\v{X})$ e $T_2\equiv T_2(\v{X})$ duas estatísticas satisfazendo $T_1\leq T_2$, de tal forma que $\P_\theta[T_1\leq\tau(\theta)\leq T_2]=\gamma$, em que $\gamma$ não depende de $\theta$. Então, o intervalo $[T_1,T_2]$ é chamado de \underline{intervalo com $100\gamma\%$ de confiança para $\tau(\theta)$}. A quantidade $\gamma$ é chamada de \underline{nível de confiança}, e $T_1$ e $T_2$ são chamadas de \underline{limites de confiança inferior e superior}, respectivamente, para $\tau(\theta)$.
+\end{definition}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 4/55
+
+% ---------- Definição 2 (IC unilateral) ----------
+\begin{definition}
+Sejam $X_1,X_2,\ldots,X_n$ uma amostra aleatória de uma população com f.d.p. $f(x\mid\theta)$. Seja $T_1\equiv T_1(\v{X})$ uma estatística tal que $\P_\theta[T_1\leq\tau(\theta)]=\gamma$. Então, $T_1$ é chamada de \underline{limite de confiança inferior unilateral para $\tau(\theta)$}. Analogamente, seja $T_2\equiv T_2(\v{X})$ uma estatística tal que $\P_\theta[T_2\geq\tau(\theta)]=\gamma$. Então, $T_2$ é chamada de \underline{limite de confiança superior unilateral para $\tau(\theta)$}. Em ambos os casos, $\gamma$ não depende de $\theta$.
+\end{definition}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 5/55
+
+% ---------- Observação 1 ----------
+\begin{note}
+Se um IC para $\theta$ tiver sido determinado, então pode-se determinar uma família de IC's. Em outras palavras, para um determinado estimador intervalar com $100\gamma\%$ de confiança para $\theta$, pode-se obter um estimador intervalar com $100\gamma\%$ para $\tau(\theta)$, desde que $\tau$ seja uma função estritamente monótona. Se $\tau$ for uma função estritamente crescente e $[T_1,T_2]$ for um IC para $\theta$, então $[\tau(T_1),\tau(T_2)]$ será um IC para $\tau(\theta)$, pois
+\begin{equation}
+\P_\theta[T_1\leq\theta\leq T_2] = \P_\theta[\tau(T_1)\leq\tau(\theta)\leq\tau(T_2)].
+\end{equation}
+\end{note}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 7/55
+
+% ---------- Definição 3 (Quantidade pivotal) ----------
+\begin{definition}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população com f.d.p. $f(x\mid\theta)$, e seja $Q\equiv Q(\v{X}\mid\theta)$. Dizemos que $Q$ é uma \underline{quantidade pivotal} se sua distribuição não depender de $\theta$.
+\end{definition}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 10/55
+
+% ---------- Método da quantidade pivotal ----------
+\begin{theorem}[Método da quantidade pivotal]
+Se $Q(\v{X}\mid\theta)$ é uma quantidade pivotal e possui uma f.d.p., então, para qualquer $0<\gamma<1$, haverá $q_1$ e $q_2$ dependendo de $\gamma$ de tal modo que
+\begin{equation}
+\P(q_1\leq Q(\v{X}\mid\theta)\leq q_2) = \gamma.
+\end{equation}
+Se para cada possível valor amostral $x_1,x_2,\ldots,x_n$,
+\begin{equation}
+\{q_1\leq Q(\v{x}\mid\theta)\leq q_2\} \iff \{T_1(\v{x})\leq\tau(\theta)\leq T_2(\v{x})\},
+\end{equation}
+então $[T_1(\v{X}),T_2(\v{X})]$ será um intervalo com $100\gamma\%$ de confiança para $\tau(\theta)$.
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 12/55
+
+% ---------- Observação 2 e 3 ----------
+\begin{note}
+\begin{outline}
+	\1 O termo quantidade pivotal pode ser inapropriado, pois pode ser impossível ``pivotar'' a quantidade $Q(\v{X}\mid\theta)$.
+	\1 Os valores de $q_1$ e $q_2$ não dependem de $\theta$, pois a distribuição de $Q(\v{X}\mid\theta)$ não depende.
+\end{outline}
+\end{note}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 13/55
+
+% ---------- Utilidade pública: relações (1) e (2) ----------
+\begin{note}
+No caso do método da quantidade pivotal, intervalos com $100\gamma\%$ de confiança são caracterizados por
+\begin{equation}
+\gamma = \P(q_1\leq Q\leq q_2) = \int_{q_1}^{q_2} f_Q(t)\,dt = F_Q(q_2)-F_Q(q_1), \label{eq:util-pub-1}
+\end{equation}
+em que $f_Q$ e $F_Q$ correspondem à f.d.p. e f.d. da quantidade pivotal $Q$. Disso decorrem duas informações úteis:
+\begin{outline}
+	\1 Como $\gamma$ é fixado, podemos escrever $q_2\equiv q_2(q_1)$, pois
+	\begin{equation}
+	\gamma = F_Q(q_2)-F_Q(q_1) \implies q_2 = F_Q^{-1}[\gamma+F_Q(q_1)];
+	\end{equation}
+	\1 Derivando ambos os lados de \eqref{eq:util-pub-1} em relação a $q_1$, temos
+	\begin{equation}
+	\frac{d}{dq_1}\gamma = \frac{d}{dq_1}\left[F_Q(q_2)-F_Q(q_1)\right] \implies f_Q(q_2)\frac{dq_2}{dq_1}-f_Q(q_1) = 0.
+	\end{equation}
+	Portanto,
+	\begin{equation}
+	\frac{dq_2}{dq_1} = \frac{f_Q(q_1)}{f_Q(q_2)}. \label{eq:dq2dq1}
+	\end{equation}
+\end{outline}
+\end{note}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 17-18/55
+
+% ---------- Quantidade pivotal para a média, sigma^2 conhecido ----------
+\begin{theorem}
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. de uma população $X\sim\normdist{\theta,\sigma^2}$, $\theta\in\Re$ e $\sigma^2>0$ conhecido. Então
+\begin{equation}
+Q = \frac{\bar{X}-\theta}{\sigma/\sqrt{n}} \sim \normdist{0,1}
+\end{equation}
+é uma quantidade pivotal e
+\begin{equation}
+\left[\bar{X}-q_2\frac{\sigma}{\sqrt{n}},\ \bar{X}-q_1\frac{\sigma}{\sqrt{n}}\right]
+\end{equation}
+é um IC de $100\gamma\%$ para $\theta$, em que $q_1$ e $q_2$ satisfazem $\P(q_1\leq Q\leq q_2)=\gamma$. O comprimento desse intervalo é minimizado quando $q_1=-q_2$.
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 11 e 15/55
+
+% ---------- IC para a média, sigma^2 desconhecido ----------
+\begin{theorem}[IC para a média — $\sigma^2$ desconhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\sigma^2$ desconhecido. Então
+\begin{equation}
+Q = \frac{\bar{X}-\mu}{S/\sqrt{n}} \sim t_{n-1}
+\end{equation}
+é uma quantidade pivotal, e o menor intervalo com $100\gamma\%$ de confiança para $\mu$ é
+\begin{equation}
+\left[\bar{X}-t_{n-1,(1+\gamma)/2}\frac{S}{\sqrt{n}},\ \bar{X}+t_{n-1,(1+\gamma)/2}\frac{S}{\sqrt{n}}\right],
+\end{equation}
+em que $t_{n-1,(1+\gamma)/2}$ é tal que $\P(T\leq t_{n-1,(1+\gamma)/2})=(1+\gamma)/2$, para $T\sim t_{n-1}$.
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 19-21 e 25/55
+
+% ---------- IC para a variância, mu desconhecido ----------
+\begin{theorem}[IC para a variância — $\mu$ desconhecido]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população $X\sim\normdist{\mu,\sigma^2}$, com $\mu$ desconhecido. Então
+\begin{equation}
+Q = \frac{(n-1)S^2}{\sigma^2} \sim \chidist{n-1}
+\end{equation}
+é uma quantidade pivotal, e
+\begin{equation}
+\left[\frac{(n-1)S^2}{q_2},\ \frac{(n-1)S^2}{q_1}\right]
+\end{equation}
+é um intervalo com $100\gamma\%$ de confiança para $\sigma^2$, em que $q_1$ e $q_2$ satisfazem $\P(q_1\leq Q\leq q_2)=\gamma$.
+\begin{outline}
+	\1 Uma escolha usual (\underline{intervalo com caudas iguais}) é tomar $q_1$ e $q_2$ tais que $\P(Q\leq q_1)=\P(Q\geq q_2)=(1-\gamma)/2$, mas esse não é o intervalo de comprimento mínimo.
+	\1 O intervalo de comprimento mínimo é obtido sujeitando-se $q_1$ e $q_2$ à condição adicional $q_1^2f_Q(q_1)=q_2^2f_Q(q_2)$, cuja solução é obtida numericamente.
+\end{outline}
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 26-31/55
+
+% ---------- IC para a diferença de médias, variâncias iguais e desconhecidas ----------
+\begin{theorem}[IC para a diferença de médias — $\sigma_1^2=\sigma_2^2=\sigma^2$ desconhecido]
+Sejam $X_{11},X_{12},\ldots,X_{1n_1}$ uma A.A. de uma população $X_1\sim\normdist{\mu_1,\sigma_1^2}$ e sejam $X_{21},X_{22},\ldots,X_{2n_2}$ uma A.A. de uma população $X_2\sim\normdist{\mu_2,\sigma_2^2}$, ambas as amostras independentes, com $\sigma_1^2=\sigma_2^2=\sigma^2$ desconhecido. Sejam
+\begin{equation}
+S_p^2 = \frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2}.
+\end{equation}
+Então
+\begin{equation}
+Q = \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)S_p^2}} \sim t_{n_1+n_2-2}
+\end{equation}
+é uma quantidade pivotal, e
+\begin{equation}
+\left[(\bar{X}_1-\bar{X}_2)-q\sqrt{\left(\frac{1}{n_1}+\frac{1}{n_2}\right)S_p^2},\ (\bar{X}_1-\bar{X}_2)+q\sqrt{\left(\frac{1}{n_1}+\frac{1}{n_2}\right)S_p^2}\right]
+\end{equation}
+é um intervalo com $100\gamma\%$ de confiança para $\mu_1-\mu_2$, em que $q=t_{n_1+n_2-2,(1+\gamma)/2}$.
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 32-37/55
+
+% ---------- IC para a diferença de médias, amostras pareadas ----------
+\begin{theorem}[IC para a diferença de médias — amostras pareadas, $\sigma_D^2$ desconhecida]
+Sejam $(X_{11},X_{12}),(X_{21},X_{22}),\ldots,(X_{n1},X_{n2})$ uma A.A. oriunda de uma população normal bivariada com parâmetros $\E(X_1)=\mu_1$, $\E(X_2)=\mu_2$, $\Var(X_1)=\sigma_1^2$, $\Var(X_2)=\sigma_2^2$ e $\rho=\operatorname{Cor}(X_1,X_2)$. Sejam $D_i=X_{i1}-X_{i2}$, $i=1,2,\ldots,n$, com $D_i\sim\normdist{\mu_D,\sigma_D^2}$, em que $\mu_D=\mu_1-\mu_2$ e $\sigma_D^2=\sigma_1^2+\sigma_2^2-2\operatorname{Cov}(X_{i1},X_{i2})$. Então
+\begin{equation}
+Q = \frac{\bar{D}-\mu_D}{S_D/\sqrt{n}} \sim t_{n-1}
+\end{equation}
+é uma quantidade pivotal, e
+\begin{equation}
+\left[\bar{D}-t_{n-1,(1+\gamma)/2}\frac{S_D}{\sqrt{n}},\ \bar{D}+t_{n-1,(1+\gamma)/2}\frac{S_D}{\sqrt{n}}\right]
+\end{equation}
+é um intervalo com $100\gamma\%$ de confiança para $\mu_D=\mu_1-\mu_2$.
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 38-40/55
+
+% ---------- Existência de quantidade pivotal (caso geral) ----------
+\begin{theorem}[Existência de quantidade pivotal]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população com f.d.p. $f(x\mid\theta)$ e f.d.a. contínua $F(x\mid\theta)$. Então
+\begin{equation}
+Q = -\sum_{i=1}^n \log F(X_i\mid\theta) \sim \operatorname{gama}(n,1)
+\end{equation}
+é uma quantidade pivotal, equivalente a
+\begin{equation}
+Q' = \prod_{i=1}^n F(X_i\mid\theta).
+\end{equation}
+Ou seja, sempre que a amostra vier de uma população com f.d.a. contínua, há uma quantidade pivotal.
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 42-45/55
+
+% ---------- Observações 4 e 5 (caso geral) ----------
+\begin{note}
+\begin{outline}
+	\1 Embora seja possível determinar uma quantidade pivotal sempre que uma amostra for oriunda de uma população com f.d.a. contínua, não há garantias de que seja possível determinar um IC a partir dela. Em outras palavras, pode ser impossível ``pivotar'' essa quantidade.
+	\1 Se $F(x\mid\theta)$ for uma função monótona em $\theta$ para cada $x$ fixado, então $\prod_{i=1}^n F(X_i\mid\theta)$ também será. Essa é uma condição suficiente para que seja possível determinar intervalos de confiança.
+\end{outline}
+\end{note}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 46/55
+
+% ---------- Famílias de locação-escala ----------
+\begin{note}
+Se $\theta$ for um parâmetro de locação, então a distribuição de $X_i-\theta$ não depende de $\theta$; exemplos de quantidade pivotal são $\sum_{i=1}^n X_i-n\theta$, $\bar{X}-\theta$, $X_{(k)}-\theta$, $\dfrac{X_{(1)}+X_{(n)}}{2}-\theta$, etc.
+
+Se $\theta$ for um parâmetro de escala, a distribuição de $X_i/\theta$ não depende de $\theta$; exemplos de quantidade pivotal são $\sum_{i=1}^n X_i/\theta$, $X_{(k)}/\theta$, etc.
+\end{note}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 48/55
+
+% ---------- Distribuição assintótica de EMV's ----------
+\begin{theorem}[Distribuição assintótica de EMV's]
+Sejam $X_1,X_2,\ldots,X_n$ uma A.A. oriunda de uma população com f.d.a. $F(x\mid\theta)$. Denotemos por $\hat{\theta}_n$ o EMV de $\theta$. Sob certas condições de regularidade,
+\begin{equation}
+\frac{\hat{\theta}_n-\theta}{\sqrt{\sigma_n^2(\theta)}} \toD \normdist{0,1},
+\end{equation}
+quando $n\to\infty$, em que $1/\sigma_n^2(\theta)=I_n(\theta)$ corresponde à informação de Fisher, ou seja,
+\begin{equation}
+I_n(\theta) = n\E_\theta\left\{\left[\frac{\partial}{\partial\theta}\log f(X\mid\theta)\right]^2\right\} = -n\E_\theta\left[\frac{\partial^2}{\partial\theta^2}\log f(X\mid\theta)\right].
+\end{equation}
+\end{theorem}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 51/55
+
+% ---------- IC's assintóticos para grandes amostras ----------
+\begin{note}
+Seja $\hat{\theta}_n$ um estimador tal que
+\begin{equation}
+Q_n = \frac{\hat{\theta}_n-\theta}{\sigma_n(\theta)} \toD \normdist{0,1},
+\end{equation}
+quando $n\to\infty$, em que $\sigma_n(\theta)$ é uma função de $\theta$ que depende de $n$. Então $Q_n$ pode ser tratada como uma quantidade pivotal aproximada, e um IC com um nível de aproximadamente $100\gamma\%$ de confiança pode ser determinado invertendo
+\begin{equation}
+-z_{(1+\gamma)/2} \leq Q_n \leq z_{(1+\gamma)/2},
+\end{equation}
+em que $\P(Z\leq z_{(1+\gamma)/2})=(1+\gamma)/2$, desde que a quantidade pivotal $Q_n$ possa ser ``pivotada'' na desigualdade acima.
+\end{note}
+% Correspondência: 8 - Estimação Intervalar.pdf, p. 52-53/55

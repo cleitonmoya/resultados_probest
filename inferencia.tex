@@ -35,16 +35,7 @@
 	\]
 \end{theorem}
 
-\begin{theorem}[Qui-quadrado]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 Se $Z \sim \normdist{0,1}$, então $Z^2 \sim \chidist{1}$;
-		
-		\1 Se $X_1, X_2, \ldots, X_n$ são v.a.'s independentes tais que $X_i \sim \chidist{r_i}$, então $\sum_{i=1}^{n} X_i \sim \chidist{r}$, em que $r = \sum_{i=1}^{n} r_i$.
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}[Distribuição normal]
+\begin{theorem}[A.A. da Normal]
 	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. de uma população com distribuição $\normdist{\mu, \sigma^2}$. Então,
 	\begin{outline}[enumerate]
 		\1 $\bar{X}$ e $S^2$ são independentes;
@@ -55,7 +46,7 @@
 	\end{outline}
 \end{theorem}
 
-\begin{theorem}[t-Student]
+\begin{theorem}[A.A. da t-Student]
 	Sejam $X_1, X_2, \ldots, X_n$ uma A.A. oriunda de uma população $\normdist{\mu, \sigma^2}$. Então
 	\[
 	\frac{\bar{X} - \mu}{S/\sqrt{n}} \sim \tdist{n-1}.
@@ -68,21 +59,7 @@
 	\end{note}
 \end{theorem}
 
-\begin{theorem}[Propriedades da distribuição $F$]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 Se $X \sim F_{p,q}$, então $1/X \sim F_{q,p}$ (a recíproca de uma $F$ também tem distribuição $F$);
-		
-		\1 Se $X \sim \tdist{q}$, então $X^2 \sim F_{1,q}$;
-		
-		\1 Se $X \sim F_{p,q}$, então
-		\[
-		\frac{(p/q)X}{1 + (p/q)X} \sim \betadist{\frac{p}{2}, \frac{q}{2}}.
-		\]
-	\end{outline}
-\end{theorem}
-
-\begin{theorem}
+\begin{theorem}[Razão de A.A. da Normal]
 	Sejam $X_1, X_2, \ldots, X_n$ e $Y_1, Y_2, \ldots, Y_m$ duas A.A.'s oriundas de populações $\normdist{\mu_X, \sigma_X^2}$ e $\normdist{\mu_Y, \sigma_Y^2}$, respectivamente. Então
 	\[
 	\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2} \sim F_{n-1, m-1}.
@@ -411,3 +388,12 @@
 		O teorema acima diz que, na presença de estatísticas suficientes e completas, se pudermos determinar qualquer estimador não viesado de $\tau(\theta)$, podemos determinar o melhor ENV. Basicamente, se $T$ for uma estatística suficiente e completa para $\theta$ e $h(\v{X})$ um ENV de $\tau(\theta)$, então $\phi(T) = \E[h(\v{X}) | T]$ será o melhor estimador não viesado de $\tau(\theta)$.
 	\end{note}
 \end{theorem}
+
+\section{Estimação intervalar}
+\input{inferencia_estimacao_intervalar}
+
+\section{Testes de hipóteses I}
+\input{inferencia_testes_hipotese_I}
+
+\section{Testes de hipóteses II}
+\input{inferencia_testes_hipotese_II}
