@@ -134,6 +134,74 @@
 	\end{outline}
 \end{theorem}
 
+\begin{theorem}[Multiplicação matricial]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \m A \m B = \m A \begin{bmatrix}
+			\v b_1 & \v b_2 & \cdots & \v b_n
+		\end{bmatrix}
+		=  
+		\begin{bmatrix}
+			\m A \v b_1 & \m A \v b_2 & \cdots & \m A \v b_n
+		\end{bmatrix}
+		\)
+		
+		\1 \( \m A \m B =  \begin{bmatrix}
+			\v a_1 \\ \v a_2 \\ \vdots \\ \v a_n
+		\end{bmatrix} \m B
+		=  
+		\begin{bmatrix}
+			\v a_1 \m B \\ \v a_2 \m B \\ \vdots \\ \v a_n \m B
+		\end{bmatrix}
+		\)
+	\end{outline}
+\end{theorem}
+
+\begin{definition}[Produto de Kronecker]
+	Sejam $\m{A}$ uma matriz $m \times n$ e $\m{B}$ uma matriz $p \times q$. O produto de Kronecker entre $\m{A}$ e $\m{B}$, denotado $\m{A} \otimes \m{B}$, é a matriz $mp \times nq$ definida em blocos por
+	\[
+	\m{A} \otimes \m{B} =
+	\begin{pmatrix}
+		a_{11}\m{B} & a_{12}\m{B} & \cdots & a_{1n}\m{B} \\
+		a_{21}\m{B} & a_{22}\m{B} & \cdots & a_{2n}\m{B} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{m1}\m{B} & a_{m2}\m{B} & \cdots & a_{mn}\m{B}
+	\end{pmatrix},
+	\]
+	em que $a_{ij}$ denota o elemento $(i,j)$ de $\m{A}$, $i=1,\ldots,m$, $j=1,\ldots,n$.
+	\begin{note}
+		\leavevmode
+		\begin{outline}[enumerate]
+			\1 \textbf{Interpretação prática (o "molde"):} pense em $\m{A}$ como um molde $m \times n$. Cada casa $(i,j)$ do molde é substituída por uma cópia inteira de $\m{B}$ ($p\times q$), escalada pelo número $a_{ij}$ que estava naquela casa. Onde $\m{A}$ tem um $0$, o bloco correspondente é a matriz nula $p\times q$.
+			\1 \textbf{Exemplo (matriz bloco-diagonal):} tomando $\m{A} = \m{I}_n$ (identidade $n\times n$) e $\m{B} = \m{\Sigma}_0$ (matriz $p \times p$), a regra acima dá $1\cdot\m{\Sigma}_0$ na diagonal e $0\cdot\m{\Sigma}_0$ fora dela, de modo que
+			\[
+			\m{I}_n \otimes \m{\Sigma}_0 =
+			\begin{pmatrix}
+				\m{\Sigma}_0 & & \\
+				& \ddots & \\
+				& & \m{\Sigma}_0
+			\end{pmatrix}_{np \times np},
+			\]
+			isto é, a matriz bloco-diagonal com $n$ cópias de $\m{\Sigma}_0$ na diagonal.
+		\end{outline}
+	\end{note}
+\end{definition}
+
+\begin{theorem}[Propriedades do produto de Kronecker]
+	Sejam $\m A, \m A^\star, \m C$ e $\m B, \m B^\star, \m D$ matrizes com dimensões adequadas em cada item e $k \in \Re$. Então:
+	\begin{outline}[enumerate]
+		\1 $\m A \otimes (\m B + \m C) = \m A \otimes \m B + \m A \otimes \m C$ e $(\m B + \m C) \otimes \m A = \m B \otimes \m A + \m C \otimes \m A$ (Distributividade)
+		\1 $(k\m A) \otimes \m B = \m A \otimes (k\m B) = k(\m A \otimes \m B)$ (Homogeneidade)
+		\1 $(\m A \otimes \m B) \otimes \m C = \m A \otimes (\m B \otimes \m C)$ (Associatividade)
+		\1 $\m A \otimes \m{0} = \m{0} \otimes \m A = \m{0}$
+		\1 $(\m A \otimes \m B)(\m C \otimes \m D) = (\m A \m C)\otimes(\m B \m D)$ (Produto misto)
+		\1 Se $\m A$ e $\m B$ são inversíveis, $(\m A \otimes \m B)\inv = \m A\inv \otimes \m B\inv$
+		\1 $(\m A \otimes \m B)\T = \m A\T \otimes \m B\T$
+		\1 Se $\m A$ é $n\times n$ e $\m B$ é $m \times m$, então $|\m A \otimes \m B| = |\m A|^m |\m B|^n$, ou seja, $\det(\m A \otimes \m B) = (\det \m A)^m (\det \m B)^n$
+		\1 Nas mesmas condições do item anterior, $\tr(\m A \otimes \m B) = \tr(\m A)\,\tr(\m B)$
+	\end{outline}
+\end{theorem}
+
 \begin{theorem}[Propriedades de matrizes simétricas]
 	\leavevmode
 	\begin{outline}[enumerate]
@@ -172,7 +240,9 @@
 		\leavevmode
 	\begin{outline}[enumerate]
 		\1 $\tr(\m{A}\m{B}) = \tr(\m{B}\m{A})$
+		\1 \( \tr(\m A \m B \m C) = \tr (\m B \m C \m A) = \tr (\m C \m A \m B ) \)
 		\1 \( \tr(\m{A} + \m{B}) = \tr(\m{A}) + \tr(\m{B}) \)
+		\1 \( \tr(k \m A) = k \tr (\m A) \)
 	\end{outline}
 \end{theorem}
 
@@ -284,6 +354,26 @@
 	onde $k_1, k_2, \ldots, k_r$ são escalares chamados coeficientes da combinação linear.
 \end{definition}
 
+\begin{definition}[Complemento ortogonal]
+	Seja $W$ um subespaço de $\Re^n$. Então, o conjunto de vetores em $\Re^n$ que são ortogonais a todos vetores em $W$ é chamado de \underline{complemento ortogonal} de $W$ e é denotado por $W^\perp$.
+\end{definition}
+
+\begin{theorem}[Propriedades do complemento ortogonal] Seja $W$ um subespaço de $\Re^n$. Então,
+	\begin{outline}[enumerate]
+		\1 $W^\perp$ é um subespaço de $\Re^n$.
+		\1 O único vetor comum a $W$ e $W^\perp$ é $\v 0$.
+		\1 O complemento ortogonal de $W^\perp$  é $W$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem} Seja $\m A_{m \times n}$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 O espaço-nulo de $\m A$ e o espaço-linha de $\m A$ são complementos ortogonais em $\Re^n$.
+		\1 O espaço-nulo de $\m A\T$ e o espaço-coluna de $\m A$ são complementos ortogonais em $\Re^m$.
+	\end{outline}
+\end{theorem}
+
 \begin{theorem} Seja $S = \{ \v w_1, \ldots, \v w_k \}$ um conjunto não vazio de vetores em $V$. Então:
 	\begin{outline}[enumerate]
 		\1 O conjunto $W$ de todas as possíveis combinações lineares de vetores em $S$ é um subespaço de $V$.
@@ -369,6 +459,33 @@
 	\end{equation}
 \end{theorem}
 
+
+\subsection{Espaços linha, coluna e nulo}
+
+\begin{definition}[Espaços linha, coluna e nulo]
+	Seja $\m A_{m\times n}$.
+	\begin{outline}[enumerate]
+		\1 O subespaço de $\Re^n$ gerado pelos vetores linha de $\m A$ é chamado de \underline{espaço-linha} de $\m A$.
+		\1 O subespaço de $\Re^m$ gerado pelos vetores coluna de $\m A$ é chamado de \underline{espaço-coluna} de $\m A$. 
+		\1 O espaço-solução do sistema homogêneo $\m A \v x = \v 0$, o qual é um subespaço de $\Re^n$, é chamado de espaço-nulo de $\m A$.
+	\end{outline}
+\end{definition}
+
+\begin{theorem}
+	Um sistema de equações lineares $\m A \v x = \v b$ é consistente se e somente se $\v b$ está no espaço coluna de $\m A$.
+\end{theorem}
+
+\begin{theorem}[Espaços nulo, linha e coluna]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Operações elementares em linhas não alteram o espaço-nulo da matriz;
+		\1 Operações elementares em linhas não alteram o espaço-linha da matriz. \uline{Porém, podem alterar o espaço-coluna};
+		\1 Se $\m{A}$ está na forma escalonada por linhas (\textit{row echelon form}), então os vetores linha com líderes $1$ formam uma base para o espaço-linha de $\m{A}$, e os vetores coluna com os líderes $1$ formam uma base para o espaço-coluna de $\m{A}$; 
+		\1 Sejam $\m{A}$ e $\m{B}$ matrizes equivalentes por linhas. Então:
+		\2 Um dado conjunto de vetores colunas de $\m{A}$ é LI $\iff$ os vetores colunas correspondentes em $\m{B}$ são LI.
+		\2 Um dado conjunto de vetores colunas de $\m{A}$ forma uma base para oe espaço-coluna de $\m{A}$ $\iff$ os vetores colunas correspondentes em $\m{B}$ formam uma base para o espaço-coluna de $\m{B}$.
+	\end{outline}
+\end{theorem}
 
 \section{Espaços com produto interno}
 
@@ -458,18 +575,6 @@
 		\1 Nulidade de $\m{A}$ ($\nul(\m{A})$): dimensão do espaço-nulo de $\m{A}$.
 	\end{outline}
 \end{definition}
-
-\begin{theorem}[Espaços nulo, linha e coluna]
-	\leavevmode
-	\begin{outline}[enumerate]
-		\1 Operações elementares em linhas não alteram o espaço-nulo da matriz;
-		\1 Operações elementares em linhas não alteram o espaço-linha da matriz. \uline{Porém, podem alterar o espaço-coluna};
-		\1 Se $\m{A}$ está na forma escalonada por linhas (\textit{row echelon form}), então os vetores linha com líderes $1$ formam uma base para o espaço-linha de $\m{A}$, e os vetores coluna com os líderes $1$ formam uma base para o espaço-coluna de $\m{A}$; 
-		\1 Sejam $\m{A}$ e $\m{B}$ matrizes equivalentes por linhas. Então:
-			\2 Um dado conjunto de vetores colunas de $\m{A}$ é LI $\iff$ os vetores colunas correspondentes em $\m{B}$ são LI.
-			\2 Um dado conjunto de vetores colunas de $\m{A}$ forma uma base para oe espaço-coluna de $\m{A}$ $\iff$ os vetores colunas correspondentes em $\m{B}$ formam uma base para o espaço-coluna de $\m{B}$.
-	\end{outline}
-\end{theorem}
 
 \begin{theorem}[Propriedades do posto e nulidade] Seja $\m{A}_{m\times n}$
 	\leavevmode
@@ -632,9 +737,9 @@
 	\leavevmode
 	\begin{outline}[enumerate]
 		\1 Se $\m{A}, \m{B}$ são matrizes quadradas, dizemos que $\m{B}$ é \uline{ortogonalmente semelhante} a $\m{A}$ se existe uma matriz ortogonal $\m{P}$ tal que $\m{B}=\m{P}\T\m{A}\m{P}$.
-		\1 Se $\m{B}$ é ortogonalmente semelhante a alguma matriz diagonal $\m{D}$, ou seja,
+		\1 Se $\m{A}$ é ortogonalmente semelhante a alguma matriz diagonal $\m{D}$, ou seja,
 		\begin{equation}
-			\m{P}\T\m{A}\m{P} = \m{D},
+			\m{D} = \m{P}\T\m{A}\m{P} \quad \text{e} \quad \m{A} = \m P \m D \m P\T
 		\end{equation}
 		% 
 		dizemos que $\m{A}$ é ortogonalmente diagonalizável e que $\m{P}$ diagnoliza (ortogonalmente) $\m{A}$. 
@@ -663,7 +768,9 @@
 	\end{outline} 
 \end{theorem}
 
+
 \section{Formas lineares e quadráticas}
+
 
 
 \begin{definition}[Formas lineares e quadráticas]
@@ -678,63 +785,112 @@
 	\begin{note}
 		\leavevmode
 		\begin{outline}[enumerate]
-			\1 Se $\m{A}$ é a diagonal, a forma quadrática não possui termos cruzados.
+			\1 Se $\m{A}$ é a diagonal, então a forma quadrática não possui termos cruzados.
 		\end{outline}
 		conteúdo...
 	\end{note}
 \end{definition}
 
 
-\begin{definition}[Classificação de formas quadráticas e matrizes] Uma forma quadrática $\v{x}\T\m{A}\v{x}$ e a respectiva matriz $\m{A}$ simétrica é dita:
+
+\begin{definition}[Classificação de formas quadráticas e matrizes]
+	Sejam $\m{A}_{n\times n}$ uma matriz simétrica e $\v{x}\T\m{A}\v{x}$ a forma quadrática associada. Diz-se que $\v{x}\T\m{A}\v{x}$ (equivalentemente, $\m{A}$) é:
 	\begin{outline}[enumerate]
-		\1 Positiva definida: se $\v{x}\T\m{A}\v{x} > 0$ para todo $\v{x} \neq 0$ 
-		\1 Positiva semidefinida: se $\v{x}\T\m{A}\v{x} \geq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
-		\1 Negativa definida: se $\v{x}\T\m{A}\v{x} < 0$ para todo $\v{x} \neq 0$ 
-		\1 Negativa semidefinida: se $\v{x}\T\m{A}\v{x} \leq 0$ para todo $\v{x} \neq 0$ e  $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq 0$
-		\1 Indefinida: $\v{x}\T\m{A}\v{x}$ assume valores positivos e negativos.
+		\1 Positiva definida: se $\v{x}\T\m{A}\v{x} > 0$ para todo $\v{x} \neq \v{0}$.
+		\1 Positiva semidefinida: se $\v{x}\T\m{A}\v{x} \geq 0$ para todo $\v{x} \neq \v{0}$ e $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq \v{0}$.
+		\1 Negativa definida: se $\v{x}\T\m{A}\v{x} < 0$ para todo $\v{x} \neq \v{0}$.
+		\1 Negativa semidefinida: se $\v{x}\T\m{A}\v{x} \leq 0$ para todo $\v{x} \neq \v{0}$ e $\v{x}\T\m{A}\v{x} = 0$ para pelo menos um $\v{x} \neq \v{0}$.
+		\1 Indefinida: se $\v{x}\T\m{A}\v{x}$ assume valores positivos e negativos.
 	\end{outline}
 \end{definition}
 
-\begin{theorem} 
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Itens 1--2: Slide 20/31, arquivo \texttt{1\_Notação\_Matricial.pdf}.
+		\1 Itens 3--4 (versão para a forma quadrática): extensão direta, pelo sinal, da definição de $\m{A}$ negativa (semi)definida via $-\m{A}$, dada no Slide 16/31 do arquivo \texttt{1\_Notação\_Matricial.pdf}.
+		\1 Item 5 (indefinida): não consta nos slides; acréscimo a partir de Anton, \textit{Elementary Linear Algebra}.
+	\end{outline}
+\end{note}
+
+\begin{theorem}[Caracterização de matriz positiva definida]
+	Seja $\m{A}_{n\times n}$ simétrica. As seguintes afirmações são equivalentes:
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é positiva definida.
+		\1 $\m{A} = \m{P}\T\m{P}$ para alguma matriz $\m{P}$ não singular.
+		\1 Todas as raízes características de $\m{A}$ são positivas.
+		\1 $a_{11}>0,\ \deter{\begin{smallmatrix} a_{11} & a_{12}\\ a_{21} & a_{22}\end{smallmatrix}} > 0,\ \ldots,\ \deter{\m{A}} > 0$ (critério de Sylvester).
+	\end{outline}
+\end{theorem}
+
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Slide 14/31, arquivo \texttt{1\_Notação\_Matricial.pdf}.
+	\end{outline}
+\end{note}
+
+\begin{theorem}[Caracterização de matriz positiva semidefinida]
+	Seja $\m{A}_{n\times n}$ simétrica. As seguintes afirmações são equivalentes:
+	\begin{outline}[enumerate]
+		\1 $\m{A}$ é positiva semidefinida.
+		\1 Existe $\m{B}_{n\times n}$ com $\pos(\m{B}) < n$ tal que $\m{B}\T\m{B} = \m{A}$.
+		\1 As raízes características de $\m{A}$ são não negativas, com no mínimo uma igual a zero.
+	\end{outline}
+\end{theorem}
+
+\begin{note}
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Slide 15/31, arquivo \texttt{1\_Notação\_Matricial.pdf}.
+	\end{outline}
+\end{note}
+
+\begin{theorem}[Consequências da classificação]
 	Seja $\m{A}_{n\times n}$ simétrica.
 	\begin{outline}[enumerate]
-		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é positiva definida $\iff$ todos os autovalores de $\m{A}$ são positivos.
-		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é negativa definida $\iff$ todos os autovalores de $\m{A}$ são negativos.
-		\1 $\v{x}\T\m{A}\v{x}$ ($\m{A}$) é indefinido $\iff$ $\m{A}$ tem pelo menos um autovalor positivo e pelo menos um autovalor negativo.
+		\1 Se $\m{A}$ é positiva definida, então $\pos(\m{A})=n$, $a_{ii}>0$ para todo $i=1,\ldots,n$, e $\m{P}\T\m{A}\m{P}$ é positiva definida para toda matriz $\m{P}_{n\times p}$ não singular.
+		\1 Se $\m{A}$ é positiva semidefinida, então $\pos(\m{A})<n$, $a_{ii}\geq0$ para todo $i=1,\ldots,n$, e $\m{P}\T\m{A}\m{P}$ é positiva semidefinida para toda matriz $\m{P}_{n\times p}$.
 	\end{outline}
 \end{theorem}
 
-\begin{theorem} 
-	Seja $\m{A}_{n\times n}$ simétrica. As seguintes afirmações são equivalentes.
+\begin{note}
+	\leavevmode
 	\begin{outline}[enumerate]
-		\1 $\m{A}$ é positiva definida 
-		\1 Todos os autovalores de $\m{A}$ são positivos.
-		\1 Os determinantes de cada submatriz da diagonal principal são positivos (critério de Sylvester).
+		\1 Slides 14/31 e 15/31, arquivo \texttt{1\_Notação\_Matricial.pdf}.
+	\end{outline}
+\end{note}
+
+\begin{theorem}[Propriedades de $\m{A}\T\m{A}$]
+	Seja $\m{A}_{m\times n}$. Então:
+	\begin{outline}[enumerate]
+		\1 $\ker(\m{A}) = \ker(\m{A}\T\m{A})$; em particular, $\pos(\m{A}\T\m{A}) = \pos(\m{A})$.
+		\1 $\m{A}\T\m{A}$ é não negativa, isto é, $\v{x}\T\m{A}\T\m{A}\v{x} \geq 0$ para todo $\v{x}\in\Re^n$.
+		\1 $\m{A}\T\m{A}$ é ortogonalmente diagonalizável, ou seja, existe $\m{P}$ ortogonal tal que
+		\[
+		\m{P}\T\m{A}\T\m{A}\m{P} = \m{D},
+		\]
+		em que $\m{D} = \diag(\lambda_1,\ldots,\lambda_n)$ e $\lambda_1\geq\cdots\geq\lambda_n\geq0$ são as raízes características de $\m{A}\T\m{A}$.
+		\1 $\m{A}\T\m{A}$ é positiva definida se, e somente se, $\pos(\m{A}) = n$ (posto completo), equivalentemente, se, e somente se, as colunas de $\m{A}$ são linearmente independentes. Caso contrário (isto é, se $\pos(\m{A})<n$), $\m{A}\T\m{A}$ é positiva semidefinida no sentido estrito da definição acima.
+		\1 $\m{A}\T\m{A}$ é invertível se, e somente se, $\pos(\m{A}) = n$; nesse caso, $\lambda_i > 0$ para todo $i=1,\ldots,n$.
 	\end{outline}
 \end{theorem}
 
-\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva definida, então:
+\begin{note}
+	\leavevmode
 	\begin{outline}[enumerate]
-		\1 $\pos(\m{A})=n$
-		\1 $a_{ii}>0$ para todo $i=1,\ldots,n$
-		\1 $\m{P}\T\m{A}\m{P}$ é positiva definida para toda matriz $\m{P}_{n \times p}$
+		\1 Este teorema não consta nos slides; acréscimo a partir de Anton, \textit{Elementary Linear Algebra}. O item 4 foi reformulado em relação ao seu rascunho original para eliminar a inconsistência entre "positiva semidefinida" (afirmada incondicionalmente) e "positiva definida se, e somente se, posto completo".
 	\end{outline}
-\end{theorem}
+\end{note}
 
-\begin{theorem} Seja $\m{A}_{n\times n}$ simétrica. Se $\m{A}$ é positiva semidefinida, então:
-	\begin{outline}[enumerate]
-		\1 $\pos(\m{A})<n$
-		\1 $a_{ii}\geq0$ para todo $i=1,\ldots,n$
-		\1 $\m{P}\T\m{A}\m{P}$ é positiva semidefinida para toda matriz $\m{P}_{n \times p}$
-	\end{outline}
-\end{theorem}
 
-\begin{theorem} 
-	Seja $\m{A}_{m \times n}$. Então, 
-	\begin{outline}[enumerate]
-		\1 $\m{A}\T\m{A}$ é positiva semidefinida. 
-		\1 $\m{A}\T\m{A}$ é positiva se tem posto-coluna completo, ou seja, $\pos(\m{A})$. 
-	\end{outline}
+\begin{theorem}[Teorema dos Eixos Principais]
+	Seja $\m{A}_{n \times n}$ simétrica. Etnão, existe uma mudança de variável ortogonal que transforma a forma quadrática $\v{x}\T \m A \v x$ na forma quadrática $\v y\T \m D \v y$ sem termos de produto cruzado. De forma específica, se $\m P$ diagonaliza ortogonalmente $\m A$, então se fizermos $\v x = \m P \v y$ em $\v{x}\T \m A \v x$, temos
+	\begin{equation}
+		\v{x}\T \m A \v x = \v y\T \m D \v y = \lambda_1 y_1^2 + \lambda_2 y_2^2  + \cdots + \lambda_n y_n^2 
+	\end{equation}
+	%
+	onde $\lambda_1, \lambda_2, \ldots, \lambda_n$ são os autovalores de $\m A$ correspondentes aos autovetores que formam as colunas de $\m P$.
 \end{theorem}
 
 
