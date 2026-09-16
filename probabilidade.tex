@@ -245,7 +245,15 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 \end{theorem}
 
 
-\section{Probabilidade e independência condicional}
+\section{Probabilidade e Independência}
+
+\begin{theorem}[Independência]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( X_1 \indep X_2 \implies \Cov(X_1, X_2)=0 \)
+		\1 Sejam $X_1, X_2$ normais. \( X_1 \indep X_2 \iff \Cov(X_1, X_2)=0  \)
+	\end{outline}
+\end{theorem}
 
 \begin{theorem}[Probabilidades condicionais]
 	\begin{outline}[enumerate]
@@ -274,15 +282,18 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 \end{theorem}
 
 
-\section{Esperança, variância e covariância}
+\section{Esperança}
 
 \begin{theorem}[Propriedades da esperança]
 	\leavevmode
 	\begin{outline}[enumerate]
+		\1 \( \E[X_1+X_2] = \E[X_1] + \E[X_2] \) (\textit{linearidade})
 		\1 \( \E[X] = \E\left[\E(X \mid Y) \right] \) (\textit{lei da esperança total})
-		\1 \( \E[X \mid Z] = \E \left[ \E(X \mid Y, Z) \mid Z \right] \) (\textit{Terre})
+		\1 \( \E[X \mid Z] = \E \left[ \E(X \mid Y, Z) \mid Z \right] \) (\textit{Torre})
 	\end{outline}
 \end{theorem}
+
+\section{Variância}
 
 \begin{theorem}[Propriedades da variância]
 	\leavevmode
@@ -297,7 +308,13 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 		\1 \( \Var[X+Y] = \Var[X]+\Var[Y]+ 2\Cov[X,Y] \)
 		\1 \( \Var[\v{X}+\v{Y}] = \Var[\v{X}]+\Var[\v{Y}] + \Cov[\v{X},\v{Y}] +  \Cov[\v{Y},\v{X}] \)
 		\1 \( \Var[aX+bY] = a^2\Var[X] + b^2\Var[y] + 2ab\Cov[X,Y] \)
+		
+		\1 \( \Var[\m{A}\v{X}+\m{B} \v{Y}] = \m{A}\Var[\v{X}]\m{A}\T + \m{B}\Var[\v{Y}]\m{B}\T + \m{A}\Cov[\v{X},\v{Y}]\m{B}\T + \m{B}\Cov[\v{Y},\v{X}]\m{A}\T \)
+		
 		\1 \( \Var[aX-bY] = a^2\Var[X] + b^2\Var[y] - 2ab\Cov[X,Y] \)
+		
+		\1 \( \Var[\m{A}\v{X} - \m{B} \v{Y}] = \m{A}\Var[\v{X}]\m{A}\T + \m{B}\Var[\v{Y}]\m{B}\T - \m{A}\Cov[\v{X},\v{Y}]\m{B}\T - \m{B}\Cov[\v{Y},\v{X}]\m{A}\T \)
+		
 		\1 \( \begin{aligned}[t] \Var\left(\sum_{i=1}^{n} X_i\right) &= \sum_{i=1}^{n} \Var(X_i) + 2\sum_{\substack{i,j=1\\i<j}}^{n} \Cov(X_i, X_j) \\
 			&= \sum_{i=1}^{n} \Var(X_i) + \sum_{\substack{i,j=1\\i\neq j}}^{n} \Cov(X_i, X_j) \\
 			&= \sum_{i,j=1}^{n} \Cov(X_i, X_j)
@@ -306,6 +323,8 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 		
 	\end{outline}
 \end{theorem}
+
+\section{Covariância}
 
 \begin{theorem}[Propriedades da covariância]
 	\leavevmode
@@ -327,13 +346,8 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 		\1 \( \Cov(X, a) = 0 \)
 		\1 \(\Cov(aX+b, cY+d) = ac\Cov(X, Y)\ \)
 		\1 \(\Cov(\m{A}\v{X}+\v{b}, \m{C}\v{Y}+\v{d}) = \m{A}\Cov(\v{X}, \v{Y})\m{C}\T \)
-		\1 \( \Cov(aX + bY, cW + dV) = ac\,\Cov(X, W) + ad\,\Cov(X, V) + bc\,\Cov(Y, W) + bd\,\Cov(Y, V) \)
-		\1 \( \Cov(aX_1 + bX_2, cY) = ac\,\Cov(X_1, Y) + bc\,\Cov(X_2, Y) \)
-		\1 \( \Cov(\m{A}\v{X}_1 + \m{B}\v{X}_2, \m{C}\v{Y}) = \m{A}\Cov(\v{X}_1, \v{Y})\m{C}\T + \m{B}\Cov(\v{X}_2, \v{Y})\m{C}\T \)
-		\1 \(|\Cov(X, Y)| \leq \sqrt{\sigma^2(X)\sigma^2(Y)}\)
+		\1 \( \Cov(aX + bY, cW + dV) = ac\Cov(X, W) + ad\Cov(X, V) + bc\Cov(Y, W) + bd\Cov(Y, V) \)
 		
-		\1 \( \rho_{X,Y} = \frac{\Cov(X, Y)}{\sigma_X \sigma_Y} \)
-		\1 \( \Cov(\m{A}\v{U}, \m{B}\v{V}) = \m{A}\Cov(\v{U}, \v{V})\m{B}\T \)
 		\1 \( \begin{aligned}[t] 
 			\Cov(\m{A}\v{X}+ \m{B}\v{Y}, \m{C}\v{W} + \m{D}\v{V}) 
 			&= \m{A}\Cov(\v{X}, \v{W})\m{C}\T \\
@@ -341,6 +355,14 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 			&+ \m{B}\Cov(\v{Y}, \v{W})\m{C}\T \\
 			&+ \m{B}\Cov(\v{Y}, \v{V})\m{D}\T
 		\end{aligned}\)
+		
+		\1 \( \Cov(aX_1 + bX_2, cY) = ac\,\Cov(X_1, Y) + bc\,\Cov(X_2, Y) \)
+		\1 \( \Cov(\m{A}\v{X}_1 + \m{B}\v{X}_2, \m{C}\v{Y}) = \m{A}\Cov(\v{X}_1, \v{Y})\m{C}\T + \m{B}\Cov(\v{X}_2, \v{Y})\m{C}\T \)
+		\1 \(|\Cov(X, Y)| \leq \sqrt{\sigma^2(X)\sigma^2(Y)}\)
+		
+		\1 \(\displaystyle \rho_{X,Y} = \frac{\Cov(X, Y)}{\sigma_X \sigma_Y} \)
+		\1 \( \Cov(\m{A}\v{U}, \m{B}\v{V}) = \m{A}\Cov(\v{U}, \v{V})\m{B}\T \)
+		
 	\end{outline}
 \end{theorem}
 

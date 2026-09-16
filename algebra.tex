@@ -216,6 +216,7 @@
 \begin{theorem}[Propriedades de matrizes idempotentes]
 	\leavevmode
 	\begin{outline}[enumerate]
+		\1 $\m A$ é idempotente $\implies (\m I-\m A)$ é idempotente 
 		\1 $\m{A}$ é idempotente $\implies$ $\pos(\m{A}) = \tr(\m{A})$
 		\1 $\m{A}-\m{B}$ é idempotente $\implies$ $\pos(\m{A}-\m{B}) = \pos(\m{A}) - \pos(\m{B})$
 	\end{outline}
@@ -243,6 +244,8 @@
 		\1 \( \tr(\m A \m B \m C) = \tr (\m B \m C \m A) = \tr (\m C \m A \m B ) \)
 		\1 \( \tr(\m{A} + \m{B}) = \tr(\m{A}) + \tr(\m{B}) \)
 		\1 \( \tr(k \m A) = k \tr (\m A) \)
+		\1 Seja $\m A_{m \times n}$. Então \( \tr(\m A \m A\T) = \sum_{i=1}^m \sum_{j=1}^n a_{ij}^2 \)
+			\2 Em particular se $A_{n \times n}$ é simétrica, então $\tr(\m A^2) = \tr(\m A \m A\T)$
 	\end{outline}
 \end{theorem}
 

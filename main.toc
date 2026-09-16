@@ -8,8 +8,8 @@
 \contentsline {section}{\numberline {1.5}Espaços com produto interno}{14}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Posto e nulidade}{16}{section.1.6}%
 \contentsline {section}{\numberline {1.7}Autovalores e autovetores}{17}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Semelhança e Diagonalização}{17}{section.1.8}%
-\contentsline {section}{\numberline {1.9}Diagonalização ortogonal}{18}{section.1.9}%
+\contentsline {section}{\numberline {1.8}Semelhança e Diagonalização}{18}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Diagonalização ortogonal}{19}{section.1.9}%
 \contentsline {section}{\numberline {1.10}Formas lineares e quadráticas}{20}{section.1.10}%
 \contentsline {section}{\numberline {1.11}Matrizes em blocos}{22}{section.1.11}%
 \contentsline {section}{\numberline {1.12}Derivadas}{23}{section.1.12}%
@@ -34,10 +34,12 @@
 \contentsline {subsubsection}{F de Fisher-Snedecor $F_{n_1,n_2}$}{29}{section*.17}%
 \contentsline {subsubsection}{F de Fisher-Snedecor não central $F_{n_1,n_2,\lambda }$}{30}{section*.18}%
 \contentsline {subsubsection}{F não central dupla $F_{n_1,n_2,\lambda _1,\lambda _2}$}{30}{section*.19}%
-\contentsline {section}{\numberline {2.2}Probabilidade e independência condicional}{31}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Esperança, variância e covariância}{32}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Transformações}{33}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Vetor aleatório}{35}{section.2.5}%
+\contentsline {section}{\numberline {2.2}Probabilidade e Independência}{31}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Esperança}{32}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Variância}{32}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Covariância}{33}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Transformações}{34}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Vetor aleatório}{35}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Inferência}{38}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Distribuições amostrais}{38}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Estatísticas de ordem}{39}{subsection.3.1.1}%

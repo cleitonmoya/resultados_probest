@@ -146,12 +146,12 @@
 
 
 \begin{theorem} 
-	Seja $\v{X}_{p\times 1} \sim \normdist[p]{\v{\mu}_{p\times 1}, \m{\Sigma}_{p\times p}}$. Então:
+	Seja $\v{X} \sim \normdist[p]{\v{\mu}, \m{\Sigma}}$. Então:
 	\begin{outline}[enumerate]
-		\1 \( \v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1} \sim \chidist{\pos(\m{A}), \frac{1}{2}\v{\mu}\T_{1\times p}\m{A}_{p\times p}\v{\mu}_{p\times 1}}
-		\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p} \) é idempotente.
-		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\m{B}_{q\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{B}_{q\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{q\times p}\)
-		\1 $\v{X}\T_{1\times p}\m{A}_{p\times p}\v{X}_{p\times 1}$ e $\v{X}\T_{1\times p}\m{B}_{p\times p}\v{X}_{p\times 1}$ são independentes \(\iff \m{A}_{p\times p}\m{\Sigma}_{p\times p}\m{B}_{p\times p} = \m{0}_{p\times p}\) ou \(\m{B}_{p\times p}\m{\Sigma}_{p\times p}\m{A}_{p\times p} = \m{0}_{p\times p} \)
+		\1 \( \v{X}\T\m{A}\v{X} \sim \chidist{\pos(\m{A}), \frac{1}{2}\v{\mu}\T\m{A}\v{\mu}}
+		\iff \m{A}\m{\Sigma} \) é idempotente.
+		\1 $\v{X}\T\m{A}\v{X}$ e $\m{B}\v{X}$ são independentes \(\iff \m{B}\m{\Sigma}\m{A} = \m{0}\)
+		\1 $\v{X}\T\m{A}\v{X}$ e $\v{X}\T\m{B}\v{X}$ são independentes \(\iff \m{A}\m{\Sigma}\m{B} = \m{0}\) ou \(\m{B}\m{\Sigma}\m{A} = \m{0} \)
 	\end{outline}
 \end{theorem}
 
