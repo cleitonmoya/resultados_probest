@@ -290,6 +290,11 @@ Obs.: parametrização padrão da função rgamma(N, shape, scale) do R.
 		\1 \( \E[X_1+X_2] = \E[X_1] + \E[X_2] \) (\textit{linearidade})
 		\1 \( \E[X] = \E\left[\E(X \mid Y) \right] \) (\textit{lei da esperança total})
 		\1 \( \E[X \mid Z] = \E \left[ \E(X \mid Y, Z) \mid Z \right] \) (\textit{Torre})
+		\1 \( \E(\m{A}\v{X}\m{B} + \m{C}) = \m{A}\E(\v{X})\m{B}+\m{C}\)
+		\1 \( \E(\m{A}\v{X} + \m{B\v{Y}}) = \m{A}\E(\v{X}) + \m{B}\E(\v{Y}) \)
+		\1 \( \E(XY) = \E(X)\E(Y) + \Cov(X,Y)\)
+		\1 \( X \indep Y \implies \Cov(X,Y)=0 \implies \E(XY) = \E(X)\E(Y) \)
+			\2 Obs..: O recíproco não necessariamente é verdade. 
 	\end{outline}
 \end{theorem}
 

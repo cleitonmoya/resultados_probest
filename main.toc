@@ -53,35 +53,43 @@
 \contentsline {section}{\numberline {4.1}Distribuição normal multivariada}{66}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Distribuições de formas quadráticas}{68}{section.4.2}%
 \contentsline {chapter}{\numberline {5}Regressão}{70}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Inferência Bayesiana}{71}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Probabilidade Avançada}{77}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Teoria de conjuntos}{77}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Funções}{80}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Noções de cardinalidade}{82}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Valor absoluto}{82}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Sequências de números reais}{82}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Sequências de conjuntos}{83}{section.7.6}%
-\contentsline {section}{\numberline {7.7}Classes de Subconjuntos}{84}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Medida}{92}{section.7.8}%
-\contentsline {section}{\numberline {7.9}Probabilidade}{93}{section.7.9}%
-\contentsline {subsection}{\numberline {7.9.1}Convergência}{93}{subsection.7.9.1}%
-\contentsline {section}{\numberline {7.10}Transformações mensuráveis}{93}{section.7.10}%
-\contentsline {section}{\numberline {7.11}Variáveis aleatórias}{95}{section.7.11}%
-\contentsline {section}{\numberline {7.12}Esperança}{97}{section.7.12}%
-\contentsline {subsection}{\numberline {7.12.1}Variável aleatória simples}{97}{subsection.7.12.1}%
-\contentsline {subsection}{\numberline {7.12.2}Variável aleatória não negativa}{98}{subsection.7.12.2}%
-\contentsline {subsection}{\numberline {7.12.3}Variável aleatória integrável}{100}{subsection.7.12.3}%
-\contentsline {section}{\numberline {7.13}Medida de Probabilidade Produto}{101}{section.7.13}%
-\contentsline {subsection}{\numberline {7.13.1}Vetores aleatórios}{101}{subsection.7.13.1}%
-\contentsline {subsection}{\numberline {7.13.2}Medida produto}{102}{subsection.7.13.2}%
-\contentsline {section}{\numberline {7.14}Independência}{104}{section.7.14}%
-\contentsline {subsection}{\numberline {7.14.1}Eventos}{104}{subsection.7.14.1}%
-\contentsline {subsection}{\numberline {7.14.2}Classes de eventos}{104}{subsection.7.14.2}%
-\contentsline {subsection}{\numberline {7.14.3}Variáveis aleatórias}{105}{subsection.7.14.3}%
-\contentsline {subsection}{\numberline {7.14.4}Teoremas}{105}{subsection.7.14.4}%
-\contentsline {section}{\numberline {7.15}Convergência}{106}{section.7.15}%
-\contentsline {subsection}{\numberline {7.15.1}Definições}{106}{subsection.7.15.1}%
-\contentsline {subsection}{\numberline {7.15.2}Teoremas}{107}{subsection.7.15.2}%
-\contentsline {subsection}{\numberline {7.15.3}Desigualdades}{107}{subsection.7.15.3}%
-\contentsline {subsection}{\numberline {7.15.4}Covariância e Variância}{108}{subsection.7.15.4}%
-\contentsline {subsection}{\numberline {7.15.5}Leis dos Grandes Números}{108}{subsection.7.15.5}%
+\contentsline {section}{\numberline {5.1}Modelo Linear Geral}{70}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Caso 1: $\mathbf {\Sigma } = \sigma ^2 \bm {I}_n$ e $\mathbf {X}$ de posto completo}{71}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Testes de hipóteses}{72}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Teste ANOVA}{72}{subsection.5.3.1}%
+\contentsline {subsubsection}{Modelo com intercepto}{72}{section*.20}%
+\contentsline {subsubsection}{Modelo sem intercepto}{73}{section*.21}%
+\contentsline {subsection}{\numberline {5.3.2}Teste da Razão de Verossimilhanças Generalizado}{75}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Regressão linear simples}{76}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Inferência Bayesiana}{77}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Probabilidade Avançada}{83}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Teoria de conjuntos}{83}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Funções}{86}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Noções de cardinalidade}{88}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Valor absoluto}{88}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Sequências de números reais}{88}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Sequências de conjuntos}{89}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Classes de Subconjuntos}{90}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Medida}{98}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Probabilidade}{99}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}Convergência}{99}{subsection.7.9.1}%
+\contentsline {section}{\numberline {7.10}Transformações mensuráveis}{99}{section.7.10}%
+\contentsline {section}{\numberline {7.11}Variáveis aleatórias}{101}{section.7.11}%
+\contentsline {section}{\numberline {7.12}Esperança}{103}{section.7.12}%
+\contentsline {subsection}{\numberline {7.12.1}Variável aleatória simples}{103}{subsection.7.12.1}%
+\contentsline {subsection}{\numberline {7.12.2}Variável aleatória não negativa}{104}{subsection.7.12.2}%
+\contentsline {subsection}{\numberline {7.12.3}Variável aleatória integrável}{106}{subsection.7.12.3}%
+\contentsline {section}{\numberline {7.13}Medida de Probabilidade Produto}{107}{section.7.13}%
+\contentsline {subsection}{\numberline {7.13.1}Vetores aleatórios}{107}{subsection.7.13.1}%
+\contentsline {subsection}{\numberline {7.13.2}Medida produto}{108}{subsection.7.13.2}%
+\contentsline {section}{\numberline {7.14}Independência}{110}{section.7.14}%
+\contentsline {subsection}{\numberline {7.14.1}Eventos}{110}{subsection.7.14.1}%
+\contentsline {subsection}{\numberline {7.14.2}Classes de eventos}{110}{subsection.7.14.2}%
+\contentsline {subsection}{\numberline {7.14.3}Variáveis aleatórias}{111}{subsection.7.14.3}%
+\contentsline {subsection}{\numberline {7.14.4}Teoremas}{111}{subsection.7.14.4}%
+\contentsline {section}{\numberline {7.15}Convergência}{112}{section.7.15}%
+\contentsline {subsection}{\numberline {7.15.1}Definições}{112}{subsection.7.15.1}%
+\contentsline {subsection}{\numberline {7.15.2}Teoremas}{113}{subsection.7.15.2}%
+\contentsline {subsection}{\numberline {7.15.3}Desigualdades}{113}{subsection.7.15.3}%
+\contentsline {subsection}{\numberline {7.15.4}Covariância e Variância}{114}{subsection.7.15.4}%
+\contentsline {subsection}{\numberline {7.15.5}Leis dos Grandes Números}{114}{subsection.7.15.5}%

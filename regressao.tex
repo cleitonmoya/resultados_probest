@@ -1,1 +1,383 @@
 \chapter{Regressão}
+
+\section{Modelo Linear Geral}
+
+\begin{definition}[Modelo Linear Geral]
+	Um modelo linear geral amostral é dado por
+	\begin{equation}
+		Y_i = \beta_0 + \beta_1 x_{1i} \beta_1 x_{2i} + \cdots + \beta_p x_{pi} + \epsilon_i, \quad i=1,\ldots n, \quad n>p+1 
+	\end{equation}
+	\begin{outline}
+		\1 $Y_i$: variável resposta, dependente ou predita (v.a.observável)
+		\1 $x_{ji}$ variáveis regressoras, explicadoras, independentes ou preditoras (não aleatórias) ($j=1,\ldots,p$)
+		\1 $\beta_j$ são os parâmetros ou coeficientes de regressão
+			\2 Interpretação de $\beta_0$: 
+				\3 $\E(Y)$
+				\3 
+		\1 $\epsilon_i$ sã v.a. não observáveis em que:
+			\2 $\E(\epsilon_i)=0$
+			\2 $\Var(\epsilon_i)=\sigma^2$
+			\2 $\Cov(\epsilon_i, \epsilon_j)=\sigma_{ij}=0$, $i,j=1,\ldots,n$
+	\end{outline}
+	De forma matricial,
+	\begin{align}
+		\v{Y} &= \m{X} \v{\beta} + \v{\epsilon} \\
+		\begin{bmatrix}
+			Y_1 \\ Y_2 \\ \vdots \\ Y_n
+		\end{bmatrix} &= 
+		\begin{bmatrix}
+			1 & x_{11} & x_{21} & \cdots & x_{p1} \\
+			1 & x_{12} & x_{22} & \cdots & x_{p2} \\
+			1 & \vdots & \vdots & & \vdots \\
+			1 & x_{1n} & x_{2n} & \cdots & x_{pn} \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			\beta_1 \\ \beta_2 \\ \vdots \\ \beta_p
+		\end{bmatrix} + 
+		\begin{bmatrix}
+			\epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n
+		\end{bmatrix} 
+	\end{align}
+	\begin{outline}
+		\1 $X$: matriz de planejamento
+		\1 $\Var(\v{\epsilon}) = \m{\Sigma}$
+	\end{outline}
+\end{definition}
+
+\begin{definition}[Definições complementares]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 Valores preditos: \( \hat{\v{Y}} = X\hat{\v{\beta}} \)
+		\1 Resíduos: $\hat{\v{\epsilon}} = \v{Y} - \hat{\v{Y}}$
+		\1 \( \m{H} = \m{X}(\m{X}\T\m{X})\inv \m{X}\T \)
+	\end{outline}
+\end{definition}
+
+\section{Caso 1: \texorpdfstring{$\m{\Sigma} = \sigma^2 \v{I}_n$}{Sigma = sigma^2 I_n} e $\m{X}$ de posto completo}
+
+Considere $\m{X}_{n \times (p+1)}$ de posto completo, ou seja $\pos(\m{X})=p+1$ e $\Var(\v{\epsilon})=\m{\Sigma}=\sigma^2\v{I}_n$
+
+\begin{theorem}[Fatos úteis sobre $\m{H}$] Seja $\m{H} = \m{X}(\m{X}\T\m{X})\inv \m{X}\T$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 $\m{H}$ é simétrica e idempotente
+		\1 $\m{I}-\m{H}$ é simétrica e idempotente
+		\1 $\m{H}\m{X}=\m{X}$
+		\1 $\m{X}\T(\v{Y}-\hat{\v{Y}}) = \m{X}\T(\v{Y}-\m{H}\v{Y}) = \v{0}$
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Estimador de mínimos quadrados para $\v{\beta}$]
+	\begin{equation}
+		\hat{\v{\beta}}_{MQ} = (\m{X}\m{X}\T)\inv\m{X}\T \v{Y}
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}[Propriedades do estimador de mínimos quadrados]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \E(\hat{\v{\beta}}_{MQ}) = \v{\beta} \)
+		\1 \( \Var(\hat{\v{\beta}}_{MQ}) = \sigma^2(\m{X}\T\m{X})\inv \)
+		\1 Se $\m{X}$ é de posto completo, $\v{a}\T\hat{\v\beta}$ é o melhor estimador linear não viesado (BLUE) de $\v{a}\T\v{\beta}$ para todo vetor $\v a$.
+	\end{outline}
+\end{theorem}
+
+\begin{theorem}[Quadrado médio residual]
+	O quadrado médio residual QMRes é um estimador não viesado para $\sigma^2$:
+	\begin{equation}
+		\hat{\sigma}^2 = \qmres \coloneq \frac{\sqres}{n-(p+1)} = \frac{{(\v{Y}-\hat{\v{Y}})\T(\v{Y}-\hat{\v{Y}})}}{n-(p+1)}
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}[Estimadores de máxima verossimilhança]
+	Assumindo que $\v{\epsilon} \sim \normdist[n]{\v{0}, \sigma^2\v{I}_n}$, os estimadores de máxima verossimilhança para $\v{\beta}$ e $\sigma^2$ são:
+	\begin{align}
+		\hat{\v{\beta}}_{MV} &= \hat{\v{\beta}}_{MQ} = (\m{X}\m{X}\T)\inv\m{X}\T \v{Y} \\
+		\hat{\sigma^2}_{MV} &= \frac{\sqres}{n} = \frac{(\v{Y}-\hat{\v{Y}})\T(\v{Y}-\hat{\v{Y}})}{n}
+	\end{align}
+\end{theorem}
+
+
+\begin{theorem}[Propriedades dos estimadores de máxima verossimilhança]
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \( \hat{\v{\beta}}_{MV} \sim \normdist[p]{\v{\beta}, \sigma^2(\m{X}\T\m{X})\inv} \)
+		\1 Suponha que queremos estimar $t(\v{\beta}, \sigma^2)$. Seja $q(\hat{\v{\beta}}, \hat{\sigma}^2)$ um ENV. Então, $q(\hat{\v{\beta}}, \hat{\sigma}^2)$ é ENVVUM. Consequências:
+			\2 $\hat{\v{\beta}}$ é ENVVUM de $\v{\beta}$
+			\2 $\hat{\sigma}^2$ é ENVVUM de $\sigma^2$
+	\end{outline}
+\end{theorem}
+
+\section{Testes de hipóteses}
+
+\subsection{Teste ANOVA}
+ 
+ Considere o modelo linear geral do Caso 1 e seja
+\begin{equation}
+	\v{\beta} = \begin{bmatrix}
+		\beta_ 0 \\ 
+		\v{\beta}_1
+	\end{bmatrix} = [\beta_0, \v{\beta}_1\T]\T
+\end{equation} 
+ Queremos avaliar as hipóteses
+ 
+ \begin{equation}
+ 	\left\{ \begin{array}{ll} 
+ 		H_0: & \v{\beta}_1 = \v{0} \\
+ 		H_1: & \text{pelo menos uma desigualdade}.
+ 	\end{array} \right.
+ \end{equation}
+       
+ 
+\subsubsection{Modelo com intercepto}
+
+Para o modelo com intercepto, a tabela ANOVA fica
+
+\begin{table}[h]
+	\centering
+	\begin{tblr}{
+			colspec = {|c|c|c|c|c|},
+			cells   = {valign=m, halign=c},
+			rowsep  = 3pt,
+			hlines, vlines,
+		}
+		F.V. & g.l. & SQ & QM & F \\
+		Regressão & $p$ & $\sqr$ & $\displaystyle\frac{\sqr}{p}$ &
+		\SetCell[r=2]{} $\displaystyle \frac{\qmr}{\qmres}$ \\
+		Resíduos & $n-(p+1)$ & $\sqres$ & $\displaystyle\frac{\sqres}{n-(p+1)}$ & \\
+		Total & $n-1$ & $\sqt$ & -- & -- \\
+	\end{tblr}
+	\caption{ANOVA para o modelo com intercepto}
+\end{table}
+
+Então, 
+
+\begin{equation}\displaystyle
+	F = \frac{\frac{\sqr}{p}}{\frac{\sqres}{n-(p+1)}} \undernull \fdist{p, n-(p+1)}
+\end{equation}
+
+Rejeitamos $H_0$ se $f > f_c$, em que $\P(f>f_c)=\alpha$.
+
+\begin{align}
+	\sqt &= \sqres + \sqr  \\
+	\sum_{i=1}^n (Y_i - \bar{Y})^2 &= 
+	\sum_{i=1}^n (Y_i - \hat{Y}_i)^2 +
+	\sum_{i=1}^{n}(\hat{Y}_i - \bar{Y})^2 + 
+\end{align}
+
+\begin{align}
+	\sqt &= \sum_{i=1}^n (Y_i - \bar{Y})^2 = \sum_{i=1}^{n} Y_i^2 -n\bar{Y}^2 \\
+	&= \v{Y}\T\left( \m{I} - \frac{\v{1}\v{1}\T}{n} \right) \v{Y}
+\end{align}
+
+\begin{align}
+	\sqres &= \sum_{i=1}^n (Y_i - \hat{Y}_i)^2 \\
+	&= (\v{Y}-\hat{\v{Y}})\T (\v{Y}-\hat{\v{Y}}) \\
+	&= \v{Y}\T (\m{I}-\m{H}) \v{Y} \\
+	&= \v{Y}\T \v{Y} - \hat{\v{\beta}}\T \m{X}\T \v{Y}
+\end{align}
+
+\begin{align}
+	\sqr &= \sum_{i=1}^{n}(\hat{Y}_i - \bar{Y})^2 \\
+	&=  \v{Y}\T\left( \m{H} - \frac{\v{1}\v{1}\T}{n} \right) \v{Y}
+\end{align}
+
+\begin{theorem}[Distribuições no modelo com intercepto]
+	Assumindo que $\m{X}$ é de posto completo, com $\pos(\m{X}) = p+1$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \(\displaystyle \frac{\sqres}{\sigma^2} \sim \chidist{n-(p+1)}  \)
+		\1 \(\displaystyle \frac{\sqr}{\sigma^2} \sim \chidist{p, \lambda} \)
+			\2 \(\displaystyle \lambda = \frac{1}{2\sigma^2}\v{\beta}_1\T \m{X}_1\T \left( \m{I} - \frac{\v{1}\v{1}\T}{n} \right) \), onde $\v{\beta} = [\beta_0, \ \v{\beta}_1\T]\T$.
+			\2 Sob $H_0$: $\v{\beta}_1=0 \implies \lambda=0$.
+		\1 \( \displaystyle \frac{\sqt}{\sigma^2} \sim \chidist{n, \lambda}  \), com $\lambda$ igual ao item anterior.
+		\1 $\sqres$ e $\sqr$ são independentes.
+	\end{outline}
+\end{theorem}
+
+
+\subsubsection{Modelo sem intercepto}
+
+No modelo sem intercepto, a decomposição usual de $\sqt$ não é válida. Desta forma, é necessário trabalhar com novas quantidades não corrigidas pela média.
+
+Note agora que $\pos(\m X) = p$.
+
+\begin{table}[h]
+	\centering
+	\begin{tblr}{
+			colspec = {|c|c|c|c|c|},
+			cells   = {valign=m, halign=c},
+			rowsep  = 3pt,
+			hlines, vlines,
+		}
+		F.V. & g.l. & SQ & QM & F \\
+		Regressão n.c. & $p$ & $\sqr_{nc}$ & $\displaystyle\frac{\sqr_{nc}}{p}$ &
+		\SetCell[r=2]{} $\displaystyle \frac{\qmr}{\qmres}$ \\
+		Resíduos & $n-p$ & $\sqres$ & $\displaystyle\frac{\sqres}{n-p}$ & \\
+		Total n.c. & $n$ & $\sqt_{nc}$ & -- & -- \\
+	\end{tblr}
+	\caption{ANOVA para o modelo sem intercepto}
+\end{table}
+
+
+\begin{equation}\displaystyle
+	F = \frac{\frac{\sqr_{nc}}{p}}{\frac{\sqres}{n-p}} \undernull \fdist{p, n-p}
+\end{equation}
+
+Rejeitamos $H_0$ se $f > f_c$, em que $\P(f>f_c)=\alpha$.
+
+
+\begin{align}
+	\sqt_{nc} &= \sqres + \sqr_{nc}  \\
+	\sum_{i=1}^n Y_i^2 &= 
+	\sum_{i=1}^n (Y_i-\hat{Y}_i)^2 +
+	\sum_{i=1}^n \hat{Y}_i^2 + 
+\end{align}
+
+\begin{align}
+	\sqt_{nc} &= \sum_{i=1}^n Y_i^2 \\
+	&= \v{Y}\T \v{Y}
+\end{align}
+
+\begin{align}
+	\sqres &= \sum_{i=1}^n (Y_i - \hat{Y}_i)^2 \\
+	&= (\v{Y}-\hat{\v{Y}})\T (\v{Y}-\hat{\v{Y}}) \\
+	&= \v{Y}\T (\m{I}-\m{H}) \v{Y} \\
+	&= \v{Y}\T \v{Y} - \hat{\v{\beta}}\T \m{X}\T \v{Y}
+\end{align}
+
+\begin{align}
+	\sqr_{nc} &= \sum_{i=1}^n \hat{Y}_i^2 \\
+	&= \v{Y}\T \m{H} \v{Y} = \hat{\v{\beta}}\T\m{X}\T\v{Y}
+\end{align}
+
+\begin{theorem}[Distribuições no modelo sem intercepto]
+	Assumindo que $\m{X}$ é de posto completo com $\pos(\m{X}) = p$.
+	\leavevmode
+	\begin{outline}[enumerate]
+		\1 \(\displaystyle \frac{\sqres}{\sigma^2} \sim \chidist{n-p}  \)
+		\1 \(\displaystyle \frac{\sqr}{\sigma^2} \sim \chidist{p, \lambda} \)
+		\2 \(\displaystyle \lambda = \frac{1}{2\sigma^2}\v{\beta}\T \m{X}\T \m{X} \v{\beta}\)
+		\2 Sob $H_0$: $\v\beta=0 \implies \lambda=0$.
+		\1 \( \displaystyle \frac{\sqt}{\sigma^2} \sim \chidist{n, \lambda}  \), com $\lambda$ igual ao item anterior.
+		\1 $\sqres$ e $\sqr$ são independentes.
+	\end{outline}
+\end{theorem}
+
+
+
+\subsection{Teste da Razão de Verossimilhanças Generalizado}
+
+Queremos avaliar a hipótese linear geral:
+
+\begin{equation}
+	\left\{ \begin{array}{ll} 
+		H_0: & \m{C} \v\beta = \v{m} \\
+		H_1: & \m{C} \v\beta \neq \v{m} 
+	\end{array} \right.
+\end{equation}
+%
+onde $\m{C}$ é uma matriz dedimensão $q \times (p+1)$ com $\pos(\m{C})=q<p+1$ e $\v{m}$ um vetor de dimensão $q \times 1$.
+
+\begin{theorem}[Estimadores de MV restritos a $H_0$] 
+	Sob $H_0$, os estimadores de máxima verossimilhança restritos são dados por
+	\begin{align}
+		\hat{\v{\beta}}_0 &= \hat{\v{\beta}} - (\m{X}\T\m{X})\inv \m{C}\T [\m{C} (\m{X}\T\m{X})\inv\m{C}\T]\inv(\m{C}\hat{\v{\beta}}-\v{m})  \\
+		\hat{\sigma}^2_0 &= \frac{(\v{Y}-\m{X}\hat{\v{\beta}}_0)\T(\v{Y}-\m{X}\hat{\v{\beta}}_0)}{n}
+	\end{align}
+\end{theorem}
+
+\begin{theorem}[TRV]
+	Seja
+	
+	\begin{equation}
+		W = \frac{(\m{C}\hat{\v{\beta}}-\v{m})\T [\m{C}(\m{X}\T \m{X})\inv \m{C}\T]\inv (\m{C}\hat{\v{\beta}}-\v{m})}{q\hat{\sigma}^2}
+	\end{equation}
+		%
+	em que
+	\begin{equation}
+		\hat{\sigma}^2 = \frac{(\v{Y}-\m{X}\hat{\v{\beta}})\T(\v{Y}-\m{X}\hat{\v{\beta}})}{n-(p+1)}.
+	\end{equation}
+	Então,
+	\begin{equation}
+		W \undernull \fdist{q,n-(p+1)}
+	\end{equation}
+	%
+	e rejeitamos $H_0$ ao nível de significância $\alpha$ se $w > w_0$, com $w_0$ tal que $\P(W > w_0)=\alpha$.
+\end{theorem}
+
+\begin{theorem}[Fórmulas alternativas para $W$]
+	\leavevmode
+	\begin{align}
+		W &= \left(\frac{\hat{\sigma}^2_0-\hat{\sigma}^2}{\hat{\sigma}^2} \right) \frac{n-(p+1)}{q} \\
+		&= \left( \frac{\sqres_0-\sqres}{\sqres} \right) \frac{n-(p+1)}{q}
+	\end{align}
+\end{theorem}
+
+
+\begin{theorem}[Poder do teste]
+	Cada $\v{\beta}$ associado a uma hipótese $H_1$ do teste $\Upsilon$ corresponde a um $\lambda$ diferente. Sob $H_1$,
+	
+	\begin{equation}
+		W = \frac{\sqr/p}{\sqres/(n-p-1)} \underalt \fdist{p, n-p-1, \lambda}
+	\end{equation}
+	
+	\begin{align}
+		\pi_{\Upsilon} = \pi(\lambda) &= \P[\text{rejeitar } H_0 \mid H_1] \\
+		&= \int_{w_0}^{\infty} f_{q,n-p-1,\lambda}  dw \\
+		&= 1-F_{q,n-p-1,\lambda}(w_0) \\
+		&= 1-\texttt{pf}(w_0, q, n-p-1, \texttt{nc}=2\lambda)
+	\end{align}
+	
+\end{theorem}
+
+\section{Regressão linear simples}
+
+
+\begin{equation}
+	Y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad i=1,\ldots,n
+\end{equation}
+%
+em que $\E(\epsilon_i)=0$ e $\Var(\epsilon_i)=\sigma^2$ e $\epsilon_i, \epsilon_j$ são não correlacionados.
+
+Em notação matricial:
+
+\begin{outline}
+	\1 $\v{Y} = (Y_1, \ldots, Y_n)\T$ 
+	\1 \( \m{X} = \begin{bmatrix}
+		1 & x_1 \\ 1 & x_2 \\ \vdots & \vdots \\ 1 & x_n
+	\end{bmatrix} \)
+	\1 \(\m{X}\m{X}\T = \begin{bmatrix}
+		n & \sum_{i=1}^n x_1  \\ \sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2
+	\end{bmatrix} \) 
+	\1 \( \displaystyle \ (\m{X}\m{X}\T)\inv = \frac{1}{n\sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2} \begin{bmatrix}
+		\sum_{i=1}^n x_i^2 & -\sum_{i=1}^n x_i  \\ -\sum_{i=1}^n x_i & n
+	\end{bmatrix} \)
+	\1 \( \m{X}\T\m{Y} = \begin{bmatrix}
+	\sum_{i=1}^n Y_i  \\ \sum_{i=1}^n x_i Y_i
+	\end{bmatrix} \)
+\end{outline}
+
+
+Definindo
+\begin{equation}
+	S_{xx} = \sum_{i=1}^n (x_i-\bar{x})^2, \quad S_{xY} = \sum_{i=1}^n (x_i-\bar{x})(Y_i-\bar{Y})
+\end{equation}
+%
+temos que
+
+\begin{equation}
+	\hat{\v{\beta}} = \begin{bmatrix} 
+		\hat{\beta}_0 \\ \hat{\beta}_1
+	\end{bmatrix}
+	= (\m{X}\T \m{X})\inv\m{X}\T\v{Y} = 
+	\begin{bmatrix}
+		\bar{Y} - \hat{\beta_1}\bar{x} \\ \displaystyle \frac{S_{xY}}{S_{xx}}
+	\end{bmatrix}
+\end{equation}
+
+Forma alternativa:
+
+\begin{align}
+	\hat{\beta}_1 = \frac{\sum_{i=1}^n x_i Y_i - n \bar{x}\bar{Y}}{\sum_{i=1}^{n}x_i^2-n \bar{x}^2} 
+\end{align}

@@ -26,8 +26,12 @@
 \usepackage{bbm} 						% \mathbbm{1} (função indicadora)
 \usepackage{bm}							% negrito para vetores/matrizes
 \usepackage{accents}					% \prior, \post
+\usepackage{tabularray}
 
 \numberwithin{equation}{section} 		% Equações no formato X.Y
+
+% Ajuste de altura de linhas de tabelas
+\newcommand{\TBstrut}{\rule{0pt}{3.8ex}\rule[-1.8ex]{0pt}{0pt}}
 
 % ---------- Notação de vetores, variáveis aleatórias e matrizes ----------
 \renewcommand{\v}[1]{\bm{#1}}  	    			% vetor não aleatório
@@ -65,7 +69,11 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
-
+\DeclareMathOperator{\sqres}{SQRes}       % soma de qudrados dos resíduos
+\DeclareMathOperator{\sqt}{SQT}           % soma de quadrados totais
+\DeclareMathOperator{\sqr}{SQR}           % soma de quadrados da regressão
+\DeclareMathOperator{\qmres}{QMRes}       % quadrado médio dos resíduos
+\DeclareMathOperator{\qmr}{QMR}           % quadrado médio da regressão
 
 % ---------- Símbolos e conjuntos ----------
 \newcommand{\cp}[1]{#1^\mathsf{c}}				% complementar de um conjunto (A^\mathsf{c})
@@ -156,6 +164,10 @@
 
 \DeclareMathOperator{\unifop}{Uniforme}
 \newcommand{\unifdist}[1]{\unifop\left(#1\right)}
+
+\newcommand{\iid}{\stackrel{\text{i.i.d.}}{\sim}}
+\newcommand{\undernull}{\stackrel{H_0}{\sim}}
+\newcommand{\underalt}{\stackrel{H_1}{\sim}}
 
 % ---------- Convergência ----------
 \newcommand{\toQC}{\xrightarrow{\text{q.c.}}} % quase certamente

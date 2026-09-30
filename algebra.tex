@@ -922,6 +922,37 @@
 	\end{equation}
 \end{theorem}
 
+
+\begin{lemma}[Atualização de posto 1 - Sherman-Morrison]
+	Seja $\m{D}$ uma matriz quadrada não-singular de ordem $n$, e sejam
+	$\v{u}, \v{v} \in \mathbb{R}^n$ vetores tais que $1 - \v{v}\T \m{D}\inv \v{u} \neq 0$.
+	Então
+	\begin{equation}
+		(\m{D} - \v{u}\v{v}\T)\inv = \m{D}\inv + \frac{\m{D}\inv \v{u}\v{v}\T \m{D}\inv}{1 - \v{v}\T \m{D}\inv \v{u}}.
+	\end{equation}
+\end{lemma}
+
+\begin{corollary}[Caso $\m{B}_{22}$ escalar]
+	Seja $\m{B}$ particionada como no Teorema anterior, com
+	$\m{B}_{11} = \m{D}$ uma matriz quadrada não-singular de ordem $n$,
+	$\m{B}_{12} = \v{b} \in \mathbb{R}^n$ (vetor coluna),
+	$\m{B}_{21} = \v{c}\T$ (vetor linha) e
+	$\m{B}_{22}$ um escalar não nulo. Defina o complemento de Schur escalar
+	\begin{equation}
+		s = \m{B}_{22} - \m{B}_{21}\m{B}_{11}\inv \m{B}_{12} = \m{B}_{22} - \v{c}\T\m{D}\inv \v{b}.
+	\end{equation}
+	Então, aplicando o Lema acima com $\v{u} = \v{b}$ e $\v{v} = \v{c}/\m{B}_{22}$, as fórmulas do Teorema se reduzem a
+	\begin{equation}
+		\m{B}\inv =
+		\begin{bmatrix}
+			\m{D}\inv + \dfrac{\m{D}\inv \v{b}\,\v{c}\T\m{D}\inv}{s} & -\dfrac{\m{D}\inv \v{b}}{s} \\[2ex]
+			-\dfrac{\v{c}\T\m{D}\inv}{s} & \dfrac{1}{s}
+		\end{bmatrix},
+	\end{equation}
+	sem que seja necessário inverter nenhuma matriz de ordem $n$ além de $\m{D}\inv$.
+\end{corollary}
+
+
 \begin{theorem}
 	Seja $\m{B}$ uma matriz bloco diagonal,
 	\begin{equation}
@@ -947,6 +978,8 @@
 	\end{equation}
 	O resultado vale para matrizes bloco diagonal de maior dimensão.
 \end{theorem}
+
+
 
 \section{Derivadas}
 
